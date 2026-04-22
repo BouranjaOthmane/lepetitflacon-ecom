@@ -5,12 +5,12 @@
 
 /* ---------- CSS Variables ---------- */
 :root {
-    --bg-primary: #080a16;
+    --bg-primary: #FFF;
     /* Deeper background */
-    --bg-secondary: #0f1225;
+    --bg-secondary: #FFF;
     --bg-card: #151a30;
     --bg-card-hover: #1e2440;
-    --bg-sidebar: #0b0e1e;
+    --bg-sidebar: #FFF;
     --bg-input: #12182d;
 
     /* Glassmorphism */
@@ -73,7 +73,7 @@ html {
 body {
     font-family: var(--font-body);
     background: var(--bg-primary);
-    color: var(--color-text);
+    /* color: var(--color-text); */
     font-size: 14px;
     line-height: 1.6;
     overflow-x: hidden;
@@ -131,7 +131,7 @@ img {
     width: var(--sidebar-width);
     height: 100vh;
     position: fixed;
-    right: 0;
+    left: 0;
     top: 0;
     background: var(--bg-sidebar);
     border-left: 1px solid var(--glass-border);
@@ -194,7 +194,7 @@ img {
     gap: 12px;
     padding: 12px 16px;
     border-radius: var(--radius-sm);
-    color: var(--color-text-muted);
+    color: black;
     font-size: 0.9rem;
     font-weight: 500;
     transition: all var(--transition);
@@ -285,14 +285,14 @@ img {
 /* ===== MAIN CONTENT ===== */
 .main-content {
     flex: 1;
-    margin-right: var(--sidebar-width);
+    margin-left: var(--sidebar-width);
     min-height: 100vh;
 }
 
 /* ===== HEADER ===== */
 .dashboard-header {
     height: var(--header-height);
-    background: var(--bg-glass);
+    background-color: #ECECEC;
     backdrop-filter: blur(var(--glass-blur));
     -webkit-backdrop-filter: blur(var(--glass-blur));
     border-bottom: 1px solid var(--glass-border);
@@ -318,7 +318,7 @@ img {
 
 .header__title p {
     font-size: 0.8rem;
-    color: var(--color-text-muted);
+    color: black;
 }
 
 .header__left {
@@ -588,7 +588,7 @@ img {
 }
 
 .stat-card {
-    background: var(--bg-card);
+    background: #ececec;
     border: 1px solid var(--glass-border);
     border-radius: var(--radius-md);
     padding: 26px;
@@ -665,7 +665,7 @@ img {
     font-size: 1.8rem;
     font-weight: 800;
     margin-bottom: 4px;
-    background: linear-gradient(135deg, var(--color-text), var(--color-text-muted));
+    background: black;
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -673,7 +673,7 @@ img {
 
 .stat-card__label {
     font-size: 0.8rem;
-    color: var(--color-text-muted);
+    color: black;
 }
 
 /* ===== CHARTS AREA ===== */
@@ -700,6 +700,7 @@ img {
 
 .chart-card__header h3 {
     font-size: 1rem;
+    color: white;
     font-weight: 600;
 }
 
@@ -722,7 +723,7 @@ img {
 
 .chart-tab.active {
     background: var(--color-gold);
-    color: #000;
+    color: white;
 }
 
 .chart-placeholder {
@@ -843,7 +844,7 @@ img {
 
 /* ===== TABLE ===== */
 .table-card {
-    background: var(--bg-card);
+    background-color: #ECECEC;
     border: 1px solid var(--border-color);
     border-radius: var(--radius-md);
     overflow: hidden;
@@ -860,6 +861,7 @@ img {
 .table-card__header h3 {
     font-size: 1rem;
     font-weight: 600;
+    color: black;
 }
 
 .table-card__actions {
@@ -881,7 +883,7 @@ img {
 
 .btn-gold {
     background: linear-gradient(135deg, var(--color-gold), var(--color-gold-dark));
-    color: #000;
+    color: white;
 }
 
 .btn-gold:hover {
@@ -896,12 +898,12 @@ img {
 
 .btn-outline:hover {
     border-color: var(--color-gold);
-    color: var(--color-gold);
+    color: #F7BB08;
 }
 
 .btn-sm {
     padding: 6px 12px;
-    font-size: 0.75rem;
+    font-size: 16px;
 }
 
 .data-table {
@@ -916,7 +918,7 @@ img {
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.08em;
-    color: var(--color-text-dim);
+    color: black;
     background: rgba(0, 0, 0, 0.15);
     border-bottom: 1px solid var(--border-color);
 }
@@ -926,6 +928,7 @@ img {
     border-bottom: 1px solid var(--border-color);
     font-size: 0.85rem;
     vertical-align: middle;
+    color: black;
 }
 
 .data-table tbody tr {
@@ -1136,7 +1139,7 @@ img {
     display: block;
     font-size: 0.8rem;
     font-weight: 600;
-    color: var(--color-text-muted);
+    color: black;
     margin-bottom: 8px;
 }
 
@@ -1145,12 +1148,24 @@ img {
 .form-group textarea {
     width: 100%;
     padding: 11px 16px;
-    background: var(--bg-input);
+    background: white;
     border: 1px solid var(--border-color);
     border-radius: var(--radius-sm);
-    color: var(--color-text);
+    color: white;
     font-size: 0.85rem;
     transition: all var(--transition);
+}
+
+.size-row .form-row {
+    display: grid;
+    grid-template-columns: 2fr 1.5fr 1fr;
+    gap: 16px;
+}
+
+@media (max-width: 768px) {
+    .size-row .form-row {
+        grid-template-columns: 1fr;
+    }
 }
 
 .form-group input:focus,
@@ -1429,7 +1444,7 @@ img {
     font-family: 'Outfit', sans-serif;
     font-size: 1rem;
     font-weight: 800;
-    color: var(--color-gold);
+    color: white;
     width: 32px;
     height: 32px;
     background: rgba(212, 175, 55, 0.1);
@@ -1465,6 +1480,7 @@ img {
     font-size: 0.95rem;
     font-weight: 700;
     margin-bottom: 2px;
+    color: white;
 }
 
 .item-info span {
@@ -1476,7 +1492,7 @@ img {
     font-family: 'Outfit', sans-serif;
     font-size: 1.1rem;
     font-weight: 700;
-    color: var(--color-gold);
+    color: white;
 }
 
 .item-meta {

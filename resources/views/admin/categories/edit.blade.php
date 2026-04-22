@@ -27,7 +27,7 @@
                     </div>
                 @endif
                 <input type="file" name="image" accept="image/*">
-                @error('image') <span style="color:var(--color-danger); font-size: 0.8rem">{{ $message }}</span> @enderror
+                @error('image') <span style="color:red; font-size: 0.8rem">{{ $message }}</span> @enderror
             </div>
 
             <div class="form-row">
@@ -35,12 +35,12 @@
                 <div class="form-group">
                     <label>الاسم بالعربية</label>
                     <input type="text" name="name[ar]" value="{{ old('name.ar', $category->getTranslation('name', 'ar')) }}" placeholder="مثال: عطور رجالية" required>
-                    @error('name.ar') <span style="color:var(--color-danger); font-size: 0.8rem">{{ $message }}</span> @enderror
+                    @error('name.ar') <span style="color:red; font-size: 0.8rem">{{ $message }}</span> @enderror
                 </div>
                 <div class="form-group">
                     <label>الاسم بالإنجليزية</label>
                     <input type="text" name="name[en]" value="{{ old('name.en', $category->getTranslation('name', 'en')) }}" placeholder="Example: Men Perfumes" required>
-                    @error('name.en') <span style="color:var(--color-danger); font-size: 0.8rem">{{ $message }}</span> @enderror
+                    @error('name.en') <span style="color:red; font-size: 0.8rem">{{ $message }}</span> @enderror
                 </div>
             </div>
 
@@ -56,7 +56,7 @@
                         @endif
                     @endforeach
                 </select>
-                @error('parent_id') <span style="color:var(--color-danger); font-size: 0.8rem">{{ $message }}</span> @enderror
+                @error('parent_id') <span style="color:red; font-size: 0.8rem">{{ $message }}</span> @enderror
             </div>
 
             <div style="margin-top: 32px; display: flex; gap: 12px">

@@ -23,7 +23,7 @@
                 <div class="form-group">
                     <label>كود الخصم (Code)</label>
                     <input type="text" name="code" value="{{ old('code', $coupon->code) }}" required style="text-transform: uppercase">
-                    @error('code') <span style="color:var(--color-danger); font-size: 0.8rem">{{ $message }}</span> @enderror
+                    @error('code') <span style="color:red; font-size: 0.8rem">{{ $message }}</span> @enderror
                 </div>
 
                 <div class="form-group">
@@ -37,7 +37,7 @@
                 <div class="form-group">
                     <label>قيمة الخصم</label>
                     <input type="number" step="0.01" name="value" value="{{ old('value', $coupon->value) }}" required>
-                    @error('value') <span style="color:var(--color-danger); font-size: 0.8rem">{{ $message }}</span> @enderror
+                    @error('value') <span style="color:red; font-size: 0.8rem">{{ $message }}</span> @enderror
                 </div>
 
                 <div class="form-group">
@@ -53,7 +53,7 @@
                 <div class="form-group">
                     <label>تاريخ الانتهاء</label>
                     <input type="date" name="expires_at" value="{{ old('expires_at', $coupon->expires_at?->format('Y-m-d')) }}">
-                    @error('expires_at') <span style="color:var(--color-danger); font-size: 0.8rem">{{ $message }}</span> @enderror
+                    @error('expires_at') <span style="color:red; font-size: 0.8rem">{{ $message }}</span> @enderror
                 </div>
             </div>
 
@@ -75,7 +75,7 @@
                     @endforeach
                 </select>
                 <small style="color:var(--color-text-dim)">اضغط Ctrl (أو Command) لاختيار أكثر من منتج</small>
-                @error('products') <br><span style="color:var(--color-danger); font-size: 0.8rem">{{ $message }}</span> @enderror
+                @error('products') <br><span style="color:red; font-size: 0.8rem">{{ $message }}</span> @enderror
             </div>
 
             <div class="form-group" style="margin-top: 20px">

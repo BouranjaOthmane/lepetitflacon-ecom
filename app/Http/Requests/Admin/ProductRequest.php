@@ -50,6 +50,11 @@ class ProductRequest extends FormRequest
             'middle_notes.*' => 'exists:fragrance_notes,id',
             'base_notes' => 'nullable|array',
             'base_notes.*' => 'exists:fragrance_notes,id',
+
+            // product sizes
+            'sizes' => 'nullable|array',
+            'sizes.*.size' => 'required_with:sizes.*.price|string|max:50',
+            'sizes.*.price' => 'required_with:sizes.*.size|numeric|min:0',
         ];
     }
 

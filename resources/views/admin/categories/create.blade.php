@@ -1,17 +1,17 @@
 @extends('admin.layout.master')
 
-@section('title', 'إضافة قسم جديد — لوكس بارفيوم')
+@section('title', 'Ajouter une catégorie — Lepetitflacon')
 
-@section('page_title', 'إضافة قسم')
-@section('page_subtitle', 'إنشاء تصنيف منتجات جديد')
+@section('page_title', 'Ajouter une catégorie')
+@section('page_subtitle', 'Créer une nouvelle catégorie de produits')
 
 @section('content')
 <section class="dashboard-section active">
     <div class="table-card" style="max-width: 800px; margin: 0 auto;">
         <div class="table-card__header">
-            <h3>بيانات القسم الجديد</h3>
+            <h3>Informations de la nouvelle catégorie</h3>
             <a href="{{ route('admin.categories.index') }}" class="btn btn-outline btn-sm">
-                <i class="fas fa-arrow-right"></i> عودة للقائمة
+                <i class="fas fa-arrow-right"></i> Retour à la liste
             </a>
         </div>
         
@@ -19,43 +19,43 @@
             @csrf
             
             <div class="form-group" style="margin-bottom: 20px">
-                <label>صورة القسم</label>
+                <label>Image de la catégorie</label>
                 <input type="file" name="image" accept="image/*">
-                @error('image') <span style="color:var(--color-danger); font-size: 0.8rem">{{ $message }}</span> @enderror
+                @error('image') <span style="color:red; font-size: 0.8rem">{{ $message }}</span> @enderror
             </div>
 
             <div class="form-row">
 
                 <div class="form-group">
-                    <label>الاسم بالعربية</label>
-                    <input type="text" name="name[ar]" value="{{ old('name.ar') }}" placeholder="مثال: عطور رجالية" required>
-                    @error('name.ar') <span style="color:var(--color-danger); font-size: 0.8rem">{{ $message }}</span> @enderror
+                    <label>Nom en arabe</label>
+                    <input type="text" name="name[ar]" value="{{ old('name.ar') }}" placeholder="Exemple : Parfums pour homme" required>
+                    @error('name.ar') <span style="color:red; font-size: 0.8rem">{{ $message }}</span> @enderror
                 </div>
                 <div class="form-group">
-                    <label>الاسم بالإنجليزية</label>
+                    <label>Nom en anglais</label>
                     <input type="text" name="name[en]" value="{{ old('name.en') }}" placeholder="Example: Men Perfumes" required>
-                    @error('name.en') <span style="color:var(--color-danger); font-size: 0.8rem">{{ $message }}</span> @enderror
+                    @error('name.en') <span style="color:red; font-size: 0.8rem">{{ $message }}</span> @enderror
                 </div>
             </div>
 
             <div class="form-group">
-                <label>القسم الأب</label>
+                <label>Catégorie parente</label>
                 <select name="parent_id">
-                    <option value="">قسم رئيسي (بدون أب)</option>
+                    <option value="">Catégorie principale (sans parent)</option>
                     @foreach($parentCategories as $parent)
                         <option value="{{ $parent->id }}" {{ old('parent_id') == $parent->id ? 'selected' : '' }}>
                             {{ $parent->name }}
                         </option>
                     @endforeach
                 </select>
-                @error('parent_id') <span style="color:var(--color-danger); font-size: 0.8rem">{{ $message }}</span> @enderror
+                @error('parent_id') <span style="color:red; font-size: 0.8rem">{{ $message }}</span> @enderror
             </div>
 
             <div style="margin-top: 32px; display: flex; gap: 12px">
                 <button type="submit" class="btn btn-gold">
-                    <i class="fas fa-save"></i> حفظ القسم
+                    <i class="fas fa-save"></i> Enregistrer la catégorie
                 </button>
-                <a href="{{ route('admin.categories.index') }}" class="btn btn-outline">إلغاء</a>
+                <a href="{{ route('admin.categories.index') }}" class="btn btn-outline">Annuler</a>
             </div>
         </form>
     </div>

@@ -214,65 +214,65 @@
     <div class="particles" id="particles"></div>
 
     <div class="login-container">
-        <div class="login-card">
-            <div class="logo-box">
-                <i class="fas fa-crown"></i>
-                <h1>LUXE PARFUM</h1>
+    <div class="login-card">
+        <div class="logo-box">
+            <i class="fas fa-crown"></i>
+            <h1>LEPETITFLACON</h1>
+        </div>
+
+        <div class="login-header">
+            <h2>Bon retour parmi nous</h2>
+            <p>Veuillez vous connecter pour accéder à votre compte</p>
+        </div>
+
+        @if ($errors->any())
+            <div class="alert-error">
+                @foreach ($errors->all() as $error)
+                    <p>{{ $error }}</p>
+                @endforeach
+            </div>
+        @endif
+
+        <form action="{{ route('login') }}" method="POST">
+            @csrf
+            <div class="form-group">
+                <label>Adresse e-mail</label>
+                <div class="input-wrapper">
+                    <input type="email" name="email" value="{{ old('email') }}" required placeholder="votre@email.com">
+                    <i class="fas fa-envelope"></i>
+                </div>
             </div>
 
-            <div class="login-header">
-                <h2>مرحباً بك مجدداً</h2>
-                <p>يرجى تسجيل الدخول للوصول إلى حسابك</p>
+            <div class="form-group">
+                <label>Mot de passe</label>
+                <div class="input-wrapper">
+                    <input type="password" name="password" required placeholder="••••••••">
+                    <i class="fas fa-lock"></i>
+                </div>
             </div>
 
-            @if ($errors->any())
-                <div class="alert-error">
-                    @foreach ($errors->all() as $error)
-                        <p>{{ $error }}</p>
-                    @endforeach
-                </div>
-            @endif
-
-            <form action="{{ route('login') }}" method="POST">
-                @csrf
-                <div class="form-group">
-                    <label>البريد الإلكتروني</label>
-                    <div class="input-wrapper">
-                        <input type="email" name="email" value="{{ old('email') }}" required placeholder="your@email.com">
-                        <i class="fas fa-envelope"></i>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label>كلمة المرور</label>
-                    <div class="input-wrapper">
-                        <input type="password" name="password" required placeholder="••••••••">
-                        <i class="fas fa-lock"></i>
-                    </div>
-                </div>
-
-                <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 20px; font-size: 14px; color: var(--text-muted);">
-                    <input type="checkbox" name="remember" id="remember">
-                    <label for="remember" style="margin: 0; cursor: pointer;">تذكرني</label>
-                </div>
-
-                <button type="submit" class="btn-login">
-                    <span>تسجيل الدخول</span>
-                    <i class="fas fa-sign-in-alt"></i>
-                </button>
-            </form>
-
-            <div class="footer-links" style="display: flex; flex-direction: column; gap: 10px;">
-                <div style="display: flex; justify-content: space-between;">
-                    <a href="#">نسيت كلمة المرور؟</a>
-                    <a href="{{ route('home') }}">العودة للرئيسية</a>
-                </div>
-                <p style="margin-top: 15px; font-size: 14px; color: var(--text-muted);">
-                    ليس لديك حساب؟ <a href="{{ route('register') }}" style="color: var(--primary); font-weight: 600;">إنشاء حساب جديد</a>
-                </p>
+            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 20px; font-size: 14px; color: var(--text-muted);">
+                <input type="checkbox" name="remember" id="remember">
+                <label for="remember" style="margin: 0; cursor: pointer;">Se souvenir de moi</label>
             </div>
+
+            <button type="submit" class="btn-login">
+                <span>Se connecter</span>
+                <i class="fas fa-sign-in-alt"></i>
+            </button>
+        </form>
+
+        <div class="footer-links" style="display: flex; flex-direction: column; gap: 10px;">
+            <div style="display: flex; justify-content: space-between;">
+                <a href="#">Mot de passe oublié ?</a>
+                <a href="{{ route('home') }}">Retour à l’accueil</a>
+            </div>
+            <p style="margin-top: 15px; font-size: 14px; color: var(--text-muted);">
+                Vous n’avez pas de compte ? <a href="{{ route('register') }}" style="color: var(--primary); font-weight: 600;">Créer un nouveau compte</a>
+            </p>
         </div>
     </div>
+</div>
 
     <script>
         // Simple background decoration

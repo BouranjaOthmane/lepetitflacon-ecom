@@ -20,7 +20,7 @@
           @auth
             <span class="dropdown-header">Bonjour, {{ auth()->user()->name }}</span>
             @if(auth()->user()->role === 'Admin')
-              <a href="{{ route('admin.index') }}"><i class="fas fa-cog"></i> Tableau de bord</a>
+              <a href="{{ route('admin.analytics.index') }}"><i class="fas fa-cog"></i> Tableau de bord</a>
             @endif
             <a href="{{ route('account.index') }}"><i class="fas fa-user-circle"></i> Mon compte</a>
             <a href="{{ route('loyalty.index') }}"><i class="fas fa-crown"></i> Points de fidélité</a>

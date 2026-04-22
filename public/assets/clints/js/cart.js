@@ -11,7 +11,7 @@ function renderCartPage() {
   const cartEmpty = document.getElementById('cartEmpty');
   const cartLayout = document.getElementById('cartLayout');
   const summarySubtotal = document.getElementById('summarySubtotal');
-  const summaryTax = document.getElementById('summaryTax');
+  // const summaryTax = document.getElementById('summaryTax');
   const summaryTotal = document.getElementById('summaryTotal');
 
   if (!cartBody) return;
@@ -57,11 +57,11 @@ function renderCartPage() {
 
   // Update summary
   const subtotal = CartManager.getTotal();
-  const tax = subtotal * 0.08;
-  const total = subtotal + tax;
+  // const tax = subtotal * 0.08;
+  const total = subtotal;
 
   if (summarySubtotal) summarySubtotal.textContent = `$${subtotal.toFixed(2)}`;
-  if (summaryTax) summaryTax.textContent = `$${tax.toFixed(2)}`;
+  // if (summaryTax) summaryTax.textContent = `$${tax.toFixed(2)}`;
   if (summaryTotal) summaryTotal.textContent = `$${total.toFixed(2)}`;
 }
 
@@ -79,3 +79,4 @@ function removeCartItem(id) {
   renderCartPage();
   showToast('تم إزالة المنتج من السلة');
 }
+

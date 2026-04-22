@@ -69,16 +69,43 @@ class ProductService
      * @param array $data
      * @return Product
      */
+
+
+    protected function saveProductSizes(Product $product, array $data): void
+    {
+        if (empty($data['sizes']) || !is_array($data['sizes'])) {
+            return;
+        }
+
+        $sizes = collect($data['sizes'])
+            ->filter(function ($item) {
+                return !empty($item['size']) && isset($item['price']) && $item['price'] !== '';
+            })
+            ->map(function ($item) {
+                return [
+                    'size' => trim($item['size']),
+                    'price' => $item['price'],
+                ];
+            })
+            ->values()
+            ->all();
+
+        if (!empty($sizes)) {
+            $product->sizes()->createMany($sizes);
+        }
+    }
+
     public function createProduct(array $data)
     {
         if (isset($data['name']['en'])) {
             $slug = \Illuminate\Support\Str::slug($data['name']['en']);
             $originalSlug = $slug;
             $count = 1;
-            
+
             while (Product::where('slug', $slug)->exists()) {
                 $slug = $originalSlug . '-' . $count++;
             }
+
             $data['slug'] = $slug;
         }
 
@@ -94,9 +121,11 @@ class ProductService
         }
 
         $this->syncFragranceNotes($product, $data);
-
         $this->uploadImage($product, 'image');
         $this->uploadGallery($product);
+
+        // save sizes
+        $this->saveProductSizes($product, $data);
 
         return $product;
     }
@@ -114,7 +143,7 @@ class ProductService
             $slug = \Illuminate\Support\Str::slug($data['name']['en']);
             $originalSlug = $slug;
             $count = 1;
-            
+
             while (Product::where('slug', $slug)->where('id', '!=', $id)->exists()) {
                 $slug = $originalSlug . '-' . $count++;
             }

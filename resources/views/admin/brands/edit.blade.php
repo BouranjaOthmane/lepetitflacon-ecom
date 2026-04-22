@@ -22,7 +22,7 @@
             <div class="form-group">
                 <label>اسم الماركة</label>
                 <input type="text" name="name" value="{{ old('name', $brand->name) }}" required>
-                @error('name') <span style="color:var(--color-danger); font-size: 0.8rem">{{ $message }}</span> @enderror
+                @error('name') <span style="color:red; font-size: 0.8rem">{{ $message }}</span> @enderror
             </div>
 
             <div class="form-group" style="margin-top: 20px">
@@ -33,7 +33,7 @@
                     </div>
                 @endif
                 <input type="file" name="logo" accept="image/*">
-                @error('logo') <span style="color:var(--color-danger); font-size: 0.8rem">{{ $message }}</span> @enderror
+                @error('logo') <span style="color:red; font-size: 0.8rem">{{ $message }}</span> @enderror
             </div>
 
             <div style="margin-top: 32px; display: flex; gap: 12px">

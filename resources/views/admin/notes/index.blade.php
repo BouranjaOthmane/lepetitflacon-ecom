@@ -63,7 +63,7 @@
                         {{ $note->created_at->format('Y/m/d') }}
                     </td>
                     <td>
-                        <div style="display:flex; gap:8px">
+                        <div style="display:flex;gap:8px;justify-content: center;">
                             <button class="btn btn-outline btn-sm" title="تعديل" 
                                 onclick="openEditModal({{ $note->id }}, '{{ addslashes($note->getTranslation('name', 'ar')) }}', '{{ addslashes($note->getTranslation('name', 'en')) }}', '{{ addslashes($note->getTranslation('description', 'ar')) }}', '{{ addslashes($note->getTranslation('description', 'en')) }}')">
                                 <i class="fas fa-edit"></i>
@@ -71,7 +71,7 @@
                             <form action="{{ route('admin.fragrance-notes.destroy', $note->id) }}" method="POST" onsubmit="return confirm('هل أنت متأكد من حذف هذا المكون؟')">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" class="btn btn-outline btn-sm" style="color:var(--color-danger)" title="حذف">
+                                <button type="submit" class="btn btn-outline btn-sm" style="color:red" title="حذف">
                                     <i class="fas fa-trash"></i>
                                 </button>
                             </form>

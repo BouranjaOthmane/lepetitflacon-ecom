@@ -65,7 +65,7 @@
         @endif
     </td>
     <td>
-        <div style="display:flex; gap:8px">
+        <div style="display:flex;gap:8px;justify-content: center;">
             <a href="{{ route('admin.products.edit', $product->id) }}" class="btn btn-outline btn-sm" title="تعديل">
                 <i class="fas fa-edit"></i>
             </a>
@@ -76,7 +76,7 @@
 
                 @csrf
                 @method('DELETE')
-                <button type="submit" class="btn btn-outline btn-sm" style="color:var(--color-danger)" title="حذف">
+                <button type="submit" class="btn btn-outline btn-sm" style="color:red" title="حذف">
                     <i class="fas fa-trash"></i>
                 </button>
             </form>

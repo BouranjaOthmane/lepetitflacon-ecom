@@ -23,12 +23,12 @@
                 <div class="form-group">
                     <label>الاسم بالعربية</label>
                     <input type="text" name="name[ar]" value="{{ old('name.ar', $product->getTranslation('name', 'ar')) }}" required>
-                    @error('name.ar') <span style="color:var(--color-danger); font-size: 0.8rem">{{ $message }}</span> @enderror
+                    @error('name.ar') <span style="color:red; font-size: 0.8rem">{{ $message }}</span> @enderror
                 </div>
                 <div class="form-group">
                     <label>الاسم بالإنجليزية</label>
                     <input type="text" name="name[en]" value="{{ old('name.en', $product->getTranslation('name', 'en')) }}" required>
-                    @error('name.en') <span style="color:var(--color-danger); font-size: 0.8rem">{{ $message }}</span> @enderror
+                    @error('name.en') <span style="color:red; font-size: 0.8rem">{{ $message }}</span> @enderror
                 </div>
             </div>
 
@@ -59,17 +59,17 @@
                 <div class="form-group">
                     <label>سعر الشراء ($)</label>
                     <input type="number" step="0.01" name="purchase_price" value="{{ old('purchase_price', $product->purchase_price) }}" required>
-                    @error('purchase_price') <span style="color:var(--color-danger); font-size: 0.8rem">{{ $message }}</span> @enderror
+                    @error('purchase_price') <span style="color:red; font-size: 0.8rem">{{ $message }}</span> @enderror
                 </div>
                 <div class="form-group">
                     <label>سعر البيع ($)</label>
                     <input type="number" step="0.01" name="price" value="{{ old('price', $product->price) }}" required>
-                    @error('price') <span style="color:var(--color-danger); font-size: 0.8rem">{{ $message }}</span> @enderror
+                    @error('price') <span style="color:red; font-size: 0.8rem">{{ $message }}</span> @enderror
                 </div>
                 <div class="form-group">
                     <label>سعر العرض ($) - اختياري</label>
                     <input type="number" step="0.01" name="sale_price" value="{{ old('sale_price', $product->sale_price) }}">
-                    @error('sale_price') <span style="color:var(--color-danger); font-size: 0.8rem">{{ $message }}</span> @enderror
+                    @error('sale_price') <span style="color:red; font-size: 0.8rem">{{ $message }}</span> @enderror
                 </div>
             </div>
 
@@ -77,17 +77,17 @@
                 <div class="form-group">
                     <label>رمز المنتج (SKU)</label>
                     <input type="text" name="sku" value="{{ old('sku', $product->sku) }}" required>
-                    @error('sku') <span style="color:var(--color-danger); font-size: 0.8rem">{{ $message }}</span> @enderror
+                    @error('sku') <span style="color:red; font-size: 0.8rem">{{ $message }}</span> @enderror
                 </div>
                 <div class="form-group">
                     <label>المخزون المتوفر</label>
                     <input type="number" name="stock_quantity" value="{{ old('stock_quantity', $product->stock_quantity) }}" min="0" required>
-                    @error('stock_quantity') <span style="color:var(--color-danger); font-size: 0.8rem">{{ $message }}</span> @enderror
+                    @error('stock_quantity') <span style="color:red; font-size: 0.8rem">{{ $message }}</span> @enderror
                 </div>
                 <div class="form-group">
                     <label>حد التنبيه</label>
                     <input type="number" name="low_stock_threshold" value="{{ old('low_stock_threshold', $product->low_stock_threshold) }}" min="0" required>
-                    @error('low_stock_threshold') <span style="color:var(--color-danger); font-size: 0.8rem">{{ $message }}</span> @enderror
+                    @error('low_stock_threshold') <span style="color:red; font-size: 0.8rem">{{ $message }}</span> @enderror
                 </div>
             </div>
 

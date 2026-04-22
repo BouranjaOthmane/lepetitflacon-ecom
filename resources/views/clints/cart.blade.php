@@ -68,12 +68,7 @@
                         </div>
                         <div class="cart-summary__row"><span>Livraison</span><span id="summaryShipping">Calculée au
                                 moment du paiement</span></div>
-                        <div class="cart-summary__row"><span>Taxe estimée</span><span id="summaryTax">$0.00</span></div>
-                    </div>
-                    <div class="cart-summary__promo">
-                        <input type="text" placeholder="Code promo" id="promoInput">
-                        <button class="btn btn-outline-gold"
-                            onclick="showToast('Code promo appliqué !')">Appliquer</button>
+                        {{-- <div class="cart-summary__row"><span>Taxe estimée</span><span id="summaryTax">$0.00</span></div> --}}
                     </div>
                     <div class="cart-summary__total">
                         <span>Total</span>

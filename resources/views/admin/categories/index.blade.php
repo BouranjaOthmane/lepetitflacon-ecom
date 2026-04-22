@@ -1,30 +1,30 @@
 @extends('admin.layout.master')
 
-@section('title', 'إدارة الأقسام — لوكس بارفيوم')
+@section('title', 'Gestion des catégories — Lepetitflacon')
 
-@section('page_title', 'الأقسام')
-@section('page_subtitle', 'إدارة تصنيفات المنتجات')
+@section('page_title', 'Catégories')
+@section('page_subtitle', 'Gérer les catégories de produits')
 
 @section('content')
 <section class="dashboard-section active">
     <div class="table-card">
         <div class="table-card__header">
-            <h3>قائمة الأقسام <span style="color:var(--color-text-muted);font-weight:400">({{ $categories->count() }})</span></h3>
+            <h3>Liste des catégories <span style="color:black ;font-weight:400">({{ $categories->count() }})</span></h3>
             <div class="table-card__actions">
                 <a href="{{ route('admin.categories.create') }}" class="btn btn-gold">
-                    <i class="fas fa-plus"></i> إضافة قسم جديد
+                    <i class="fas fa-plus"></i> Ajouter une catégorie
                 </a>
             </div>
         </div>
         <table class="data-table">
             <thead>
                 <tr>
-                    <th>الصورة</th>
-                    <th>الاسم (AR)</th>
-                    <th>الاسم (EN)</th>
-                    <th>القسم الأب</th>
-                    <th>عدد المنتجات</th>
-                    <th>إجراءات</th>
+                    <th>Image</th>
+                    <th>Nom (AR)</th>
+                    <th>Nom (EN)</th>
+                    <th>Catégorie parente</th>
+                    <th>Nombre de produits</th>
+                    <th>Actions</th>
                 </tr>
             </thead>
             <tbody>
@@ -46,19 +46,19 @@
                         @if($category->parent)
                             <span class="status-badge shipped">{{ $category->parent->name }}</span>
                         @else
-                            <span class="status-badge pending">رئيسي</span>
+                            <span class="status-badge pending">Principale</span>
                         @endif
                     </td>
                     <td style="font-weight:600">{{ $category->products_count ?? 0 }}</td>
                     <td>
-                        <div style="display:flex; gap:8px">
-                            <a href="{{ route('admin.categories.edit', $category->id) }}" class="btn btn-outline btn-sm" title="تعديل">
+                        <div style="display:flex;gap:8px;justify-content: center;">
+                            <a href="{{ route('admin.categories.edit', $category->id) }}" class="btn btn-outline btn-sm" title="Modifier">
                                 <i class="fas fa-edit"></i>
                             </a>
-                            <form action="{{ route('admin.categories.destroy', $category->id) }}" method="POST" onsubmit="return confirm('هل أنت متأكد من الحذف؟')">
+                            <form action="{{ route('admin.categories.destroy', $category->id) }}" method="POST" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer cet élément ?')">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" class="btn btn-outline btn-sm" style="color:var(--color-danger)" title="حذف">
+                                <button type="submit" class="btn btn-outline btn-sm" style="color: red " title="Supprimer">
                                     <i class="fas fa-trash"></i>
                                 </button>
                             </form>
@@ -67,7 +67,7 @@
                 </tr>
                 @empty
                 <tr>
-                    <td colspan="5" style="text-align:center; padding: 40px">لا يوجد أقسام مضافة حالياً</td>
+                    <td colspan="5" style="text-align:center; padding: 40px">Aucune catégorie ajoutée pour le moment</td>
                 </tr>
                 @endforelse
             </tbody>

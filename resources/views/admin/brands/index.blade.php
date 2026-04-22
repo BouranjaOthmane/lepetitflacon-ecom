@@ -64,14 +64,14 @@
                         </span>
                     </td>
                     <td>
-                        <div style="display:flex; gap:8px">
+                        <div style="display:flex;gap:8px;justify-content: center;">
                             <a href="{{ route('admin.brands.edit', $brand->id) }}" class="btn btn-outline btn-sm" title="تعديل">
                                 <i class="fas fa-edit"></i>
                             </a>
                             <form action="{{ route('admin.brands.destroy', $brand->id) }}" method="POST" onsubmit="return confirm('هل أنت متأكد من حذف هذه الماركة وكل المنتجات التابعة لها؟')">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" class="btn btn-outline btn-sm" style="color:var(--color-danger)" title="حذف">
+                                <button type="submit" class="btn btn-outline btn-sm" style="color:red" title="حذف">
                                     <i class="fas fa-trash"></i>
                                 </button>
                             </form>

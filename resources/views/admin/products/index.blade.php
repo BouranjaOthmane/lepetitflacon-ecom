@@ -166,6 +166,7 @@ function fetchProducts(url) {
 }
 
 function showProductGallery(productId) {
+    
     const modal = document.getElementById('galleryModal');
     const container = document.getElementById('galleryContainer');
     container.innerHTML = '<div style="padding:20px; text-align:center"><i class="fas fa-spinner fa-spin"></i> جاري التحميل...</div>';

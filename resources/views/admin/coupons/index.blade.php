@@ -116,14 +116,14 @@
                     </td>
 
                     <td>
-                        <div style="display:flex; gap:8px">
+                        <div style="display:flex;gap:8px;justify-content: center;">
                             <a href="{{ route('admin.coupons.edit', $coupon->id) }}" class="btn btn-outline btn-sm" title="تعديل">
                                 <i class="fas fa-edit"></i>
                             </a>
                             <form action="{{ route('admin.coupons.destroy', $coupon->id) }}" method="POST" onsubmit="return confirm('هل أنت متأكد من حذف هذا الكوبون؟')">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" class="btn btn-outline btn-sm" style="color:var(--color-danger)" title="حذف">
+                                <button type="submit" class="btn btn-outline btn-sm" style="color:red" title="حذف">
                                     <i class="fas fa-trash"></i>
                                 </button>
                             </form>
