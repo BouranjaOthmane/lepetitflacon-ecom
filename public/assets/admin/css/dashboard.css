@@ -204,7 +204,7 @@ img {
 
 .sidebar__link:hover {
     background: rgba(201, 168, 76, 0.08);
-    color: var(--color-text);
+    color: black;
 }
 
 .sidebar__link.active {
