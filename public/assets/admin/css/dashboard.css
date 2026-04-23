@@ -232,7 +232,7 @@ img {
 .sidebar__link .badge {
     margin-right: auto;
     margin-left: 0;
-    background: var(--color-gold);
+    background: #ececec;
     color: #000;
     font-size: 0.65rem;
     font-weight: 700;
@@ -685,7 +685,7 @@ img {
 }
 
 .chart-card {
-    background: var(--bg-card);
+    background: #ececec;
     border: 1px solid var(--border-color);
     border-radius: var(--radius-md);
     padding: 24px;
@@ -700,7 +700,7 @@ img {
 
 .chart-card__header h3 {
     font-size: 1rem;
-    color: white;
+    color: black;
     font-weight: 600;
 }
 
@@ -893,7 +893,7 @@ img {
 
 .btn-outline {
     border: 1px solid var(--border-color);
-    color: var(--color-text-muted);
+    color: black;
 }
 
 .btn-outline:hover {
@@ -913,7 +913,7 @@ img {
 
 .data-table thead th {
     padding: 14px 24px;
-    text-align: right;
+    text-align: start;
     font-size: 0.72rem;
     font-weight: 700;
     text-transform: uppercase;
@@ -967,12 +967,12 @@ img {
 
 .table-product__name {
     font-weight: 600;
-    color: var(--color-text);
+    color: black;
 }
 
 .table-product__brand {
     font-size: 0.75rem;
-    color: var(--color-text-muted);
+    color: black;
 }
 
 .status-badge {
@@ -1149,9 +1149,8 @@ img {
     width: 100%;
     padding: 11px 16px;
     background: white;
-    border: 1px solid var(--border-color);
     border-radius: var(--radius-sm);
-    color: white;
+    color: black;
     font-size: 0.85rem;
     transition: all var(--transition);
 }
@@ -1207,7 +1206,7 @@ img {
 
 .table-footer span {
     font-size: 0.8rem;
-    color: var(--color-text-muted);
+    color: black;
 }
 
 .pagination {
@@ -1447,7 +1446,7 @@ img {
     color: white;
     width: 32px;
     height: 32px;
-    background: rgba(212, 175, 55, 0.1);
+    background-color: #406AAF;
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -1480,19 +1479,19 @@ img {
     font-size: 0.95rem;
     font-weight: 700;
     margin-bottom: 2px;
-    color: white;
+    color: black;
 }
 
 .item-info span {
     font-size: 0.75rem;
-    color: var(--color-text-muted);
+    color: black;
 }
 
 .item-count {
     font-family: 'Outfit', sans-serif;
     font-size: 1.1rem;
     font-weight: 700;
-    color: white;
+    color: #11b981;
 }
 
 .item-meta {

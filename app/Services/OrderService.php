@@ -153,4 +153,22 @@ class OrderService
 
         return $order;
     }
+
+
+    public function updateOrderShipping($orderId, array $data): Order
+    {
+        $order = Order::findOrFail($orderId);
+
+        if (isset($data['shipping_company'])) {
+            $order->shipping_company = $data['shipping_company'];
+        }
+
+        if (isset($data['tracking_number'])) {
+            $order->tracking_number = $data['tracking_number'];
+        }
+
+        $order->save();
+
+        return $order;
+    }
 }

@@ -1,9 +1,9 @@
 @extends('admin.layout.master')
 
-@section('title', 'إدارة المنتجات — لوكس بارفيوم')
+@section('title', 'Gestion des produits — Lepetitflacon')
 
-@section('page_title', 'المنتجات')
-@section('page_subtitle', 'إدارة المخزون والمنتجات')
+@section('page_title', 'Produits')
+@section('page_subtitle', 'Gestion du stock et des produits')
 
 @section('content')
 <style>
@@ -61,53 +61,53 @@
                 <div class="stat-card__icon products"><i class="fas fa-box"></i></div>
             </div>
             <div class="stat-card__value">{{ $products->count() }}</div>
-            <div class="stat-card__label">إجمالي المنتجات</div>
+            <div class="stat-card__label">Total produits</div>
         </div>
         <div class="stat-card">
             <div class="stat-card__header">
                 <div class="stat-card__icon orders"><i class="fas fa-check-circle"></i></div>
             </div>
             <div class="stat-card__value">{{ $products->where('status', true)->count() }}</div>
-            <div class="stat-card__label">نشط</div>
+            <div class="stat-card__label">Actifs</div>
         </div>
         <div class="stat-card">
             <div class="stat-card__header">
                 <div class="stat-card__icon customers"><i class="fas fa-exclamation-triangle"></i></div>
             </div>
             <div class="stat-card__value">{{ $products->where('stock', '<=', 5)->count() }}</div>
-            <div class="stat-card__label">مخزون منخفض</div>
+            <div class="stat-card__label">Stock faible</div>
         </div>
         <div class="stat-card">
             <div class="stat-card__header">
                 <div class="stat-card__icon reviews"><i class="fas fa-star"></i></div>
             </div>
             <div class="stat-card__value">{{ $products->where('is_featured', true)->count() }}</div>
-            <div class="stat-card__label">مميز</div>
+            <div class="stat-card__label">Mis en avant</div>
         </div>
     </div>
 
     <div class="table-card">
         <div class="table-card__header">
-            <h3>قائمة المنتجات</h3>
+            <h3>Liste des produits</h3>
             <div class="table-card__actions">
                 <a href="{{ route('admin.products.create') }}" class="btn btn-gold">
-                    <i class="fas fa-plus"></i> إضافة منتج جديد
+                    <i class="fas fa-plus"></i> Ajouter un nouveau produit
                 </a>
             </div>
         </div>
         <table class="data-table">
             <thead>
                 <tr>
-                    <th>صورة</th>
-                    <th>المنتج</th>
-                    <th>التصنيف</th>
-                    <th>الماركة</th>
-                    <th>السعر الأصلي</th>
-                    <th>الكوبون المطبق</th>
-                    <th>السعر الصافي</th>
-                    <th>المخزون</th>
-                    <th>الحالة</th>
-                    <th>إجراءات</th>
+                    <th>Image</th>
+                    <th>Produit</th>
+                    <th>Catégorie</th>
+                    <th>Marque</th>
+                    <th>Prix initial</th>
+                    <th>Coupon appliqué</th>
+                    <th>Prix net</th>
+                    <th>Stock</th>
+                    <th>Statut</th>
+                    <th>Actions</th>
 
                 </tr>
             </thead>
@@ -122,7 +122,7 @@
 <div id="galleryModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.8); z-index:9999; align-items:center; justify-content:center; padding: 20px">
     <div style="background:var(--color-bg-card); width:100%; max-width:800px; border-radius:12px; overflow:hidden; position:relative">
         <div style="padding:20px; border-bottom: 1px solid var(--color-border); display:flex; justify-content:space-between; align-items:center">
-            <h3 style="margin:0">معرض صور المنتج</h3>
+            <h3 style="margin:0">Galerie d’images du produit</h3>
             <button onclick="closeGallery()" style="background:none; border:none; color:var(--color-text); font-size:1.5rem; cursor:pointer">&times;</button>
         </div>
         <div id="galleryContainer" style="padding:24px; display:flex; gap:16px; flex-wrap:wrap; max-height:600px; overflow-y:auto; justify-content:center">
@@ -169,7 +169,7 @@ function showProductGallery(productId) {
     
     const modal = document.getElementById('galleryModal');
     const container = document.getElementById('galleryContainer');
-    container.innerHTML = '<div style="padding:20px; text-align:center"><i class="fas fa-spinner fa-spin"></i> جاري التحميل...</div>';
+    container.innerHTML = '<div style="padding:20px; text-align:center"><i class="fas fa-spinner fa-spin"></i> Chargement...</div>';
     modal.style.display = 'flex';
 
     fetch(`/admin/products/${productId}/media`)
@@ -177,7 +177,7 @@ function showProductGallery(productId) {
         .then(data => {
             container.innerHTML = '';
             if (data.images.length === 0) {
-                container.innerHTML = '<p style="text-align:center; padding:20px">لا توجد صور لهذا المنتج</p>';
+                container.innerHTML = '<p style="text-align:center; padding:20px">Aucune image pour ce produit</p>';
                 return;
             }
             
@@ -186,7 +186,7 @@ function showProductGallery(productId) {
                 div.style.cssText = 'width: 150px; height: 150px; border-radius: 8px; overflow: hidden; border: 1px solid var(--color-border); position:relative';
                 div.innerHTML = `
                     <img src="${img.url}" style="width:100%; height:100%; object-fit:cover">
-                    <button onclick="deleteProductMedia(${img.id}, this)" style="position:absolute; top:5px; right:5px; background:rgba(255,255,255,0.9); color:#ff4d4d; border:none; border-radius:50%; width:28px; height:28px; cursor:pointer; display:flex; align-items:center; justify-content:center; font-size:14px; box-shadow:0 2px 4px rgba(0,0,0,0.2)" title="حذف">
+                    <button onclick="deleteProductMedia(${img.id}, this)" style="position:absolute; top:5px; right:5px; background:rgba(255,255,255,0.9); color:#ff4d4d; border:none; border-radius:50%; width:28px; height:28px; cursor:pointer; display:flex; align-items:center; justify-content:center; font-size:14px; box-shadow:0 2px 4px rgba(0,0,0,0.2)" title="Supprimer">
                         <i class="fas fa-trash"></i>
                     </button>
                 `;
@@ -196,7 +196,7 @@ function showProductGallery(productId) {
 }
 
 function deleteProductMedia(mediaId, btn) {
-    if (!confirm('هل أنت متأكد من حذف هذه الصورة؟')) return;
+    if (!confirm('Êtes-vous sûr de vouloir supprimer cette image ?')) return;
 
     fetch(`/admin/media/${mediaId}`, {
         method: 'DELETE',
@@ -225,5 +225,3 @@ window.onclick = function(event) {
 }
 </script>
 @endsection
-
-

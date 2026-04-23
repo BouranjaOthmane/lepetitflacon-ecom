@@ -2,46 +2,46 @@
 <section class="dashboard-section {{ ($isActive ?? false) ? 'active' : '' }}" id="reviews">
     <div class="table-card">
         <div class="table-card__header">
-            <h3>التقييمات <span style="color:var(--color-text-muted);font-weight:400">({{ $reviews->total() }})</span></h3>
+            <h3>Avis <span style="color:var(--color-text-muted);font-weight:400">({{ $reviews->total() }})</span></h3>
             <div class="table-card__actions" style="display: flex; gap: 10px">
                 <select id="filterReviewRating" class="form-input" style="padding: 4px 8px; font-size: 0.85rem" onchange="filterReviews()">
-                    <option value="">جميع التقييمات</option>
-                    <option value="5">5 نجوم</option>
-                    <option value="4">4 نجوم</option>
-                    <option value="3">3 نجوم</option>
-                    <option value="1-2">نجمة - نجمتين</option>
+                    <option value="">Tous les avis</option>
+                    <option value="5">5 étoiles</option>
+                    <option value="4">4 étoiles</option>
+                    <option value="3">3 étoiles</option>
+                    <option value="1-2">1 à 2 étoiles</option>
                 </select>
                 <select id="filterReviewStatus" class="form-input" style="padding: 4px 8px; font-size: 0.85rem" onchange="filterReviews()">
-                    <option value="">جميع الحالات</option>
-                    <option value="approved">معتمد</option>
-                    <option value="pending">قيد المراجعة</option>
+                    <option value="">Tous les statuts</option>
+                    <option value="approved">Approuvé</option>
+                    <option value="pending">En attente de validation</option>
                 </select>
             </div>
         </div>
         <table class="data-table">
             <thead>
                 <tr>
-                    <th>المنتج</th>
-                    <th>العميل</th>
-                    <th>التقييم</th>
-                    <th>العنوان والتعليق</th>
-                    <th>مراجعة</th>
-                    <th>التاريخ</th>
-                    <th>إجراءات</th>
+                    <th>Produit</th>
+                    <th>Client</th>
+                    <th>Note</th>
+                    <th>Titre et commentaire</th>
+                    <th>Statut</th>
+                    <th>Date</th>
+                    <th>Actions</th>
                 </tr>
             </thead>
             <tbody id="reviewsTableBody">
                 @foreach($reviews as $review)
                 <tr>
                     <td style="font-weight:600">
-                        {{ $review->product->name ?? 'منتج محذوف' }}
+                        {{ $review->product->name ?? 'Produit supprimé' }}
                         @if($review->is_verified_purchase)
                             <div class="badge badge--success" style="font-size: 0.65rem; padding: 2px 6px; margin-top: 4px">
-                                <i class="fas fa-check-circle"></i> شراء مؤكد
+                                <i class="fas fa-check-circle"></i> Achat vérifié
                             </div>
                         @endif
                     </td>
-                    <td>{{ $review->user->name ?? 'مجهول' }}</td>
+                    <td>{{ $review->user->name ?? 'Anonyme' }}</td>
                     <td>
                         <div class="stars">
                             @for($i=1; $i<=5; $i++)
@@ -57,25 +57,25 @@
                     </td>
                     <td>
                         <span class="badge {{ $review->is_approved ? 'badge--success' : 'badge--warning' }}">
-                            {{ $review->is_approved ? 'معتمد' : 'معلق' }}
+                            {{ $review->is_approved ? 'Approuvé' : 'En attente' }}
                         </span>
                     </td>
                     <td>{{ $review->created_at->format('Y-m-d') }}</td>
                     <td>
                         <div class="table-actions">
                             @if(!$review->is_approved)
-                                <button class="btn-icon" style="color: var(--color-success)" title="اعتماد" onclick="approveReview({{ $review->id }})">
+                                <button class="btn-icon" style="color: var(--color-success)" title="Approuver" onclick="approveReview({{ $review->id }})">
                                     <i class="fas fa-check"></i>
                                 </button>
                             @else
-                                <button class="btn-icon" style="color: var(--color-warning)" title="تعليق" onclick="rejectReview({{ $review->id }})">
+                                <button class="btn-icon" style="color: var(--color-warning)" title="Rejeter" onclick="rejectReview({{ $review->id }})">
                                     <i class="fas fa-undo"></i>
                                 </button>
                             @endif
-                            <button class="btn-icon" style="color: var(--color-gold)" title="توثيق الشراء" onclick="toggleVerifiedReview({{ $review->id }})">
+                            <button class="btn-icon" style="color: var(--color-gold)" title="Vérifier l'achat" onclick="toggleVerifiedReview({{ $review->id }})">
                                 <i class="fas fa-certificate"></i>
                             </button>
-                            <button class="btn-icon" style="color: var(--color-danger)" title="حذف" onclick="deleteReview({{ $review->id }})">
+                            <button class="btn-icon" style="color: var(--color-danger)" title="Supprimer" onclick="deleteReview({{ $review->id }})">
                                 <i class="fas fa-trash"></i>
                             </button>
                         </div>
@@ -85,7 +85,7 @@
             </tbody>
         </table>
         <div class="table-footer">
-            <span>عرض {{ $reviews->count() }} من {{ $reviews->total() }} نتيجة</span>
+            <span>Affichage de {{ $reviews->count() }} sur {{ $reviews->total() }} résultat(s)</span>
             <div class="pagination">
                 {{ $reviews->links('admin.layout.pagination') }}
             </div>

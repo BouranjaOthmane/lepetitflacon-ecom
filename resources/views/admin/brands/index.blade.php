@@ -1,9 +1,9 @@
 @extends('admin.layout.master')
 
-@section('title', 'إدارة الماركات — لوكس بارفيوم')
+@section('title', 'Gestion des marques — Lepetitflacon')
 
-@section('page_title', 'الماركات')
-@section('page_subtitle', 'إدارة العلامات التجارية للشركاء')
+@section('page_title', 'Marques')
+@section('page_subtitle', 'Gestion des marques partenaires')
 
 @section('content')
 <section class="dashboard-section active">
@@ -14,34 +14,34 @@
                 <div class="stat-card__icon reviews"><i class="fas fa-certificate"></i></div>
             </div>
             <div class="stat-card__value">{{ $brands->count() }}</div>
-            <div class="stat-card__label">إجمالي الماركات</div>
+            <div class="stat-card__label">Total des marques</div>
         </div>
         <div class="stat-card">
             <div class="stat-card__header">
                 <div class="stat-card__icon products"><i class="fas fa-box"></i></div>
             </div>
             <div class="stat-card__value">{{ \App\Models\Product::count() }}</div>
-            <div class="stat-card__label">إجمالي المنتجات</div>
+            <div class="stat-card__label">Total des produits</div>
         </div>
     </div>
 
     <div class="table-card" style="max-width: 900px; margin: 0 auto;">
         <div class="table-card__header">
-            <h3>قائمة الماركات</h3>
+            <h3>Liste des marques</h3>
             <div class="table-card__actions">
                 <a href="{{ route('admin.brands.create') }}" class="btn btn-gold">
-                    <i class="fas fa-plus"></i> إضافة ماركة جديدة
+                    <i class="fas fa-plus"></i> Ajouter une nouvelle marque
                 </a>
             </div>
         </div>
         <table class="data-table">
             <thead>
                 <tr>
-                    <th>الشعار</th>
-                    <th>اسم الماركة</th>
-                    <th>الرابط (Slug)</th>
-                    <th>عدد المنتجات</th>
-                    <th>إجراءات</th>
+                    <th>Logo</th>
+                    <th>Nom de la marque</th>
+                    <th>Lien (Slug)</th>
+                    <th>Nombre de produits</th>
+                    <th>Actions</th>
                 </tr>
             </thead>
             <tbody>
@@ -60,18 +60,18 @@
                     <td style="color:var(--color-text-muted)">{{ $brand->slug }}</td>
                     <td>
                         <span class="status-badge pending">
-                            {{ $brand->products_count ?? $brand->products()->count() }} منتج
+                            {{ $brand->products_count ?? $brand->products()->count() }} produit(s)
                         </span>
                     </td>
                     <td>
                         <div style="display:flex;gap:8px;justify-content: center;">
-                            <a href="{{ route('admin.brands.edit', $brand->id) }}" class="btn btn-outline btn-sm" title="تعديل">
+                            <a href="{{ route('admin.brands.edit', $brand->id) }}" class="btn btn-outline btn-sm" title="Modifier">
                                 <i class="fas fa-edit"></i>
                             </a>
-                            <form action="{{ route('admin.brands.destroy', $brand->id) }}" method="POST" onsubmit="return confirm('هل أنت متأكد من حذف هذه الماركة وكل المنتجات التابعة لها؟')">
+                            <form action="{{ route('admin.brands.destroy', $brand->id) }}" method="POST" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer cette marque ainsi que tous les produits qui lui sont liés ?')">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" class="btn btn-outline btn-sm" style="color:red" title="حذف">
+                                <button type="submit" class="btn btn-outline btn-sm" style="color:red" title="Supprimer">
                                     <i class="fas fa-trash"></i>
                                 </button>
                             </form>
@@ -80,7 +80,7 @@
                 </tr>
                 @empty
                 <tr>
-                    <td colspan="5" style="text-align:center; padding: 40px">لا توجد ماركات مضافة حالياً</td>
+                    <td colspan="5" style="text-align:center; padding: 40px">Aucune marque ajoutée pour le moment</td>
                 </tr>
                 @endforelse
             </tbody>
