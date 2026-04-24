@@ -9,7 +9,7 @@
     <section class="dashboard-section active">
         @if ($errors->any())
             <div
-                style="background: rgba(255, 77, 77, 0.1); border: 1px solid  red ; color: #fff; padding: 16px; border-radius: 10px; margin-bottom: 20px;">
+                style="background: rgba(255, 77, 77, 0.1); border: 1px solid  red ; color: #black; padding: 16px; border-radius: 10px; margin-bottom: 20px;">
                 <strong>Veuillez corriger les erreurs suivantes :</strong>
                 <ul style="margin: 10px 0 0 18px;">
                     @foreach ($errors->all() as $error)
@@ -85,7 +85,7 @@
                     <div class="form-group">
                         <label>Prix de vente ($)</label>
                         <input type="number" step="0.01" name="price" id="price" value="{{ old('price') }}"
-                            placeholder="0.00" required>
+                            placeholder="0.00">
                         @error('price')
                             <span style="color: red ; font-size: 0.8rem">{{ $message }}</span>
                         @enderror

@@ -67,7 +67,7 @@
                     <div class="form-group">
                         <label>Prix de vente ($)</label>
                         <input type="number" step="0.01" name="price" value="{{ old('price', $product->price) }}"
-                            required>
+                            >
                     </div>
                     <div class="form-group">
                         <label>Prix promotionnel ($) - optionnel</label>

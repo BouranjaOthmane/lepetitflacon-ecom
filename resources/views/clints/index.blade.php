@@ -129,28 +129,37 @@
                             <p class="product-card__brand">{{ $product->brand->name ?? 'LePetitFlacon' }}</p>
                             <h4 class="product-card__name">{{ $product->getTranslation('name', 'fr') }}</h4>
 
-                            <div class="product-card__rating">
-                                <i class="fas fa-star star"></i>
-                                <i class="fas fa-star star"></i>
-                                <i class="fas fa-star star"></i>
-                                <i class="fas fa-star star"></i>
-                                <i class="fas fa-star-half-alt star"></i>
-                                <span>(128)</span>
-                            </div>
 
-                            @if ($product->sale_price)
-                                <p class="product-card__price">
-                                    <span
-                                        style="text-decoration: line-through; opacity: 0.6; font-size: 0.8em; margin-left: 8px">
-                                        ${{ $product->price }}
-                                    </span>
-                                    ${{ $product->sale_price }}
-                                </p>
+                            @php
+                                $hasSizes = $product->sizes && $product->sizes->count() > 0;
+                                $minSizePrice = $hasSizes ? $product->sizes->min('price') : null;
+                                $maxSizePrice = $hasSizes ? $product->sizes->max('price') : null;
+                                $cardPrice = $minSizePrice ?: ($product->sale_price ?: $product->price);
+                            @endphp
+
+                            <p class="product-card__price">
+                                @if ($hasSizes)
+                                    @if ($minSizePrice == $maxSizePrice)
+                                        {{ number_format($minSizePrice, 2, ',', ' ') }} د.م
+                                    @else
+                                        {{ number_format($minSizePrice, 2, ',', ' ') }} د.م –
+                                        {{ number_format($maxSizePrice, 2, ',', ' ') }} د.م
+                                    @endif
+                                @else
+                                    {{ number_format($product->sale_price ?: $product->price, 2, ',', ' ') }}
+                                    د.م
+                                @endif
+                            </p>
+
+                            @if ($hasSizes)
+                                <a href="{{ route('product', $product->id) }}" class="product-card__btn">
+                                    Commander maintenant
+                                </a>
                             @else
-                                <p class="product-card__price">${{ $product->price }}</p>
+                                <button class="product-card__btn add-to-cart-btn">
+                                    Ajouter au panier
+                                </button>
                             @endif
-
-                            <button class="product-card__btn add-to-cart-btn">Ajouter au panier</button>
                         </div>
                     </div>
                 @endforeach
@@ -321,12 +330,6 @@
                                 alt="{{ $product->getTranslation('name', 'fr') }}">
 
                             <div class="product-card__actions">
-                                <button
-                                    class="wishlist-btn {{ auth()->check() && auth()->user()->wishlist->contains('product_id', $product->id) ? 'active' : '' }}">
-                                    <i
-                                        class="{{ auth()->check() && auth()->user()->wishlist->contains('product_id', $product->id) ? 'fas' : 'far' }} fa-heart"></i>
-                                </button>
-
                                 <button onclick="window.location.href='{{ route('product', $product->id) }}'">
                                     <i class="far fa-eye"></i>
                                 </button>

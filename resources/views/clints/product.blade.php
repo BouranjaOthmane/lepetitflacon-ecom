@@ -163,12 +163,12 @@
                         <button class="btn btn-primary product-add-btn" id="addToCartBtn">
                             <i class="fas fa-shopping-bag"></i> Ajouter au panier
                         </button>
-                        <button
+                        {{-- <button
                             class="btn-icon wishlist-btn {{ auth()->check() && auth()->user()->wishlist->contains('product_id', $product->id) ? 'active' : '' }}"
                             id="wishlistBtn" data-product-id="{{ $product->id }}">
                             <i
                                 class="{{ auth()->check() && auth()->user()->wishlist->contains('product_id', $product->id) ? 'fas' : 'far' }} fa-heart"></i>
-                        </button>
+                        </button> --}}
                     </div>
 
                     <!-- Informations supplémentaires -->
@@ -332,11 +332,11 @@
                             <img src="{{ $item->getFirstMediaUrl('images') ?: asset('assets/clints/images/mens-perfume.png') }}"
                                 alt="{{ $item->getTranslation('name', 'ar') }}">
                             <div class="product-card__actions">
-                                <button
+                                {{-- <button
                                     class="wishlist-btn {{ auth()->check() && auth()->user()->wishlist->contains('product_id', $item->id) ? 'active' : '' }}">
                                     <i
                                         class="{{ auth()->check() && auth()->user()->wishlist->contains('product_id', $item->id) ? 'fas' : 'far' }} fa-heart"></i>
-                                </button>
+                                </button> --}}
                                 <button onclick="window.location.href='{{ route('product', $item->id) }}'"><i
                                         class="far fa-eye"></i></button>
                             </div>

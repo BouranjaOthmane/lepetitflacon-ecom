@@ -2,68 +2,124 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
-use Illuminate\Database\Seeder;
 use App\Models\Product;
+use App\Models\ProductSize;
 use App\Models\Category;
 use App\Models\Brand;
+use Illuminate\Database\Seeder;
 use Illuminate\Support\Str;
 
 class ProductSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     */
     public function run(): void
     {
-        $categories = Category::all();
-        $brands = Brand::all();
+        $categoryIds = Category::pluck('id')->toArray();
+        $brandIds = Brand::pluck('id')->toArray();
 
-        if ($categories->isEmpty() || $brands->isEmpty()) {
+        if (empty($categoryIds) || empty($brandIds)) {
+            $this->command->warn('Please create categories and brands first.');
             return;
         }
 
         $products = [
-            [
-                'name' => ['ar' => 'عنبر عود ملكي', 'en' => 'Amber Oud Royal'],
-                'description' => ['ar' => 'عطر ملكي ساحر يتميز بنفحات العنبر والعود.', 'en' => 'A royal scent featuring notes of amber and oud.'],
-                'short_description' => ['ar' => 'عطر عنبر عود فاخر', 'en' => 'Luxury amber oud scent'],
-                'price' => 350.00,
-                'sale_price' => 299.00,
-                'sku' => 'AOR-001',
-                'stock' => 50,
-                'gender' => 'Unisex',
-                'is_featured' => true,
-            ],
-            [
-                'name' => ['ar' => 'مسك أبيض فاخر', 'en' => 'Pure White Musk'],
-                'description' => ['ar' => 'مسك أبيض نقي يعطي إحساساً بالنظافة والانتعاش.', 'en' => 'Pure white musk providing a sensation of cleanliness and freshness.'],
-                'short_description' => ['ar' => 'مسك نقي ومنعش', 'en' => 'Pure and fresh musk'],
-                'price' => 150.00,
-                'sku' => 'PWM-002',
-                'stock' => 100,
-                'gender' => 'Women',
-                'is_bestseller' => true,
-            ],
-            [
-                'name' => ['ar' => 'ليالي العربية', 'en' => 'Arabian Nights'],
-                'description' => ['ar' => 'مزيج ساحر من التوابل الشرقية والورد الطائفي.', 'en' => 'A magical blend of oriental spices and Taif rose.'],
-                'short_description' => ['ar' => 'عطر شرقي دافئ', 'en' => 'Warm oriental scent'],
-                'price' => 280.00,
-                'sku' => 'ARN-003',
-                'stock' => 30,
-                'gender' => 'Men',
-                'is_featured' => true,
-            ],
+            'Nishane Ani X',
+            'Dior Homme Intense',
+            'Baccarat Rouge 540',
+            'Tom Ford Oud Wood',
+            'Bleu de Chanel',
+            'Creed Aventus',
+            'Yves Saint Laurent Y',
+            'Armani Stronger With You',
+            'Jean Paul Gaultier Le Male',
+            'Valentino Uomo Born in Roma',
+            'Sauvage Elixir',
+            'Givenchy Gentleman',
+            'Prada Luna Rossa',
+            'Terre d’Hermès',
+            'Versace Eros',
+            'Invictus Victory',
+            'One Million Royal',
+            'Acqua di Gio Profumo',
+            'Azzaro The Most Wanted',
+            'Montale Arabians Tonka',
+            'Mancera Cedrat Boise',
+            'Initio Oud For Greatness',
+            'Parfums de Marly Layton',
+            'Parfums de Marly Herod',
+            'Amouage Reflection Man',
+            'Xerjoff Naxos',
+            'Xerjoff Erba Pura',
+            'Kilian Angels Share',
+            'Maison Margiela Jazz Club',
+            'Le Labo Santal 33',
+            'Byredo Bal d’Afrique',
+            'Chanel Coco Mademoiselle',
+            'Dior J’adore',
+            'Lancôme La Vie Est Belle',
+            'YSL Libre',
+            'Gucci Bloom',
+            'Armani Si',
+            'Good Girl Carolina Herrera',
+            'Black Opium YSL',
+            'Delina Parfums de Marly',
         ];
 
-        foreach ($products as $productData) {
-            $productData['category_id'] = $categories->random()->id;
-            $productData['brand_id'] = $brands->random()->id;
-            $productData['slug'] = Str::slug($productData['name']['en']);
-            $productData['status'] = true;
+        foreach ($products as $index => $name) {
+            $sku = 'PRD-' . str_pad($index + 1, 3, '0', STR_PAD_LEFT);
+            $stock = rand(10, 100);
+            $slug = Str::slug($name);
 
-            Product::create($productData);
+            $product = Product::updateOrCreate(
+                ['slug' => $slug],
+                [
+                    'sku' => $sku,
+                    'category_id' => $categoryIds[array_rand($categoryIds)],
+                    'brand_id' => $brandIds[array_rand($brandIds)],
+                    'name' => [
+                        'en' => $name,
+                        'ar' => $name,
+                    ],
+                    'slug' => Str::slug($name),
+                    'description' => [
+                        'en' => 'A refined perfume with elegant and long-lasting notes.',
+                        'ar' => 'Parfum raffiné aux notes élégantes et longue tenue.',
+                    ],
+                    'short_description' => [
+                        'en' => 'Elegant perfume, perfect for daily use or special occasions.',
+                        'ar' => 'Parfum élégant, idéal au quotidien ou pour les occasions spéciales.',
+                    ],
+                    'price' => null,
+                    'sale_price' => null,
+                    'purchase_price' => rand(40, 120),
+                    'stock_quantity' => $stock,
+                    'stock' => $stock,
+                    'low_stock_threshold' => 5,
+                    'gender' => collect(['Men', 'Women', 'Unisex'])->random(),
+                    'is_featured' => rand(0, 1),
+                    'is_bestseller' => rand(0, 1),
+                    'status' => true,
+                    'is_out_of_stock' => false,
+                ]
+            );
+
+            $product->sizes()->delete();
+
+            $sizes = [
+                ['size' => '5ML', 'price' => rand(70, 180)],
+                ['size' => '10ML', 'price' => rand(120, 320)],
+            ];
+
+            if (rand(0, 1)) {
+                $sizes[] = ['size' => '30ML', 'price' => rand(300, 650)];
+            }
+
+            foreach ($sizes as $size) {
+                ProductSize::create([
+                    'product_id' => $product->id,
+                    'size' => $size['size'],
+                    'price' => $size['price'],
+                ]);
+            }
         }
     }
 }
