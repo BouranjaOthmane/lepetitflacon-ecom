@@ -39,6 +39,9 @@ Route::patch('coupons/{coupon}/toggle-status', [CouponController::class, 'toggle
 Route::get('products/{product}/media', [ProductController::class, 'getMedia'])->name('products.media');
 Route::delete('media/{media}', [ProductController::class, 'deleteMedia'])->name('media.destroy');
 
+
+Route::get('/orders/{order}/details', [OrderController::class, 'details'])->name('admin.orders.details');
+
 Route::resource('orders', OrderController::class);
 Route::patch('orders/{order}/status', [OrderController::class, 'updateStatus'])->name('orders.update-status');
 Route::put('orders/{order}/shipping', [OrderController::class, 'updateShipping'])->name('orders.update-shipping');
@@ -57,3 +60,5 @@ Route::get('notifications', [DashboardController::class, 'getNotifications'])->n
 Route::get('notifications/all', [DashboardController::class, 'allNotifications'])->name('notifications.all');
 Route::post('notifications/{id}/read', [DashboardController::class, 'markNotificationAsRead'])->name('notifications.read');
 Route::post('notifications/read-all', [DashboardController::class, 'markAllNotificationsAsRead'])->name('notifications.read-all');
+
+

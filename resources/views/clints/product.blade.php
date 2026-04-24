@@ -33,6 +33,25 @@
     <section class="section product-detail">
         <div class="container">
             <div class="product-detail__layout">
+
+                <!-- Galerie -->
+                <div class="product-gallery">
+                    <div class="product-gallery__main" id="mainImage">
+                        <img src="{{ $product->getFirstMediaUrl('images') ?: asset('assets/clints/images/arabic-perfume.png') }}"
+                            alt="{{ $product->getTranslation('name', 'ar') }}" id="galleryMain">
+                        <div class="product-gallery__zoom-hint"><i class="fas fa-search-plus"></i> Faites défiler pour
+                            zoomer</div>
+                    </div>
+                    <div class="product-gallery__thumbs">
+                        @foreach ($product->getMedia('gallery') as $media)
+                            <button class="thumb {{ $loop->first ? 'active' : '' }}"
+                                onclick="changeImage(this, '{{ $media->getUrl() }}')">
+                                <img src="{{ $media->getUrl() }}" alt="Vue {{ $loop->iteration }}">
+                            </button>
+                        @endforeach
+                    </div>
+                </div>
+
                 <!-- Informations -->
                 <div class="product-info">
                     @if ($product->is_bestseller)
@@ -50,13 +69,34 @@
                             avis)</span>
                     </div>
 
+                    @php
+                        $sizes = $product->sizes->sortBy('price')->values();
+                        $firstSize = $sizes->first();
+                    @endphp
+
                     <div class="product-info__price">
-                        <span class="price-current">${{ $product->sale_price ?: $product->price }}</span>
-                        @if ($product->sale_price)
-                            <span class="price-original">${{ $product->price }}</span>
-                            <span class="price-tag">Remise
-                                {{ round((($product->price - $product->sale_price) / $product->price) * 100) }}%</span>
+                        @if ($firstSize)
+                            <span class="price-current" id="productCurrentPrice">
+                                ${{ number_format($firstSize->price, 2) }}
+                            </span>
+                        @else
+                            <span class="price-current" id="productCurrentPrice">Prix indisponible</span>
                         @endif
+                    </div>
+
+                    <div class="product-info__sizes">
+                        <h4>Taille</h4>
+                        <div class="size-options" id="sizeOptions">
+                            @forelse($sizes as $index => $size)
+                                <button type="button" class="size-btn {{ $index === 0 ? 'active' : '' }}"
+                                    data-size-id="{{ $size->id }}" data-size="{{ $size->size }}"
+                                    data-price="{{ $size->price }}" onclick="selectProductSize(this)">
+                                    {{ $size->size }} <span>{{ number_format($size->price, 2) }} د.م</span>
+                                </button>
+                            @empty
+                                <p>Aucune taille disponible</p>
+                            @endforelse
+                        </div>
                     </div>
 
                     <p class="product-info__desc">
@@ -113,17 +153,6 @@
                         </div>
                     @endif
 
-
-                    <!-- Taille -->
-                    <div class="product-info__sizes">
-                        <h4>Taille</h4>
-                        <div class="size-options">
-                            <button class="size-btn">30 ml <span>$180</span></button>
-                            <button class="size-btn active">100 ml <span>$340</span></button>
-                            <button class="size-btn">200 ml <span>$520</span></button>
-                        </div>
-                    </div>
-
                     <!-- Ajouter au panier -->
                     <div class="product-info__actions">
                         <div class="qty-selector">
@@ -148,23 +177,6 @@
                         </div>
                         <div><i class="fas fa-undo"></i> Politique de retour de 30 jours</div>
                         <div><i class="fas fa-shield-alt"></i> Garantie d’authenticité du produit à 100%</div>
-                    </div>
-                </div>
-                <!-- Galerie -->
-                <div class="product-gallery">
-                    <div class="product-gallery__main" id="mainImage">
-                        <img src="{{ $product->getFirstMediaUrl('images') ?: asset('assets/clints/images/arabic-perfume.png') }}"
-                            alt="{{ $product->getTranslation('name', 'ar') }}" id="galleryMain">
-                        <div class="product-gallery__zoom-hint"><i class="fas fa-search-plus"></i> Faites défiler pour
-                            zoomer</div>
-                    </div>
-                    <div class="product-gallery__thumbs">
-                        @foreach ($product->getMedia('gallery') as $media)
-                            <button class="thumb {{ $loop->first ? 'active' : '' }}"
-                                onclick="changeImage(this, '{{ $media->getUrl() }}')">
-                                <img src="{{ $media->getUrl() }}" alt="Vue {{ $loop->iteration }}">
-                            </button>
-                        @endforeach
                     </div>
                 </div>
 

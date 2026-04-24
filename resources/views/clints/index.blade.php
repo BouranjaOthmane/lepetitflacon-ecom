@@ -7,7 +7,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Lepetitflacon — Parfums d’exception et senteurs raffinées</title>
     <meta name="description"
-    content="Achetez en ligne des parfums pour homme et femme chez Lepetitflacon. Découvrez une sélection de fragrances élégantes, raffinées et durables.">
+        content="Achetez en ligne des parfums pour homme et femme chez Lepetitflacon. Découvrez une sélection de fragrances élégantes, raffinées et durables.">
     <link rel="stylesheet" href="{{ asset('assets/clints/css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/clints/css/homepage.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -22,46 +22,44 @@
 
     <!-- ========== قسم البطل ========== -->
     <section class="hero" id="hero">
-    <div class="hero__bg">
-        <img src="{{ asset('assets/clints/images/hero-perfume.png') }}"
-             alt="Parfum de luxe"
-             class="hero__image"
-             id="heroImage">
-    </div>
+        <div class="hero__bg">
+            <img src="{{ asset('assets/clints/images/hero-perfume.png') }}" alt="Parfum de luxe" class="hero__image"
+                id="heroImage">
+        </div>
 
-    <div class="hero__overlay"></div>
+        <div class="hero__overlay"></div>
 
-    <div class="container hero__container">
-        <div class="hero__content">
-            <span class="hero__label">Collection exclusive 2026 · Lepetitflacon shop</span>
+        <div class="container hero__container">
+            <div class="hero__content">
+                <span class="hero__label">Collection exclusive 2026 · Lepetitflacon shop</span>
 
-            <h1 class="hero__title">
-                Découvrez votre parfum<br><em>d’exception</em>
-            </h1>
+                <h1 class="hero__title">
+                    Découvrez votre parfum<br><em>d’exception</em>
+                </h1>
 
-            <p class="hero__subtitle">
-                Entrez dans l’univers raffiné de <strong>Lepetitflacon shop</strong> et laissez-vous séduire par des
-                parfums élégants, intenses et inoubliables. Chaque flacon révèle une signature unique, pensée pour
-                sublimer votre style et votre personnalité.
-            </p>
+                <p class="hero__subtitle">
+                    Entrez dans l’univers raffiné de <strong>Lepetitflacon shop</strong> et laissez-vous séduire par des
+                    parfums élégants, intenses et inoubliables. Chaque flacon révèle une signature unique, pensée pour
+                    sublimer votre style et votre personnalité.
+                </p>
 
-            <div class="hero__cta">
-                <a href="{{ route('shop') }}" class="btn btn-primary">
-                    Acheter maintenant <i class="fas fa-arrow-right"></i>
-                </a>
+                <div class="hero__cta">
+                    <a href="{{ route('shop') }}" class="btn btn-primary">
+                        Acheter maintenant <i class="fas fa-arrow-right"></i>
+                    </a>
 
-                <a href="#categories" class="btn btn-secondary">
-                    Découvrir les collections
-                </a>
+                    <a href="#categories" class="btn btn-secondary">
+                        Découvrir les collections
+                    </a>
+                </div>
             </div>
         </div>
-    </div>
 
-    <div class="hero__scroll">
-        <span>Faites défiler</span>
-        <div class="hero__scroll-line"></div>
-    </div>
-</section>
+        <div class="hero__scroll">
+            <span>Faites défiler</span>
+            <div class="hero__scroll-line"></div>
+        </div>
+    </section>
 
     <!-- ========== التصنيفات ========== -->
     <section class="section categories" id="categories">
@@ -175,7 +173,7 @@
                     <div class="bestsellers__track" id="bestsellersTrack">
                         @foreach ($bestsellerProducts as $product)
                             <div class="bestseller-card">
-                               
+
                                 <div class="bestseller-card__info">
                                     <span
                                         class="section-label">{{ $product->category->getTranslation('name', 'fr') ?? 'Collection exclusive' }}</span>
@@ -195,7 +193,7 @@
                                         class="btn btn-outline-gold">Découvrir
                                         <i class="fas fa-arrow-right"></i></a>
                                 </div>
-                                 <div class="bestseller-card__image">
+                                <div class="bestseller-card__image">
                                     <img src="{{ $product->getFirstMediaUrl('images') ?: asset('assets/clints/images/arabic-perfume.png') }}"
                                         alt="{{ $product->getTranslation('name', 'fr') }}">
                                 </div>
@@ -252,8 +250,38 @@
                                     <div class="product-card__info">
                                         <p class="product-card__brand">{{ $product->brand->name ?? 'LePetitFlacon' }}</p>
                                         <h4 class="product-card__name">{{ $product->getTranslation('name', 'fr') }}</h4>
-                                        <p class="product-card__price">${{ $product->sale_price ?: $product->price }}</p>
-                                        <button class="product-card__btn add-to-cart-btn">Ajouter au panier</button>
+
+
+                                        @php
+                                            $hasSizes = $product->sizes && $product->sizes->count() > 0;
+                                            $minSizePrice = $hasSizes ? $product->sizes->min('price') : null;
+                                            $maxSizePrice = $hasSizes ? $product->sizes->max('price') : null;
+                                            $cardPrice = $minSizePrice ?: ($product->sale_price ?: $product->price);
+                                        @endphp
+
+                                        <p class="product-card__price">
+                                            @if ($hasSizes)
+                                                @if ($minSizePrice == $maxSizePrice)
+                                                    {{ number_format($minSizePrice, 2, ',', ' ') }} د.م
+                                                @else
+                                                    {{ number_format($minSizePrice, 2, ',', ' ') }} د.م –
+                                                    {{ number_format($maxSizePrice, 2, ',', ' ') }} د.م
+                                                @endif
+                                            @else
+                                                {{ number_format($product->sale_price ?: $product->price, 2, ',', ' ') }}
+                                                د.م
+                                            @endif
+                                        </p>
+
+                                        @if ($hasSizes)
+                                            <a href="{{ route('product', $product->id) }}" class="product-card__btn">
+                                                Commander maintenant
+                                            </a>
+                                        @else
+                                            <button class="product-card__btn add-to-cart-btn">
+                                                Ajouter au panier
+                                            </button>
+                                        @endif
                                     </div>
                                 </div>
                             @endforeach
@@ -277,8 +305,15 @@
             <div class="popular__grid reveal"
                 style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 30px;">
                 @foreach ($popularProducts as $product)
+                    @php
+                        $hasSizes = $product->sizes && $product->sizes->count() > 0;
+                        $minSizePrice = $hasSizes ? $product->sizes->min('price') : null;
+                        $maxSizePrice = $hasSizes ? $product->sizes->max('price') : null;
+                        $cardPrice = $minSizePrice ?: ($product->sale_price ?: $product->price);
+                    @endphp
+
                     <div class="product-card" data-id="{{ $product->id }}"
-                        data-name="{{ $product->getTranslation('name', 'fr') }}" data-price="{{ $product->price }}"
+                        data-name="{{ $product->getTranslation('name', 'fr') }}" data-price="{{ $cardPrice }}"
                         data-img="{{ $product->getFirstMediaUrl('images') ?: asset('assets/clints/images/mens-perfume.png') }}">
 
                         <div class="product-card__image">
@@ -301,8 +336,29 @@
                         <div class="product-card__info">
                             <p class="product-card__brand">{{ $product->brand->name ?? 'LePetitFlacon' }}</p>
                             <h4 class="product-card__name">{{ $product->getTranslation('name', 'fr') }}</h4>
-                            <p class="product-card__price">${{ $product->sale_price ?: $product->price }}</p>
-                            <button class="product-card__btn add-to-cart-btn">Ajouter au panier</button>
+
+                            <p class="product-card__price">
+                                @if ($hasSizes)
+                                    @if ($minSizePrice == $maxSizePrice)
+                                        {{ number_format($minSizePrice, 2, ',', ' ') }} د.م
+                                    @else
+                                        {{ number_format($minSizePrice, 2, ',', ' ') }} د.م –
+                                        {{ number_format($maxSizePrice, 2, ',', ' ') }} د.م
+                                    @endif
+                                @else
+                                    {{ number_format($product->sale_price ?: $product->price, 2, ',', ' ') }} د.م
+                                @endif
+                            </p>
+
+                            @if ($hasSizes)
+                                <a href="{{ route('product', $product->id) }}" class="product-card__btn">
+                                    Commander maintenant
+                                </a>
+                            @else
+                                <button class="product-card__btn add-to-cart-btn">
+                                    Ajouter au panier
+                                </button>
+                            @endif
                         </div>
                     </div>
                 @endforeach
@@ -314,7 +370,7 @@
     <section class="section section--alt brand-story" id="brandStory">
         <div class="container">
             <div class="brand-story__wrapper reveal">
-               <div class="brand-story__content">
+                <div class="brand-story__content">
                     <span class="section-label">Notre philosophie</span>
                     <h2>L’art de la parfumerie</h2>
                     <p class="brand-story__text">
@@ -348,75 +404,79 @@
                     <img src="{{ asset('assets/clints/images/brand-story.png') }}" alt="Notre savoir-faire">
                     <div class="brand-story__accent"></div>
                 </div>
-               
+
             </div>
         </div>
     </section>
 
     <!-- ========== آراء العملاء ========== -->
-   <section class="section testimonials" id="testimonials">
-    <div class="container">
-        <div class="section-header reveal">
-            <span class="section-label">Ils en parlent</span>
-            <h2>Avis de nos clients</h2>
-            <p class="section-subtitle">Découvrez pourquoi nos clients reviennent encore et encore</p>
-            <div class="divider"></div>
+    <section class="section testimonials" id="testimonials">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-label">Ils en parlent</span>
+                <h2>Avis de nos clients</h2>
+                <p class="section-subtitle">Découvrez pourquoi nos clients reviennent encore et encore</p>
+                <div class="divider"></div>
+            </div>
+
+            <div class="testimonials__grid reveal">
+                <div class="testimonial-card">
+                    <div class="testimonial-card__stars">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                            class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-card__text">
+                        "Ambre Oud Royal est un parfum absolument remarquable. Sa tenue est impressionnante et je reçois
+                        des compliments chaque fois que je le porte. C’est le vrai luxe dans un flacon."
+                    </p>
+                    <div class="testimonial-card__author">
+                        <div class="testimonial-card__avatar">SA</div>
+                        <div>
+                            <h4>Sarah Ahmed</h4>
+                            <span>Acheteuse vérifiée</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="testimonial-card__stars">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                            class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-card__text">
+                        "Le packaging à lui seul reflète la qualité. Rose Mystique est devenu mon parfum préféré —
+                        féminin, raffiné et totalement envoûtant. Il vaut chaque centime."
+                    </p>
+                    <div class="testimonial-card__author">
+                        <div class="testimonial-card__avatar">MK</div>
+                        <div>
+                            <h4>Mariam Khaled</h4>
+                            <span>Acheteuse vérifiée</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="testimonial-card__stars">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                            class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                    </div>
+                    <p class="testimonial-card__text">
+                        "Je découvre les parfums de luxe depuis des années, et LePetitFlacon fait partie des plus belles
+                        découvertes que j’ai faites. Noir Élégance est le parfum idéal pour le soir — intense,
+                        sophistiqué et inoubliable."
+                    </p>
+                    <div class="testimonial-card__author">
+                        <div class="testimonial-card__avatar">OM</div>
+                        <div>
+                            <h4>Omar Mohammed</h4>
+                            <span>Acheteur vérifié</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-
-        <div class="testimonials__grid reveal">
-            <div class="testimonial-card">
-                <div class="testimonial-card__stars">
-                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
-                        class="fas fa-star"></i><i class="fas fa-star"></i>
-                </div>
-                <p class="testimonial-card__text">
-                    "Ambre Oud Royal est un parfum absolument remarquable. Sa tenue est impressionnante et je reçois des compliments chaque fois que je le porte. C’est le vrai luxe dans un flacon."
-                </p>
-                <div class="testimonial-card__author">
-                    <div class="testimonial-card__avatar">SA</div>
-                    <div>
-                        <h4>Sarah Ahmed</h4>
-                        <span>Acheteuse vérifiée</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="testimonial-card">
-                <div class="testimonial-card__stars">
-                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
-                        class="fas fa-star"></i><i class="fas fa-star"></i>
-                </div>
-                <p class="testimonial-card__text">
-                    "Le packaging à lui seul reflète la qualité. Rose Mystique est devenu mon parfum préféré — féminin, raffiné et totalement envoûtant. Il vaut chaque centime."
-                </p>
-                <div class="testimonial-card__author">
-                    <div class="testimonial-card__avatar">MK</div>
-                    <div>
-                        <h4>Mariam Khaled</h4>
-                        <span>Acheteuse vérifiée</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="testimonial-card">
-                <div class="testimonial-card__stars">
-                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
-                        class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
-                </div>
-                <p class="testimonial-card__text">
-                    "Je découvre les parfums de luxe depuis des années, et LePetitFlacon fait partie des plus belles découvertes que j’ai faites. Noir Élégance est le parfum idéal pour le soir — intense, sophistiqué et inoubliable."
-                </p>
-                <div class="testimonial-card__author">
-                    <div class="testimonial-card__avatar">OM</div>
-                    <div>
-                        <h4>Omar Mohammed</h4>
-                        <span>Acheteur vérifié</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+    </section>
 
 
 

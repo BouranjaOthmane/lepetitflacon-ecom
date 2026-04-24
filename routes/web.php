@@ -34,11 +34,15 @@ Route::get('/register', [\App\Http\Controllers\Auth\AuthController::class, 'show
 Route::post('/register', [\App\Http\Controllers\Auth\AuthController::class, 'register'])->middleware('throttle:3,1');
 Route::post('/logout', [\App\Http\Controllers\Auth\AuthController::class, 'logout'])->name('logout');
 
-Route::middleware('auth')->group(function () {
+
     Route::get('/checkout', function () {
         return view('clints.checkout');
     })->name('checkout');
+    
     Route::post('/checkout', [\App\Http\Controllers\Clients\CheckoutController::class, 'placeOrder'])->name('checkout.store');
+
+Route::middleware('auth')->group(function () {
+
 
     Route::post('/reviews', [\App\Http\Controllers\Clients\ReviewController::class, 'store'])
         ->name('reviews.store');

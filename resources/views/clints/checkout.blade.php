@@ -36,57 +36,28 @@
                         <form class="checkout-form" id="shippingForm">
                             <div class="form-row">
                                 <div class="form-group">
-                                    <label for="firstName">Prénom *</label>
+                                    <label for="firstName">Prénom <span style="color: red">*</span> </label>
                                     <input type="text" id="firstName" placeholder="Ahmed" required>
                                 </div>
                                 <div class="form-group">
-                                    <label for="lastName">Nom de famille *</label>
+                                    <label for="lastName">Nom de famille <span style="color: red">*</span> </label>
                                     <input type="text" id="lastName" placeholder="Benali" required>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="email">Adresse e-mail *</label>
-                                <input type="email" id="email" placeholder="exemple@mail.com" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="phone">Numéro de téléphone *</label>
+                                <label for="phone">Numéro de téléphone <span style="color: red">*</span> </label>
                                 <input type="tel" id="phone" placeholder="+212 6 00 00 00 00" required>
                             </div>
                             <div class="form-group">
-                                <label for="address">Adresse *</label>
-                                <input type="text" id="address" placeholder="Nom de rue, numéro de bâtiment"
-                                    required>
+                                <label for="address">Adresse <span style="color: red">*</span></label>
+                                <input type="text" id="address" placeholder="Nom de rue, numéro de bâtiment" required>
                             </div>
-                            <div class="form-row">
-                                <div class="form-group">
-                                    <label for="city">Ville *</label>
-                                    <input type="text" id="city" placeholder="Tanger" required>
-                                </div>
-                                <div class="form-group">
-                                    <label for="state">Région / Province</label>
-                                    <input type="text" id="state" placeholder="Tanger-Tétouan-Al Hoceïma">
-                                </div>
+                            <div class="form-group">
+                                <label for="email">Adresse e-mail</label>
+                                <input type="email" id="email" placeholder="exemple@mail.com">
                             </div>
-                            <div class="form-row">
-                                <div class="form-group">
-                                    <label for="zip">Code postal *</label>
-                                    <input type="text" id="zip" placeholder="90000" required>
-                                </div>
-                                <div class="form-group">
-                                    <label for="country">Pays *</label>
-                                    <select id="country" required>
-                                        <option value="">Choisir un pays</option>
-                                        <option value="SA" selected>Arabie saoudite</option>
-                                        <option value="AE">Émirats arabes unis</option>
-                                        <option value="KW">Koweït</option>
-                                        <option value="QA">Qatar</option>
-                                        <option value="OM">Oman</option>
-                                        <option value="BH">Bahreïn</option>
-                                        <option value="EG">Égypte</option>
-                                        <option value="JO">Jordanie</option>
-                                    </select>
-                                </div>
-                            </div>
+
+
                             <button type="button" class="btn btn-primary checkout-next" onclick="goToStep(2)">Continuer
                                 vers le paiement <i class="fas fa-arrow-left"></i></button>
                         </form>

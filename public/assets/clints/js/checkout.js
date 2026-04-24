@@ -70,10 +70,9 @@ function populateReview() {
     const state = document.getElementById("state")?.value || "";
     const zip = document.getElementById("zip")?.value || "";
 
-
-    console.log(firstName,"firstName");
+    console.log(firstName, "firstName");
     const reviewAddress = document.getElementById("reviewAddress");
-    
+
     if (reviewAddress) {
         reviewAddress.innerHTML = `${firstName} ${lastName}<br>${address}<br>${city}, ${state} ${zip}`;
     }
@@ -84,8 +83,8 @@ function populateReview() {
     )?.value;
     const reviewPayment = document.getElementById("reviewPayment");
     if (reviewPayment) {
-        console.log(reviewPayment,"reviewPayment");
-        
+        console.log(reviewPayment, "reviewPayment");
+
         if (paymentMethod === "card" || paymentMethod === "stripe") {
             reviewPayment.textContent = "بطاقة ائتمان (Stripe)";
         } else if (paymentMethod === "paypal") {
@@ -166,10 +165,12 @@ function placeOrder() {
 
     const originalText = btn.innerHTML;
     const paymentMethod =
-        document.querySelector('input[name="payment"]:checked')?.value || "card";
+        document.querySelector('input[name="payment"]:checked')?.value ||
+        "card";
 
     btn.disabled = true;
-    btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> جاري معالجة الطلب...';
+    btn.innerHTML =
+        '<i class="fas fa-spinner fa-spin"></i> جاري معالجة الطلب...';
 
     const subtotal = CartManager.getTotal();
     const tax = subtotal * 0.08;
@@ -177,15 +178,26 @@ function placeOrder() {
 
     // Apply loyalty discount if applicable
     if (document.getElementById("usePointsCheckbox")?.checked) {
-        const points =
-            parseInt(document.getElementById("pointsToRedeem")?.value || 0, 10);
+        const points = parseInt(
+            document.getElementById("pointsToRedeem")?.value || 0,
+            10,
+        );
         const discount = points / 10; // 10 points = $1
         total = Math.max(0, total - discount);
     }
 
     const orderData = {
         total: total,
-        items: CartManager.items || [],
+        items: (CartManager.items || []).map((item) => ({
+            id: parseInt(item.product_id || item.id, 10),
+            product_id: parseInt(item.product_id || item.id, 10),
+            size_id: item.size_id ? parseInt(item.size_id, 10) : null,
+            size: item.size || null,
+            name: item.name,
+            price: parseFloat(item.price),
+            img: item.img,
+            qty: parseInt(item.qty, 10),
+        })),
         firstName: document.getElementById("firstName")?.value || "",
         lastName: document.getElementById("lastName")?.value || "",
         email: document.getElementById("email")?.value || "",
@@ -196,7 +208,10 @@ function placeOrder() {
         country: document.getElementById("country")?.value || "",
         payment_method: paymentMethod,
         redeem_points: document.getElementById("usePointsCheckbox")?.checked
-            ? parseInt(document.getElementById("pointsToRedeem")?.value || 0, 10)
+            ? parseInt(
+                  document.getElementById("pointsToRedeem")?.value || 0,
+                  10,
+              )
             : 0,
     };
 
@@ -204,9 +219,11 @@ function placeOrder() {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
-            "Accept": "application/json",
+            Accept: "application/json",
             "X-CSRF-TOKEN":
-                document.querySelector('meta[name="csrf-token"]')?.getAttribute("content") || "",
+                document
+                    .querySelector('meta[name="csrf-token"]')
+                    ?.getAttribute("content") || "",
             "X-Requested-With": "XMLHttpRequest",
         },
         body: JSON.stringify(orderData),
@@ -215,7 +232,9 @@ function placeOrder() {
             const data = await response.json();
 
             if (!response.ok || !data.success) {
-                throw new Error(data.error || data.message || "فشل إنشاء الطلب");
+                throw new Error(
+                    data.error || data.message || "فشل إنشاء الطلب",
+                );
             }
 
             return data;
@@ -255,7 +274,9 @@ document.addEventListener("DOMContentLoaded", function () {
     const cardForm = document.getElementById("cardForm");
 
     function updatePaymentUI() {
-        const selected = document.querySelector('input[name="payment"]:checked')?.value || "card";
+        const selected =
+            document.querySelector('input[name="payment"]:checked')?.value ||
+            "card";
 
         paymentLabels.forEach((label) => {
             const input = label.querySelector('input[name="payment"]');

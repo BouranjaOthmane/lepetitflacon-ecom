@@ -32,15 +32,7 @@
 
                 <div class="form-row">
                     <div class="form-group">
-                        <label>Nom en arabe</label>
-                        <input type="text" name="name[ar]" value="{{ old('name.ar') }}"
-                            placeholder="Exemple : Parfum Ambre Oud" required>
-                        @error('name.ar')
-                            <span style="color: red ; font-size: 0.8rem">{{ $message }}</span>
-                        @enderror
-                    </div>
-                    <div class="form-group">
-                        <label>Nom en anglais</label>
+                        <label>Nom de produit</label>
                         <input type="text" name="name[en]" value="{{ old('name.en') }}" placeholder="Example: Amber Oud"
                             required>
                         @error('name.en')
@@ -131,12 +123,12 @@
                             <div class="form-row">
                                 <div class="form-group">
                                     <label>Taille</label>
-                                    <input type="text" name="sizes[0][size]" placeholder="Ex : 5ML" required>
+                                    <input type="text" name="sizes[0][size]" placeholder="Ex : 5ML">
                                 </div>
 
                                 <div class="form-group">
                                     <label>Prix ($)</label>
-                                    <input type="number" step="0.01" name="sizes[0][price]" placeholder="0.00" required>
+                                    <input type="number" step="0.01" name="sizes[0][price]" placeholder="0.00">
                                 </div>
 
                                 <div class="form-group" style="display:flex; align-items:end;">
@@ -153,8 +145,7 @@
                 <div class="form-row">
                     <div class="form-group">
                         <label>Référence produit (SKU)</label>
-                        <input type="text" name="sku" value="{{ old('sku') }}" placeholder="Ex. : PRD-001"
-                            required>
+                        <input type="text" name="sku" value="{{ old('sku') }}" placeholder="Ex. : PRD-001">
                         @error('sku')
                             <span style="color: red ; font-size: 0.8rem">{{ $message }}</span>
                         @enderror
@@ -200,7 +191,7 @@
                     <div class="form-group">
                         <label>Galerie d’images</label>
                         <input type="file" name="gallery[]" accept="image/*" multiple>
-                        <small style="color:var(--color-text-muted)">Vous pouvez sélectionner plusieurs images</small>
+                        <small style="color: black ">Vous pouvez sélectionner plusieurs images</small>
                     </div>
                 </div>
 
@@ -273,17 +264,17 @@
 
                 <div class="form-row" style="margin-top:20px">
                     <div class="form-group" style="display:flex; align-items:center; gap:10px; cursor:pointer">
-                        <input type="checkbox" name="is_featured" value="1" id="is_featured"
+                        <input type="checkbox" name="is_featured" value="1" style="width: 20px" id="is_featured"
                             {{ old('is_featured') ? 'checked' : '' }}>
                         <label for="is_featured" style="margin:0">Produit mis en avant (Featured)</label>
                     </div>
                     <div class="form-group" style="display:flex; align-items:center; gap:10px; cursor:pointer">
-                        <input type="checkbox" name="is_bestseller" value="1" id="is_bestseller"
+                        <input type="checkbox" name="is_bestseller" value="1" style="width: 20px" id="is_bestseller"
                             {{ old('is_bestseller') ? 'checked' : '' }}>
                         <label for="is_bestseller" style="margin:0">Meilleure vente (Bestseller)</label>
                     </div>
                     <div class="form-group" style="display:flex; align-items:center; gap:10px; cursor:pointer">
-                        <input type="checkbox" name="status" value="1" id="status"
+                        <input type="checkbox" name="status" value="1" style="width: 20px" id="status"
                             {{ old('status', 1) ? 'checked' : '' }}>
                         <label for="status" style="margin:0">Actif (publier immédiatement)</label>
                     </div>
@@ -349,4 +340,6 @@
             });
         });
     </script>
+
+    
 @endsection

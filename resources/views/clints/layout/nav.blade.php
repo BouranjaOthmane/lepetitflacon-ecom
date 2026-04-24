@@ -32,15 +32,15 @@
             </form>
           @else
             <a href="{{ route('login') }}"><i class="fas fa-sign-in-alt"></i> Connexion</a>
-            <a href="{{ route('register') }}"><i class="fas fa-user-plus"></i> Créer un compte</a>
+            {{-- <a href="{{ route('register') }}"><i class="fas fa-user-plus"></i> Créer un compte</a> --}}
           @endauth
         </div>
       </div>
-      <a href="{{ route('wishlist.index') }}" class="nav-action-btn" aria-label="Favoris">
+      {{-- <a href="{{ route('wishlist.index') }}" class="nav-action-btn" aria-label="Favoris">
         <i class="far fa-heart"></i>
         @php $wishlistCount = auth()->check() ? auth()->user()->wishlist()->count() : 0; @endphp
         <span class="badge {{ $wishlistCount > 0 ? '' : 'hide-badge' }}" id="wishlistCount">{{ $wishlistCount }}</span>
-      </a>
+      </a> --}}
       <button class="nav-action-btn" id="cartToggle" aria-label="Panier">
         <i class="fas fa-shopping-bag"></i>
         <span class="badge" id="cartCount">0</span>

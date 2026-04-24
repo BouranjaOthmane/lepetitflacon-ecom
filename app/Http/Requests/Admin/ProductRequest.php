@@ -27,15 +27,14 @@ class ProductRequest extends FormRequest
             'category_id' => 'required|exists:categories,id',
             'brand_id' => 'required|exists:brands,id',
             'name.en' => 'required|string|max:255',
-            'name.ar' => 'required|string|max:255',
             'description.en' => 'nullable|string',
             'description.ar' => 'nullable|string',
             'short_description.en' => 'nullable|string',
             'short_description.ar' => 'nullable|string',
-            'price' => 'required|numeric|min:0|gt:purchase_price',
+            'price' => 'nullable|numeric|min:0|gt:purchase_price',
             'purchase_price' => 'required|numeric|min:0',
             'sale_price' => 'nullable|numeric|min:0',
-            'sku' => 'required|string|unique:products,sku,' . $productId,
+            'sku' => 'nullable|string|unique:products,sku,' . $productId,
             'stock_quantity' => 'required|integer|min:0',
             'low_stock_threshold' => 'required|integer|min:0',
             'gender' => 'required|in:Men,Women,Unisex,Kids',
@@ -56,6 +55,20 @@ class ProductRequest extends FormRequest
             'sizes.*.size' => 'required_with:sizes.*.price|string|max:50',
             'sizes.*.price' => 'required_with:sizes.*.size|numeric|min:0',
         ];
+    }
+
+    protected function prepareForValidation(): void
+    {
+        $sizes = collect($this->input('sizes', []))
+            ->filter(function ($item) {
+                return !empty($item['size']) || !empty($item['price']);
+            })
+            ->values()
+            ->toArray();
+
+        $this->merge([
+            'sizes' => $sizes,
+        ]);
     }
 
     /**

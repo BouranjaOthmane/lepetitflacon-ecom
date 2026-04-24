@@ -2,36 +2,34 @@
 
 namespace App\Notifications;
 
+use App\Models\Order;
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Notification;
 
-class NewOrderNotification extends Notification implements ShouldQueue
+class NewOrderNotification extends Notification
 {
     use Queueable;
 
-    protected $order;
-
-    public function __construct($order)
+    public function __construct(public Order $order)
     {
-        $this->order = $order;
+        //
     }
 
-    public function via($notifiable)
+    public function via(object $notifiable): array
     {
         return ['database'];
     }
 
-    public function toArray($notifiable)
+    public function toArray(object $notifiable): array
     {
         return [
-            'type' => 'new_order',
-            'title' => 'طلب جديد #ORD-' . $this->order->id,
-            'message' => "تم استلام طلب جديد بقيمة " . number_format($this->order->total) . " ر.س من " . ($this->order->user->name ?? 'عميل'),
+            'title' => 'Nouvelle commande reçue',
+            'message' => 'Une nouvelle commande #' . $this->order->order_number . ' a été passée.',
             'order_id' => $this->order->id,
-            'action_url' => route('admin.orders.show', $this->order->id),
-            'icon' => 'fas fa-shopping-cart',
-            'color' => 'success'
+            'order_number' => $this->order->order_number,
+            'total' => $this->order->total,
+            'payment_method' => $this->order->payment_method,
+            'url' => route('admin.orders.show', $this->order->id),
         ];
     }
 }

@@ -417,7 +417,7 @@ img {
     top: calc(100% + 10px);
     left: 0;
     width: 320px;
-    background: var(--bg-card);
+    background: #ececec;
     border: 1px solid var(--border-color);
     border-radius: var(--radius-md);
     box-shadow: var(--shadow-lg);
@@ -500,7 +500,7 @@ img {
 
 .notif-content p {
     font-size: 0.75rem;
-    color: var(--color-text-muted);
+    color: black;
     line-height: 1.4;
     margin-bottom: 6px;
 }
@@ -519,7 +519,7 @@ img {
 .dropdown-footer a {
     font-size: 0.8rem;
     font-weight: 600;
-    color: var(--color-text-muted);
+    color: black;
 }
 
 .mobile-toggle {
@@ -1141,6 +1141,7 @@ img {
     font-weight: 600;
     color: black;
     margin-bottom: 8px;
+    font-size: 15px;
 }
 
 .form-group input,

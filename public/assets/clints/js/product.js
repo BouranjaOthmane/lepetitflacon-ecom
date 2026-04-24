@@ -73,13 +73,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
     addBtn.addEventListener('click', () => {
         const qty = parseInt(document.getElementById('qtyInput')?.value || 1);
-        const name = document.querySelector('.product-info__name')?.textContent || 'عطر فاخر';
-        const price = parseFloat(document.querySelector('.price-current')?.textContent.replace('$', '') || 0);
+        const name = document.querySelector('.product-info__name')?.textContent || 'Parfum';
         const img = document.getElementById('galleryMain')?.src || '';
-
         const productId = document.body.dataset.productId;
+
+        const activeSizeBtn = document.querySelector('.size-btn.active');
+
+        const sizeId = activeSizeBtn?.dataset.sizeId || addBtn.dataset.sizeId || null;
+        const size = activeSizeBtn?.dataset.size || addBtn.dataset.size || null;
+        const price = parseFloat(activeSizeBtn?.dataset.price || addBtn.dataset.price || document.querySelector('.price-current')?.textContent.replace('$', '') || 0);
+
         const product = {
-            id: productId,
+            id: sizeId ? `${productId}-${sizeId}` : productId,
+            product_id: productId,
+            size_id: sizeId,
+            size: size,
             name: name,
             price: price,
             img: img
@@ -89,7 +97,6 @@ document.addEventListener('DOMContentLoaded', () => {
             CartManager.addItem(product);
         }
 
-        // Fly animation
         const flyImg = document.getElementById('galleryMain');
         flyToCart(product.img, flyImg);
 
@@ -172,3 +179,23 @@ document.addEventListener('DOMContentLoaded', () => {
             });
     });
 });
+
+
+function selectProductSize(button) {
+    document.querySelectorAll('.size-btn').forEach(btn => btn.classList.remove('active'));
+    button.classList.add('active');
+
+    const price = button.dataset.price;
+    const priceBox = document.getElementById('productCurrentPrice');
+
+    if (priceBox) {
+        priceBox.textContent = '$' + Number(price).toFixed(2);
+    }
+
+    const addToCartBtn = document.getElementById('addToCartBtn');
+    if (addToCartBtn) {
+        addToCartBtn.dataset.sizeId = button.dataset.sizeId;
+        addToCartBtn.dataset.size = button.dataset.size;
+        addToCartBtn.dataset.price = price;
+    }
+}

@@ -67,7 +67,7 @@ body {
   background-color: var(--color-bg);
   line-height: 1.8;
   overflow-x: hidden;
-  text-align: right;
+  text-align: left;
 }
 
 a {
@@ -561,6 +561,7 @@ h4 {
 
 .product-card__info {
   padding: 20px;
+  text-align: center;
 }
 
 .product-card__name {
@@ -584,14 +585,14 @@ h4 {
   font-size: 1.1rem;
   font-weight: 600;
   color: var(--color-gold);
-  margin-bottom: 8px;
+  margin-bottom: 18px;
 }
 
 .product-card__rating {
-  display: flex;
+  /* display: flex; */
   align-items: center;
   gap: 4px;
-  margin-bottom: 16px;
+  margin-bottom: 6px;
 }
 
 .product-card__rating .star {

@@ -18,12 +18,11 @@ class CheckoutController extends Controller
             $validated = $request->validate([
                 'firstName'       => 'required|string|max:255',
                 'lastName'        => 'required|string|max:255',
-                'email'           => 'required|email|max:255',
+                'email'           => 'nullable|email|max:255',
                 'phone'           => 'required|string|max:50',
                 'address'         => 'required|string|max:500',
-                'city'            => 'required|string|max:255',
+
                 'zip'             => 'nullable|string|max:50',
-                'country'         => 'required|string|max:255',
                 'total'           => 'required|numeric|min:0',
                 'payment_method'  => 'required|in:card,stripe,paypal,cod',
                 'redeem_points'   => 'nullable|integer|min:0',
@@ -62,9 +61,9 @@ class CheckoutController extends Controller
                         'email'      => $validated['email'],
                         'phone'      => $validated['phone'],
                         'address'    => $validated['address'],
-                        'city'       => $validated['city'],
+                        
                         'zip'        => $validated['zip'] ?? null,
-                        'country'    => $validated['country'],
+                        
                     ],
                     'payment_method' => $paymentMethod,
                     'payment_status' => $paymentStatus,

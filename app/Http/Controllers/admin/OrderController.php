@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Services\OrderService;
 use Illuminate\Http\Request;
+use App\Models\Order;
 
 class OrderController extends Controller
 {
@@ -64,5 +65,36 @@ class OrderController extends Controller
     {
         $this->orderService->deleteOrder($id);
         return response()->json(['success' => true, 'message' => 'تم حذف الطلب بنجاح']);
+    }
+
+    public function details(Order $order)
+    {
+        $order->load(['user', 'items.product']);
+
+        return response()->json([
+            'order_number' => $order->order_number,
+            'status' => $order->status,
+            'payment_status' => $order->payment_status,
+            'payment_method' => $order->payment_method,
+            'total' => $order->total,
+            'created_at' => $order->created_at->format('d/m/Y H:i'),
+            'customer' => [
+                'name' => $order->user->name ?? 'Client inconnu',
+                'email' => $order->user->email ?? '',
+            ],
+            'shipping' => [
+                'company' => $order->shipping_company,
+                'tracking_number' => $order->tracking_number,
+            ],
+            'items' => $order->items->map(function ($item) {
+                return [
+                    'name' => $item->product?->getTranslation('name', 'fr') ?? $item->product?->name ?? 'Produit supprimé',
+                    'size' => $item->size ?? null,
+                    'quantity' => $item->quantity ?? $item->qty ?? 1,
+                    'price' => $item->price,
+                    'total' => ($item->price * ($item->quantity ?? $item->qty ?? 1)),
+                ];
+            }),
+        ]);
     }
 }

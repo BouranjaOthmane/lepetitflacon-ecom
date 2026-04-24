@@ -4,7 +4,7 @@
 
 @section('content')
     <section class="dashboard-section active" id="analytics">
-        <div class="section-header mb-4">
+        <div class="section-header mb-4" style="margin-bottom: 20px" >
             <h2 class="h4">Analyses des ventes et des performances</h2>
             <p class="text-dim">Une vue approfondie des performances de votre boutique et de la croissance de vos ventes</p>
         </div>
@@ -15,7 +15,7 @@
             <div class="stat-card">
                 <div class="stat-card__header">
                     <div class="stat-card__icon revenue"><i class="fas fa-dollar-sign"></i></div>
-                    <span class="stat-card__trend up"><i class="fas fa-caret-up"></i> 12%</span>
+                    {{-- <span class="stat-card__trend up"><i class="fas fa-caret-up"></i> 12%</span> --}}
                 </div>
                 <div class="stat-card__body">
                     <div class="stat-card__value">${{ number_format($kpis['total_sales'], 2) }}</div>
@@ -27,7 +27,7 @@
             <div class="stat-card">
                 <div class="stat-card__header">
                     <div class="stat-card__icon orders"><i class="fas fa-shopping-bag"></i></div>
-                    <span class="stat-card__trend up"><i class="fas fa-caret-up"></i> 5%</span>
+                    {{-- <span class="stat-card__trend up"><i class="fas fa-caret-up"></i> 5%</span> --}}
                 </div>
                 <div class="stat-card__body">
                     <div class="stat-card__value">{{ number_format($kpis['total_orders']) }}</div>
@@ -39,7 +39,7 @@
             <div class="stat-card">
                 <div class="stat-card__header">
                     <div class="stat-card__icon customers"><i class="fas fa-users"></i></div>
-                    <span class="stat-card__trend up"><i class="fas fa-caret-up"></i> 8%</span>
+                    {{-- <span class="stat-card__trend up"><i class="fas fa-caret-up"></i> 8%</span> --}}
                 </div>
                 <div class="stat-card__body">
                     <div class="stat-card__value">{{ number_format($kpis['total_customers']) }}</div>
@@ -51,7 +51,7 @@
             <div class="stat-card">
                 <div class="stat-card__header">
                     <div class="stat-card__icon products"><i class="fas fa-chart-line"></i></div>
-                    <span class="stat-card__trend up"><i class="fas fa-caret-up"></i> 3%</span>
+                    {{-- <span class="stat-card__trend up"><i class="fas fa-caret-up"></i> 3%</span> --}}
                 </div>
                 <div class="stat-card__body">
                     <div class="stat-card__value">${{ number_format($kpis['avg_order_value'], 2) }}</div>

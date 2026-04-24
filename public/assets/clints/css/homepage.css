@@ -304,8 +304,8 @@
 }
 
 .category-card__count {
-    font-size: 0.8rem;
-    color: var(--color-text-muted);
+    font-size: 14px;
+    color: black;
 }
 
 /* ---------- Featured Grid ---------- */

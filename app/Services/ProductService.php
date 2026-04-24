@@ -137,6 +137,8 @@ class ProductService
      * @param array $data
      * @return Product
      */
+
+
     public function updateProduct(int $id, array $data): Product
     {
         if (isset($data['name']['en'])) {
@@ -154,18 +156,35 @@ class ProductService
         $product = $this->getProductById($id);
 
         if ($product) {
-            // Sync old stock field for compatibility
             $product->stock = $product->stock_quantity;
             $product->is_out_of_stock = $product->stock_quantity <= 0;
             $product->save();
 
             $this->syncFragranceNotes($product, $data);
+            $this->syncProductSizes($product, $data);
 
             $this->uploadImage($product, 'image');
             $this->uploadGallery($product);
         }
 
         return $product;
+    }
+    protected function syncProductSizes(Product $product, array $data): void
+    {
+        $product->sizes()->delete();
+
+        if (empty($data['sizes']) || !is_array($data['sizes'])) {
+            return;
+        }
+
+        foreach ($data['sizes'] as $item) {
+            if (!empty($item['size']) && isset($item['price']) && $item['price'] !== '') {
+                $product->sizes()->create([
+                    'size' => trim($item['size']),
+                    'price' => $item['price'],
+                ]);
+            }
+        }
     }
 
     /**

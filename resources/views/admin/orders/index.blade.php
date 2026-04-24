@@ -1,9 +1,9 @@
 @extends('admin.layout.master')
 
-@section('title', 'إدارة الطلبات — لوكس بارفيوم')
+@section('title', 'Gestion des commandes — Lepetitflacon')
 
-@section('page_title', 'الطلبات')
-@section('page_subtitle', 'تتبع وإدارة طلبات العملاء')
+@section('page_title', 'Commandes')
+@section('page_subtitle', 'Suivi et gestion des commandes clients')
 
 @section('content')
     @include('admin.sections.orders', ['isActive' => true])
