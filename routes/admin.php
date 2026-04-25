@@ -1,22 +1,22 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Admin\DashboardController;
-use App\Http\Controllers\Admin\AnalyticsController;
-use App\Http\Controllers\Admin\ReportController;
-use App\Http\Controllers\Admin\CategoryController;
-use App\Http\Controllers\Admin\ProductController;
-use App\Http\Controllers\Admin\BrandController;
-use App\Http\Controllers\Admin\CouponController;
-use App\Http\Controllers\Admin\FragranceNoteController;
-use App\Http\Controllers\Admin\OrderController;
-use App\Http\Controllers\Admin\CustomerController;
-use App\Http\Controllers\Admin\ReviewController;
-use App\Http\Controllers\Admin\SettingController;
+use App\Http\Controllers\admin\DashboardController;
+use App\Http\Controllers\admin\AnalyticsController;
+use App\Http\Controllers\admin\ReportController;
+use App\Http\Controllers\admin\CategoryController;
+use App\Http\Controllers\admin\ProductController;
+use App\Http\Controllers\admin\BrandController;
+use App\Http\Controllers\admin\CouponController;
+use App\Http\Controllers\admin\FragranceNoteController;
+use App\Http\Controllers\admin\OrderController;
+use App\Http\Controllers\admin\CustomerController;
+use App\Http\Controllers\admin\ReviewController;
+use App\Http\Controllers\admin\SettingController;
 
 /*
 |--------------------------------------------------------------------------
-| Admin Routes
+| admin Routes
 |--------------------------------------------------------------------------
 |
 | These routes are loaded by bootstrap/app.php in a group which

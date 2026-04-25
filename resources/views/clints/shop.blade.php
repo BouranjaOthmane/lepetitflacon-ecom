@@ -52,8 +52,10 @@
                             <div class="price-range">
                                 <input type="range" min="0" max="500"
                                     value="{{ request('max_price', 500) }}" id="priceRange" onchange="applyFilters()">
-                                <div class="price-range__labels"><span>$0</span><span
-                                        id="priceValue">${{ request('max_price', 500) }}</span></div>
+                                <div class="price-range__labels">
+                                    <span>0 DH</span>
+                                    <span id="priceValue">{{ request('max_price', 500) }} DH</span>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -173,11 +175,11 @@
                                     @endif
 
                                     <div class="product-card__actions">
-                                        <button
+                                        {{-- <button
                                             class="wishlist-btn {{ auth()->check() && auth()->user()->wishlist->contains('product_id', $product->id) ? 'active' : '' }}">
                                             <i
                                                 class="{{ auth()->check() && auth()->user()->wishlist->contains('product_id', $product->id) ? 'fas' : 'far' }} fa-heart"></i>
-                                        </button>
+                                        </button> --}}
                                         <button onclick="window.location.href='{{ route('product', $product->id) }}'">
                                             <i class="far fa-eye"></i>
                                         </button>

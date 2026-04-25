@@ -277,8 +277,17 @@
                                                     {{ number_format($maxSizePrice, 2, ',', ' ') }} د.م
                                                 @endif
                                             @else
-                                                {{ number_format($product->sale_price ?: $product->price, 2, ',', ' ') }}
-                                                د.م
+                                                @if ($product->sale_price && $product->price)
+                                                    <span
+                                                        style="text-decoration: line-through; opacity: 0.6; font-size: 0.85em; margin-right: 8px;">
+                                                        {{ number_format($product->price, 2, ',', ' ') }} د.م
+                                                    </span>
+                                                    <span>
+                                                        {{ number_format($product->sale_price, 2, ',', ' ') }} د.م
+                                                    </span>
+                                                @else
+                                                    {{ number_format($product->price, 2, ',', ' ') }} د.م
+                                                @endif
                                             @endif
                                         </p>
 
