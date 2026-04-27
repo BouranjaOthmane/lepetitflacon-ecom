@@ -19,7 +19,7 @@ const CartManager = {
       this.items.push({ ...product, qty: 1 });
     }
     this.save();
-    showToast(`تم إضافة ${product.name} إلى السلة`);
+    showToast(`"${product.name}" a été ajouté au panier`);
   },
 
   removeItem(id) {
@@ -98,7 +98,7 @@ const CartManager = {
         </div>
         <div class="mini-cart__item-info">
           <h4 class="mini-cart__item-name">${item.name}</h4>
-          <p class="mini-cart__item-price">$${item.price.toFixed(2)}</p>
+          <p class="mini-cart__item-price">${item.price.toFixed(2)} DH</p>
           <div class="mini-cart__item-qty">
             <button onclick="CartManager.updateQty('${item.id}', ${item.qty - 1})">−</button>
             <span>${item.qty}</span>
@@ -110,7 +110,7 @@ const CartManager = {
       container.insertBefore(div, empty);
     });
 
-    if (total) total.textContent = `$${this.getTotal().toFixed(2)}`;
+    if (total) total.textContent = `${this.getTotal().toFixed(2)} DH`;
   }
 };
 

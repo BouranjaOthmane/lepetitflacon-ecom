@@ -29,8 +29,8 @@ class InvoiceService
                 $arabic = new \ArPHP\I18N\Arabic();
                 
                 // Reshape store info and slogan for RTL
-                $storeName = $arabic->utf8Glyphs('LUXE PARFUM');
-                $storeSlogan = $arabic->utf8Glyphs('عطور فاخرة بلمسة عصرية');
+                $storeName = $arabic->utf8Glyphs('Lepetitflacon');
+                $storeSlogan = 'Parfums de luxe avec une touche moderne';
 
                 $order->load(['items.product', 'user']);
                 
@@ -41,7 +41,7 @@ class InvoiceService
 
                 // Reshape customer and shipping info
                 $customerName = $arabic->utf8Glyphs($order->address_details['first_name'] . ' ' . $order->address_details['last_name'], 40);
-                $shippingLocation = $arabic->utf8Glyphs($order->address_details['country'] . ' - ' . $order->address_details['city'], 40);
+                // $shippingLocation = $arabic->utf8Glyphs($order->address_details['country'] . ' - ' . $order->address_details['city'], 40);
                 $shippingAddress = $arabic->utf8Glyphs($order->address_details['address'], 60);
 
                 $data = [
@@ -52,7 +52,7 @@ class InvoiceService
                     'store_name' => $storeName,
                     'store_slogan' => $storeSlogan,
                     'customer_name' => $customerName,
-                    'shipping_location' => $shippingLocation,
+                    // 'shipping_location' => $shippingLocation,
                     'shipping_address' => $shippingAddress,
                 ];
 

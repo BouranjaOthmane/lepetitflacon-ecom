@@ -3,11 +3,13 @@
 namespace App\Http\Controllers\Clients;
 
 use App\Http\Controllers\Controller;
+use App\Mail\AdminNewOrderMail;
 use App\Models\Order;
 use App\Models\User;
 use App\Notifications\NewOrderNotification;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Notification;
 
 class CheckoutController extends Controller
@@ -61,9 +63,9 @@ class CheckoutController extends Controller
                         'email'      => $validated['email'],
                         'phone'      => $validated['phone'],
                         'address'    => $validated['address'],
-                        
+
                         'zip'        => $validated['zip'] ?? null,
-                        
+
                     ],
                     'payment_method' => $paymentMethod,
                     'payment_status' => $paymentStatus,
@@ -103,6 +105,12 @@ class CheckoutController extends Controller
                 $admins = User::where('role', 'Admin')->get();
                 if ($admins->isNotEmpty()) {
                     Notification::send($admins, new NewOrderNotification($order));
+
+                    foreach ($admins as $admin) {
+                        
+                            Mail::to("bouranjaothmane@gmail.com")->send(new AdminNewOrderMail($order));
+                        
+                    }
                 }
 
                 /**

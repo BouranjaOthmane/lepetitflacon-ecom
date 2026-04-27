@@ -45,7 +45,7 @@ class InvoiceController extends Controller
      */
     public function download(Order $order)
     {
-        Gate::authorize('view', $order);
+        // Gate::authorize('view', $order);
 
         if (!$order->invoice_path) {
             $this->invoiceService->generateInvoice($order);

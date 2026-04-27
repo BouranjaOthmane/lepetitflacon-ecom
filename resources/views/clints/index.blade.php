@@ -23,7 +23,7 @@
     <!-- ========== قسم البطل ========== -->
     <section class="hero" id="hero">
         <div class="hero__bg">
-            <img src="{{ asset('assets/clints/images/hero-perfume.png') }}" alt="Parfum de luxe" class="hero__image"
+            <img src="{{ asset('assets/clints/images/hero-perfume-1.png') }}" alt="Parfum de luxe" class="hero__image"
                 id="heroImage">
         </div>
 
@@ -48,9 +48,9 @@
                         Acheter maintenant <i class="fas fa-arrow-right"></i>
                     </a>
 
-                    <a href="#categories" class="btn btn-secondary">
+                    {{-- <a href="#categories" class="btn btn-secondary">
                         Découvrir les collections
-                    </a>
+                    </a> --}}
                 </div>
             </div>
         </div>
@@ -111,13 +111,6 @@
                             @endif
 
                             <div class="product-card__actions">
-                                <button
-                                    class="wishlist-btn {{ auth()->check() && auth()->user()->wishlist->contains('product_id', $product->id) ? 'active' : '' }}"
-                                    aria-label="Ajouter aux favoris">
-                                    <i
-                                        class="{{ auth()->check() && auth()->user()->wishlist->contains('product_id', $product->id) ? 'fas' : 'far' }} fa-heart"></i>
-                                </button>
-
                                 <button aria-label="Aperçu rapide"
                                     onclick="window.location.href='{{ route('product', $product->id) }}'">
                                     <i class="far fa-eye"></i>
@@ -183,6 +176,10 @@
                         @foreach ($bestsellerProducts as $product)
                             <div class="bestseller-card">
 
+                                <div class="bestseller-card__image">
+                                    <img src="{{ $product->getFirstMediaUrl('images') ?: asset('assets/clints/images/arabic-perfume.png') }}"
+                                        alt="{{ $product->getTranslation('name', 'fr') }}">
+                                </div>
                                 <div class="bestseller-card__info">
                                     <span
                                         class="section-label">{{ $product->category->getTranslation('name', 'fr') ?? 'Collection exclusive' }}</span>
@@ -202,10 +199,7 @@
                                         class="btn btn-outline-gold">Découvrir
                                         <i class="fas fa-arrow-right"></i></a>
                                 </div>
-                                <div class="bestseller-card__image">
-                                    <img src="{{ $product->getFirstMediaUrl('images') ?: asset('assets/clints/images/arabic-perfume.png') }}"
-                                        alt="{{ $product->getTranslation('name', 'fr') }}">
-                                </div>
+
                             </div>
                         @endforeach
                     </div>
@@ -382,6 +376,10 @@
     <section class="section section--alt brand-story" id="brandStory">
         <div class="container">
             <div class="brand-story__wrapper reveal">
+                <div class="brand-story__image">
+                    <img src="{{ asset('assets/clints/images/brand-story.png') }}" alt="Notre savoir-faire">
+                    <div class="brand-story__accent"></div>
+                </div>
                 <div class="brand-story__content">
                     <span class="section-label">Notre philosophie</span>
                     <h2>L’art de la parfumerie</h2>
@@ -409,13 +407,8 @@
                             <p>Une expérience placée sous le signe de l’élégance</p>
                         </div>
                     </div>
-                    <a href="#" class="btn btn-outline-gold">Notre histoire <i
-                            class="fas fa-arrow-right"></i></a>
                 </div>
-                <div class="brand-story__image">
-                    <img src="{{ asset('assets/clints/images/brand-story.png') }}" alt="Notre savoir-faire">
-                    <div class="brand-story__accent"></div>
-                </div>
+
 
             </div>
         </div>

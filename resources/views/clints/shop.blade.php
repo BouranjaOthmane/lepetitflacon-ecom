@@ -46,7 +46,7 @@
                     </div>
 
                     <!-- Gamme de prix -->
-                    <div class="filter-group">
+                    {{-- <div class="filter-group">
                         <h4 class="filter-group__title">Gamme de prix <i class="fas fa-chevron-down"></i></h4>
                         <div class="filter-group__content">
                             <div class="price-range">
@@ -58,7 +58,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
 
                     <!-- Catégories -->
                     <div class="filter-group">
@@ -144,10 +144,10 @@
                                 <option value="rating" {{ request('sort') == 'rating' ? 'selected' : '' }}>Les mieux
                                     notés</option>
                             </select>
-                            <div class="shop-toolbar__view">
+                            {{-- <div class="shop-toolbar__view">
                                 <button class="view-btn active" data-view="grid"><i class="fas fa-th"></i></button>
                                 <button class="view-btn" data-view="list"><i class="fas fa-list"></i></button>
-                            </div>
+                            </div> --}}
                         </div>
                     </div>
 

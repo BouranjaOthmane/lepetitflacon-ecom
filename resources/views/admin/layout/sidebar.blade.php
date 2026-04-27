@@ -25,7 +25,7 @@
             <i class="fas fa-wind"></i> Notes olfactives
         </a>
 
-        <a href="{{ route('admin.orders.index') }}" class="sidebar__link {{ request()->routeIs('admin.orders.*') ? 'active' : '' }}" data-section="orders">
+        <a href="{{ route('admin.orders.index') }}" class="sidebar__link {{ request()->routeIs('admin.orders.*') ? 'active' : '' }}" >
             <i class="fas fa-shopping-cart"></i> Commandes
             <span class="badge">{{ \App\Models\Order::where('status', 'pending')->count() }}</span>
         </a>

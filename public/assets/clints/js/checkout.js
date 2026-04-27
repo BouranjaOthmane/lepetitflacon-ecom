@@ -24,7 +24,7 @@ function goToStep(step) {
                 if (el && !el.value.trim()) {
                     el.style.borderColor = "#C62828";
                     el.focus();
-                    showToast("يرجى ملء جميع الحقول المطلوبة");
+                    showToast("Veuillez remplir tous les champs obligatoires.");
                     setTimeout(() => (el.style.borderColor = ""), 2000);
                     return;
                 }
@@ -170,11 +170,10 @@ function placeOrder() {
 
     btn.disabled = true;
     btn.innerHTML =
-        '<i class="fas fa-spinner fa-spin"></i> جاري معالجة الطلب...';
+        '<i class="fas fa-spinner fa-spin"></i> Traitement de la commande en cours...';
 
     const subtotal = CartManager.getTotal();
-    const tax = subtotal * 0.08;
-    let total = subtotal + tax;
+    let total = subtotal;
 
     // Apply loyalty discount if applicable
     if (document.getElementById("usePointsCheckbox")?.checked) {
@@ -182,7 +181,8 @@ function placeOrder() {
             document.getElementById("pointsToRedeem")?.value || 0,
             10,
         );
-        const discount = points / 10; // 10 points = $1
+
+        const discount = points / 10;
         total = Math.max(0, total - discount);
     }
 
@@ -247,7 +247,9 @@ function placeOrder() {
 
             // Cash on delivery
             if (paymentMethod === "cod") {
-                showToast("تم تأكيد الطلب، وسيتم Paiement à la livraison");
+                showToast(
+                    "Votre commande a été confirmée. Le paiement se fera à la livraison.",
+                );
                 showSuccess(res.order_number, res.order_id);
                 return;
             }
@@ -261,8 +263,11 @@ function placeOrder() {
             showSuccess(res.order_number, res.order_id);
         })
         .catch((err) => {
-            console.error(err);
-            showToast(err.message || "حدث خطأ فني، يرجى المحاولة لاحقاً");
+            // console.error(err);
+            showToast(
+                err.message ||
+                    "Une erreur technique est survenue, veuillez réessayer plus tard.",
+            );
             btn.disabled = false;
             btn.innerHTML = originalText;
         });
@@ -368,15 +373,14 @@ function showSuccess(orderNumber, orderId) {
     }
     CartManager.items = [];
     CartManager.save();
-    showToast("تم إرسال الطلب بنجاح!");
+    showToast("Votre commande a été envoyée avec succès !");
 }
 
 // ===== Initialize =====
 document.addEventListener("DOMContentLoaded", () => {
-    // Check if cart is empty
     if (CartManager.items.length === 0) {
-        // If we're not seeing the success step, redirect to shop
         const successStep = document.getElementById("stepSuccess");
+
         if (
             !successStep ||
             (successStep && !successStep.classList.contains("active"))
@@ -394,33 +398,57 @@ document.addEventListener("DOMContentLoaded", () => {
     const checkoutTotal = document.getElementById("checkoutTotal");
 
     if (checkoutItems) {
+        checkoutItems.innerHTML = "";
+
         CartManager.items.forEach((item) => {
             checkoutItems.innerHTML += `
-        <div class="checkout-summary__item">
-          <div class="checkout-summary__item-info"><h4>${item.name}</h4><span>Quantité: ${item.qty}</span></div>
-          <span class="checkout-summary__item-price">$${(item.price * item.qty).toFixed(2)}</span>
-        </div>
-      `;
+                <div class="checkout-summary__item">
+                    <div style="display:flex; align-items:center; gap:12px;">
+                        <img src="${item.img}" alt="${item.name}"
+                            style="width:55px; height:55px; object-fit:cover; border-radius:8px;">
+                        
+                        <div class="checkout-summary__item-info">
+                            <h4>${item.name}</h4>
+                            ${item.size ? `<span>Taille : ${item.size}</span>` : ""}
+                            <span>Quantité : ${item.qty}</span>
+                        </div>
+                    </div>
+
+                    <span class="checkout-summary__item-price">
+                        ${(item.price * item.qty).toFixed(2)} DH
+                    </span>
+                </div>
+            `;
         });
     }
 
     const subtotal = CartManager.getTotal();
-    const tax = subtotal * 0.08;
-    const total = subtotal + tax;
+    const total = subtotal;
 
-    if (checkoutSubtotal)
-        checkoutSubtotal.textContent = `$${subtotal.toFixed(2)}`;
-    if (checkoutTax) checkoutTax.textContent = `$${tax.toFixed(2)}`;
-    if (checkoutTotal) checkoutTotal.textContent = `$${total.toFixed(2)}`;
+    if (checkoutSubtotal) {
+        checkoutSubtotal.textContent = `${subtotal.toFixed(2)} DH`;
+    }
 
-    // Loyalty Points Logic
+    if (checkoutTax) {
+        checkoutTax.textContent = `0.00 DH`;
+    }
+
+    if (checkoutTotal) {
+        checkoutTotal.textContent = `${total.toFixed(2)} DH`;
+    }
+
     const usePointsCheckbox = document.getElementById("usePointsCheckbox");
     const pointsToRedeem = document.getElementById("pointsToRedeem");
     const pointsInputWrapper = document.getElementById("pointsInputWrapper");
 
     if (usePointsCheckbox) {
         usePointsCheckbox.addEventListener("change", function () {
-            pointsInputWrapper.style.display = this.checked ? "block" : "none";
+            if (pointsInputWrapper) {
+                pointsInputWrapper.style.display = this.checked
+                    ? "block"
+                    : "none";
+            }
+
             updateCheckoutTotals();
         });
     }
@@ -431,16 +459,25 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function updateCheckoutTotals() {
         const subtotal = CartManager.getTotal();
-        const tax = subtotal * 0.08;
-        let total = subtotal + tax;
+        let total = subtotal;
 
         if (usePointsCheckbox && usePointsCheckbox.checked) {
-            const points = parseInt(pointsToRedeem.value) || 0;
+            const points = parseInt(pointsToRedeem?.value || 0, 10);
             const discount = points / 10;
             total = Math.max(0, total - discount);
         }
 
-        if (checkoutTotal) checkoutTotal.textContent = `$${total.toFixed(2)}`;
+        if (checkoutSubtotal) {
+            checkoutSubtotal.textContent = `${subtotal.toFixed(2)} DH`;
+        }
+
+        if (checkoutTax) {
+            checkoutTax.textContent = `0.00 DH`;
+        }
+
+        if (checkoutTotal) {
+            checkoutTotal.textContent = `${total.toFixed(2)} DH`;
+        }
     }
 
     document.querySelectorAll(".payment-method").forEach((method) => {
@@ -448,12 +485,16 @@ document.addEventListener("DOMContentLoaded", () => {
             document
                 .querySelectorAll(".payment-method")
                 .forEach((m) => m.classList.remove("active"));
+
             method.classList.add("active");
+
             const cardForm = document.getElementById("cardForm");
             const val = method.querySelector("input").value;
-            if (cardForm)
+
+            if (cardForm) {
                 cardForm.style.display =
                     val === "card" || val === "stripe" ? "block" : "none";
+            }
         });
     });
 });

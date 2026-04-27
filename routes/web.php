@@ -40,6 +40,8 @@ Route::post('/logout', [\App\Http\Controllers\Auth\AuthController::class, 'logou
     })->name('checkout');
     
     Route::post('/checkout', [\App\Http\Controllers\Clients\CheckoutController::class, 'placeOrder'])->name('checkout.store');
+    Route::get('/orders/{order}/invoice/download', [\App\Http\Controllers\Clients\InvoiceController::class, 'download'])->name('orders.invoice.download');
+
 
 Route::middleware('auth')->group(function () {
 
@@ -57,7 +59,6 @@ Route::middleware('auth')->group(function () {
     Route::get('/payment/success', [\App\Http\Controllers\PaymentController::class, 'success'])->name('payment.success');
     // Invoices
     Route::get('/orders/{order}/invoice', [\App\Http\Controllers\Clients\InvoiceController::class, 'view'])->name('orders.invoice.view');
-    Route::get('/orders/{order}/invoice/download', [\App\Http\Controllers\Clients\InvoiceController::class, 'download'])->name('orders.invoice.download');
 });
 
 // Stripe Webhook (Publicly accessible)

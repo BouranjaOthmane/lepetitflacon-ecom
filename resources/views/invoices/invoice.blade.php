@@ -2,17 +2,16 @@
 <html lang="fr" dir="ltr">
 <head>
     <meta charset="utf-8">
-    <title>فاتورة رقم {{ $order->invoice_number }}</title>
+    <title>Facture n° {{ $order->invoice_number }}</title>
     <style>
         body {
             font-family: 'DejaVu Sans', sans-serif;
-            text-align: right;
+            text-align: left;
             color: #333;
             line-height: 1.6;
             margin: 0;
             padding: 0;
         }
-        /* ... simplified layout ... */
         .invoice-box {
             padding: 20px;
             font-size: 12px;
@@ -24,7 +23,7 @@
         .items-table { width: 100%; border-collapse: collapse; margin-top: 20px; }
         .items-table th { background: #f8f9fa; padding: 8px; border: 1px solid #ddd; }
         .items-table td { padding: 8px; border: 1px solid #ddd; }
-        .summary-table { width: 250px; margin-right: auto; margin-top: 20px; }
+        .summary-table { width: 250px; margin-left: auto; margin-top: 20px; }
         .total-row { font-weight: bold; color: #c9a84c; font-size: 16px; }
         .footer { margin-top: 40px; text-align: center; font-size: 10px; color: #999; }
     </style>
@@ -33,30 +32,28 @@
     <div class="invoice-box">
         <div class="header">
             <div class="header-left">
-                <div class="logo">{{ $store_name }}</div>
+                <div class="logo">Lepetitflacon</div>
                 <div>{{ $store_slogan }}</div>
             </div>
             <div class="header-right">
-                <div class="invoice-title">{{ $arabic->utf8Glyphs('فاتورة ضريبية') }}</div>
-                <div>{{ $arabic->utf8Glyphs('رقم الفاتورة:') }} <strong>{{ $order->invoice_number }}</strong></div>
-                <div>{{ $arabic->utf8Glyphs('التاريخ:') }} {{ $date }}</div>
-                <div>{{ $arabic->utf8Glyphs('رقم الطلب:') }} #{{ $order->order_number }}</div>
+                <div class="invoice-title">Facture</div>
+                <div>N° facture : <strong>{{ $order->invoice_number }}</strong></div>
+                <div>Date : {{ $date }}</div>
+                <div>N° commande : #{{ $order->order_number }}</div>
             </div>
         </div>
 
         <table class="details-table">
             <tr>
                 <td width="50%">
-                    <div class="section-title">{{ $arabic->utf8Glyphs('بيانات العميل') }}</div>
+                    <div class="section-title">Informations client</div>
                     <div>{{ $customer_name }}</div>
                     <div>{{ $order->address_details['email'] }}</div>
                     <div>{{ $order->address_details['phone'] }}</div>
                 </td>
                 <td width="50%">
-                    <div class="section-title">{{ $arabic->utf8Glyphs('عنوان الشحن') }}</div>
-                    <div>{{ $shipping_location }}</div>
+                    <div class="section-title">Adresse de livraison</div>
                     <div>{{ $shipping_address }}</div>
-                    <div>{{ $arabic->utf8Glyphs('الرمز البريدي:') }} {{ $order->address_details['zip'] }}</div>
                 </td>
             </tr>
         </table>
@@ -64,10 +61,10 @@
         <table class="items-table">
             <thead>
                 <tr>
-                    <th>{{ $arabic->utf8Glyphs('المنتج') }}</th>
-                    <th>{{ $arabic->utf8Glyphs('Quantité') }}</th>
-                    <th>{{ $arabic->utf8Glyphs('سعر الوحدة') }}</th>
-                    <th>{{ $arabic->utf8Glyphs('الإجمالي') }}</th>
+                    <th>Produit</th>
+                    <th>Quantité</th>
+                    <th>Prix unitaire</th>
+                    <th>Total</th>
                 </tr>
             </thead>
             <tbody>
@@ -75,8 +72,8 @@
                 <tr>
                     <td>{{ $item->reshaped_name }}</td>
                     <td>{{ $item->quantity }}</td>
-                    <td>${{ number_format($item->price, 2) }}</td>
-                    <td>${{ number_format($item->price * $item->quantity, 2) }}</td>
+                    <td>{{ number_format($item->price, 2, ',', ' ') }} DH</td>
+                    <td>{{ number_format($item->price * $item->quantity, 2, ',', ' ') }} DH</td>
                 </tr>
                 @endforeach
             </tbody>
@@ -84,23 +81,23 @@
 
         <table class="summary-table">
             <tr>
-                <td>{{ $arabic->utf8Glyphs('المجموع الفرعي:') }}</td>
-                <td align="left">${{ number_format($order->total - $order->shipping_cost, 2) }}</td>
+                <td>Sous-total :</td>
+                <td align="left">{{ number_format($order->total - $order->shipping_cost, 2, ',', ' ') }} DH</td>
             </tr>
             <tr>
-                <td>{{ $arabic->utf8Glyphs('الشحن:') }}</td>
-                <td align="left">${{ number_format($order->shipping_cost, 2) }}</td>
+                <td>Livraison :</td>
+                <td align="left">{{ number_format($order->shipping_cost, 2, ',', ' ') }} DH</td>
             </tr>
             <tr class="total-row">
-                <td>{{ $arabic->utf8Glyphs('الإجمالي الكلي:') }}</td>
-                <td align="left">${{ number_format($order->total, 2) }}</td>
+                <td>Total :</td>
+                <td align="left">{{ number_format($order->total, 2, ',', ' ') }} DH</td>
             </tr>
         </table>
 
         <div class="footer">
-            <p>{{ $arabic->utf8Glyphs('شكراً لشرائكم من لوكس بارفيوم.') }}</p>
-            <p>{{ $arabic->utf8Glyphs('جميع الحقوق محفوظة &copy;') }} {{ date('Y') }} Luxe Parfum</p>
-            <p>{{ $arabic->utf8Glyphs('هذه الفاتورة تم إنشاؤها آلياً ولا تتطلب توقيعاً.') }}</p>
+            <p>Merci pour votre achat chez Lepetitflacon.</p>
+            <p>Tous droits réservés &copy; {{ date('Y') }} Lepetitflacon</p>
+            <p>Cette facture a été générée automatiquement et ne nécessite pas de signature.</p>
         </div>
     </div>
 </body>
