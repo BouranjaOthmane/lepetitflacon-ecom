@@ -245,5 +245,12 @@
 
     <script src="{{ asset('assets/clints/js/shop.js') }}"></script>
 </body>
+<a href="https://wa.me/212600000000" 
+   class="whatsapp-floating" 
+   target="_blank" 
+   rel="noopener"
+   aria-label="Contactez-nous sur WhatsApp">
+    <i class="fab fa-whatsapp"></i>
+</a>
 
 </html>

@@ -12,12 +12,12 @@
             <a href="{{ route('home') }}" class="navbar-v2__logo">
                 {{-- Replace with image if you have logo --}}
                 {{-- <span class="logo-box">LF</span> --}}
-                <img src="{{ asset('assets/clints/images/logo-lepetitflacon.png') }}" alt="Lepetitflacon"
+                <img src="{{ asset('assets/clints/images/logo-v-13.png') }}" alt="Lepetitflacon"
                     class="navbar-v2__logo-img">
             </a>
 
             <div class="navbar-v2__actions">
-                {{-- <div class="nav-user-dropdown" id="userDropdown">
+                <div class="nav-user-dropdown" id="userDropdown">
                     <button class="navbar-v2__icon" id="userBtn" aria-label="Mon compte">
                         <i class="far fa-user"></i>
                     </button>
@@ -32,14 +32,7 @@
                                 </a>
                             @endif
 
-                            <a href="{{ route('account.index') }}">
-                                <i class="fas fa-user-circle"></i> Mon compte
-                            </a>
-
-                            <a href="{{ route('loyalty.index') }}">
-                                <i class="fas fa-crown"></i> Points de fidélité
-                            </a>
-
+                        
                             <a href="#"
                                 onclick="event.preventDefault(); document.getElementById('nav-logout-form').submit();">
                                 <i class="fas fa-sign-out-alt"></i> Déconnexion
@@ -54,7 +47,7 @@
                             </a>
                         @endauth
                     </div>
-                </div> --}}
+                </div>
 
                 <button class="navbar-v2__icon cart-icon-btn" onclick="window.location.href='{{ route('cart') }}'"
                     aria-label="Panier">
@@ -83,7 +76,7 @@
                 @endforeach
             @endisset
 
-            <a href="#footer">À propos des décants</a>
+            {{-- <a href="#footer">À propos des décants</a> --}}
         </div>
     </div>
 </nav>

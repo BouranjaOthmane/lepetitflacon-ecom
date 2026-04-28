@@ -34,10 +34,6 @@
     <div class="table-card">
         <div class="table-card__header">
             <h3>Toutes les commandes</h3>
-            <div class="table-card__actions">
-                <button class="btn btn-outline btn-sm"><i class="fas fa-filter"></i> Filtrer</button>
-                <button class="btn btn-outline btn-sm"><i class="fas fa-download"></i> Exporter</button>
-            </div>
         </div>
         <table class="data-table">
             <thead>
@@ -78,7 +74,7 @@
                                 </div>
                             @endforeach
                         </td>
-                        <td style="font-weight:600">${{ number_format($order->total) }}</td>
+                        <td style="font-weight:600">{{ number_format($order->total) }} DH</td>
                         <td>
                             @php $status = strtolower($order->status); @endphp
                             <span class="status-badge {{ $status }}">
@@ -169,7 +165,7 @@
                         <option value="processing">En cours de traitement</option>
                         <option value="shipped">Expédiée</option>
                         <option value="delivered">Livrée</option>
-                        <option value="cancelled">Annulée</option>
+                        <option value="canceled">Annulée</option>
                     </select>
                 </div>
             </div>

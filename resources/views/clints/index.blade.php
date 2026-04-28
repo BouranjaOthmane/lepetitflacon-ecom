@@ -37,11 +37,12 @@
                     Découvrez votre parfum<br><em>d’exception</em>
                 </h1>
 
-                <p class="hero__subtitle">
+                
+                {{-- <p class="hero__subtitle">
                     Entrez dans l’univers raffiné de <strong>Lepetitflacon shop</strong> et laissez-vous séduire par des
                     parfums élégants, intenses et inoubliables. Chaque flacon révèle une signature unique, pensée pour
                     sublimer votre style et votre personnalité.
-                </p>
+                </p> --}}
 
                 <div class="hero__cta">
                     <a href="{{ route('shop') }}" class="btn btn-primary">
@@ -489,5 +490,13 @@
     @include('clints.layout.footer')
     <script src="{{ asset('assets/clints/js/homepage.js') }}"></script>
 </body>
+
+<a href="https://wa.me/212600000000" 
+   class="whatsapp-floating" 
+   target="_blank" 
+   rel="noopener"
+   aria-label="Contactez-nous sur WhatsApp">
+    <i class="fab fa-whatsapp"></i>
+</a>
 
 </html>

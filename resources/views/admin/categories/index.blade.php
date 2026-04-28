@@ -20,10 +20,10 @@
             <thead>
                 <tr>
                     <th>Image</th>
-                    <th>Nom (AR)</th>
-                    <th>Nom (EN)</th>
+                    <th>Nom</th>
+                    {{-- <th>Nom (EN)</th> --}}
                     <th>Catégorie parente</th>
-                    <th>Nombre de produits</th>
+                    {{-- <th>Nombre de produits</th> --}}
                     <th>Actions</th>
                 </tr>
             </thead>
@@ -39,7 +39,7 @@
                             </div>
                         @endif
                     </td>
-                    <td style="font-weight:600">{{ $category->getTranslation('name', 'ar') }}</td>
+                    {{-- <td style="font-weight:600">{{ $category->getTranslation('name', 'ar') }}</td> --}}
 
                     <td>{{ $category->getTranslation('name', 'en') }}</td>
                     <td>
@@ -49,7 +49,7 @@
                             <span class="status-badge pending">Principale</span>
                         @endif
                     </td>
-                    <td style="font-weight:600">{{ $category->products_count ?? 0 }}</td>
+                    {{-- <td style="font-weight:600">{{ $category->products_count ?? 0 }}</td> --}}
                     <td>
                         <div style="display:flex;gap:8px;justify-content: center;">
                             <a href="{{ route('admin.categories.edit', $category->id) }}" class="btn btn-outline btn-sm" title="Modifier">

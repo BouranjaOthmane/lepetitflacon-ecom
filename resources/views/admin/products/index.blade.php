@@ -103,7 +103,7 @@
                     <th>Catégorie</th>
                     <th>Marque</th>
                     <th>Prix initial</th>
-                    <th>Coupon appliqué</th>
+                    
                     <th>Prix net</th>
                     <th>Stock</th>
                     <th>Statut</th>

@@ -21,7 +21,7 @@
         <a href="{{ route('shop', ['cat' => 'gifts']) }}">Coffrets cadeaux</a>
       </div>
 
-      <div class="footer__col">
+      {{-- <div class="footer__col">
         <h4>Service client</h4>
         <a href="#">Contactez-nous</a>
         <a href="#">Livraison et retours</a>
@@ -37,7 +37,7 @@
         <a href="#">Durabilité</a>
         <a href="#">Carrières</a>
         <a href="#">Presse</a>
-      </div>
+      </div> --}}
     </div>
 
     <div class="footer__bottom">

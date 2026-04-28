@@ -64,7 +64,7 @@
                 <aside class="cart-summary">
                     <h3>Résumé de la commande</h3>
                     <div class="cart-summary__rows">
-                        <div class="cart-summary__row"><span>Sous-total</span><span id="summarySubtotal">$0.00</span>
+                        <div class="cart-summary__row"><span>Sous-total</span><span id="summarySubtotal">35.00 د.م</span>
                         </div>
                         <div class="cart-summary__row"><span>Livraison</span><span id="summaryShipping">Calculée au
                                 moment du paiement</span></div>
@@ -72,7 +72,7 @@
                     </div>
                     <div class="cart-summary__total">
                         <span>Total</span>
-                        <span id="summaryTotal">$0.00</span>
+                        <span id="summaryTotal">0.00 د.م</span>
                     </div>
                     <a href="{{ route('checkout') }}" class="btn btn-primary cart-checkout-btn">
                         Passer au paiement <i class="fas fa-arrow-right"></i>
@@ -92,5 +92,12 @@
 
     <script src="{{ asset('assets/clints/js/cart.js') }}"></script>
 </body>
+<a href="https://wa.me/212600000000" 
+   class="whatsapp-floating" 
+   target="_blank" 
+   rel="noopener"
+   aria-label="Contactez-nous sur WhatsApp">
+    <i class="fab fa-whatsapp"></i>
+</a>
 
 </html>

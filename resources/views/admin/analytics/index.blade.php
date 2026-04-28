@@ -18,7 +18,7 @@
                     {{-- <span class="stat-card__trend up"><i class="fas fa-caret-up"></i> 12%</span> --}}
                 </div>
                 <div class="stat-card__body">
-                    <div class="stat-card__value">${{ number_format($kpis['total_sales'], 2) }}</div>
+                    <div class="stat-card__value">{{ number_format($kpis['total_sales'], 2) }} DH</div>
                     <div class="stat-card__label">Ventes totales</div>
                 </div>
             </div>
@@ -54,7 +54,7 @@
                     {{-- <span class="stat-card__trend up"><i class="fas fa-caret-up"></i> 3%</span> --}}
                 </div>
                 <div class="stat-card__body">
-                    <div class="stat-card__value">${{ number_format($kpis['avg_order_value'], 2) }}</div>
+                    <div class="stat-card__value">{{ number_format($kpis['avg_order_value'], 2) }} DH</div>
                     <div class="stat-card__label">Valeur moyenne des commandes</div>
                 </div>
             </div>
@@ -87,7 +87,7 @@
                                 <span>{{ number_format($item->total_qty) }} ventes</span>
                             </div>
                             <div class="item-stats text-left">
-                                <div class="item-count">${{ number_format($item->total_revenue, 2) }}</div>
+                                <div class="item-count">{{ number_format($item->total_revenue, 2) }} DH</div>
                                 <div class="item-meta">Revenus</div>
                             </div>
                         </div>
@@ -100,7 +100,7 @@
 
 
         <!-- Third Row: Recent Orders & Activities -->
-        <div class="charts-row staggered-entry" style="margin-top: 30px">
+        <div class=" staggered-entry" style="margin-top: 30px">
             <!-- Recent Orders -->
             <div class="table-card glass-card" style="flex: 2">
                 <div class="table-card__header">
@@ -108,9 +108,9 @@
                         <i class="fas fa-shopping-cart" style="color: var(--color-gold)"></i>
                         <h3>Dernières commandes</h3>
                     </div>
-                    <a href="#" class="btn btn-outline btn-sm"
+                    {{-- <a href="#" class="btn btn-outline btn-sm"
                         onclick="document.querySelector('[data-section=orders]').click()">Voir tout <i
-                            class="fas fa-arrow-right"></i></a>
+                            class="fas fa-arrow-right"></i></a> --}}
                 </div>
                 <table class="data-table">
                     <thead>
@@ -132,7 +132,7 @@
                                         {{ $order->user->name ?? 'Client inconnu' }}
                                     </div>
                                 </td>
-                                <td style="font-weight:700">${{ number_format($order->total) }}</td>
+                                <td style="font-weight:700">{{ number_format($order->total) }} DH</td>
                                 <td>
                                     <span class="status-badge {{ $order->status }}">
                                         @if ($order->status == 'completed')
@@ -158,7 +158,7 @@
             </div>
 
             <!-- Recent Activities Timeline -->
-            <div class="chart-card glass-card" style="flex: 1">
+            {{-- <div class="chart-card glass-card" style="flex: 1">
                 <div class="chart-card__header">
                     <div class="title-with-icon">
                         <i class="fas fa-history" style="color: var(--color-info)"></i>
@@ -187,11 +187,11 @@
                         </div>
                     @endforeach
                 </div>
-            </div>
+            </div> --}}
         </div>
 
         <!-- Top Customers Table -->
-        <div class="table-card staggered-entry" style="margin-top: 30px">
+        {{-- <div class="table-card staggered-entry" style="margin-top: 30px">
             <div class="table-card__header">
                 <h3>Meilleurs clients</h3>
             </div>
@@ -221,7 +221,7 @@
                     @endforeach
                 </tbody>
             </table>
-        </div>
+        </div> --}}
     </section>
 
     @push('scripts')

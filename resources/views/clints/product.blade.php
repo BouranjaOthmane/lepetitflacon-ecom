@@ -77,7 +77,7 @@
                     <div class="product-info__price">
                         @if ($firstSize)
                             <span class="price-current" id="productCurrentPrice">
-                                ${{ number_format($firstSize->price, 2) }}
+                                {{ number_format($firstSize->price, 2) }} DH
                             </span>
                         @else
                             <span class="price-current" id="productCurrentPrice">Prix indisponible</span>
@@ -173,7 +173,7 @@
 
                     <!-- Informations supplémentaires -->
                     <div class="product-info__meta">
-                        <div><i class="fas fa-truck"></i> Livraison gratuite pour les commandes supérieures à 200 $
+                        <div><i class="fas fa-truck"></i> Livraison gratuite pour les commandes supérieures à 600 DH
                         </div>
                         <div><i class="fas fa-undo"></i> Politique de retour de 30 jours</div>
                         <div><i class="fas fa-shield-alt"></i> Garantie d’authenticité du produit à 100%</div>
@@ -186,7 +186,7 @@
     </section>
 
     <!-- Avis -->
-    <section class="section section--alt reviews-section">
+    {{-- <section class="section section--alt reviews-section">
         <div class="container">
             <div class="section-header">
                 <span class="section-label">Avis clients</span>
@@ -313,7 +313,7 @@
                     @endforelse
                 </div>
             </div>
-    </section>
+    </section> --}}
 
     <!-- Produits similaires -->
     <section class="section related-section">
@@ -341,7 +341,7 @@
                                         class="far fa-eye"></i></button>
                             </div>
                         </div>
-                        <div class="product-card__info">
+                        {{-- <div class="product-card__info">
                             <p class="product-card__brand">{{ $item->brand->name ?? 'Lepetitflacon' }}</p>
                             <h4 class="product-card__name">{{ $item->getTranslation('name', 'ar') }}</h4>
                             <div class="product-card__rating">
@@ -351,6 +351,44 @@
                             </div>
                             <p class="product-card__price">${{ $item->sale_price ?: $item->price }}</p>
                             <button class="product-card__btn add-to-cart-btn">Ajouter au panier</button>
+                        </div> --}}
+
+
+                           <div class="product-card__info">
+                            <p class="product-card__brand">{{ $product->brand->name ?? 'LePetitFlacon' }}</p>
+                            <h4 class="product-card__name">{{ $product->getTranslation('name', 'fr') }}</h4>
+
+
+                            @php
+                                $hasSizes = $product->sizes && $product->sizes->count() > 0;
+                                $minSizePrice = $hasSizes ? $product->sizes->min('price') : null;
+                                $maxSizePrice = $hasSizes ? $product->sizes->max('price') : null;
+                                $cardPrice = $minSizePrice ?: ($product->sale_price ?: $product->price);
+                            @endphp
+
+                            <p class="product-card__price">
+                                @if ($hasSizes)
+                                    @if ($minSizePrice == $maxSizePrice)
+                                        {{ number_format($minSizePrice, 2, ',', ' ') }} د.م
+                                    @else
+                                        {{ number_format($minSizePrice, 2, ',', ' ') }} د.م –
+                                        {{ number_format($maxSizePrice, 2, ',', ' ') }} د.م
+                                    @endif
+                                @else
+                                    {{ number_format($product->sale_price ?: $product->price, 2, ',', ' ') }}
+                                    د.م
+                                @endif
+                            </p>
+
+                            @if ($hasSizes)
+                                <a href="{{ route('product', $product->id) }}" class="product-card__btn">
+                                    Commander maintenant
+                                </a>
+                            @else
+                                <button class="product-card__btn add-to-cart-btn">
+                                    Ajouter au panier
+                                </button>
+                            @endif
                         </div>
                     </div>
                 @endforeach
@@ -363,5 +401,13 @@
 
     <script src="{{ asset('assets/clints/js/product.js') }}"></script>
 </body>
+
+<a href="https://wa.me/212600000000" 
+   class="whatsapp-floating" 
+   target="_blank" 
+   rel="noopener"
+   aria-label="Contactez-nous sur WhatsApp">
+    <i class="fab fa-whatsapp"></i>
+</a>
 
 </html>

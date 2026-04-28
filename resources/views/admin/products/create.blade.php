@@ -196,60 +196,7 @@
                 </div>
 
 
-                <div
-                    style="margin-top: 24px; padding: 20px; background: rgba(255, 255, 255, 0.02); border-radius: 12px; border: 1px solid var(--color-border)">
-                    <h4
-                        style="margin-bottom: 20px; color: var(--color-gold); display: flex; align-items: center; gap: 10px">
-                        <i class="fas fa-layer-group"></i> Pyramide olfactive (notes du parfum)
-                    </h4>
-
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label>Notes de tête (Top Notes)</label>
-                            <select name="top_notes[]" multiple class="form-input" style="height: 120px">
-                                @foreach ($notes as $note)
-                                    <option value="{{ $note->id }}">{{ $note->getTranslation('name', 'ar') }}
-                                        ({{ $note->getTranslation('name', 'en') }})
-                                    </option>
-                                @endforeach
-                            </select>
-                            <small style="color:var(--color-text-muted)">Vous pouvez choisir plusieurs notes (Ctrl +
-                                clic)</small>
-                        </div>
-                        <div class="form-group">
-                            <label>Notes de cœur (Middle Notes)</label>
-                            <select name="middle_notes[]" multiple class="form-input" style="height: 120px">
-                                @foreach ($notes as $note)
-                                    <option value="{{ $note->id }}">{{ $note->getTranslation('name', 'ar') }}
-                                        ({{ $note->getTranslation('name', 'en') }})
-                                    </option>
-                                @endforeach
-                            </select>
-                        </div>
-                    </div>
-
-                    <div class="form-row" style="margin-top: 16px">
-                        <div class="form-group">
-                            <label>Notes de fond (Base Notes)</label>
-                            <select name="base_notes[]" multiple class="form-input" style="height: 120px">
-                                @foreach ($notes as $note)
-                                    <option value="{{ $note->id }}">{{ $note->getTranslation('name', 'ar') }}
-                                        ({{ $note->getTranslation('name', 'en') }})
-                                    </option>
-                                @endforeach
-                            </select>
-                        </div>
-                        <div class="form-group"
-                            style="display: flex; align-items: center; justify-content: center; opacity: 0.5">
-                            <div style="text-align: center">
-                                <i class="fas fa-info-circle fa-2x"
-                                    style="margin-bottom: 10px; color: var(--color-gold)"></i>
-                                <p style="font-size: 0.8rem">Ces notes seront affichées sur la page produit dans la
-                                    boutique afin d’aider le client à comprendre la composition du parfum.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+              
 
                 <div class="form-group">
 

@@ -31,17 +31,17 @@
                         <form class="checkout-form" id="shippingForm">
                             <input type="radio" name="payment" value="cod" checked style="display:none;">
 
-                            <div class="form-row">
+                            
                                 <div class="form-group">
-                                    <label for="firstName">Prénom <span style="color: red">*</span></label>
+                                    <label for="firstName">Nom et prenom <span style="color: red">*</span></label>
                                     <input type="text" id="firstName" placeholder="Ahmed" required>
                                 </div>
 
-                                <div class="form-group">
+                                {{-- <div class="form-group">
                                     <label for="lastName">Nom de famille <span style="color: red">*</span></label>
                                     <input type="text" id="lastName" placeholder="Benali" required>
-                                </div>
-                            </div>
+                                </div> --}}
+                            
 
                             <div class="form-group">
                                 <label for="phone">Numéro de téléphone <span style="color: red">*</span></label>
@@ -170,5 +170,12 @@
     <script src="{{ asset('assets/clints/js/app.js') }}"></script>
     <script src="{{ asset('assets/clints/js/checkout.js') }}"></script>
 </body>
+<a href="https://wa.me/212600000000" 
+   class="whatsapp-floating" 
+   target="_blank" 
+   rel="noopener"
+   aria-label="Contactez-nous sur WhatsApp">
+    <i class="fab fa-whatsapp"></i>
+</a>
 
 </html>
