@@ -61,13 +61,26 @@ function renderCartPage() {
 
     // Update summary
     const subtotal = CartManager.getTotal();
-    // const tax = subtotal * 0.08;
-    const total = subtotal;
 
-    if (summarySubtotal)
-        summarySubtotal.textContent = `$${subtotal.toFixed(2)}`;
-    // if (summaryTax) summaryTax.textContent = `$${tax.toFixed(2)}`;
-    if (summaryTotal) summaryTotal.textContent = `$${total.toFixed(2)}`;
+    const shipping = subtotal > 600 ? 0 : 35;
+    const total = subtotal + shipping;
+
+    if (summarySubtotal) {
+        summarySubtotal.textContent = `${subtotal.toFixed(2)} د.م`;
+    }
+
+    const summaryShipping = document.getElementById("summaryShipping");
+
+    if (summaryShipping) {
+        summaryShipping.textContent =
+            shipping === 0
+                ? "Livraison GRATUITE"
+                : `${shipping.toFixed(2)} د.م`;
+    }
+
+    if (summaryTotal) {
+        summaryTotal.textContent = `${total.toFixed(2)} د.م`;
+    }
 }
 
 function updateCartQty(id, qty) {

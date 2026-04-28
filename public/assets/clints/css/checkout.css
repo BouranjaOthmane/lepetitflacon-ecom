@@ -493,7 +493,7 @@
 
 .checkout-summary__item-info span {
     font-size: 0.75rem;
-    color: var(--color-text-muted);
+    color: black;
 }
 
 .checkout-summary__item-price {
@@ -510,7 +510,7 @@
     justify-content: space-between;
     padding: 8px 0;
     font-size: 0.88rem;
-    color: var(--color-text-light);
+    color: black;
 }
 
 .checkout-summary__total {

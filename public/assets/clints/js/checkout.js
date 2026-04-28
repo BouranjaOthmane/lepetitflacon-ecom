@@ -173,7 +173,8 @@ function placeOrder() {
         '<i class="fas fa-spinner fa-spin"></i> Traitement de la commande en cours...';
 
     const subtotal = CartManager.getTotal();
-    let total = subtotal;
+    const shipping = subtotal > 600 ? 0 : 35;
+    let total = subtotal + shipping;
 
     // Apply loyalty discount if applicable
     if (document.getElementById("usePointsCheckbox")?.checked) {
@@ -396,6 +397,9 @@ document.addEventListener("DOMContentLoaded", () => {
     const checkoutSubtotal = document.getElementById("checkoutSubtotal");
     const checkoutTax = document.getElementById("checkoutTax");
     const checkoutTotal = document.getElementById("checkoutTotal");
+    const checkoutShipping = document.getElementById("checkoutShipping");
+
+  
 
     if (checkoutItems) {
         checkoutItems.innerHTML = "";
@@ -423,7 +427,13 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     const subtotal = CartManager.getTotal();
-    const total = subtotal;
+    const shipping = subtotal > 600 ? 0 : 35;
+    let total = subtotal + shipping;
+
+      if (checkoutShipping) {
+        checkoutShipping.textContent =
+            shipping === 0 ? "Livraison GRATUITE" : `${shipping.toFixed(2)} DH`;
+    }
 
     if (checkoutSubtotal) {
         checkoutSubtotal.textContent = `${subtotal.toFixed(2)} DH`;
@@ -458,27 +468,35 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     function updateCheckoutTotals() {
-        const subtotal = CartManager.getTotal();
-        let total = subtotal;
+    const subtotal = CartManager.getTotal();
+    const shipping = subtotal > 600 ? 0 : 35;
 
-        if (usePointsCheckbox && usePointsCheckbox.checked) {
-            const points = parseInt(pointsToRedeem?.value || 0, 10);
-            const discount = points / 10;
-            total = Math.max(0, total - discount);
-        }
+    let total = subtotal + shipping;
 
-        if (checkoutSubtotal) {
-            checkoutSubtotal.textContent = `${subtotal.toFixed(2)} DH`;
-        }
-
-        if (checkoutTax) {
-            checkoutTax.textContent = `0.00 DH`;
-        }
-
-        if (checkoutTotal) {
-            checkoutTotal.textContent = `${total.toFixed(2)} DH`;
-        }
+    if (usePointsCheckbox && usePointsCheckbox.checked) {
+        const points = parseInt(pointsToRedeem?.value || 0, 10);
+        const discount = points / 10;
+        total = Math.max(0, total - discount);
     }
+
+    if (checkoutSubtotal) {
+        checkoutSubtotal.textContent = `${subtotal.toFixed(2)} DH`;
+    }
+
+    if (checkoutShipping) {
+        checkoutShipping.textContent = shipping === 0
+            ? "Livraison GRATUITE"
+            : `${shipping.toFixed(2)} DH`;
+    }
+
+    if (checkoutTax) {
+        checkoutTax.textContent = `0.00 DH`;
+    }
+
+    if (checkoutTotal) {
+        checkoutTotal.textContent = `${total.toFixed(2)} DH`;
+    }
+}
 
     document.querySelectorAll(".payment-method").forEach((method) => {
         method.addEventListener("click", () => {
