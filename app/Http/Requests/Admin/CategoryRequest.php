@@ -25,6 +25,7 @@ class CategoryRequest extends FormRequest
             'name.en' => 'required|string|max:255',
             'name.ar' => 'required|string|max:255',
             'parent_id' => 'nullable|exists:categories,id',
+            'show_in_menu' => 'required|boolean',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp|max:2048',
         ];
     }

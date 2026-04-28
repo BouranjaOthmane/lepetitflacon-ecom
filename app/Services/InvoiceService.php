@@ -40,7 +40,7 @@ class InvoiceService
                 }
 
                 // Reshape customer and shipping info
-                $customerName = $arabic->utf8Glyphs($order->address_details['first_name'] . ' ' . $order->address_details['last_name'], 40);
+                $customerName = $arabic->utf8Glyphs($order->address_details['first_name'], 40);
                 // $shippingLocation = $arabic->utf8Glyphs($order->address_details['country'] . ' - ' . $order->address_details['city'], 40);
                 $shippingAddress = $arabic->utf8Glyphs($order->address_details['address'], 60);
 

@@ -17,8 +17,8 @@ class AuthController extends Controller
     public function showLogin()
     {
         if (Auth::check()) {
-            return Auth::user()->role === 'Admin' 
-                ? redirect()->route('admin.index') 
+            return Auth::user()->role === 'Admin'
+                ? redirect()->route('admin.index')
                 : redirect()->route('home');
         }
 
@@ -85,14 +85,14 @@ class AuthController extends Controller
             $request->session()->regenerate();
 
             if (Auth::user()->role === 'Admin') {
-                return redirect()->intended(route('admin.index'));
+                return redirect()->route('admin.analytics.index');
             }
 
-            return redirect()->intended(route('home'));
+            return redirect()->route('home');
         }
 
         return back()->withErrors([
-            'email' => 'البريد الإلكتروني أو كلمة المرور غير صحيحة.',
+            'email' => 'Email ou mot de passe incorrect.',
         ])->onlyInput('email');
     }
 

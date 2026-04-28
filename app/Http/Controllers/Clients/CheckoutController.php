@@ -19,7 +19,6 @@ class CheckoutController extends Controller
         try {
             $validated = $request->validate([
                 'firstName'       => 'required|string|max:255',
-                'lastName'        => 'required|string|max:255',
                 'email'           => 'nullable|email|max:255',
                 'phone'           => 'required|string|max:50',
                 'address'         => 'required|string|max:500',
@@ -59,7 +58,6 @@ class CheckoutController extends Controller
                     'status' => 'pending',
                     'address_details' => [
                         'first_name' => $validated['firstName'],
-                        'last_name'  => $validated['lastName'],
                         'email'      => $validated['email'],
                         'phone'      => $validated['phone'],
                         'address'    => $validated['address'],

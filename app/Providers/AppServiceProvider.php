@@ -35,7 +35,12 @@ class AppServiceProvider extends ServiceProvider
 
         // Share categories with all client views for navigation
         View::composer(['clints.layout.nav', 'clints.index', 'clints.shop'], function ($view) {
-            $view->with('parentCategories', Category::whereNull('parent_id')->get());
+            $view->with(
+                'parentCategories',
+                Category::whereNull('parent_id')
+                    ->where('show_in_menu', 1)
+                    ->get()
+            );
         });
 
         // Share unread notification count with admin layout and notifications page

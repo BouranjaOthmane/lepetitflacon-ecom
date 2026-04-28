@@ -65,7 +65,9 @@ class CategoryService
         if (isset($data['name']['en'])) {
             $data['slug'] = \Illuminate\Support\Str::slug($data['name']['en']);
         }
-        
+
+        $data['show_in_menu'] = $data['show_in_menu'] ?? 0;
+
         $category = $this->categoryRepository->create($data);
 
         $this->uploadImage($category, 'image');
@@ -94,13 +96,17 @@ class CategoryService
      * @param array $data
      * @return Category
      */
+
     public function updateCategory(int $id, array $data): Category
     {
         if (isset($data['name']['en'])) {
             $data['slug'] = \Illuminate\Support\Str::slug($data['name']['en']);
         }
-        
+
+        $data['show_in_menu'] = $data['show_in_menu'] ?? 0;
+
         $this->categoryRepository->update($id, $data);
+
         $category = $this->getCategoryById($id);
 
         $this->uploadImage($category, 'image');
@@ -122,7 +128,7 @@ class CategoryService
     }
 
 
-    public function uploadImage(Category $category,$image)
+    public function uploadImage(Category $category, $image)
     {
         if (request()->hasFile($image)) {
             $category->clearMediaCollection('images');
