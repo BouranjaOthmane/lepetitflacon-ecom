@@ -4,10 +4,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>سلة التسوق — لوكس بارفيوم</title>
-    <meta name="description" content="راجع سلة تسوقك وتابع لإتمام الشراء في لوكس بارفيوم.">
-    <link rel="stylesheet" href="{{ asset('assets/clints/css/style.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/clints/css/cart.css') }}">
+    <title>Panier — lepetitflacon
+    </title>
+    <meta name="description" content="Consultez votre panier et finalisez votre commande sur lepetitflacon.">
+
+    <link rel="stylesheet" href="{{ asset('assets/clints/css/style.css') }}?v={{ filemtime(public_path('assets/clints/css/style.css')) }}">
+    <link rel="stylesheet" href="{{ asset('assets/clints/css/cart.css') }}?v={{ filemtime(public_path('assets/clints/css/cart.css')) }}">
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 
