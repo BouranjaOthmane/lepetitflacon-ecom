@@ -1,70 +1,28 @@
 <!-- Top bars -->
 <div class="top-promo-bar">
-    🚨 LIVRAISON GRATUITE à partir de 600 🚨
+    <div class="promo-orbit">
+        <span class="drop"></span>
+        <span class="drop"></span>
+        <span class="drop"></span>
+    </div>
+
+    <div class="promo-marquee">
+        <div class="promo-line">
+            <span>Livraison gratuite à partir de 600 DH</span>
+        </div>
+    </div>
 </div>
 
-<nav class="navbar-v2" id="navbar">
-    <div class="navbar-v2__inner">
+<nav class="navbar-v3" id="navbar">
+    <div class="navbar-v3__inner">
 
-        <div class="navbar-v2__top">
-            <div></div>
+        <!-- Logo Left -->
+        <a href="{{ route('home') }}" class="navbar-v3__logo">
+            <img src="{{ asset('assets/clints/images/logo-v-13.png') }}" alt="Lepetitflacon">
+        </a>
 
-            <a href="{{ route('home') }}" class="navbar-v2__logo">
-                {{-- Replace with image if you have logo --}}
-                {{-- <span class="logo-box">LF</span> --}}
-                <img src="{{ asset('assets/clints/images/logo-v-13.png') }}" alt="Lepetitflacon"
-                    class="navbar-v2__logo-img">
-            </a>
-
-            <div class="navbar-v2__actions">
-                <div class="nav-user-dropdown" id="userDropdown">
-                    <a href="{{ auth()->check() && auth()->user()->role === 'Admin' ? route('admin.analytics.index') : route('login') }}"
-                        class="navbar-v2__icon" aria-label="Mon compte">
-                        <i class="far fa-user"></i>
-                    </a>
-
-                    {{-- <div class="dropdown-menu">
-                        @auth
-                            <span class="dropdown-header">Bonjour, {{ auth()->user()->name }}</span>
-
-                            @if (auth()->user()->role === 'Admin')
-                                <a href="{{ route('admin.analytics.index') }}">
-                                    <i class="fas fa-cog"></i> Tableau de bord
-                                </a>
-                            @endif
-
-
-                            <a href="#"
-                                onclick="event.preventDefault(); document.getElementById('nav-logout-form').submit();">
-                                <i class="fas fa-sign-out-alt"></i> Déconnexion
-                            </a>
-
-                            <form id="nav-logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                @csrf
-                            </form>
-                        @else
-                            <a href="{{ route('login') }}">
-                                <i class="fas fa-sign-in-alt"></i> Connexion
-                            </a>
-                        @endauth
-                    </div> --}}
-                </div>
-
-                <button class="navbar-v2__icon cart-icon-btn" onclick="window.location.href='{{ route('cart') }}'"
-                    aria-label="Panier">
-                    <i class="fas fa-shopping-bag"></i>
-                    <span class="cart-badge" id="cartCount">0</span>
-                </button>
-
-                <button class="navbar-v2__hamburger" id="hamburger" aria-label="Menu">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </button>
-            </div>
-        </div>
-
-        <div class="navbar-v2__menu">
+        <!-- Menu Center -->
+        <div class="navbar-v3__menu" id="navMenu">
             <a href="{{ route('home') }}" class="{{ request()->is('/') ? 'active' : '' }}">Accueil</a>
             <a href="{{ route('shop') }}" class="{{ request()->is('shop*') ? 'active' : '' }}">Décants</a>
 
@@ -76,9 +34,28 @@
                     </a>
                 @endforeach
             @endisset
-
-            {{-- <a href="#footer">À propos des décants</a> --}}
         </div>
+
+        <!-- Icons Right -->
+        <div class="navbar-v3__actions">
+            <a href="{{ auth()->check() && auth()->user()->role === 'Admin' ? route('admin.analytics.index') : route('login') }}"
+                class="navbar-v3__icon" aria-label="Mon compte">
+                <i class="far fa-user"></i>
+            </a>
+
+            <button class="navbar-v3__icon cart-icon-btn" onclick="window.location.href='{{ route('cart') }}'"
+                aria-label="Panier">
+                <i class="fas fa-shopping-bag"></i>
+                <span class="cart-badge" id="cartCount">0</span>
+            </button>
+
+            <button class="navbar-v3__hamburger" id="hamburger" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+
     </div>
 </nav>
 
@@ -127,3 +104,38 @@
         <a href="{{ route('cart') }}" class="btn btn-primary">Voir le panier</a>
     </div>
 </aside>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const hamburger = document.getElementById('hamburger');
+        const navMenu = document.getElementById('navMenu');
+
+        if (hamburger && navMenu) {
+            hamburger.addEventListener('click', function() {
+                hamburger.classList.toggle('active');
+                navMenu.classList.toggle('show');
+            });
+        }
+    });
+
+    document.addEventListener('DOMContentLoaded', function () {
+    const navbar = document.getElementById('navbar');
+    const hamburger = document.getElementById('hamburger');
+    const navMenu = document.getElementById('navMenu');
+
+    window.addEventListener('scroll', function () {
+        if (window.scrollY > 40) {
+            navbar.classList.add('is-scrolled');
+        } else {
+            navbar.classList.remove('is-scrolled');
+        }
+    });
+
+    if (hamburger && navMenu) {
+        hamburger.addEventListener('click', function () {
+            hamburger.classList.toggle('active');
+            navMenu.classList.toggle('show');
+        });
+    }
+});
+</script>

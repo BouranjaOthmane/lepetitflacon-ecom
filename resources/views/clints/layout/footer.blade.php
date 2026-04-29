@@ -1,55 +1,80 @@
-<footer class="footer" id="footer">
-  <div class="container">
-    <div class="footer__grid">
-      <div class="footer__brand">
-        <a href="{{ route('home') }}" class="nav-logo">Lepetit <span>flacon</span></a>
-        <p>Nous créons des parfums d’exception qui racontent votre histoire unique. Chaque fragrance est un voyage entre élégance et découverte.</p>
-        <div class="footer__social">
-          <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-          <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-          <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-          <a href="#" aria-label="Pinterest"><i class="fab fa-pinterest-p"></i></a>
+<footer class="footer-lpf" id="footer">
+    <div class="footer-lpf__glow footer-lpf__glow--one"></div>
+    <div class="footer-lpf__glow footer-lpf__glow--two"></div>
+
+    <div class="container">
+        <div class="footer-lpf__top">
+            <div class="footer-lpf__brand">
+                <a href="{{ route('home') }}" class="footer-lpf__logo">
+                    <img src="{{ asset('assets/clints/images/logo-v-13.png') }}" alt="Lepetitflacon">
+                </a>
+
+                <p>
+                    Découvrez des décants et parfums soigneusement sélectionnés.
+                    Une expérience parfumée élégante, accessible et premium.
+                </p>
+
+                <div class="footer-lpf__social">
+                    <a href="https://www.instagram.com/lepetit.flacon/" target="_blank" rel="noopener" aria-label="Instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+
+                    <a href="https://www.tiktok.com/@lepetit.flacon?_r=1&_t=ZS-95xA4EMShyJ" target="_blank" rel="noopener" aria-label="TikTok">
+                        <i class="fab fa-tiktok"></i>
+                    </a>
+
+                    <a href="https://wa.me/212704654736" target="_blank" rel="noopener" aria-label="WhatsApp">
+                        <i class="fab fa-whatsapp"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="footer-lpf__col">
+                <h4>Boutique</h4>
+                <a href="{{ route('shop') }}">Tous les parfums</a>
+                <a href="{{ route('shop') }}">Décants</a>
+                <a href="{{ route('shop', ['cat' => 'men']) }}">Décants homme</a>
+                <a href="{{ route('shop', ['cat' => 'women']) }}">Décants femme</a>
+                <a href="{{ route('shop', ['cat' => 'new']) }}">Nouveautés</a>
+            </div>
+
+            <div class="footer-lpf__col">
+                <h4>Service client</h4>
+                <a href="{{ route('cart') }}">Mon panier</a>
+                <a href="https://wa.me/212704654736" target="_blank" rel="noopener">Contact WhatsApp</a>
+            </div>
+
+            <div class="footer-lpf__seo-card">
+                <span class="footer-lpf__badge">LPF Premium</span>
+                <h4>Livraison gratuite</h4>
+                <p>À partir de 600 DH partout au Maroc.</p>
+
+                <div class="footer-lpf__features">
+                    <span><i class="fas fa-lock"></i> Paiement sécurisé</span>
+                    <span><i class="fas fa-truck"></i> Livraison rapide</span>
+                    <span><i class="fas fa-spray-can-sparkles"></i> Parfums premium</span>
+                </div>
+            </div>
         </div>
-      </div>
 
-      <div class="footer__col">
-        <h4>Boutique</h4>
-        <a href="{{ route('shop') }}">Tous les parfums</a>
-        <a href="{{ route('shop', ['cat' => 'men']) }}">Collection homme</a>
-        <a href="{{ route('shop', ['cat' => 'women']) }}">Collection femme</a>
-        <a href="{{ route('shop', ['cat' => 'new']) }}">Nouveautés</a>
-        <a href="{{ route('shop', ['cat' => 'gifts']) }}">Coffrets cadeaux</a>
-      </div>
+        <div class="footer-lpf__seo-text">
+            <strong>Lepetitflacon.shop</strong> — boutique en ligne spécialisée dans les décants de parfums,
+            parfums homme, parfums femme et fragrances premium au Maroc.
+        </div>
 
-      {{-- <div class="footer__col">
-        <h4>Service client</h4>
-        <a href="#">Contactez-nous</a>
-        <a href="#">Livraison et retours</a>
-        <a href="#">FAQ</a>
-        <a href="#">Suivre ma commande</a>
-        <a href="#">Guide des tailles</a>
-      </div>
+        <div class="footer-lpf__bottom">
+            <p class="footer-lpf__copyright">
+                &copy; 2026 Lepetitflacon. Tous droits réservés.
+            </p>
 
-      <div class="footer__col">
-        <h4>Qui sommes-nous ?</h4>
-        <a href="#">Notre histoire</a>
-        <a href="#">Savoir-faire</a>
-        <a href="#">Durabilité</a>
-        <a href="#">Carrières</a>
-        <a href="#">Presse</a>
-      </div> --}}
+            <div class="footer-lpf__bottom-right">
+                <a href="https://technoproweb.com/" target="_blank" rel="noopener" class="footer-lpf__credit">
+                    <i class="fas fa-code"></i>
+                    <span><small>Conçu par</small> Techno Pro Web</span>
+                </a>
+            </div>
+        </div>
     </div>
-
-    <div class="footer__bottom">
-      <p>&copy; 2026 Lepetitflacon. Tous droits réservés.</p>
-      <div class="footer__payments">
-        <i class="fab fa-cc-visa"></i>
-        <i class="fab fa-cc-mastercard"></i>
-        <i class="fab fa-cc-amex"></i>
-        <i class="fab fa-cc-paypal"></i>
-      </div>
-    </div>
-  </div>
 </footer>
 
 <!-- Notification -->

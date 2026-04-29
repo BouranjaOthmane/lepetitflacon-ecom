@@ -105,3 +105,35 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 });
+
+// Start cookies 
+document.addEventListener('DOMContentLoaded', function () {
+    const cookieBox = document.getElementById('cookieLpf');
+    const acceptBtn = document.getElementById('cookieAccept');
+    const rejectBtn = document.getElementById('cookieReject');
+
+    if (!cookieBox) return;
+
+    if (localStorage.getItem('lpf_cookie_choice')) {
+        cookieBox.style.display = 'none';
+        return;
+    }
+
+    function closeCookie(choice) {
+        localStorage.setItem('lpf_cookie_choice', choice);
+        cookieBox.classList.add('hide');
+
+        setTimeout(() => {
+            cookieBox.style.display = 'none';
+        }, 450);
+    }
+
+    acceptBtn?.addEventListener('click', function () {
+        closeCookie('accepted');
+    });
+
+    rejectBtn?.addEventListener('click', function () {
+        closeCookie('rejected');
+    });
+});
+// End cookies

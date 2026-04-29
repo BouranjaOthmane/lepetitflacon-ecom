@@ -165,12 +165,53 @@
     <script src="{{ asset('assets/clints/js/app.js') }}"></script>
     <script src="{{ asset('assets/clints/js/checkout.js') }}"></script>
 </body>
-<a href="https://wa.me/212704654736" 
-   class="whatsapp-floating" 
-   target="_blank" 
+<a href="https://wa.me/212704654736"
+   class="wa-perfume-magic"
+   target="_blank"
    rel="noopener"
-   aria-label="Contactez-nous sur WhatsApp">
-    <i class="fab fa-whatsapp"></i>
+   aria-label="Commander sur WhatsApp">
+
+    <span class="magic-glow"></span>
+
+    <span class="perfume-3d">
+        <span class="cap"></span>
+        <span class="neck"></span>
+        <span class="bottle-glass">
+            <span class="shine"></span>
+            <span class="liquid"></span>
+            <i class="fab fa-whatsapp"></i>
+        </span>
+        <span class="mist mist-1"></span>
+        <span class="mist mist-2"></span>
+        <span class="mist mist-3"></span>
+    </span>
+
 </a>
+
+<!-- LPF Cookie Perfume Banner -->
+<div class="cookie-lpf" id="cookieLpf">
+    <div class="cookie-lpf__bottle">
+        <span class="cookie-lpf__spray"></span>
+        <i class="fas fa-spray-can-sparkles"></i>
+    </div>
+
+    <div class="cookie-lpf__content">
+        <span class="cookie-lpf__label">Votre expérience parfumée</span>
+        <h3>Cookies & notes olfactives</h3>
+        <p>
+            Nous utilisons quelques cookies pour rendre votre visite plus douce :
+            navigation fluide, panier mémorisé et expérience boutique améliorée.
+        </p>
+    </div>
+
+    <div class="cookie-lpf__actions">
+        <button class="cookie-lpf__btn cookie-lpf__btn--ghost" id="cookieReject">
+            Refuser
+        </button>
+        <button class="cookie-lpf__btn cookie-lpf__btn--gold" id="cookieAccept">
+            J’accepte
+        </button>
+    </div>
+</div>
 
 </html>
