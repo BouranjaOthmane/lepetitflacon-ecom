@@ -68,7 +68,7 @@
                         </div>
                         <div class="cart-summary__row"><span>Livraison</span><span id="summaryShipping">Calculée au
                                 moment du paiement</span></div>
-                        {{-- <div class="cart-summary__row"><span>Taxe estimée</span><span id="summaryTax">$0.00</span></div> --}}
+                        
                     </div>
                     <div class="cart-summary__total">
                         <span>Total</span>
@@ -92,7 +92,7 @@
 
     <script src="{{ asset('assets/clints/js/cart.js') }}"></script>
 </body>
-<a href="https://wa.me/212600000000" 
+<a href="https://wa.me/212704654736" 
    class="whatsapp-floating" 
    target="_blank" 
    rel="noopener"

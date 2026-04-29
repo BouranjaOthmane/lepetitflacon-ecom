@@ -18,11 +18,12 @@
 
             <div class="navbar-v2__actions">
                 <div class="nav-user-dropdown" id="userDropdown">
-                    <button class="navbar-v2__icon" id="userBtn" aria-label="Mon compte">
+                    <a href="{{ auth()->check() && auth()->user()->role === 'Admin' ? route('admin.analytics.index') : route('login') }}"
+                        class="navbar-v2__icon" aria-label="Mon compte">
                         <i class="far fa-user"></i>
-                    </button>
+                    </a>
 
-                    <div class="dropdown-menu">
+                    {{-- <div class="dropdown-menu">
                         @auth
                             <span class="dropdown-header">Bonjour, {{ auth()->user()->name }}</span>
 
@@ -32,7 +33,7 @@
                                 </a>
                             @endif
 
-                        
+
                             <a href="#"
                                 onclick="event.preventDefault(); document.getElementById('nav-logout-form').submit();">
                                 <i class="fas fa-sign-out-alt"></i> Déconnexion
@@ -46,7 +47,7 @@
                                 <i class="fas fa-sign-in-alt"></i> Connexion
                             </a>
                         @endauth
-                    </div>
+                    </div> --}}
                 </div>
 
                 <button class="navbar-v2__icon cart-icon-btn" onclick="window.location.href='{{ route('cart') }}'"

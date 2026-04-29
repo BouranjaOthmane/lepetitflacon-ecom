@@ -74,7 +74,17 @@
                                 </div>
                             @endforeach
                         </td>
-                        <td style="font-weight:600">{{ number_format($order->total) }} DH</td>
+                        <td style="font-weight:600">
+    <div>
+        {{ number_format($order->total, 2, ',', ' ') }} DH
+    </div>
+
+    @if($order->shipping_cost == 0)
+        <div style="color:green; font-size:0.8rem;">
+            Livraison gratuite
+        </div>
+    @endif
+</td>
                         <td>
                             @php $status = strtolower($order->status); @endphp
                             <span class="status-badge {{ $status }}">

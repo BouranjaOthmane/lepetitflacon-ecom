@@ -216,14 +216,9 @@
     <div class="login-container">
     <div class="login-card">
         <div class="logo-box">
-            <i class="fas fa-crown"></i>
             <h1>LEPETITFLACON</h1>
         </div>
 
-        <div class="login-header">
-            <h2>Bon retour parmi nous</h2>
-            <p>Veuillez vous connecter pour accéder à votre compte</p>
-        </div>
 
         @if ($errors->any())
             <div class="alert-error">
@@ -251,10 +246,7 @@
                 </div>
             </div>
 
-            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 20px; font-size: 14px; color: var(--text-muted);">
-                <input type="checkbox" name="remember" id="remember">
-                <label for="remember" style="margin: 0; cursor: pointer;">Se souvenir de moi</label>
-            </div>
+          
 
             <button type="submit" class="btn-login">
                 <span>Se connecter</span>
@@ -262,15 +254,7 @@
             </button>
         </form>
 
-        <div class="footer-links" style="display: flex; flex-direction: column; gap: 10px;">
-            <div style="display: flex; justify-content: space-between;">
-                <a href="#">Mot de passe oublié ?</a>
-                <a href="{{ route('home') }}">Retour à l’accueil</a>
-            </div>
-            <p style="margin-top: 15px; font-size: 14px; color: var(--text-muted);">
-                Vous n’avez pas de compte ? <a href="{{ route('register') }}" style="color: var(--primary); font-weight: 600;">Créer un nouveau compte</a>
-            </p>
-        </div>
+
     </div>
 </div>
 

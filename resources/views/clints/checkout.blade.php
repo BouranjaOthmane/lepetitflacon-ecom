@@ -149,11 +149,6 @@
                             <span>Livraison</span>
                             <span id="checkoutShipping">35.00 DH</span>
                         </div>
-
-                        <div class="checkout-summary__row">
-                            <span>Taxe</span>
-                            <span id="checkoutTax">0.00 DH</span>
-                        </div>
                     </div>
 
                     <div class="checkout-summary__total">
@@ -170,7 +165,7 @@
     <script src="{{ asset('assets/clints/js/app.js') }}"></script>
     <script src="{{ asset('assets/clints/js/checkout.js') }}"></script>
 </body>
-<a href="https://wa.me/212600000000" 
+<a href="https://wa.me/212704654736" 
    class="whatsapp-floating" 
    target="_blank" 
    rel="noopener"

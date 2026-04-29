@@ -160,8 +160,16 @@
                             <input type="number" value="1" min="1" max="10" id="qtyInput" readonly>
                             <button id="qtyPlus">+</button>
                         </div>
-                        <button class="btn btn-primary product-add-btn" id="addToCartBtn">
-                            <i class="fas fa-shopping-bag"></i> Ajouter au panier
+
+                        <button class="btn btn-primary product-add-btn" id="addToCartBtn"
+                            data-stock="{{ $product->stock_quantity }}"
+                            {{ $product->stock_quantity <= 0 ? 'disabled' : '' }}>
+
+                            @if ($product->stock_quantity <= 0)
+                                <i class="fas fa-times-circle"></i> Rupture de stock
+                            @else
+                                <i class="fas fa-shopping-bag"></i> Ajouter au panier
+                            @endif
                         </button>
                         {{-- <button
                             class="btn-icon wishlist-btn {{ auth()->check() && auth()->user()->wishlist->contains('product_id', $product->id) ? 'active' : '' }}"
@@ -354,7 +362,7 @@
                         </div> --}}
 
 
-                           <div class="product-card__info">
+                        <div class="product-card__info">
                             <p class="product-card__brand">{{ $product->brand->name ?? 'LePetitFlacon' }}</p>
                             <h4 class="product-card__name">{{ $product->getTranslation('name', 'fr') }}</h4>
 
@@ -380,7 +388,11 @@
                                 @endif
                             </p>
 
-                            @if ($hasSizes)
+                            @if ($product->stock_quantity <= 0)
+                                <button class="product-card__btn" disabled style="opacity: .6; cursor: not-allowed;">
+                                    Rupture de stock
+                                </button>
+                            @elseif ($hasSizes)
                                 <a href="{{ route('product', $product->id) }}" class="product-card__btn">
                                     Commander maintenant
                                 </a>
@@ -402,11 +414,8 @@
     <script src="{{ asset('assets/clints/js/product.js') }}"></script>
 </body>
 
-<a href="https://wa.me/212600000000" 
-   class="whatsapp-floating" 
-   target="_blank" 
-   rel="noopener"
-   aria-label="Contactez-nous sur WhatsApp">
+<a href="https://wa.me/212704654736" class="whatsapp-floating" target="_blank" rel="noopener"
+    aria-label="Contactez-nous sur WhatsApp">
     <i class="fab fa-whatsapp"></i>
 </a>
 

@@ -218,7 +218,12 @@
                                         @endif
                                     </p>
 
-                                    @if ($hasSizes)
+                                    @if ($product->stock_quantity <= 0)
+                                        <button class="product-card__btn" disabled
+                                            style="opacity: .6; cursor: not-allowed;">
+                                            Rupture de stock
+                                        </button>
+                                    @elseif ($hasSizes)
                                         <a href="{{ route('product', $product->id) }}" class="product-card__btn">
                                             Commander maintenant
                                         </a>
@@ -245,11 +250,8 @@
 
     <script src="{{ asset('assets/clints/js/shop.js') }}"></script>
 </body>
-<a href="https://wa.me/212600000000" 
-   class="whatsapp-floating" 
-   target="_blank" 
-   rel="noopener"
-   aria-label="Contactez-nous sur WhatsApp">
+<a href="https://wa.me/212704654736" class="whatsapp-floating" target="_blank" rel="noopener"
+    aria-label="Contactez-nous sur WhatsApp">
     <i class="fab fa-whatsapp"></i>
 </a>
 
