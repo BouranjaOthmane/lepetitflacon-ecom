@@ -541,8 +541,8 @@ h4 {
 }
 
 .product-card:hover {
-  transform: translateY(-6px);
-  box-shadow: var(--shadow-lg);
+  /* transform: translateY(-6px); */
+  /* box-shadow: var(--shadow-lg); */
 }
 
 .product-card__image {
