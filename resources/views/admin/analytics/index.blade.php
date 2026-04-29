@@ -74,7 +74,7 @@
             </div>
 
             <!-- Top Selling Products -->
-            <div class="table-card">
+            {{-- <div class="table-card">
                 <div class="table-card__header">
                     <h3>Produits les plus vendus</h3>
                 </div>
@@ -95,7 +95,7 @@
                         <div class="text-center py-4 text-dim">Aucune donnée disponible</div>
                     @endforelse
                 </div>
-            </div>
+            </div> --}}
         </div>
 
 
