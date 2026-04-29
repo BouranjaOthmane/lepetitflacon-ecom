@@ -62,7 +62,7 @@
 
                             @foreach ($order->items as $item)
                                 <div style="font-size: 13px; color: black; margin-top: 4px;">
-                                    {{ $item->product->getTranslation('name', 'fr') ?? ($item->product->name ?? 'Produit supprimé') }}
+                                     {{ $item->product->name ?? 'Produit supprimé' }}
 
                                     @if (!empty($item->size))
                                         - {{ $item->size }}
