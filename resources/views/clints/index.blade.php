@@ -510,7 +510,7 @@
 
 .bestsellers-lpf__dots .dot.active {
     width: 28px;
-    background: #d8aa45;
+    background: #ffe7a5;
 }
 
 @media (max-width: 992px) {
@@ -549,7 +549,20 @@
         gap: 12px;
     }
 }
+.bestsellers-lpf__slider {
+    overflow: hidden;
+}
 
+.bestsellers-lpf__track {
+    display: flex;
+    width: 100%;
+    transition: transform .55s ease;
+}
+
+.bestseller-lpf-card {
+    flex: 0 0 100%;
+    min-width: 100%;
+}
 
 /* feedback */
 .testimonials-lpf {
@@ -1226,4 +1239,72 @@
     </div>
 </div>
 
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const track = document.getElementById('bestsellersTrack');
+    const prevBtn = document.getElementById('bsPrev');
+    const nextBtn = document.getElementById('bsNext');
+    const dotsWrap = document.getElementById('bsDots');
+
+    if (!track || !prevBtn || !nextBtn || !dotsWrap) return;
+
+    const slides = Array.from(track.querySelectorAll('.bestseller-lpf-card'));
+    const dots = Array.from(dotsWrap.querySelectorAll('.dot'));
+
+    let currentIndex = 0;
+    let autoPlay;
+
+    function goToSlide(index) {
+        if (index < 0) index = slides.length - 1;
+        if (index >= slides.length) index = 0;
+
+        currentIndex = index;
+
+        track.style.transform = `translateX(-${currentIndex * 100}%)`;
+
+        dots.forEach(dot => dot.classList.remove('active'));
+        if (dots[currentIndex]) {
+            dots[currentIndex].classList.add('active');
+        }
+    }
+
+    function nextSlide() {
+        goToSlide(currentIndex + 1);
+    }
+
+    function prevSlide() {
+        goToSlide(currentIndex - 1);
+    }
+
+    function startAutoPlay() {
+        autoPlay = setInterval(nextSlide, 5000);
+    }
+
+    function resetAutoPlay() {
+        clearInterval(autoPlay);
+        startAutoPlay();
+    }
+
+    nextBtn.addEventListener('click', function () {
+        nextSlide();
+        resetAutoPlay();
+    });
+
+    prevBtn.addEventListener('click', function () {
+        prevSlide();
+        resetAutoPlay();
+    });
+
+    dots.forEach((dot, index) => {
+        dot.addEventListener('click', function () {
+            goToSlide(index);
+            resetAutoPlay();
+        });
+    });
+
+    goToSlide(0);
+    startAutoPlay();
+});
+</script>
 </html>

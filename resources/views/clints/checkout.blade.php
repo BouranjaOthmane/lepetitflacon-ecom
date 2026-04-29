@@ -188,30 +188,5 @@
 
 </a>
 
-<!-- LPF Cookie Perfume Banner -->
-<div class="cookie-lpf" id="cookieLpf">
-    <div class="cookie-lpf__bottle">
-        <span class="cookie-lpf__spray"></span>
-        <i class="fas fa-spray-can-sparkles"></i>
-    </div>
-
-    <div class="cookie-lpf__content">
-        <span class="cookie-lpf__label">Votre expérience parfumée</span>
-        <h3>Cookies & notes olfactives</h3>
-        <p>
-            Nous utilisons quelques cookies pour rendre votre visite plus douce :
-            navigation fluide, panier mémorisé et expérience boutique améliorée.
-        </p>
-    </div>
-
-    <div class="cookie-lpf__actions">
-        <button class="cookie-lpf__btn cookie-lpf__btn--ghost" id="cookieReject">
-            Refuser
-        </button>
-        <button class="cookie-lpf__btn cookie-lpf__btn--gold" id="cookieAccept">
-            J’accepte
-        </button>
-    </div>
-</div>
 
 </html>
