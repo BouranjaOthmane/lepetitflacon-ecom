@@ -23,7 +23,7 @@ class CheckoutController extends Controller
                 'phone'           => 'required|string|max:50',
                 'address'         => 'required|string|max:500',
 
-                'zip'             => 'nullable|string|max:50',
+                'shipping_cost' => 'required|numeric|min:0',
                 'total'           => 'required|numeric|min:0',
                 'payment_method'  => 'required|in:card,stripe,paypal,cod',
                 'redeem_points'   => 'nullable|integer|min:0',
@@ -40,7 +40,7 @@ class CheckoutController extends Controller
                     $product = \App\Models\Product::lockForUpdate()->find($item['id']);
 
                     if (!$product || $product->stock_quantity < $item['qty']) {
-                        throw new \Exception('المنتج "' . ($product ? $product->name : 'Unknown') . '" غير متوفر في المخزون.');
+                        throw new \Exception('Le produit "' . ($product ? $product->name : 'Inconnu') . '" n\'est pas disponible en stock.');
                     }
                 }
 
@@ -67,6 +67,8 @@ class CheckoutController extends Controller
                     ],
                     'payment_method' => $paymentMethod,
                     'payment_status' => $paymentStatus,
+                    'shipping_cost' => $validated['shipping_cost'],
+                    
                 ]);
 
                 $stockService = app(\App\Services\StockService::class);
