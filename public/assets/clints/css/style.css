@@ -207,16 +207,17 @@ h4 {
 
 .nav-user-dropdown .dropdown-menu {
     position: absolute;
-    top: calc(100% + 18px);
+    top: 120%;
     right: 0;
-    min-width: 230px;
+    min-width: 200px;
     background: #fff;
-    border: 1px solid var(--lpf-gold, #E3A947);
-    border-radius: 10px;
-    padding: 10px 0;
-    display: none;
-    z-index: 99999;
-    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: 0.25s ease;
+    z-index: 999;
 }
 
 .nav-user-dropdown:hover .dropdown-menu,
@@ -1669,7 +1670,21 @@ h4 {
 }
 
 .nav-user-dropdown:hover .dropdown-menu {
-    display: block;
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.dropdown-menu a,
+.dropdown-menu .dropdown-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 11px 12px;
+    color: #111;
+    text-decoration: none;
+    border-radius: 8px;
+    white-space: nowrap;
 }
 
 .dropdown-menu a,

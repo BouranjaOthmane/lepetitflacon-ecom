@@ -159,6 +159,8 @@ function initStripe() {
     });
 }
 
+
+
 function placeOrder() {
     const btn = document.querySelector(".place-order-btn");
     if (!btn) return;
@@ -170,7 +172,7 @@ function placeOrder() {
 
     btn.disabled = true;
     btn.innerHTML =
-        '<i class="fas fa-spinner fa-spin"></i> Traitement de la commande en cours...';
+        '<i class="fas fa-spinner fa-spin"></i>En cours...';
 
     const subtotal = CartManager.getTotal();
     const shipping = subtotal > 600 ? 0 : 35;
@@ -203,6 +205,7 @@ function placeOrder() {
         lastName: document.getElementById("lastName")?.value || "",
         email: document.getElementById("email")?.value || "",
         phone: document.getElementById("phone")?.value || "",
+        shipping_cost: shipping,
         address: document.getElementById("address")?.value || "",
         city: document.getElementById("city")?.value || "",
         zip: document.getElementById("zip")?.value || "",

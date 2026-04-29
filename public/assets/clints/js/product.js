@@ -189,7 +189,7 @@ function selectProductSize(button) {
     const priceBox = document.getElementById('productCurrentPrice');
 
     if (priceBox) {
-        priceBox.textContent = '$' + Number(price).toFixed(2);
+        priceBox.textContent = Number(price).toFixed(2) + 'DH';
     }
 
     const addToCartBtn = document.getElementById('addToCartBtn');
