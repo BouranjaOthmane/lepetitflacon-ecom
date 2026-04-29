@@ -31,7 +31,7 @@
 
         <div class="container hero__container">
             <div class="hero__content">
-                <span class="hero__label">Collection exclusive 2026 · Lepetitflacon shop</span>
+                <span class="hero__label">Collection exclusive 2026 · Lepetitflacon SHOP</span>
 
                 <h1 class="hero__title">
                     Découvrez votre parfum<br><em>d’exception</em>
