@@ -103,7 +103,7 @@
                                             <button class="product-card__btn add-to-cart-btn" style="flex: 1;">Ajouter au panier</button>
                                             <button class="product-card__btn remove-wishlist-ajax" data-id="{{ $product->id }}" style="flex: 0 0 45px; background: #f8dede; color: #c62828; border: 1px solid #f2c7c7;"><i class="fas fa-trash-alt"></i></button>
                                         </div>
-                                        <button class="product-card__btn move-to-cart-btn" data-id="{{ $product->id }}" style="background: transparent; border: 1px solid var(--color-gold); color: var(--color-gold);">نقل إلى السلة</button>
+                                        <button class="product-card__btn move-to-cart-btn" data-id="{{ $product->id }}" style="background: transparent; border: 1px solid var(--color-gold); color: var(--color-gold);">Ajouter au panier</button>
                                     </div>
                                 @else
                                     <button class="product-card__btn add-to-cart-btn" style="margin-top: 15px; width: 100%;">Ajouter au panier</button>

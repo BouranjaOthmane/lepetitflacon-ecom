@@ -95,5 +95,5 @@ function updateCartQty(id, qty) {
 function removeCartItem(id) {
     CartManager.removeItem(id);
     renderCartPage();
-    showToast("تم إزالة المنتج من السلة");
+    showToast("Le produit a été supprimé du panier");
 }
