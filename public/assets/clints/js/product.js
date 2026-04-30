@@ -100,6 +100,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const flyImg = document.getElementById('galleryMain');
         flyToCart(product.img, flyImg);
 
+        ////
         setTimeout(() => {
             if (window.openMiniCart) window.openMiniCart();
         }, 800);
