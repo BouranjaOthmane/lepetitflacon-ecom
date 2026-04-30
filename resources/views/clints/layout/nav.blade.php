@@ -4,67 +4,67 @@
     /* =========================
    MOBILE NAVBAR ORDER ONLY
    ========================= */
-@media (max-width: 768px) {
+    @media (max-width: 768px) {
 
-    .navbar-v3__inner {
-        display: grid;
-        grid-template-columns: 48px 48px 1fr 48px;
-        align-items: center;
-        gap: 8px;
-        padding: 12px 18px;
-        min-height: 72px;
-    }
+        .navbar-v3__inner {
+            display: grid;
+            grid-template-columns: 48px 48px 1fr 48px;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 18px;
+            min-height: 72px;
+        }
 
-    /* Hide desktop menu on mobile */
-    .navbar-v3__menu {
-        display: none;
-    }
+        /* Hide desktop menu on mobile */
+        .navbar-v3__menu {
+            display: none;
+        }
 
-    /* Actions container becomes contents so icons can be ordered */
-    .navbar-v3__actions {
-        display: contents;
-    }
+        /* Actions container becomes contents so icons can be ordered */
+        .navbar-v3__actions {
+            display: contents;
+        }
 
-    /* 1. Menu icon left */
-    .navbar-v3__hamburger {
-        grid-column: 1;
-        grid-row: 1;
-        display: flex;
-        justify-self: start;
-    }
+        /* 1. Menu icon left */
+        .navbar-v3__hamburger {
+            grid-column: 1;
+            grid-row: 1;
+            display: flex;
+            justify-self: start;
+        }
 
-    /* 2. Login icon */
-    .navbar-v3__actions > a.navbar-v3__icon {
-        grid-column: 2;
-        grid-row: 1;
-        justify-self: start;
-    }
+        /* 2. Login icon */
+        .navbar-v3__actions>a.navbar-v3__icon {
+            grid-column: 2;
+            grid-row: 1;
+            justify-self: start;
+        }
 
-    /* 3. Logo center */
-    .navbar-v3__logo {
-        grid-column: 3;
-        grid-row: 1;
-        justify-self: center;
-    }
+        /* 3. Logo center */
+        .navbar-v3__logo {
+            grid-column: 3;
+            grid-row: 1;
+            justify-self: center;
+        }
 
-    .navbar-v3__logo img {
-        max-width: 145px;
-        height: auto;
-    }
+        .navbar-v3__logo img {
+            max-width: 145px;
+            height: auto;
+        }
 
-    /* 4. Panier right */
-    .cart-icon-btn {
-        grid-column: 4;
-        grid-row: 1;
-        justify-self: end;
-    }
+        /* 4. Panier right */
+        .cart-icon-btn {
+            grid-column: 4;
+            grid-row: 1;
+            justify-self: end;
+        }
 
-    .navbar-v3__icon,
-    .navbar-v3__hamburger {
-        width: 42px;
-        height: 42px;
+        .navbar-v3__icon,
+        .navbar-v3__hamburger {
+            width: 42px;
+            height: 42px;
+        }
     }
-}
 </style>
 <div class="top-promo-bar">
     <div class="promo-orbit">
@@ -110,11 +110,16 @@
                 <i class="far fa-user"></i>
             </a>
 
-            <button class="navbar-v3__icon cart-icon-btn" onclick="window.location.href='{{ route('cart') }}'"
+            <button class="navbar-v3__icon cart-icon-btn" id="cartToggle"
                 aria-label="Panier">
                 <i class="fas fa-shopping-bag"></i>
                 <span class="cart-badge" id="cartCount">0</span>
             </button>
+
+            {{-- <button class="navbar-v3__icon cart-icon-btn" id="cartToggle" aria-label="سلة التسوق">
+                <i class="fas fa-shopping-bag"></i>
+                <span class="badge" id="cartCount">0</span>
+            </button> --}}
 
             <button class="navbar-v3__hamburger" id="hamburger" aria-label="Menu">
                 <span></span>
@@ -159,7 +164,7 @@
         <div class="mini-cart__empty" id="miniCartEmpty">
             <i class="fas fa-shopping-bag"></i>
             <p>Votre panier est vide</p>
-            <a href="{{ route('shop') }}" class="btn btn-primary">Acheter maintenant mmm</a>
+            <a href="{{ route('shop') }}" class="btn btn-primary">Acheter maintenant</a>
         </div>
     </div>
 
@@ -185,24 +190,24 @@
         }
     });
 
-    document.addEventListener('DOMContentLoaded', function () {
-    const navbar = document.getElementById('navbar');
-    const hamburger = document.getElementById('hamburger');
-    const navMenu = document.getElementById('navMenu');
+    document.addEventListener('DOMContentLoaded', function() {
+        const navbar = document.getElementById('navbar');
+        const hamburger = document.getElementById('hamburger');
+        const navMenu = document.getElementById('navMenu');
 
-    window.addEventListener('scroll', function () {
-        if (window.scrollY > 40) {
-            navbar.classList.add('is-scrolled');
-        } else {
-            navbar.classList.remove('is-scrolled');
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 40) {
+                navbar.classList.add('is-scrolled');
+            } else {
+                navbar.classList.remove('is-scrolled');
+            }
+        });
+
+        if (hamburger && navMenu) {
+            hamburger.addEventListener('click', function() {
+                hamburger.classList.toggle('active');
+                navMenu.classList.toggle('show');
+            });
         }
     });
-
-    if (hamburger && navMenu) {
-        hamburger.addEventListener('click', function () {
-            hamburger.classList.toggle('active');
-            navMenu.classList.toggle('show');
-        });
-    }
-});
 </script>
