@@ -8,13 +8,19 @@
     </title>
     <meta name="description" content="Consultez votre panier et finalisez votre commande sur lepetitflacon.">
 
-    <link rel="stylesheet" href="{{ asset('assets/clints/css/style.css') }}?v={{ filemtime(public_path('assets/clints/css/style.css')) }}">
-    <link rel="stylesheet" href="{{ asset('assets/clints/css/cart.css') }}?v={{ filemtime(public_path('assets/clints/css/cart.css')) }}">
+    <link rel="stylesheet"
+        href="{{ asset('assets/clints/css/style.css') }}?v={{ filemtime(public_path('assets/clints/css/style.css')) }}">
+    <link rel="stylesheet"
+        href="{{ asset('assets/clints/css/cart.css') }}?v={{ filemtime(public_path('assets/clints/css/cart.css')) }}">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
+
     <style>
-        .cart-header-lpf {
+    /* ================================
+   CART HEADER
+================================ */
+.cart-header-lpf {
     position: relative;
     overflow: hidden;
     padding: 34px 0 30px;
@@ -148,150 +154,8 @@
     }
 }
 
-@media (max-width: 768px) {
-    .cart-header-lpf {
-        padding: 28px 0 26px;
-    }
-
-    .cart-header-lpf__inner {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 14px;
-    }
-
-    .cart-header-lpf__badge {
-        min-height: 42px;
-    }
-
-    .cart-header-lpf p {
-        font-size: 13px;
-    }
-}
-
-
-@media (max-width: 768px) {
-    .cart-table-wrapper {
-        padding: 0;
-        background: transparent;
-        border: 0;
-        box-shadow: none;
-        overflow: visible;
-    }
-
-    .cart-table {
-        min-width: 0;
-        width: 100%;
-        border-spacing: 0;
-    }
-
-    .cart-table thead {
-        display: none;
-    }
-
-    .cart-table,
-    .cart-table tbody,
-    .cart-table tr,
-    .cart-table td {
-        display: block;
-        width: 100%;
-    }
-
-    .cart-table tbody tr {
-        position: relative;
-        padding: 18px;
-        margin-bottom: 18px;
-        border-radius: 24px;
-        background:
-            radial-gradient(circle at 12% 10%, rgba(255, 231, 165, .24), transparent 30%),
-            linear-gradient(145deg, #ffffff, #fffaf4);
-        border: 1px solid rgba(216, 170, 69, .22);
-        box-shadow: 0 18px 38px rgba(11, 16, 61, .08);
-    }
-
-    .cart-table tbody td {
-        border: 0 !important;
-        padding: 0;
-    }
-
-    .cart-table tbody td:first-child {
-        display: grid;
-        grid-template-columns: 92px 1fr;
-        gap: 14px;
-        align-items: center;
-        margin-bottom: 18px;
-    }
-
-    .cart-table img {
-        width: 92px;
-        height: 92px;
-        border-radius: 18px;
-        object-fit: cover;
-    }
-
-    .cart-table tbody td:nth-child(2) {
-        font-size: 19px;
-        font-weight: 800;
-        color: #0B103D;
-        margin-bottom: 16px;
-    }
-
-    .cart-table tbody td:nth-child(2)::before {
-        content: "Prix";
-        display: block;
-        color: rgba(11, 16, 61, .45);
-        font-size: 10px;
-        font-weight: 900;
-        letter-spacing: 2px;
-        text-transform: uppercase;
-        margin-bottom: 4px;
-    }
-
-    .cart-table tbody td:nth-child(3) {
-        display: flex;
-        justify-content: flex-end;
-        margin-top: -58px;
-        margin-bottom: 22px;
-    }
-
-    .cart-table tbody td:nth-child(4) {
-        color: #d8aa45;
-        font-size: 20px;
-        font-weight: 900;
-    }
-
-    .cart-table tbody td:nth-child(4)::before {
-        content: "Total";
-        display: block;
-        color: rgba(11, 16, 61, .45);
-        font-size: 10px;
-        font-weight: 900;
-        letter-spacing: 2px;
-        text-transform: uppercase;
-        margin-bottom: 4px;
-    }
-
-    .cart-table tbody td:last-child {
-        position: absolute;
-        right: 18px;
-        bottom: 18px;
-        width: auto;
-    }
-
-    .cart-table .quantity-control,
-    .cart-table .quantity-controls,
-    .cart-table .cart-quantity {
-        max-width: 180px;
-        height: 48px;
-        border-radius: 16px !important;
-    }
-
-    .cart-table button {
-        min-width: 48px;
-    }
-}
-
 /* ================================
-   LPF CART CREATIVE DESIGN V4
+   CART SECTION
 ================================ */
 .cart-section {
     background:
@@ -308,7 +172,11 @@
     align-items: flex-start;
 }
 
+/* ================================
+   CART TABLE DESKTOP
+================================ */
 .cart-table-wrapper {
+    width: 100%;
     background: rgba(255, 255, 255, .86);
     border: 1px solid rgba(224, 177, 86, .18);
     border-radius: 30px;
@@ -355,13 +223,12 @@
 }
 
 .cart-table tbody td {
-    padding: 26px 16px;
+    padding: 24px 16px;
     vertical-align: middle;
     color: #252525;
     font-size: 16px;
 }
 
-/* Product image + info if your JS uses image/text inside first td */
 .cart-table img {
     width: 92px;
     height: 92px;
@@ -370,16 +237,34 @@
     box-shadow: 0 12px 24px rgba(0,0,0,.12);
 }
 
-/* Quantity buttons */
+.cart-table td:nth-child(4) {
+    color: #dca84c;
+    font-weight: 800;
+    white-space: nowrap;
+}
+
+/* Quantity */
+.quantity-control,
+.qty-control,
+.quantity-controls,
+.cart-quantity {
+    display: inline-flex;
+    align-items: center;
+    overflow: hidden;
+    background: #fff;
+    border: 1px solid #ece8df;
+    border-radius: 12px;
+}
+
 .cart-table button,
 .qty-btn,
 .quantity-btn {
     border: 0;
-    min-width: 52px;
-    height: 52px;
+    min-width: 46px;
+    height: 46px;
     background: #f8f6f2;
     color: #181818;
-    font-size: 20px;
+    font-size: 18px;
     cursor: pointer;
     transition: .25s ease;
 }
@@ -391,35 +276,18 @@
     color: #fff;
 }
 
-.quantity-control,
-.qty-control {
-    display: inline-flex;
-    align-items: center;
-    border: 1px solid #ece8df;
-    border-radius: 10px;
-    overflow: hidden;
-    background: #fff;
-}
-
 .quantity-control input,
 .qty-control input,
 .cart-table input[type="number"] {
-    width: 58px;
-    height: 52px;
+    width: 52px;
+    height: 46px;
     border: 0;
     text-align: center;
     font-weight: 700;
     outline: none;
 }
 
-/* Total price */
-.cart-table td:nth-child(4) {
-    color: #dca84c;
-    font-weight: 800;
-    white-space: nowrap;
-}
-
-/* Delete icon */
+/* Delete */
 .cart-table td:last-child,
 .cart-table .remove,
 .cart-table .delete,
@@ -444,7 +312,9 @@
     transform: scale(1.18) rotate(8deg);
 }
 
-/* Summary */
+/* ================================
+   CART SUMMARY
+================================ */
 .cart-summary {
     background:
         linear-gradient(180deg, rgba(255,255,255,.96), rgba(250,247,241,.96)),
@@ -469,8 +339,14 @@
 }
 
 @keyframes lpfSpark {
-    0%, 100% { transform: scale(.8) rotate(0deg); opacity: .45; }
-    50% { transform: scale(1.15) rotate(20deg); opacity: 1; }
+    0%, 100% {
+        transform: scale(.8) rotate(0deg);
+        opacity: .45;
+    }
+    50% {
+        transform: scale(1.15) rotate(20deg);
+        opacity: 1;
+    }
 }
 
 .cart-summary h3 {
@@ -539,155 +415,7 @@
 }
 
 /* ================================
-   MOBILE RESPONSIVE - KEEP DETAILS
-================================ */
-@media (max-width: 950px) {
-    .cart-layout {
-        grid-template-columns: 1fr;
-    }
-
-    .cart-summary {
-        position: relative;
-        top: auto;
-    }
-}
-
-@media (max-width: 768px) {
-    .cart-section {
-        padding: 36px 0;
-    }
-
-    .cart-table-wrapper {
-        padding: 14px;
-        border-radius: 24px;
-        overflow: visible;
-    }
-
-    .cart-table,
-    .cart-table thead,
-    .cart-table tbody,
-    .cart-table th,
-    .cart-table td,
-    .cart-table tr {
-        display: block;
-        width: 100%;
-    }
-
-    .cart-table thead {
-        display: none;
-    }
-
-    .cart-table tbody tr {
-        background: #fff;
-        border: 1px solid rgba(224, 177, 86, .18);
-        border-radius: 22px;
-        padding: 16px;
-        margin-bottom: 18px;
-        box-shadow: 0 18px 40px rgba(7, 8, 73, .08);
-    }
-
-    .cart-table tbody tr:hover {
-        transform: none;
-    }
-
-    .cart-table tbody td {
-        padding: 12px 0;
-        border: 0;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        gap: 15px;
-        text-align: right;
-    }
-
-    .cart-table tbody td::before {
-        color: #999;
-        font-size: 12px;
-        font-weight: 800;
-        letter-spacing: 1.4px;
-        text-transform: uppercase;
-        text-align: left;
-    }
-
-    .cart-table tbody td:nth-child(1)::before { content: "Produit"; }
-    .cart-table tbody td:nth-child(2)::before { content: "Prix"; }
-    .cart-table tbody td:nth-child(3)::before { content: "Quantité"; }
-    .cart-table tbody td:nth-child(4)::before { content: "Total"; }
-    .cart-table tbody td:nth-child(5)::before { content: "Supprimer"; }
-
-    .cart-table tbody td:first-child {
-        display: grid;
-        grid-template-columns: 86px 1fr;
-        justify-content: start;
-        text-align: left;
-        gap: 14px;
-        padding-bottom: 18px;
-        border-bottom: 1px solid #f0eee9;
-    }
-
-    .cart-table tbody td:first-child::before {
-        display: none;
-    }
-
-    .cart-table img {
-        width: 86px;
-        height: 86px;
-        grid-row: span 3;
-    }
-
-    .quantity-control,
-    .qty-control {
-        margin-left: auto;
-    }
-
-    .cart-table button,
-    .qty-btn,
-    .quantity-btn {
-        min-width: 46px;
-        height: 46px;
-    }
-
-    .quantity-control input,
-    .qty-control input,
-    .cart-table input[type="number"] {
-        height: 46px;
-        width: 50px;
-    }
-
-    .cart-table td:last-child {
-        justify-content: space-between;
-        color: #d9534f;
-        font-weight: 700;
-    }
-
-    .cart-summary {
-        border-radius: 24px;
-        padding: 28px 22px;
-    }
-
-    .cart-summary h3 {
-        font-size: 22px;
-    }
-
-    .cart-summary__row,
-    .cart-summary__total {
-        font-size: 16px;
-    }
-
-    .cart-summary__total {
-        font-size: 21px;
-    }
-
-    .cart-checkout-btn {
-        height: 58px;
-        font-size: 14px;
-        letter-spacing: 1.4px;
-    }
-}
-
-
-/* ================================
-   EMPTY CART CREATIVE DESIGN LPF
+   EMPTY CART
 ================================ */
 .cart-empty {
     position: relative;
@@ -829,15 +557,241 @@
     box-shadow: 0 26px 55px rgba(224,177,86,.48);
 }
 
-/* Decorative perfume drops */
 .cart-empty .btn::after {
     content: "✦";
     margin-left: 14px;
     font-size: 18px;
 }
 
-/* Mobile */
+/* ================================
+   TABLET
+================================ */
+@media (max-width: 950px) {
+    .cart-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .cart-summary {
+        position: relative;
+        top: auto;
+        width: 100%;
+    }
+}
+
+/* ================================
+   MOBILE FINAL FIX
+================================ */
 @media (max-width: 768px) {
+    .cart-header-lpf {
+        padding: 28px 0 26px;
+    }
+
+    .cart-header-lpf__inner {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 14px;
+    }
+
+    .cart-header-lpf__badge {
+        min-height: 42px;
+    }
+
+    .cart-header-lpf p {
+        font-size: 13px;
+    }
+
+    .cart-section {
+        padding: 32px 0;
+    }
+
+    .cart-layout {
+        display: block !important;
+    }
+
+    .cart-table-wrapper {
+        padding: 0 !important;
+        background: transparent !important;
+        border: 0 !important;
+        box-shadow: none !important;
+        overflow: visible !important;
+    }
+
+    .cart-table,
+    .cart-table tbody,
+    .cart-table tr,
+    .cart-table td {
+        display: block !important;
+        width: 100% !important;
+    }
+
+    .cart-table {
+        border: 0 !important;
+        min-width: 0 !important;
+    }
+
+    .cart-table thead {
+        display: none !important;
+    }
+
+    .cart-table tbody tr {
+        position: relative !important;
+        margin-bottom: 16px !important;
+        padding: 14px !important;
+        border-radius: 20px !important;
+        background: linear-gradient(145deg, #ffffff, #fffaf4) !important;
+        border: 1px solid rgba(216, 170, 69, .25) !important;
+        box-shadow: 0 14px 34px rgba(11, 16, 61, .08) !important;
+    }
+
+    .cart-table tbody tr:hover {
+        transform: none !important;
+    }
+
+    .cart-table tbody td {
+        padding: 9px 0 !important;
+        border: 0 !important;
+        text-align: right !important;
+        font-size: 14px !important;
+    }
+
+    .cart-table tbody td:first-child {
+        display: grid !important;
+        grid-template-columns: 76px 1fr !important;
+        gap: 12px !important;
+        align-items: center !important;
+        text-align: left !important;
+        padding-bottom: 14px !important;
+        padding-right: 44px !important;
+        margin-bottom: 8px !important;
+        border-bottom: 1px solid #f0eee9 !important;
+    }
+
+    .cart-table tbody td:nth-child(2),
+    .cart-table tbody td:nth-child(3),
+    .cart-table tbody td:nth-child(4) {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+        gap: 12px !important;
+    }
+
+    .cart-table tbody td:nth-child(2)::before {
+        content: "Prix";
+    }
+
+    .cart-table tbody td:nth-child(3)::before {
+        content: "Quantité";
+    }
+
+    .cart-table tbody td:nth-child(4)::before {
+        content: "Total";
+    }
+
+    .cart-table tbody td:nth-child(2)::before,
+    .cart-table tbody td:nth-child(3)::before,
+    .cart-table tbody td:nth-child(4)::before {
+        color: rgba(11, 16, 61, .48);
+        font-size: 10px;
+        font-weight: 900;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        text-align: left;
+    }
+
+    .cart-table img {
+        width: 76px !important;
+        height: 76px !important;
+        border-radius: 14px !important;
+        object-fit: cover !important;
+    }
+
+    .cart-table tbody td:nth-child(4) {
+        color: #d8aa45 !important;
+        font-size: 15px !important;
+        font-weight: 900 !important;
+    }
+
+    .quantity-control,
+    .qty-control,
+    .quantity-controls,
+    .cart-quantity {
+        margin-left: auto !important;
+        max-width: 126px !important;
+        height: 38px !important;
+        border-radius: 12px !important;
+    }
+
+    .cart-table button,
+    .qty-btn,
+    .quantity-btn {
+        min-width: 38px !important;
+        height: 38px !important;
+        font-size: 15px !important;
+    }
+
+    .quantity-control input,
+    .qty-control input,
+    .cart-table input[type="number"] {
+        width: 42px !important;
+        height: 38px !important;
+        font-size: 13px !important;
+    }
+
+    .cart-table tbody td:last-child {
+        position: absolute !important;
+        top: 12px !important;
+        right: 12px !important;
+        width: auto !important;
+        padding: 0 !important;
+        display: block !important;
+    }
+
+    .cart-table tbody td:last-child::before {
+        display: none !important;
+    }
+
+    .cart-table tbody td:last-child button,
+    .cart-table tbody td:last-child i,
+    .cart-table .remove,
+    .cart-table .delete,
+    .cart-table .cart-remove {
+        width: 36px !important;
+        height: 36px !important;
+        border-radius: 50% !important;
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        background: #fff4f4 !important;
+        color: #d9534f !important;
+        font-size: 15px !important;
+    }
+
+    .cart-summary {
+        margin-top: 22px !important;
+        width: 100% !important;
+        border-radius: 24px !important;
+        padding: 26px 20px !important;
+    }
+
+    .cart-summary h3 {
+        font-size: 22px;
+    }
+
+    .cart-summary__row,
+    .cart-summary__total {
+        font-size: 16px;
+    }
+
+    .cart-summary__total {
+        font-size: 21px;
+    }
+
+    .cart-checkout-btn {
+        height: 58px;
+        font-size: 14px;
+        letter-spacing: 1.4px;
+    }
+
     .cart-empty {
         min-height: 520px;
         padding: 70px 18px;
@@ -877,7 +831,49 @@
     }
 }
 
-    </style>
+/* ================================
+   VERY SMALL MOBILE
+================================ */
+@media (max-width: 380px) {
+    .cart-table tbody tr {
+        padding: 12px !important;
+    }
+
+    .cart-table tbody td:first-child {
+        grid-template-columns: 66px 1fr !important;
+    }
+
+    .cart-table img {
+        width: 66px !important;
+        height: 66px !important;
+    }
+
+    .cart-table tbody td {
+        font-size: 13px !important;
+    }
+
+    .cart-table tbody td:nth-child(2)::before,
+    .cart-table tbody td:nth-child(3)::before,
+    .cart-table tbody td:nth-child(4)::before {
+        font-size: 9px;
+    }
+
+    .cart-table button,
+    .qty-btn,
+    .quantity-btn {
+        min-width: 34px !important;
+        height: 34px !important;
+    }
+
+    .quantity-control input,
+    .qty-control input,
+    .cart-table input[type="number"] {
+        width: 36px !important;
+        height: 34px !important;
+    }
+}    
+    </style> 
+
 </head>
 
 <body>
@@ -888,32 +884,32 @@
 
 
     <!-- رأس الصفحة -->
-<section class="cart-header-lpf">
-    <div class="cart-header-lpf__glow"></div>
+    <section class="cart-header-lpf">
+        <div class="cart-header-lpf__glow"></div>
 
-    <div class="container">
-        <div class="cart-header-lpf__inner">
-            <div>
-                <div class="cart-header-lpf__breadcrumb">
-                    <a href="{{ route('home') }}">Accueil</a>
-                    <span>/</span>
-                    <strong>Panier</strong>
+        <div class="container">
+            <div class="cart-header-lpf__inner">
+                <div>
+                    <div class="cart-header-lpf__breadcrumb">
+                        <a href="{{ route('home') }}">Accueil</a>
+                        <span>/</span>
+                        <strong>Panier</strong>
+                    </div>
+
+                    <h1>Votre <em>panier</em></h1>
+
+                    <p>
+                        Retrouvez vos parfums sélectionnés avant de finaliser votre commande.
+                    </p>
                 </div>
 
-                <h1>Votre <em>panier</em></h1>
-
-                <p>
-                    Retrouvez vos parfums sélectionnés avant de finaliser votre commande.
-                </p>
-            </div>
-
-            <div class="cart-header-lpf__badge">
-                <i class="fas fa-shopping-bag"></i>
-                <span>LPF Panier</span>
+                <div class="cart-header-lpf__badge">
+                    <i class="fas fa-shopping-bag"></i>
+                    <span>LPF Panier</span>
+                </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
     <!-- Contenu du panier -->
     <section class="section cart-section">
@@ -953,7 +949,7 @@
                         </div>
                         <div class="cart-summary__row"><span>Livraison</span><span id="summaryShipping">Calculée au
                                 moment du paiement</span></div>
-                        
+
                     </div>
                     <div class="cart-summary__total">
                         <span>Total</span>
@@ -976,11 +972,8 @@
 
     <script src="{{ asset('assets/clints/js/cart.js') }}"></script>
 </body>
-<a href="https://wa.me/212704654736"
-   class="wa-perfume-magic"
-   target="_blank"
-   rel="noopener"
-   aria-label="Commander sur WhatsApp">
+<a href="https://wa.me/212704654736" class="wa-perfume-magic" target="_blank" rel="noopener"
+    aria-label="Commander sur WhatsApp">
 
     <span class="magic-glow"></span>
 
