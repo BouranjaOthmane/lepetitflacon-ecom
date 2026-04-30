@@ -1309,7 +1309,7 @@
     <!-- ========== Pied de page ========== -->
     @include('clints.layout.footer')
 
-    <script src="{{ asset('assets/clints/js/product.js') }}"></script>
+    <script src="{{ asset('assets/clints/js/product.js') }}?v={{ filemtime(public_path('assets/clints/js/product.js')) }}"></script>
 </body>
 
 <a href="https://wa.me/212704654736"
