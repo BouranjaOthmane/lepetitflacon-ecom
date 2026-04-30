@@ -517,7 +517,7 @@ h4 {
 
 .nav-overlay {
   position: fixed;
-  inset: 0;
+  /* inset: 0; */
   background: var(--color-overlay);
   z-index: 1040;
   opacity: 0;
