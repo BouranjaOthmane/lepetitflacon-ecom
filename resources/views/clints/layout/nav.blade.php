@@ -372,9 +372,9 @@
         display: block;
     }
 
-    .navbar-v3 {
+    /* .navbar-v3 {
         z-index: 100000;
-    }
+    } */
     
 }
 
