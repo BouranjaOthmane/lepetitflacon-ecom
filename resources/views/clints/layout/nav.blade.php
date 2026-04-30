@@ -65,6 +65,268 @@
             height: 42px;
         }
     }
+
+
+
+    /* aside code design */
+    .mini-cart {
+    width: min(430px, 100%);
+    background:
+        radial-gradient(circle at 12% 8%, rgba(255, 231, 165, .28), transparent 28%),
+        linear-gradient(180deg, #fffaf4 0%, #ffffff 45%, #fffaf4 100%);
+    border-left: 1px solid rgba(216, 170, 69, .25);
+    box-shadow: -28px 0 70px rgba(11, 16, 61, .18);
+    overflow: hidden;
+}
+
+.mini-cart::before {
+    content: "LPF";
+    position: absolute;
+    right: -18px;
+    top: 95px;
+    font-family: serif;
+    font-size: 120px;
+    font-weight: 800;
+    color: rgba(11, 16, 61, .035);
+    pointer-events: none;
+}
+
+.mini-cart__header {
+    position: relative;
+    padding: 28px 28px 22px;
+    background: rgba(255,255,255,.55);
+    border-bottom: 1px solid rgba(216, 170, 69, .18);
+}
+
+.mini-cart__header h3 {
+    margin: 0;
+    color: #0B103D;
+    font-size: 34px;
+    font-weight: 900;
+    letter-spacing: -1px;
+}
+
+.mini-cart__header h3::after {
+    content: "Votre sélection parfumée";
+    display: block;
+    margin-top: 6px;
+    color: #d8aa45;
+    font-size: 11px;
+    font-weight: 900;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.mini-cart__close {
+    width: 42px;
+    height: 42px;
+    border-radius: 14px;
+    border: 1px solid rgba(216, 170, 69, .28);
+    background: #ffffff;
+    color: #0B103D;
+    box-shadow: 0 12px 24px rgba(11, 16, 61, .08);
+    transition: .3s ease;
+}
+
+.mini-cart__close:hover {
+    transform: rotate(90deg) translateY(-2px);
+    color: #d8aa45;
+}
+
+.mini-cart__items {
+    position: relative;
+    z-index: 2;
+    padding: 24px;
+}
+
+.mini-cart__items > *:not(.mini-cart__empty) {
+    position: relative;
+    padding: 16px;
+    margin-bottom: 16px;
+    border-radius: 24px;
+    background: rgba(255,255,255,.82);
+    border: 1px solid rgba(216, 170, 69, .18);
+    box-shadow: 0 16px 34px rgba(11, 16, 61, .07);
+    transition: .35s ease;
+}
+
+.mini-cart__items > *:not(.mini-cart__empty):hover {
+    transform: translateY(-4px);
+    box-shadow: 0 24px 44px rgba(11, 16, 61, .11);
+}
+
+.mini-cart__items img {
+    width: 88px !important;
+    height: 88px !important;
+    border-radius: 18px !important;
+    object-fit: cover;
+    box-shadow: 0 12px 24px rgba(11, 16, 61, .14);
+}
+
+.mini-cart__items h4,
+.mini-cart__items .name,
+.mini-cart__items .title {
+    color: #0B103D !important;
+    font-size: 17px !important;
+    font-weight: 800 !important;
+}
+
+.mini-cart__items .price,
+.mini-cart__items [class*="price"] {
+    color: #d8aa45 !important;
+    font-weight: 900 !important;
+}
+
+.mini-cart__items button {
+    border-radius: 12px !important;
+    border: 1px solid rgba(216, 170, 69, .24) !important;
+    background: #fffaf4 !important;
+    color: #0B103D !important;
+    transition: .25s ease;
+}
+
+.mini-cart__items button:hover {
+    background: linear-gradient(145deg, #fff4c9, #ffe7a5, #d8aa45) !important;
+}
+
+.mini-cart__empty {
+    text-align: center;
+    padding: 70px 25px;
+    border-radius: 28px;
+    background: rgba(255,255,255,.72);
+    border: 1px solid rgba(216, 170, 69, .18);
+}
+
+.mini-cart__empty i {
+    width: 76px;
+    height: 76px;
+    border-radius: 24px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: #0B103D;
+    background: linear-gradient(145deg, #fff4c9, #ffe7a5, #d8aa45);
+    font-size: 30px;
+    box-shadow: 0 18px 36px rgba(216, 170, 69, .28);
+    margin-bottom: 20px;
+    animation: miniBagFloat 3s ease-in-out infinite;
+}
+
+.mini-cart__empty p {
+    color: rgba(11, 16, 61, .65);
+    font-size: 16px;
+    margin-bottom: 18px;
+}
+
+.mini-cart__footer {
+    padding: 22px 28px 28px;
+    background: rgba(255,255,255,.86);
+    border-top: 1px solid rgba(216, 170, 69, .18);
+    box-shadow: 0 -18px 40px rgba(11, 16, 61, .06);
+}
+
+.mini-cart__total {
+    padding: 18px 0 24px;
+}
+
+.mini-cart__total span:first-child {
+    color: #0B103D;
+    font-size: 20px;
+    font-weight: 800;
+}
+
+.mini-cart__total span:last-child {
+    color: #d8aa45;
+    font-size: 30px;
+    font-weight: 900;
+}
+
+.mini-cart__footer .btn,
+.mini-cart__empty .btn {
+    width: 100%;
+    min-height: 54px;
+    border-radius: 18px !important;
+    background: linear-gradient(145deg, #fff4c9, #ffe7a5, #d8aa45) !important;
+    color: #0B103D !important;
+    border: 0 !important;
+    font-size: 13px;
+    font-weight: 900;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    box-shadow: 0 18px 36px rgba(216, 170, 69, .28);
+    transition: .35s ease;
+}
+
+.mini-cart__footer .btn:hover,
+.mini-cart__empty .btn:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 24px 46px rgba(216, 170, 69, .38);
+}
+
+@keyframes miniBagFloat {
+    0%, 100% {
+        transform: translateY(0) rotateY(0);
+    }
+    50% {
+        transform: translateY(-8px) rotateY(12deg);
+    }
+}
+
+@media (max-width: 576px) {
+    .mini-cart {
+        width: 100%;
+    }
+
+    .mini-cart__header {
+        padding: 24px 22px 18px;
+    }
+
+    .mini-cart__header h3 {
+        font-size: 28px;
+    }
+
+    .mini-cart__items {
+        padding: 18px;
+    }
+
+    .mini-cart__footer {
+        padding: 18px 22px 22px;
+    }
+
+    .mini-cart__total span:last-child {
+        font-size: 25px;
+    }
+}
+
+.mini-cart__items a,
+.mini-cart__items .remove,
+.mini-cart__items .remove-item,
+.mini-cart__items .delete,
+.mini-cart__items [class*="remove"] {
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
+    margin-top: 14px !important;
+    padding: 9px 18px !important;
+    border-radius: 999px !important;
+    border: 1px solid rgba(216, 170, 69, .28) !important;
+    background: rgba(255, 250, 244, .85) !important;
+    color: #0B103D !important;
+    font-size: 14px !important;
+    font-weight: 700 !important;
+    text-decoration: none !important;
+    line-height: 1.2 !important;
+}
+
+.mini-cart__items a:hover,
+.mini-cart__items .remove:hover,
+.mini-cart__items .remove-item:hover,
+.mini-cart__items .delete:hover,
+.mini-cart__items [class*="remove"]:hover {
+    background: linear-gradient(145deg, #fff4c9, #ffe7a5, #d8aa45) !important;
+    transform: translateY(-2px);
+}
+
 </style>
 <div class="top-promo-bar">
     <div class="promo-orbit">
