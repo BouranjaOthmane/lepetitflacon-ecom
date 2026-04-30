@@ -652,7 +652,7 @@
         }
 
         .testimonials-lpf__header h2 em {
-            color: #d8aa45;
+            color: #ffe7a5;
             font-style: italic;
         }
 

@@ -612,10 +612,10 @@
                                     <p class="product-card__price">
                                         @if ($hasSizes)
                                             @if ($minSizePrice == $maxSizePrice)
-                                                {{ number_format($minSizePrice, 2, ',', ' ') }} د.م
+                                                {{ number_format($minSizePrice, 2, ',', ' ') }} DH
                                             @else
-                                                {{ number_format($minSizePrice, 2, ',', ' ') }} د.م –
-                                                {{ number_format($maxSizePrice, 2, ',', ' ') }} د.م
+                                                {{ number_format($minSizePrice, 2, ',', ' ') }} DH –
+                                                {{ number_format($maxSizePrice, 2, ',', ' ') }} DH
                                             @endif
                                         @else
                                             {{ number_format($product->sale_price ?: $product->price, 2, ',', ' ') }}
