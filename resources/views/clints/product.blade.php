@@ -1231,7 +1231,7 @@
             </div>
 
             <h2>
-                Parfums <em>similaires</em>
+                Produits <em>similaires</em>
             </h2>
         </div>
 
