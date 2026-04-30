@@ -972,8 +972,8 @@ function viewOrder(id) {
                             ${item.size ? `<div style="font-size:0.8rem;color:var(--color-text-muted)">Taille : ${item.size}</div>` : ""}
                         </td>
                         <td>${item.quantity}</td>
-                        <td>${Number(item.price).toFixed(2)} د.م</td>
-                        <td>${Number(item.total).toFixed(2)} د.م</td>
+                        <td>${Number(item.price).toFixed(2)} DH</td>
+                        <td>${Number(item.total).toFixed(2)} DH</td>
                     </tr>
                 `;
             });
@@ -1015,7 +1015,7 @@ function viewOrder(id) {
                 </table>
 
                 <div style="text-align:right;margin-top:20px;font-size:1.2rem;font-weight:700;color:var(--color-gold)">
-                    Total : ${Number(order.total).toFixed(2)} د.م
+                    Total : ${Number(order.total).toFixed(2)} DH
                 </div>
             `;
         })

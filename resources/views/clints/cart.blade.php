@@ -67,7 +67,7 @@
                 <aside class="cart-summary">
                     <h3>Résumé de la commande</h3>
                     <div class="cart-summary__rows">
-                        <div class="cart-summary__row"><span>Sous-total</span><span id="summarySubtotal">35.00 د.م</span>
+                        <div class="cart-summary__row"><span>Sous-total</span><span id="summarySubtotal">35.00 DH</span>
                         </div>
                         <div class="cart-summary__row"><span>Livraison</span><span id="summaryShipping">Calculée au
                                 moment du paiement</span></div>
@@ -75,15 +75,14 @@
                     </div>
                     <div class="cart-summary__total">
                         <span>Total</span>
-                        <span id="summaryTotal">0.00 د.م</span>
+                        <span id="summaryTotal">0.00 DH</span>
                     </div>
                     <a href="{{ route('checkout') }}" class="btn btn-primary cart-checkout-btn">
                         Passer au paiement <i class="fas fa-arrow-right"></i>
                     </a>
                     <div class="cart-summary__guarantees">
                         <div><i class="fas fa-lock"></i> Paiement 100% sécurisé</div>
-                        <div><i class="fas fa-truck"></i> Livraison gratuite pour les commandes de plus de 200 $</div>
-                        <div><i class="fas fa-undo"></i> Politique de retour sous 30 jours</div>
+                        <div><i class="fas fa-truck"></i> Livraison gratuite pour les commandes de plus de 600 DH</div>
                     </div>
                 </aside>
             </div>

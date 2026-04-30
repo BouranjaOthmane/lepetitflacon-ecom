@@ -44,7 +44,7 @@ function renderCartPage() {
             </div>
           </div>
         </td>
-        <td class="cart-price">${item.price.toFixed(2)} د.م</td>
+        <td class="cart-price">${item.price.toFixed(2)} DH</td>
         <td>
           <div class="qty-selector">
             <button onclick="updateCartQty('${item.id}', ${item.qty - 1})">−</button>
@@ -52,7 +52,7 @@ function renderCartPage() {
             <button onclick="updateCartQty('${item.id}', ${item.qty + 1})">+</button>
           </div>
         </td>
-        <td class="cart-total">${(item.price * item.qty).toFixed(2)} د.م</td>
+        <td class="cart-total">${(item.price * item.qty).toFixed(2)} DH</td>
         <td><button class="cart-remove" onclick="removeCartItem('${item.id}')"><i class="fas fa-trash-alt"></i></button></td>
   `;
 
@@ -66,7 +66,7 @@ function renderCartPage() {
     const total = subtotal + shipping;
 
     if (summarySubtotal) {
-        summarySubtotal.textContent = `${subtotal.toFixed(2)} د.م`;
+        summarySubtotal.textContent = `${subtotal.toFixed(2)} DH`;
     }
 
     const summaryShipping = document.getElementById("summaryShipping");
@@ -75,11 +75,11 @@ function renderCartPage() {
         summaryShipping.textContent =
             shipping === 0
                 ? "Livraison GRATUITE"
-                : `${shipping.toFixed(2)} د.م`;
+                : `${shipping.toFixed(2)} DH`;
     }
 
     if (summaryTotal) {
-        summaryTotal.textContent = `${total.toFixed(2)} د.م`;
+        summaryTotal.textContent = `${total.toFixed(2)} DH`;
     }
 }
 
