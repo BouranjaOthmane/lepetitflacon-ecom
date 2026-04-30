@@ -433,6 +433,50 @@
                 letter-spacing: .8px;
             }
         }
+
+        .product-card-link {
+            display: block;
+            height: 100%;
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .product-card-link:hover {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 28px;
+            align-items: stretch;
+        }
+
+        .product-card {
+            height: 100%;
+        }
+
+        .product-card__btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+
+        @media (max-width: 991px) {
+            .product-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: 18px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .product-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: 12px;
+            }
+        }
     </style>
 </head>
 
@@ -566,79 +610,84 @@
                                 $cardPrice = $minSizePrice ?: $product->sale_price ?: $product->price;
                             @endphp
 
-                            <div class="product-card" data-id="{{ $product->id }}"
-                                data-name="{{ $product->getTranslation('name', 'fr') }}"
-                                data-price="{{ $cardPrice }}"
-                                data-img="{{ $product->getFirstMediaUrl('images') ?: asset('assets/clints/images/mens-perfume.png') }}">
+                            <a href="{{ route('product', $product->id) }}" class="product-card-link">
+                                <div class="product-card" data-id="{{ $product->id }}"
+                                    data-name="{{ $product->getTranslation('name', 'fr') }}"
+                                    data-price="{{ $cardPrice }}"
+                                    data-img="{{ $product->getFirstMediaUrl('images') ?: asset('assets/clints/images/mens-perfume.png') }}">
 
-                                <div class="product-card__image">
-                                    <img src="{{ $product->getFirstMediaUrl('images') ?: asset('assets/clints/images/mens-perfume.png') }}"
-                                        alt="{{ $product->getTranslation('name', 'fr') }}">
+                                    <div class="product-card__image">
+                                        <img src="{{ $product->getFirstMediaUrl('images') ?: asset('assets/clints/images/mens-perfume.png') }}"
+                                            alt="{{ $product->getTranslation('name', 'fr') }}">
 
-                                    {{-- @if ($product->created_at->gt(now()->subDays(7)))
+                                        {{-- @if ($product->created_at->gt(now()->subDays(7)))
                                         <span class="product-card__badge">Nouveau</span>
                                     @endif --}}
 
-                                    <div class="product-card__actions">
-                                        {{-- <button
+                                        <div class="product-card__actions">
+                                            {{-- <button
                                             class="wishlist-btn {{ auth()->check() && auth()->user()->wishlist->contains('product_id', $product->id) ? 'active' : '' }}">
                                             <i
                                                 class="{{ auth()->check() && auth()->user()->wishlist->contains('product_id', $product->id) ? 'fas' : 'far' }} fa-heart"></i>
                                         </button> --}}
-                                        <button onclick="window.location.href='{{ route('product', $product->id) }}'">
-                                            <i class="far fa-eye"></i>
-                                        </button>
-                                    </div>
-                                </div>
-
-                                <div class="product-card__info">
-                                    <p class="product-card__brand">{{ $product->brand->name ?? 'Lepetitflacon' }}</p>
-                                    <h4 class="product-card__name">{{ $product->getTranslation('name', 'fr') }}</h4>
-
-                                    <div class="product-card__rating">
-                                        <i class="fas fa-star star"></i><i class="fas fa-star star"></i><i
-                                            class="fas fa-star star"></i><i class="fas fa-star star"></i><i
-                                            class="fas fa-star-half-alt star"></i><span>(128)</span>
+                                            <button
+                                                onclick="window.location.href='{{ route('product', $product->id) }}'">
+                                                <i class="far fa-eye"></i>
+                                            </button>
+                                        </div>
                                     </div>
 
+                                    <div class="product-card__info">
+                                        <p class="product-card__brand">{{ $product->brand->name ?? 'Lepetitflacon' }}
+                                        </p>
+                                        <h4 class="product-card__name">{{ $product->getTranslation('name', 'fr') }}
+                                        </h4>
 
-                                    @php
-                                        $hasSizes = $product->sizes && $product->sizes->count() > 0;
-                                        $minSizePrice = $hasSizes ? $product->sizes->min('price') : null;
-                                        $maxSizePrice = $hasSizes ? $product->sizes->max('price') : null;
-                                        $cardPrice = $minSizePrice ?: ($product->sale_price ?: $product->price);
-                                    @endphp
+                                        <div class="product-card__rating">
+                                            <i class="fas fa-star star"></i><i class="fas fa-star star"></i><i
+                                                class="fas fa-star star"></i><i class="fas fa-star star"></i><i
+                                                class="fas fa-star-half-alt star"></i><span>(128)</span>
+                                        </div>
 
-                                    <p class="product-card__price">
-                                        @if ($hasSizes)
-                                            @if ($minSizePrice == $maxSizePrice)
-                                                {{ number_format($minSizePrice, 2, ',', ' ') }} DH
+
+                                        @php
+                                            $hasSizes = $product->sizes && $product->sizes->count() > 0;
+                                            $minSizePrice = $hasSizes ? $product->sizes->min('price') : null;
+                                            $maxSizePrice = $hasSizes ? $product->sizes->max('price') : null;
+                                            $cardPrice = $minSizePrice ?: ($product->sale_price ?: $product->price);
+                                        @endphp
+
+                                        <p class="product-card__price">
+                                            @if ($hasSizes)
+                                                @if ($minSizePrice == $maxSizePrice)
+                                                    {{ number_format($minSizePrice, 2, ',', ' ') }} DH
+                                                @else
+                                                    {{ number_format($minSizePrice, 2, ',', ' ') }} DH –
+                                                    {{ number_format($maxSizePrice, 2, ',', ' ') }} DH
+                                                @endif
                                             @else
-                                                {{ number_format($minSizePrice, 2, ',', ' ') }} DH –
-                                                {{ number_format($maxSizePrice, 2, ',', ' ') }} DH
+                                                {{ number_format($product->sale_price ?: $product->price, 2, ',', ' ') }}
+                                                د.م
                                             @endif
-                                        @else
-                                            {{ number_format($product->sale_price ?: $product->price, 2, ',', ' ') }}
-                                            د.م
-                                        @endif
-                                    </p>
+                                        </p>
 
-                                    @if ($product->stock_quantity <= 0)
-                                        <button class="product-card__btn" disabled
-                                            style="opacity: .6; cursor: not-allowed;">
-                                            Rupture de stock
-                                        </button>
-                                    @elseif ($hasSizes)
-                                        <a href="{{ route('product', $product->id) }}" class="product-card__btn">
-                                            Découvrir
-                                        </a>
-                                    @else
-                                        <button class="product-card__btn add-to-cart-btn">
-                                            Ajouter au panier
-                                        </button>
-                                    @endif
+                                        @if ($product->stock_quantity <= 0)
+                                            <button class="product-card__btn" disabled
+                                                style="opacity: .6; cursor: not-allowed;">
+                                                Rupture de stock
+                                            </button>
+                                        @elseif ($hasSizes)
+                                            <span class="product-card__btn">
+                                                Découvrir
+                                            </span>
+                                        @else
+                                            <button class="product-card__btn add-to-cart-btn">
+                                                Ajouter au panier
+                                            </button>
+                                        @endif
+                                    </div>
                                 </div>
-                            </div>
+                            </a>
                         @endforeach
                     </div>
 

@@ -1015,31 +1015,34 @@ h4 {
 
 /* ---------- Toast Notification ---------- */
 .toast {
-  position: fixed;
-  bottom: 30px;
-  left: 50%;
-  transform: translateX(-50%) translateY(100px);
-  background: var(--color-text);
-  color: var(--color-white);
-  padding: 16px 28px;
-  border-radius: var(--radius-md);
-  font-size: 0.9rem;
-  font-weight: 500;
-  z-index: 3000;
-  opacity: 0;
-  transition: all var(--transition-base);
-  box-shadow: var(--shadow-lg);
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.92);
+    background: linear-gradient(145deg, #fff4c9, #ffe7a5, #d8aa45) !important;
+    color: black;
+    padding: 20px 32px;
+    border-radius: var(--radius-md);
+    font-size: 22px;
+    font-weight: bold;
+    z-index: 3000;
+    opacity: 0;
+    transition: all var(--transition-base);
+    box-shadow: var(--shadow-lg);
+    width: 90%;
+    max-width: 520px;
+    text-align: center;
 }
 
 .toast.show {
-  opacity: 1;
-  transform: translateX(-50%) translateY(0);
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
 }
 
 .toast i {
-  margin-left: 8px;
-  margin-right: 0;
-  color: var(--color-gold);
+    margin-left: 8px;
+    margin-right: 0;
+    color: var(--color-gold);
 }
 
 /* ---------- Fly to Cart Animation ---------- */
