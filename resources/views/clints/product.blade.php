@@ -981,7 +981,7 @@
                     </div>
 
                     <div class="product-info__sizes">
-                        <h4>Taille</h4>
+                        <h4>Contenance</h4>
                         <div class="size-options" id="sizeOptions">
                             @forelse($sizes as $index => $size)
                                 <button type="button" class="size-btn {{ $index === 0 ? 'active' : '' }}"

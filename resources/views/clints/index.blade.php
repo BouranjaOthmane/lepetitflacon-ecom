@@ -923,9 +923,6 @@
                     Nos <em>collections</em>
                 </h2>
 
-                <p>
-                    Découvrez nos familles de parfums soigneusement sélectionnées
-                </p>
             </div>
 
             <div class="categories-lpf__grid reveal">
