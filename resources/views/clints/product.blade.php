@@ -8,7 +8,7 @@
     <title>{{ $product->getTranslation('name', 'ar') }} — Lepetitflacon</title>
     <meta name="description"
         content="Ambre Oud Royal — un mélange raffiné d’oud cambodgien rare et d’ambre chaleureux. Un parfum d’exception signé Lepetitflacon.">
-    <link rel="stylesheet" href="{{ asset('assets/clints/css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/clints/css/style.css') }}?v={{ filemtime(public_path('assets/clints/css/style.css')) }}">
     <link rel="stylesheet" href="{{ asset('assets/clints/css/product.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
