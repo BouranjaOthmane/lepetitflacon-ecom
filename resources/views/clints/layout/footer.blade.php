@@ -40,8 +40,9 @@
 
             <div class="footer-lpf__col">
                 <h4>Service client</h4>
-                <a href="{{ route('cart') }}">Mon panier</a>
-                <a href="https://wa.me/212704654736" target="_blank" rel="noopener">Contact WhatsApp</a>
+                <a href="https://wa.me/212704654736" target="_blank" rel="noopener">WhatsApp</a>
+                <a href="tel:+212704654736" rel="noopener">+212704654736</a>
+                <a href="mailto:contact.lepetitflacon@gmail.com" target="_blank" rel="noopener">contact.lepetitflacon@gmail.com</a>
             </div>
 
             <div class="footer-lpf__seo-card">
