@@ -327,6 +327,57 @@
     transform: translateY(-2px);
 }
 
+
+
+@media (max-width: 768px) {
+    .mobile-nav-v2 {
+        position: fixed;
+        top: 100px;
+        left: 18px;
+        right: 18px;
+        background: #0B103D;
+        border: 1px solid rgba(212, 175, 55, 0.45);
+        border-radius: 22px;
+        padding: 18px;
+        z-index: 99999;
+        display: none;
+        flex-direction: column;
+        gap: 14px;
+        box-shadow: 0 25px 60px rgba(0, 0, 0, 0.35);
+        margin-top: 16px;
+    }
+
+    .mobile-nav-v2.show {
+        display: flex;
+    }
+
+    .mobile-nav-v2 a {
+        color: #fff;
+        text-decoration: none;
+        font-weight: 700;
+        padding: 12px 14px;
+        border-radius: 14px;
+        background: rgba(255, 255, 255, 0.06);
+    }
+
+    .nav-overlay {
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.45);
+        z-index: 99998;
+        display: none;
+    }
+
+    .nav-overlay.show {
+        display: block;
+    }
+
+    .navbar-v3 {
+        z-index: 100000;
+    }
+    
+}
+
 </style>
 <div class="top-promo-bar">
     <div class="promo-orbit">
@@ -406,8 +457,6 @@
             </a>
         @endforeach
     @endisset
-
-    <a href="#footer">À propos des décants</a>
 </div>
 
 <div class="nav-overlay" id="navOverlay"></div>
@@ -440,36 +489,43 @@
 </aside>
 
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const hamburger = document.getElementById('hamburger');
-        const navMenu = document.getElementById('navMenu');
+document.addEventListener('DOMContentLoaded', function () {
+    const navbar = document.getElementById('navbar');
+    const hamburger = document.getElementById('hamburger');
+    const mobileNav = document.getElementById('mobileNav');
+    const navOverlay = document.getElementById('navOverlay');
 
-        if (hamburger && navMenu) {
-            hamburger.addEventListener('click', function() {
-                hamburger.classList.toggle('active');
-                navMenu.classList.toggle('show');
-            });
+    window.addEventListener('scroll', function () {
+        if (window.scrollY > 40) {
+            navbar.classList.add('is-scrolled');
+        } else {
+            navbar.classList.remove('is-scrolled');
         }
     });
 
-    document.addEventListener('DOMContentLoaded', function() {
-        const navbar = document.getElementById('navbar');
-        const hamburger = document.getElementById('hamburger');
-        const navMenu = document.getElementById('navMenu');
+    function closeMobileMenu() {
+        hamburger.classList.remove('active');
+        mobileNav.classList.remove('show');
+        navOverlay.classList.remove('show');
+        document.body.style.overflow = '';
+    }
 
-        window.addEventListener('scroll', function() {
-            if (window.scrollY > 40) {
-                navbar.classList.add('is-scrolled');
-            } else {
-                navbar.classList.remove('is-scrolled');
-            }
+    if (hamburger && mobileNav) {
+        hamburger.addEventListener('click', function () {
+            hamburger.classList.toggle('active');
+            mobileNav.classList.toggle('show');
+            navOverlay.classList.toggle('show');
+
+            document.body.style.overflow = mobileNav.classList.contains('show') ? 'hidden' : '';
         });
+    }
 
-        if (hamburger && navMenu) {
-            hamburger.addEventListener('click', function() {
-                hamburger.classList.toggle('active');
-                navMenu.classList.toggle('show');
-            });
-        }
+    if (navOverlay) {
+        navOverlay.addEventListener('click', closeMobileMenu);
+    }
+
+    document.querySelectorAll('#mobileNav a').forEach(function (link) {
+        link.addEventListener('click', closeMobileMenu);
     });
+});
 </script>
