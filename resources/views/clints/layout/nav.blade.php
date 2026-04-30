@@ -1,4 +1,71 @@
 <!-- Top bars -->
+
+<style>
+    /* =========================
+   MOBILE NAVBAR ORDER ONLY
+   ========================= */
+@media (max-width: 768px) {
+
+    .navbar-v3__inner {
+        display: grid;
+        grid-template-columns: 48px 48px 1fr 48px;
+        align-items: center;
+        gap: 8px;
+        padding: 12px 18px;
+        min-height: 72px;
+    }
+
+    /* Hide desktop menu on mobile */
+    .navbar-v3__menu {
+        display: none;
+    }
+
+    /* Actions container becomes contents so icons can be ordered */
+    .navbar-v3__actions {
+        display: contents;
+    }
+
+    /* 1. Menu icon left */
+    .navbar-v3__hamburger {
+        grid-column: 1;
+        grid-row: 1;
+        display: flex;
+        justify-self: start;
+    }
+
+    /* 2. Login icon */
+    .navbar-v3__actions > a.navbar-v3__icon {
+        grid-column: 2;
+        grid-row: 1;
+        justify-self: start;
+    }
+
+    /* 3. Logo center */
+    .navbar-v3__logo {
+        grid-column: 3;
+        grid-row: 1;
+        justify-self: center;
+    }
+
+    .navbar-v3__logo img {
+        max-width: 145px;
+        height: auto;
+    }
+
+    /* 4. Panier right */
+    .cart-icon-btn {
+        grid-column: 4;
+        grid-row: 1;
+        justify-self: end;
+    }
+
+    .navbar-v3__icon,
+    .navbar-v3__hamburger {
+        width: 42px;
+        height: 42px;
+    }
+}
+</style>
 <div class="top-promo-bar">
     <div class="promo-orbit">
         <span class="drop"></span>

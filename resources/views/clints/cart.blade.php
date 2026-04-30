@@ -960,7 +960,7 @@
                         <span id="summaryTotal">0.00 DH</span>
                     </div>
                     <a href="{{ route('checkout') }}" class="btn btn-primary cart-checkout-btn">
-                        Passer au paiement <i class="fas fa-arrow-right"></i>
+                        Acheter maintenant <i class="fas fa-arrow-right"></i>
                     </a>
                     <div class="cart-summary__guarantees">
                         <div><i class="fas fa-lock"></i> Paiement 100% sécurisé</div>

@@ -630,7 +630,7 @@
                                         </button>
                                     @elseif ($hasSizes)
                                         <a href="{{ route('product', $product->id) }}" class="product-card__btn">
-                                            Commander maintenant
+                                            Découvrir
                                         </a>
                                     @else
                                         <button class="product-card__btn add-to-cart-btn">
