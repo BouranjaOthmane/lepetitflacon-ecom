@@ -118,7 +118,7 @@ class ProductRepository
      */
     public function getPaginatedActiveWithRelations(int $perPage = 10)
     {
-        return $this->product->with(['category', 'brand', 'sizes', 'fragranceNotes', 'stockMovements'])->paginate($perPage);
+        return $this->product->with(['category', 'brand', 'sizes', 'fragranceNotes', 'stockMovements'])->latest()->paginate($perPage);
     }
 
 

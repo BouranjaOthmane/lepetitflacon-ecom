@@ -25,12 +25,9 @@ class ProductRequest extends FormRequest
 
         return [
             'category_id' => 'required|exists:categories,id',
-            'brand_id' => 'required|exists:brands,id',
             'name.en' => 'required|string|max:255',
-            'description.en' => 'nullable|string',
-            'description.ar' => 'nullable|string',
-            'short_description.en' => 'nullable|string',
-            'short_description.ar' => 'nullable|string',
+            'description' => 'nullable|string',
+            'short_description' => 'nullable|string',
             'price' => 'nullable|numeric|min:0|gt:purchase_price',
             'purchase_price' => 'required|numeric|min:0',
             'sale_price' => 'nullable|numeric|min:0',
@@ -80,7 +77,6 @@ class ProductRequest extends FormRequest
     {
         return [
             'category_id.required' => 'القسم مطلوب',
-            'brand_id.required' => 'الماركة مطلوبة',
             'name.en.required' => 'اسم المنتج بالإنجليزية مطلوب',
             'name.ar.required' => 'اسم المنتج بالعربية مطلوب',
             'price.required' => 'سعر البيع مطلوب',

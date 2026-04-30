@@ -7,6 +7,17 @@
 
 @section('content')
     <section class="dashboard-section active">
+        @if ($errors->any())
+            <div
+                style="background: rgba(255, 77, 77, 0.1); border: 1px solid  red ; color: #black; padding: 16px; border-radius: 10px; margin-bottom: 20px;">
+                <strong>Veuillez corriger les erreurs suivantes :</strong>
+                <ul style="margin: 10px 0 0 18px;">
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
         <div class="table-card" style="max-width: 1000px; margin: 0 auto;">
             <div class="table-card__header">
                 <h3>Données du produit</h3>
@@ -22,15 +33,11 @@
 
                 <div class="form-row">
                     <div class="form-group">
-                        <label>Nom (Arabe)</label>
-                        <input type="text" name="name[ar]"
-                            value="{{ old('name.ar', $product->getTranslation('name', 'ar')) }}" required>
-                    </div>
-                    <div class="form-group">
-                        <label>Nom (Anglais)</label>
+                        <label>Nom de produit</label>
                         <input type="text" name="name[en]"
                             value="{{ old('name.en', $product->getTranslation('name', 'en')) }}" required>
                     </div>
+                   
                 </div>
 
                 <div class="form-row">
@@ -45,17 +52,7 @@
                             @endforeach
                         </select>
                     </div>
-                    <div class="form-group">
-                        <label>Marque</label>
-                        <select name="brand_id" required>
-                            @foreach ($brands as $brand)
-                                <option value="{{ $brand->id }}"
-                                    {{ old('brand_id', $product->brand_id) == $brand->id ? 'selected' : '' }}>
-                                    {{ $brand->name }}
-                                </option>
-                            @endforeach
-                        </select>
-                    </div>
+              
                 </div>
 
                 <div class="form-row">
@@ -66,8 +63,7 @@
                     </div>
                     <div class="form-group">
                         <label>Prix de vente ($)</label>
-                        <input type="number" step="0.01" name="price" value="{{ old('price', $product->price) }}"
-                            >
+                        <input type="number" step="0.01" name="price" value="{{ old('price', $product->price) }}">
                     </div>
                     <div class="form-group">
                         <label>Prix promotionnel ($) - optionnel</label>
@@ -147,7 +143,7 @@
                 <div class="form-row">
                     <div class="form-group">
                         <label>SKU</label>
-                        <input type="text" name="sku" value="{{ old('sku', $product->sku) }}" required>
+                        <input type="text" name="sku" value="{{ old('sku', $product->sku) }}">
                     </div>
                     <div class="form-group">
                         <label>Stock disponible</label>
@@ -190,24 +186,35 @@
 
                 <div class="form-group">
                     <label>Description courte</label>
-                    <textarea name="short_description[ar]" rows="2"></textarea>
+                    <textarea name="short_description" rows="2">{{ old('short_description', $product->short_description ?? '') }}</textarea>
                 </div>
 
                 <div class="form-group">
                     <label>Description complète</label>
-                    <textarea name="description[ar]" rows="4"></textarea>
+                    <textarea name="description" rows="4">{{ old('description', $product->description ?? '') }}</textarea>
                 </div>
 
                 <div class="form-row">
-                    <div class="form-group">
-                        <label><input type="checkbox" name="is_featured"> Produit mis en avant</label>
-                    </div>
-                    <div class="form-group">
-                        <label><input type="checkbox" name="is_bestseller"> Meilleure vente</label>
-                    </div>
-                    <div class="form-group">
-                        <label><input type="checkbox" name="status"> Actif</label>
-                    </div>
+                    <input type="hidden" name="is_featured" value="0">
+                    <label>
+                        <input type="checkbox" name="is_featured" value="1"
+                            {{ old('is_featured', $product->is_featured) ? 'checked' : '' }}>
+                        Produit mis en avant
+                    </label>
+
+                    <input type="hidden" name="is_bestseller" value="0">
+                    <label>
+                        <input type="checkbox" name="is_bestseller" value="1"
+                            {{ old('is_bestseller', $product->is_bestseller) ? 'checked' : '' }}>
+                        Meilleure vente
+                    </label>
+
+                    <input type="hidden" name="status" value="0">
+                    <label>
+                        <input type="checkbox" name="status" value="1"
+                            {{ old('status', $product->status) ? 'checked' : '' }}>
+                        Actif
+                    </label>
                 </div>
 
                 <div style="margin-top: 32px; display: flex; gap: 12px">
@@ -219,41 +226,21 @@
             </form>
         </div>
 
-        <div class="table-card" style="max-width: 1000px; margin: 30px auto;">
-            <div class="badge">
-                Disponible
-            </div>
 
-            <table class="data-table">
-                <thead>
-                    <tr>
-                        <th>Date</th>
-                        <th>Type</th>
-                        <th>Quantité</th>
-                        <th>Référence</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td colspan="4" style="text-align: center;">Aucun mouvement de stock</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
     </section>
 
 
     <script>
-document.addEventListener('DOMContentLoaded', function () {
-    const wrapper = document.getElementById('sizesWrapper');
-    const addBtn = document.getElementById('addSizeBtn');
+        document.addEventListener('DOMContentLoaded', function() {
+            const wrapper = document.getElementById('sizesWrapper');
+            const addBtn = document.getElementById('addSizeBtn');
 
-    if (!wrapper || !addBtn) return;
+            if (!wrapper || !addBtn) return;
 
-    let sizeIndex = wrapper.querySelectorAll('.size-row').length;
+            let sizeIndex = wrapper.querySelectorAll('.size-row').length;
 
-    function buildSizeRow(index) {
-        return `
+            function buildSizeRow(index) {
+                return `
             <div class="size-row"
                 style="padding:16px; border:1px solid var(--color-border); border-radius:12px; background:rgba(255,255,255,0.02);">
                 <input type="hidden" name="sizes[${index}][id]" value="">
@@ -278,19 +265,19 @@ document.addEventListener('DOMContentLoaded', function () {
                 </div>
             </div>
         `;
-    }
+            }
 
-    addBtn.addEventListener('click', function () {
-        wrapper.insertAdjacentHTML('beforeend', buildSizeRow(sizeIndex));
-        sizeIndex++;
-    });
+            addBtn.addEventListener('click', function() {
+                wrapper.insertAdjacentHTML('beforeend', buildSizeRow(sizeIndex));
+                sizeIndex++;
+            });
 
-    document.addEventListener('click', function (e) {
-        const btn = e.target.closest('.remove-size-btn');
-        if (!btn) return;
+            document.addEventListener('click', function(e) {
+                const btn = e.target.closest('.remove-size-btn');
+                if (!btn) return;
 
-        btn.closest('.size-row').remove();
-    });
-});
-</script>
+                btn.closest('.size-row').remove();
+            });
+        });
+    </script>
 @endsection

@@ -11,7 +11,7 @@
         <!-- Header -->
         <tr>
             <td>
-                <h1 style="color:#c9a24a; margin:0;">Lepetitflacon</h1>
+                <h1 style="color:#c9a24a; margin:0;">Lepetitflacon - SHOP</h1>
                 <p style="color:#666;">Parfums de luxe avec une touche moderne</p>
             </td>
         </tr>

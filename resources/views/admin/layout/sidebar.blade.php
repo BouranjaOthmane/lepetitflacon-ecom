@@ -15,9 +15,9 @@
         <a href="{{ route('admin.categories.index') }}" class="sidebar__link {{ request()->routeIs('admin.categories.*') ? 'active' : '' }}">
             <i class="fas fa-tags"></i> Catégories
         </a>
-        <a href="{{ route('admin.brands.index') }}" class="sidebar__link {{ request()->routeIs('admin.brands.*') ? 'active' : '' }}">
+        {{-- <a href="{{ route('admin.brands.index') }}" class="sidebar__link {{ request()->routeIs('admin.brands.*') ? 'active' : '' }}">
             <i class="fas fa-certificate"></i> Marques
-        </a>
+        </a> --}}
         <a href="{{ route('admin.products.index') }}" class="sidebar__link {{ request()->routeIs('admin.products.*') ? 'active' : '' }}">
             <i class="fas fa-box-open"></i> Produits
         </a>

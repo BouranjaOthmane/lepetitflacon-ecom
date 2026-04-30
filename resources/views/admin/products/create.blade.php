@@ -32,7 +32,7 @@
 
                 <div class="form-row">
                     <div class="form-group">
-                        <label>Nom de produit</label>
+                        <label>Nom de produit <span style="color: red">*</span></label>
                         <input type="text" name="name[en]" value="{{ old('name.en') }}" placeholder="Example: Amber Oud"
                             required>
                         @error('name.en')
@@ -43,7 +43,7 @@
 
                 <div class="form-row">
                     <div class="form-group">
-                        <label>Catégorie</label>
+                        <label>Catégorie <span style="color: red">*</span></label>
                         <select name="category_id" required>
                             <option value="">Choisir une catégorie</option>
                             @foreach ($categories as $category)
@@ -57,25 +57,11 @@
                             <span style="color: red ; font-size: 0.8rem">{{ $message }}</span>
                         @enderror
                     </div>
-                    <div class="form-group">
-                        <label>Marque</label>
-                        <select name="brand_id" required>
-                            <option value="">Choisir une marque</option>
-                            @foreach ($brands as $brand)
-                                <option value="{{ $brand->id }}" {{ old('brand_id') == $brand->id ? 'selected' : '' }}>
-                                    {{ $brand->name }}
-                                </option>
-                            @endforeach
-                        </select>
-                        @error('brand_id')
-                            <span style="color: red ; font-size: 0.8rem">{{ $message }}</span>
-                        @enderror
-                    </div>
                 </div>
 
                 <div class="form-row">
                     <div class="form-group">
-                        <label>Prix d’achat ($)</label>
+                        <label>Prix d’achat ($) <span style="color: red">*</span></label>
                         <input type="number" step="0.01" name="purchase_price" id="purchase_price"
                             value="{{ old('purchase_price') }}" placeholder="0.00" required>
                         @error('purchase_price')
@@ -83,7 +69,7 @@
                         @enderror
                     </div>
                     <div class="form-group">
-                        <label>Prix de vente ($)</label>
+                        <label>Prix de vente ($) <span style="color: red">*</span></label>
                         <input type="number" step="0.01" name="price" id="price" value="{{ old('price') }}"
                             placeholder="0.00">
                         @error('price')
@@ -122,12 +108,12 @@
                             style="padding:16px; border:1px solid var(--color-border); border-radius:12px; background:rgba(255,255,255,0.02);">
                             <div class="form-row">
                                 <div class="form-group">
-                                    <label>Taille</label>
+                                    <label>Taille <span style="color: red">*</span></label>
                                     <input type="text" name="sizes[0][size]" placeholder="Ex : 5ML">
                                 </div>
 
                                 <div class="form-group">
-                                    <label>Prix ($)</label>
+                                    <label>Prix ($) <span style="color: red">*</span></label>
                                     <input type="number" step="0.01" name="sizes[0][price]" placeholder="0.00">
                                 </div>
 
@@ -151,7 +137,7 @@
                         @enderror
                     </div>
                     <div class="form-group">
-                        <label>Stock disponible</label>
+                        <label>Stock disponible <span style="color: red">*</span></label>
                         <input type="number" name="stock_quantity" value="{{ old('stock_quantity', 0) }}"
                             min="0" required>
                         @error('stock_quantity')
@@ -170,7 +156,7 @@
 
                 <div class="form-row">
                     <div class="form-group">
-                        <label>Public cible</label>
+                        <label>Public cible <span style="color: red">*</span></label>
                         <select name="gender" required>
                             <option value="Men" {{ old('gender') == 'Men' ? 'selected' : '' }}>Homme</option>
                             <option value="Women" {{ old('gender') == 'Women' ? 'selected' : '' }}>Femme</option>
@@ -200,13 +186,13 @@
 
                 <div class="form-group">
 
-                    <label>Description courte (AR)</label>
-                    <textarea name="short_description[ar]" rows="2">{{ old('short_description.ar') }}</textarea>
+                    <label>Description courte</label>
+                    <textarea name="short_description" rows="2">{{ old('short_description') }}</textarea>
                 </div>
 
                 <div class="form-group">
-                    <label>Description complète (AR)</label>
-                    <textarea name="description[ar]" rows="4">{{ old('description.ar') }}</textarea>
+                    <label>Description complète</label>
+                    <textarea name="description" rows="4">{{ old('description') }}</textarea>
                 </div>
 
                 <div class="form-row" style="margin-top:20px">
