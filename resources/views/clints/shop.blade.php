@@ -524,52 +524,9 @@
     <section class="section shop-section">
         <div class="container">
             <div class="shop-layout">
-                <aside class="filters" id="filtersPanel">
-                    <div class="filters__header">
-                        <h3>Filtres</h3>
-                        <button class="filters__close" id="filtersClose"><i class="fas fa-times"></i></button>
-                    </div>
+                <aside class="" id="filtersPanel">
+                    
 
-
-                    <div class="filter-group">
-                        <h4 class="filter-group__title">Catégories <i class="fas fa-chevron-down"></i></h4>
-                        <div class="filter-group__content">
-                            @php $selectedCats = explode(',', request('cat', '')); @endphp
-                            @foreach ($categories as $category)
-                                <label class="filter-check">
-                                    <input type="checkbox" name="cat" value="{{ $category->id }}"
-                                        {{ in_array($category->id, $selectedCats) ? 'checked' : '' }}
-                                        onchange="applyFilters()"> {{ $category->getTranslation('name', 'fr') }}
-                                    <span>({{ $category->products_count }})</span>
-                                </label>
-                            @endforeach
-                        </div>
-                    </div>
-
-                    <div class="filter-group">
-                        <h4 class="filter-group__title">Genre <i class="fas fa-chevron-down"></i></h4>
-                        <div class="filter-group__content">
-                            @php $selectedGenders = explode(',', request('gender', '')); @endphp
-                            <label class="filter-check">
-                                <input type="checkbox" name="gender" value="Men"
-                                    {{ in_array('Men', $selectedGenders) ? 'checked' : '' }} onchange="applyFilters()">
-                                Homme
-                            </label>
-                            <label class="filter-check">
-                                <input type="checkbox" name="gender" value="Women"
-                                    {{ in_array('Women', $selectedGenders) ? 'checked' : '' }}
-                                    onchange="applyFilters()"> Femme
-                            </label>
-                            <label class="filter-check">
-                                <input type="checkbox" name="gender" value="Unisex"
-                                    {{ in_array('Unisex', $selectedGenders) ? 'checked' : '' }}
-                                    onchange="applyFilters()"> Mixte
-                            </label>
-                        </div>
-                    </div>
-
-                    <button class="btn btn-primary filters__apply" onclick="applyFilters()">Appliquer
-                        les filtres</button>
                 </aside>
                 <div class="filters-overlay" id="filtersOverlay"></div>
 
@@ -581,11 +538,7 @@
                                 <strong>{{ $products->total() }}</strong> résultats
                             </p>
                         </div>
-                        <div class="shop-toolbar__controls">
-                            <button class="shop-toolbar__filter-btn" id="filterToggle"><i class="fas fa-sliders-h"></i>
-                                Filtres</button>
-
-                        </div>
+                      
                     </div>
 
 
@@ -624,11 +577,7 @@
                                         <h4 class="product-card__name">{{ $product->getTranslation('name', 'fr') }}
                                         </h4>
 
-                                        <div class="product-card__rating">
-                                            <i class="fas fa-star star"></i><i class="fas fa-star star"></i><i
-                                                class="fas fa-star star"></i><i class="fas fa-star star"></i><i
-                                                class="fas fa-star-half-alt star"></i><span>(128)</span>
-                                        </div>
+                                    
 
 
                                         @php

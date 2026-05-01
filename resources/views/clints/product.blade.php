@@ -956,15 +956,6 @@
                     <p class="product-info__brand">{{ $product->brand->name ?? 'Lepetitflacon' }}</p>
                     <h1 class="product-info__name">{{ $product->getTranslation('name', 'ar') }}</h1>
 
-                    <div class="product-info__rating">
-                        <div class="stars">
-                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
-                                class="fas fa-star"></i><i class="fas fa-star"></i>
-                        </div>
-                        <span>{{ number_format($product->average_rating ?? 5.0, 1) }} ({{ $product->reviews_count }}
-                            avis)</span>
-                    </div>
-
                     @php
                         $sizes = $product->sizes->sortBy('price')->values();
                         $firstSize = $sizes->first();
@@ -1262,15 +1253,6 @@
                         <h3 class="related-card-pro__name">
                             {{ $item->getTranslation('name', 'fr') }}
                         </h3>
-
-                        <div class="related-card-pro__rating">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="far fa-star"></i>
-                            <span>(128)</span>
-                        </div>
 
                         <p class="related-card-pro__price">
                             @if ($hasSizes)

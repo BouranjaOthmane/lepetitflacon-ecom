@@ -882,7 +882,7 @@
 
         .bestsellers-lpf__track {
             display: flex;
-            gap: 28px;
+            /* gap: 28px; */
             transition: transform .55s ease;
         }
 
@@ -1161,11 +1161,11 @@
 
 .about-lpf__floating--one {
     top: 30px;
-    left: -35px;
+    left: -15px;
 }
 
 .about-lpf__floating--two {
-    right: -25px;
+    right: -15px;
     bottom: 45px;
     animation-delay: 1s;
 }
@@ -1727,6 +1727,7 @@ Je tiens a vous remercier pour la qualité de votre service, les parfums sont ex
 
 <script>
     document.addEventListener('DOMContentLoaded', function() {
+        return 0;
         const track = document.getElementById('bestsellersTrack');
         const prevBtn = document.getElementById('bsPrev');
         const nextBtn = document.getElementById('bsNext');

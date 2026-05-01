@@ -476,10 +476,6 @@
 
         <!-- Icons Right -->
         <div class="navbar-v3__actions">
-            <a href="{{ auth()->check() && auth()->user()->role === 'Admin' ? route('admin.analytics.index') : route('login') }}"
-                class="navbar-v3__icon" aria-label="Mon compte">
-                <i class="far fa-user"></i>
-            </a>
               <button class="navbar-v3__icon" id="searchBtn" aria-label="Search">
                 <i class="fas fa-search"></i>
             </button>
