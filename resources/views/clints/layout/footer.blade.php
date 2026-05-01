@@ -5,8 +5,10 @@
     <div class="container">
         <div class="footer-lpf__top">
             <div class="footer-lpf__brand">
-                <a href="{{ route('home') }}" class="footer-lpf__logo">
-                    <img src="{{ asset('assets/clints/images/logo-v-13.png') }}" alt="Lepetitflacon">
+                <a href="{{ route('home') }}" class="footer-lpf__logo"
+                    title="Lepetitflacon.shop - Boutique de décants de parfums au Maroc">
+                    <img src="{{ asset('assets/clints/images/logo-v-13.png') }}"
+                        alt="Lepetitflacon.shop - Décants de parfums originaux au Maroc">
                 </a>
 
                 <p>
@@ -23,17 +25,20 @@
                 </div>
 
                 <div class="footer-lpf__social">
-                    <a href="https://www.instagram.com/lepetit.flacon/" target="_blank" rel="noopener"
-                        aria-label="Instagram">
+                    <a href="https://www.instagram.com/lepetit.flacon/" target="_blank" rel="noopener noreferrer"
+                        aria-label="Suivez Lepetitflacon sur Instagram" title="Instagram Lepetitflacon">
                         <i class="fab fa-instagram"></i>
                     </a>
 
                     <a href="https://www.tiktok.com/@lepetit.flacon?_r=1&_t=ZS-95xA4EMShyJ" target="_blank"
-                        rel="noopener" aria-label="TikTok">
+                        rel="noopener noreferrer" aria-label="Suivez Lepetitflacon sur TikTok"
+                        title="TikTok Lepetitflacon">
                         <i class="fab fa-tiktok"></i>
                     </a>
 
-                    <a href="https://wa.me/212704654736" target="_blank" rel="noopener" aria-label="WhatsApp">
+                    <a href="https://wa.me/212704654736" target="_blank" rel="noopener noreferrer"
+                        aria-label="Contacter Lepetitflacon sur WhatsApp"
+                        title="Commander vos décants de parfums sur WhatsApp">
                         <i class="fab fa-whatsapp"></i>
                     </a>
                 </div>
@@ -41,12 +46,15 @@
 
             <div class="footer-lpf__col">
                 <h4>Boutique</h4>
-                <a href="{{ route('shop') }}">Décants</a>
-                <a href="{{ route('shop', ['cat' => 9]) }}">Décants homme</a>
-                <a href="{{ route('shop', ['cat' => 8]) }}">Décants femme</a>
-                <a href="{{ route('shop', ['cat' => 10]) }}">Pafums complets</a>
-                <a href="{{ route('shop', ['cat' => 11]) }}">Univers féminin</a>
-                <a href="{{ route('shop', ['cat' => 12]) }}">Univers masculin</a>
+                <a href="{{ route('shop') }}" title="Acheter des décants de parfums au Maroc">Décants</a>
+                <a href="{{ route('shop', ['cat' => 9]) }}" title="Décants de parfums homme au Maroc">Décants homme</a>
+                <a href="{{ route('shop', ['cat' => 8]) }}" title="Décants de parfums femme au Maroc">Décants femme</a>
+                <a href="{{ route('shop', ['cat' => 10]) }}" title="Acheter des parfums complets originaux">Pafums
+                    complets</a>
+                <a href="{{ route('shop', ['cat' => 11]) }}" title="Univers féminin parfums et soins">Univers
+                    féminin</a>
+                <a href="{{ route('shop', ['cat' => 12]) }}" title="Univers masculin parfums et soins">Univers
+                    masculin</a>
             </div>
 
             <div class="footer-lpf__col footer-lpf__contact">
@@ -57,17 +65,19 @@
                     WhatsApp
                 </a>
 
-                <a href="tel:+212704654736" rel="noopener">
+                <a href="tel:+212704654736" aria-label="Appeler Lepetitflacon"
+                    title="Appeler Lepetitflacon au +212704654736">
                     <i class="fas fa-phone"></i>
                     +212704654736
                 </a>
 
-                <a href="mailto:contact.lepetitflacon@gmail.com" target="_blank" rel="noopener">
+                <a href="mailto:contact.lepetitflacon@gmail.com" title="Envoyer un email à Lepetitflacon">
                     <i class="fas fa-envelope"></i>
                     contact.lepetitflacon@gmail.com
                 </a>
 
-                <a href="{{ route('faq') }}" target="_blank" rel="noopener">
+                <a href="{{ route('faq') }}" target="_blank" rel="noopener noreferrer"
+                    title="FAQ Lepetitflacon - Questions fréquentes sur les décants de parfums">
                     <i class="fas fa-circle-question"></i>
                     FAQ
                 </a>
