@@ -10,9 +10,17 @@
                 </a>
 
                 <p>
-                    Découvrez des décants et parfums soigneusement sélectionnés.
-                    Une expérience parfumée élégante, accessible et premium.
+                    Accedez aux parfums de niche et best-sellers sans investir dans un flacon complet.
+                    Testez, comparez, choisissez votre signature.
                 </p>
+
+                <div class="footer-lpf__col">
+                    <h4>Suivez nous</h4>
+                    <p>
+                        Découvrez nos nouveautés, avis clients et offres exclusives.
+                    </p>
+
+                </div>
 
                 <div class="footer-lpf__social">
                     <a href="https://www.instagram.com/lepetit.flacon/" target="_blank" rel="noopener"
@@ -33,30 +41,72 @@
 
             <div class="footer-lpf__col">
                 <h4>Boutique</h4>
-                <a href="{{ route('shop') }}">Tous les parfums</a>
                 <a href="{{ route('shop') }}">Décants</a>
-                <a href="{{ route('shop', ['cat' => 'men']) }}">Décants homme</a>
-                <a href="{{ route('shop', ['cat' => 'women']) }}">Décants femme</a>
-                <a href="{{ route('shop', ['cat' => 'new']) }}">Nouveautés</a>
+                <a href="{{ route('shop', ['cat' => 9]) }}">Décants homme</a>
+                <a href="{{ route('shop', ['cat' => 8]) }}">Décants femme</a>
+                <a href="{{ route('shop', ['cat' => 10]) }}">Pafums complets</a>
+                <a href="{{ route('shop', ['cat' => 11]) }}">Univers féminin</a>
+                <a href="{{ route('shop', ['cat' => 12]) }}">Univers masculin</a>
             </div>
 
-            <div class="footer-lpf__col">
+            <div class="footer-lpf__col footer-lpf__contact">
                 <h4>Service client</h4>
-                <a href="https://wa.me/212704654736" target="_blank" rel="noopener">WhatsApp</a>
-                <a href="tel:+212704654736" rel="noopener">+212704654736</a>
-                <a href="mailto:contact.lepetitflacon@gmail.com" target="_blank"
-                    rel="noopener">contact.lepetitflacon@gmail.com</a>
+
+                <a href="https://wa.me/212704654736" target="_blank" rel="noopener">
+                    <i class="fab fa-whatsapp"></i>
+                    WhatsApp
+                </a>
+
+                <a href="tel:+212704654736" rel="noopener">
+                    <i class="fas fa-phone"></i>
+                    +212704654736
+                </a>
+
+                <a href="mailto:contact.lepetitflacon@gmail.com" target="_blank" rel="noopener">
+                    <i class="fas fa-envelope"></i>
+                    contact.lepetitflacon@gmail.com
+                </a>
+
+                <a href="{{ route('faq') }}" target="_blank" rel="noopener">
+                    <i class="fas fa-circle-question"></i>
+                    FAQ
+                </a>
+
+                <p style="color: rgba(255,255,255,.62)">
+                    <i class="fas fa-rotate-left"></i>
+                    Retours et échanges
+                </p>
             </div>
 
             <div class="footer-lpf__seo-card">
                 <span class="footer-lpf__badge">LPF Premium</span>
-                <h4>Livraison gratuite</h4>
-                <p>À partir de 600 DH partout au Maroc.</p>
+                <h4>Livraison offerte</h4>
+                <p>Dès 600 DH PAR TOUT AU MAROC.</p>
 
                 <div class="footer-lpf__features">
-                    <span><i class="fas fa-lock"></i>Paiement à la livraison</span>
-                    <span><i class="fas fa-truck"></i> Livraison rapide</span>
-                    <span><i class="fas fa-spray-can-sparkles"></i> Parfums 100% authentiques</span>
+                    <span>
+                        <i class="fas fa-truck-fast"></i>
+                        <strong>Expédition rapide 24-48h</strong>
+                        <small>Votre colis expédié sous 24h.</small>
+                    </span>
+
+                    <span>
+                        <i class="fas fa-lock"></i>
+                        <strong>Paiement sécurisé</strong>
+                        <small>Paiement à la livraison 100% sécurisé.</small>
+                    </span>
+
+                    <span>
+                        <i class="fas fa-shield-alt"></i>
+                        <strong>Produits 100% authentiques</strong>
+                        <small>Testés et validés avant expédition.</small>
+                    </span>
+
+                    <span>
+                        <i class="fas fa-spray-can-sparkles"></i>
+                        <strong>Parfums premium</strong>
+                        <small>Niche & marques de prestige.</small>
+                    </span>
                 </div>
             </div>
         </div>

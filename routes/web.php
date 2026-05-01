@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\DashboardController;
 
+Route::view('/faq', 'clints.faq')->name('faq');
 
 Route::get('/', [\App\Http\Controllers\Clients\HomeController::class, 'index'])->name('home');
 

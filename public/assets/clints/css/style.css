@@ -2593,7 +2593,7 @@ h4 {
         radial-gradient(circle at 88% 0%, rgba(216, 170, 69, 0.10), transparent 28%),
         #0B103D;
     color: var(--footer-white);
-    padding: 90px 0 28px;
+    padding: 25px;
     border-top: 1px solid rgba(255, 231, 165, 0.45);
 }
 
@@ -2642,6 +2642,8 @@ h4 {
     font-size: 15px;
 }
 
+
+
 .footer-lpf__brand p {
     max-width: 390px;
     margin-bottom: 26px;
@@ -2666,6 +2668,53 @@ h4 {
     font-size: 17px;
     transition: .35s ease;
 }
+
+    .footer-lpf__features {
+        display: grid !important;
+        gap: 12px !important;
+        margin-top: 18px !important;
+    }
+
+    .footer-lpf__features span {
+        display: grid !important;
+        grid-template-columns: 28px 1fr !important;
+        column-gap: 10px !important;
+        align-items: start !important;
+    }
+
+    .footer-lpf__features i {
+        grid-row: 1 / span 2 !important;
+        color: #ffe7a5 !important;
+        font-size: 20px !important;
+        margin-top: 3px !important;
+    }
+
+    .footer-lpf__features strong {
+        color: #fff !important;
+        font-size: 14px !important;
+        line-height: 1.2 !important;
+        font-weight: 700 !important;
+    }
+
+    .footer-lpf__features small {
+        color: rgba(255, 255, 255, .68) !important;
+        font-size: 12px !important;
+        line-height: 1.35 !important;
+        margin-top: 2px !important;
+    }
+
+    .footer-lpf__contact a,
+    .footer-lpf__contact p {
+        display: flex !important;
+        align-items: center !important;
+        gap: 9px !important;
+    }
+
+    .footer-lpf__contact i {
+        width: 18px !important;
+        color: #ffe7a5 !important;
+        font-size: 14px !important;
+    }
 
 .footer-lpf__social a:hover {
     transform: translateY(-6px) rotateX(14deg);
@@ -2717,6 +2766,7 @@ h4 {
     backdrop-filter: blur(16px);
     box-shadow: 0 22px 40px rgba(0,0,0,.22);
     animation: footerCardFloat 4s ease-in-out infinite;
+    width: 280px;
 }
 
 .footer-lpf__badge {
