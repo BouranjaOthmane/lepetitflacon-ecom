@@ -8,16 +8,17 @@
     <title>Lepetitflacon — Parfums d’exception et senteurs raffinées</title>
     <meta name="description"
         content="Achetez en ligne des parfums pour homme et femme chez Lepetitflacon. Découvrez une sélection de fragrances élégantes, raffinées et durables.">
-    <link rel="stylesheet" href="{{ asset('assets/clints/css/style.css') }}?v={{ filemtime(public_path('assets/clints/css/style.css')) }}">
+    <link rel="stylesheet"
+        href="{{ asset('assets/clints/css/style.css') }}?v={{ filemtime(public_path('assets/clints/css/style.css')) }}">
     <link rel="stylesheet" href="{{ asset('assets/clints/css/homepage.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
 
-   <!-- Favicons -->
-<link rel="icon" href="{{ asset('favicon.ico') }}">
-<link rel="icon" type="image/png" sizes="32x32" href="{{ asset('favicon-32x32.png') }}">
-<link rel="apple-touch-icon" sizes="180x180" href="{{ asset('apple-touch-icon.png') }}">
-<link rel="manifest" href="{{ asset('manifest.json') }}">
+    <!-- Favicons -->
+    <link rel="icon" href="{{ asset('favicon.ico') }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('favicon-32x32.png') }}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('apple-touch-icon.png') }}">
+    <link rel="manifest" href="{{ asset('manifest.json') }}">
 
     <style>
         :root {
@@ -874,6 +875,73 @@
                 font-size: 14px;
             }
         }
+
+        .bestsellers-lpf__slider {
+            overflow: hidden;
+        }
+
+        .bestsellers-lpf__track {
+            display: flex;
+            gap: 28px;
+            transition: transform .55s ease;
+        }
+
+        .bestseller-lpf-card {
+            flex: 0 0 100%;
+            min-width: 100%;
+        }
+
+        @media (min-width: 992px) {
+            .bestseller-lpf-card {
+                flex: 0 0 calc(50% - 14px);
+                min-width: calc(50% - 14px);
+                max-width: calc(50% - 14px);
+            }
+        }
+
+        @media (min-width: 992px) {
+    .bestseller-lpf-card {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 22px !important;
+        padding: 28px !important;
+        align-items: stretch !important;
+    }
+
+    .bestseller-lpf-card__image {
+        width: 100% !important;
+        height: 430px !important;
+    }
+
+    .bestseller-lpf-card__info {
+        width: 100%;
+        text-align: left;
+        padding: 0 12px 8px;
+    }
+
+    .bestseller-lpf-card__info h3 {
+        font-size: 30px !important;
+        line-height: 1.15 !important;
+        margin: 10px 0;
+    }
+
+    .bestseller-lpf-card__info p {
+        display: none;
+    }
+
+    .bestseller-lpf-card__meta {
+        margin: 18px 0 !important;
+        justify-content: space-between;
+    }
+
+    .bestseller-lpf-card__price {
+        font-size: 26px !important;
+    }
+
+    .bestseller-lpf-card__btn {
+        width: fit-content;
+    }
+}
     </style>
 </head>
 
@@ -960,7 +1028,7 @@
                     <p>Nos produits les plus appréciés et adoptés par nos clients</p>
                 </div>
 
-                <div class="bestsellers-lpf__slider reveal">
+                <div class="bestsellers-lpf__slider ">
                     <div class="bestsellers-lpf__track" id="bestsellersTrack">
                         @foreach ($bestsellerProducts as $product)
                             <div class="bestseller-lpf-card">

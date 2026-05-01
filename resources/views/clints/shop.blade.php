@@ -8,7 +8,8 @@
     <title>Boutique — Lepetitflacon</title>
     <meta name="description"
         content="Parcourez notre collection de parfums raffinés. Filtrez par marque, catégorie, genre et gamme de prix.">
-    <link rel="stylesheet" href="{{ asset('assets/clints/css/style.css') }}?v={{ filemtime(public_path('assets/clints/css/style.css')) }}">
+    <link rel="stylesheet"
+        href="{{ asset('assets/clints/css/style.css') }}?v={{ filemtime(public_path('assets/clints/css/style.css')) }}">
     <link rel="stylesheet" href="{{ asset('assets/clints/css/shop.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
@@ -407,7 +408,7 @@
 
             .product-card__image {
                 height: 185px;
-           
+
             }
 
             .product-card__info {
@@ -497,7 +498,15 @@
                         <strong>Boutique</strong>
                     </div>
 
-                    <h1>Notre <em>collection</em></h1>
+                    @php
+                        $selectedCatId = request('cat');
+                        $selectedCategory = $categories->firstWhere('id', $selectedCatId);
+                        $pageTitle = $selectedCategory
+                            ? $selectedCategory->getTranslation('name', 'fr')
+                            : 'Décants';
+                    @endphp
+
+                    <h1>{{ $pageTitle }}</h1>
                     <p>
                         Découvrez notre collection de parfums raffinés — des classiques intemporels aux nouveautés.
                     </p>
@@ -515,27 +524,13 @@
     <section class="section shop-section">
         <div class="container">
             <div class="shop-layout">
-                    <!-- Filtres latéraux -->
+                <!-- Filtres latéraux -->
                 <aside class="filters" id="filtersPanel">
                     <div class="filters__header">
                         <h3>Filtres</h3>
                         <button class="filters__close" id="filtersClose"><i class="fas fa-times"></i></button>
                     </div>
 
-                    <!-- Gamme de prix -->
-                    {{-- <div class="filter-group">
-                        <h4 class="filter-group__title">Gamme de prix <i class="fas fa-chevron-down"></i></h4>
-                        <div class="filter-group__content">
-                            <div class="price-range">
-                                <input type="range" min="0" max="500"
-                                    value="{{ request('max_price', 500) }}" id="priceRange" onchange="applyFilters()">
-                                <div class="price-range__labels">
-                                    <span>0 DH</span>
-                                    <span id="priceValue">{{ request('max_price', 500) }} DH</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div> --}}
 
                     <!-- Catégories -->
                     <div class="filter-group">
@@ -592,11 +587,7 @@
                         <div class="shop-toolbar__controls">
                             <button class="shop-toolbar__filter-btn" id="filterToggle"><i class="fas fa-sliders-h"></i>
                                 Filtres</button>
-                           
-                            {{-- <div class="shop-toolbar__view">
-                                <button class="view-btn active" data-view="grid"><i class="fas fa-th"></i></button>
-                                <button class="view-btn" data-view="list"><i class="fas fa-list"></i></button>
-                            </div> --}}
+
                         </div>
                     </div>
 
