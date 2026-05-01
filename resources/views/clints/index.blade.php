@@ -900,344 +900,350 @@
         }
 
         @media (min-width: 992px) {
-    .bestseller-lpf-card {
-        display: flex !important;
-        flex-direction: column !important;
-        gap: 22px !important;
-        padding: 28px !important;
-        align-items: stretch !important;
-    }
+            .bestseller-lpf-card {
+                display: flex !important;
+                flex-direction: column !important;
+                gap: 22px !important;
+                padding: 28px !important;
+                align-items: stretch !important;
+                margin-left: 5px;
+            }
 
-    .bestseller-lpf-card__image {
-        width: 100% !important;
-        height: 430px !important;
-    }
+            .bestseller-lpf-card__image {
+                width: 100% !important;
+                height: 430px !important;
+            }
 
-    .bestseller-lpf-card__info {
-        width: 100%;
-        text-align: left;
-        padding: 0 12px 8px;
-    }
+            .bestseller-lpf-card__info {
+                width: 100%;
+                text-align: left;
+                padding: 0 12px 8px;
+            }
 
-    .bestseller-lpf-card__info h3 {
-        font-size: 30px !important;
-        line-height: 1.15 !important;
-        margin: 10px 0;
-    }
+            .bestseller-lpf-card__info h3 {
+                font-size: 30px !important;
+                line-height: 1.15 !important;
+                margin: 10px 0;
+            }
 
-    .bestseller-lpf-card__info p {
-        display: none;
-    }
+            .bestseller-lpf-card__info p {
+                display: none;
+            }
 
-    .bestseller-lpf-card__meta {
-        margin: 18px 0 !important;
-        justify-content: space-between;
-    }
+            .bestseller-lpf-card__meta {
+                margin: 18px 0 !important;
+                justify-content: space-between;
+            }
 
-    .bestseller-lpf-card__price {
-        font-size: 26px !important;
-    }
+            .bestseller-lpf-card__price {
+                font-size: 26px !important;
+            }
 
-    .bestseller-lpf-card__btn {
-        width: fit-content;
-    }
-}
+            .bestseller-lpf-card__btn {
+                width: fit-content;
+            }
+        }
 
-.about-lpf {
-    position: relative;
-    overflow: hidden;
-    padding: 40px 0;
-    background:
-        radial-gradient(circle at 12% 20%, rgba(226, 177, 83, .18), transparent 30%),
-        radial-gradient(circle at 90% 15%, rgba(7, 8, 73, .12), transparent 28%),
-        linear-gradient(180deg, #fffaf2 0%, #ffffff 52%, #fff8ee 100%);
-}
+        .about-lpf {
+            position: relative;
+            overflow: hidden;
+            padding: 40px 0;
+            background:
+                radial-gradient(circle at 12% 20%, rgba(226, 177, 83, .18), transparent 30%),
+                radial-gradient(circle at 90% 15%, rgba(7, 8, 73, .12), transparent 28%),
+                linear-gradient(180deg, #fffaf2 0%, #ffffff 52%, #fff8ee 100%);
+        }
 
-.about-lpf__glow {
-    position: absolute;
-    border-radius: 999px;
-    filter: blur(10px);
-    pointer-events: none;
-    animation: aboutFloat 7s ease-in-out infinite;
-}
+        .about-lpf__glow {
+            position: absolute;
+            border-radius: 999px;
+            filter: blur(10px);
+            pointer-events: none;
+            animation: aboutFloat 7s ease-in-out infinite;
+        }
 
-.about-lpf__glow--one {
-    width: 230px;
-    height: 230px;
-    left: -90px;
-    bottom: 120px;
-    background: rgba(226, 177, 83, .28);
-}
+        .about-lpf__glow--one {
+            width: 230px;
+            height: 230px;
+            left: -90px;
+            bottom: 120px;
+            background: rgba(226, 177, 83, .28);
+        }
 
-.about-lpf__glow--two {
-    width: 280px;
-    height: 280px;
-    right: -100px;
-    top: 80px;
-    background: rgba(7, 8, 73, .12);
-    animation-delay: 1.3s;
-}
+        .about-lpf__glow--two {
+            width: 280px;
+            height: 280px;
+            right: -100px;
+            top: 80px;
+            background: rgba(7, 8, 73, .12);
+            animation-delay: 1.3s;
+        }
 
-.about-lpf__grid {
-    position: relative;
-    z-index: 2;
-    display: grid;
-    grid-template-columns: 1.05fr .95fr;
-    gap: 70px;
-    align-items: center;
-}
+        .about-lpf__grid {
+            position: relative;
+            z-index: 2;
+            display: grid;
+            grid-template-columns: 1.05fr .95fr;
+            gap: 70px;
+            align-items: center;
+        }
 
-.about-lpf__label {
-    display: inline-flex;
-    align-items: center;
-    gap: 16px;
-    margin-bottom: 20px;
-    color: #070849;
-    font-size: 13px;
-    font-weight: 900;
-    letter-spacing: 6px;
-    text-transform: uppercase;
-}
+        .about-lpf__label {
+            display: inline-flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 20px;
+            color: #070849;
+            font-size: 13px;
+            font-weight: 900;
+            letter-spacing: 6px;
+            text-transform: uppercase;
+        }
 
-.about-lpf__label::before,
-.about-lpf__label::after {
-    content: "";
-    width: 42px;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, #d8a936);
-}
+        .about-lpf__label::before,
+        .about-lpf__label::after {
+            content: "";
+            width: 42px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #d8a936);
+        }
 
-.about-lpf__label::after {
-    background: linear-gradient(90deg, #d8a936, transparent);
-}
+        .about-lpf__label::after {
+            background: linear-gradient(90deg, #d8a936, transparent);
+        }
 
-.about-lpf__content h3 {
-    margin: 0 0 28px;
-    color: #070849;
-    font-size: clamp(42px, 5.5vw, 82px);
-    font-weight: 600;
-    line-height: .95;
-    letter-spacing: -3px;
-}
+        .about-lpf__content h3 {
+            margin: 0 0 28px;
+            color: #070849;
+            font-size: clamp(42px, 5.5vw, 82px);
+            font-weight: 600;
+            line-height: .95;
+            letter-spacing: -3px;
+        }
 
-.about-lpf__content h3 em {
-    display: block;
-    color: #ffe7a5;
-    font-style: italic;
-}
+        .about-lpf__content h3 em {
+            display: block;
+            color: #ffe7a5;
+            font-style: italic;
+        }
 
-.about-lpf__intro {
-    font-size: 16px !important;
-    color: #37384d !important;
-}
+        .about-lpf__intro {
+            font-size: 16px !important;
+            color: #37384d !important;
+        }
 
-.about-lpf__content p {
-    margin: 0 0 18px;
-    color: #66677a;
-    font-size: 16.5px;
-    line-height: 1.85;
-}
+        .about-lpf__content p {
+            margin: 0 0 18px;
+            color: #66677a;
+            font-size: 16.5px;
+            line-height: 1.85;
+        }
 
-.about-lpf__content strong {
-    color: #070849;
-}
+        .about-lpf__content strong {
+            color: #070849;
+        }
 
-.about-lpf__features {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 14px;
-    margin: 30px 0;
-}
+        .about-lpf__features {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 14px;
+            margin: 30px 0;
+        }
 
-.about-lpf__features div {
-    padding: 10px;
-    border-radius: 20px;
-    background: rgba(255,255,255,.82);
-    border: 1px solid rgba(216, 169, 54, .28);
-    box-shadow: 0 18px 40px rgba(7, 8, 73, .06);
-    text-align: center;
-    transition: .3s ease;
-}
+        .about-lpf__features div {
+            padding: 10px;
+            border-radius: 20px;
+            background: rgba(255, 255, 255, .82);
+            border: 1px solid rgba(216, 169, 54, .28);
+            box-shadow: 0 18px 40px rgba(7, 8, 73, .06);
+            text-align: center;
+            transition: .3s ease;
+        }
 
-.about-lpf__features div:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 25px 55px rgba(7, 8, 73, .12);
-}
+        .about-lpf__features div:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 25px 55px rgba(7, 8, 73, .12);
+        }
 
-.about-lpf__features i {
-    display: block;
-    margin-bottom: 10px;
-    color: #ffe7a5;
-    font-size: 24px;
-}
+        .about-lpf__features i {
+            display: block;
+            margin-bottom: 10px;
+            color: #ffe7a5;
+            font-size: 24px;
+        }
 
-.about-lpf__features span {
-    color: #070849;
-    font-size: 13px;
-    font-weight: 800;
-    line-height: 1.4;
-}
+        .about-lpf__features span {
+            color: #070849;
+            font-size: 13px;
+            font-weight: 800;
+            line-height: 1.4;
+        }
 
-.about-lpf__signature {
-    padding-left: 18px;
-    border-left: 3px solid #d8a936;
-    color: #070849 !important;
-    font-weight: 700;
-}
+        .about-lpf__signature {
+            padding-left: 18px;
+            border-left: 3px solid #d8a936;
+            color: #070849 !important;
+            font-weight: 700;
+        }
 
-.about-lpf__final {
-    margin-top: 12px !important;
-    color: #ffe7a5 !important;
-    font-size: 18px !important;
-    font-weight: 900;
-    font-style: italic;
-}
+        .about-lpf__final {
+            margin-top: 12px !important;
+            color: #ffe7a5 !important;
+            font-size: 18px !important;
+            font-weight: 900;
+            font-style: italic;
+        }
 
 
-.about-lpf__visual {
-    position: relative;
-}
+        .about-lpf__visual {
+            position: relative;
+        }
 
-.about-lpf__image-card {
-    position: relative;
-    overflow: hidden;
-    border-radius: 42px;
-    padding: 16px;
-    background: linear-gradient(135deg, rgba(255,255,255,.9), rgba(255,241,185,.55));
-    border: 1px solid rgba(216, 169, 54, .36);
-    box-shadow: 0 35px 90px rgba(7, 8, 73, .16);
-    transform: rotate(2deg);
-}
+        .about-lpf__image-card {
+            position: relative;
+            overflow: hidden;
+            border-radius: 42px;
+            padding: 16px;
+            background: linear-gradient(135deg, rgba(255, 255, 255, .9), rgba(255, 241, 185, .55));
+            border: 1px solid rgba(216, 169, 54, .36);
+            box-shadow: 0 35px 90px rgba(7, 8, 73, .16);
+            transform: rotate(2deg);
+        }
 
-.about-lpf__image-card::before {
-    content: "";
-    position: absolute;
-    inset: -40%;
-    background: linear-gradient(120deg, transparent 35%, rgba(255,255,255,.75), transparent 65%);
-    transform: translateX(-60%);
-    animation: aboutShine 4s ease-in-out infinite;
-}
+        .about-lpf__image-card::before {
+            content: "";
+            position: absolute;
+            inset: -40%;
+            background: linear-gradient(120deg, transparent 35%, rgba(255, 255, 255, .75), transparent 65%);
+            transform: translateX(-60%);
+            animation: aboutShine 4s ease-in-out infinite;
+        }
 
-.about-lpf__image-card img {
-    position: relative;
-    z-index: 2;
-    width: 100%;
-    display: block;
-    border-radius: 30px;
-    aspect-ratio: 1 / 1;
-    object-fit: cover;
-}
+        .about-lpf__image-card img {
+            position: relative;
+            z-index: 2;
+            width: 100%;
+            display: block;
+            border-radius: 30px;
+            aspect-ratio: 1 / 1;
+            object-fit: cover;
+        }
 
-.about-lpf__floating {
-    position: absolute;
-    z-index: 3;
-    width: 118px;
-    height: 118px;
-    border-radius: 30px;
-    display: grid;
-    place-items: center;
-    text-align: center;
-    background: rgba(255,255,255,.88);
-    border: 1px solid rgba(216, 169, 54, .38);
-    box-shadow: 0 22px 55px rgba(7, 8, 73, .15);
-    backdrop-filter: blur(10px);
-    animation: aboutFloat 5s ease-in-out infinite;
-}
+        .about-lpf__floating {
+            position: absolute;
+            z-index: 3;
+            width: 118px;
+            height: 118px;
+            border-radius: 30px;
+            display: grid;
+            place-items: center;
+            text-align: center;
+            background: rgba(255, 255, 255, .88);
+            border: 1px solid rgba(216, 169, 54, .38);
+            box-shadow: 0 22px 55px rgba(7, 8, 73, .15);
+            backdrop-filter: blur(10px);
+            animation: aboutFloat 5s ease-in-out infinite;
+        }
 
-.about-lpf__floating strong {
-    display: block;
-    color: #070849;
-    font-size: 30px;
-    line-height: 1;
-}
+        .about-lpf__floating strong {
+            display: block;
+            color: #070849;
+            font-size: 30px;
+            line-height: 1;
+        }
 
-.about-lpf__floating span {
-    color: #d8a936;
-    font-size: 12px;
-    font-weight: 900;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-}
+        .about-lpf__floating span {
+            color: #d8a936;
+            font-size: 12px;
+            font-weight: 900;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
 
-.about-lpf__floating--one {
-    top: 30px;
-    left: -15px;
-}
+        .about-lpf__floating--one {
+            top: 30px;
+            left: -15px;
+        }
 
-.about-lpf__floating--two {
-    right: -15px;
-    bottom: 45px;
-    animation-delay: 1s;
-}
+        .about-lpf__floating--two {
+            right: -15px;
+            bottom: 45px;
+            animation-delay: 1s;
+        }
 
-@keyframes aboutFloat {
-    0%, 100% {
-        transform: translateY(0);
-    }
-    50% {
-        transform: translateY(-16px);
-    }
-}
+        @keyframes aboutFloat {
 
-@keyframes aboutShine {
-    0% {
-        transform: translateX(-65%) rotate(15deg);
-    }
-    55%, 100% {
-        transform: translateX(65%) rotate(15deg);
-    }
-}
+            0%,
+            100% {
+                transform: translateY(0);
+            }
 
-@media (max-width: 991px) {
-    .about-lpf__grid {
-        grid-template-columns: 1fr;
-        gap: 45px;
-    }
+            50% {
+                transform: translateY(-16px);
+            }
+        }
 
-    .about-lpf__visual {
-        max-width: 560px;
-        margin: 0 auto;
-    }
-}
+        @keyframes aboutShine {
+            0% {
+                transform: translateX(-65%) rotate(15deg);
+            }
 
-@media (max-width: 768px) {
-    .about-lpf {
-        padding: 70px 0;
-    }
+            55%,
+            100% {
+                transform: translateX(65%) rotate(15deg);
+            }
+        }
 
-    .about-lpf__content h3 {
-        font-size: 44px;
-        letter-spacing: -2px;
-    }
+        @media (max-width: 991px) {
+            .about-lpf__grid {
+                grid-template-columns: 1fr;
+                gap: 45px;
+            }
 
-    .about-lpf__intro {
-        font-size: 18px !important;
-    }
+            .about-lpf__visual {
+                max-width: 560px;
+                margin: 0 auto;
+            }
+        }
 
-    .about-lpf__features {
-        grid-template-columns: 1fr;
-    }
+        @media (max-width: 768px) {
+            .about-lpf {
+                padding: 70px 0;
+            }
 
-    .about-lpf__label {
-        font-size: 11px;
-        letter-spacing: 3px;
-    }
+            .about-lpf__content h3 {
+                font-size: 44px;
+                letter-spacing: -2px;
+            }
 
-    .about-lpf__label::before,
-    .about-lpf__label::after {
-        width: 26px;
-    }
+            .about-lpf__intro {
+                font-size: 18px !important;
+            }
 
-    .about-lpf__floating {
-        width: 96px;
-        height: 96px;
-        border-radius: 24px;
-    }
+            .about-lpf__features {
+                grid-template-columns: 1fr;
+            }
 
-    .about-lpf__floating strong {
-        font-size: 24px;
-    }
-}
+            .about-lpf__label {
+                font-size: 11px;
+                letter-spacing: 3px;
+            }
+
+            .about-lpf__label::before,
+            .about-lpf__label::after {
+                width: 26px;
+            }
+
+            .about-lpf__floating {
+                width: 96px;
+                height: 96px;
+                border-radius: 24px;
+            }
+
+            .about-lpf__floating strong {
+                font-size: 24px;
+            }
+        }
     </style>
 </head>
 
@@ -1353,15 +1359,6 @@
                                         <span class="bestseller-lpf-card__price">
                                             {{ $product->sale_price ?: $product->price }} DH
                                         </span>
-
-                                        <div class="bestseller-lpf-card__rating">
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <span>5.0</span>
-                                        </div>
                                     </div>
 
                                     <a href="{{ route('product', $product->id) }}" class="bestseller-lpf-card__btn">
@@ -1453,7 +1450,8 @@
 
 
                     <p>
-                         Je viens de recevoir ma commande. Très bon service, et la qualité du parfum est tout simplement magnifique. Merci, à la prochaine !
+                        Je viens de recevoir ma commande. Très bon service, et la qualité du parfum est tout simplement
+                        magnifique. Merci, à la prochaine !
 
                     </p>
 
@@ -1478,34 +1476,36 @@
                         <div class="testimonial-lpf-card__avatar">OM</div>
                         <div>
                             <h4>Mohammed</h4>
-                            <span><i class="fas fa-check-circle"></i>  Acheteuse vérifiée</span>
+                            <span><i class="fas fa-check-circle"></i> Acheteuse vérifiée</span>
                         </div>
                     </div>
                 </div>
 
-                    <div class="testimonial-lpf-card">
+                <div class="testimonial-lpf-card">
                     <div class="testimonial-lpf-card__quote">“</div>
 
 
                     <p>
-                        Weslatni la commande pour la 3ème fois, les parfums zwinin bhal dima w ta3amol excellent ! choukran 3la l cadeau 🫶🏻.
+                        Weslatni la commande pour la 3ème fois, les parfums zwinin bhal dima w ta3amol excellent !
+                        choukran 3la l cadeau 🫶🏻.
                     </p>
 
                     <div class="testimonial-lpf-card__author">
                         <div class="testimonial-lpf-card__avatar">OM</div>
                         <div>
                             <h4>Aya</h4>
-                            <span><i class="fas fa-check-circle"></i>  Acheteuse vérifiée</span>
+                            <span><i class="fas fa-check-circle"></i> Acheteuse vérifiée</span>
                         </div>
                     </div>
                 </div>
 
-                  <div class="testimonial-lpf-card">
+                <div class="testimonial-lpf-card">
                     <div class="testimonial-lpf-card__quote">“</div>
 
 
                     <p>
-J’ai bien reçu la commande shukran bezzaf je suis complètement satisfaite. Saraha très bon service ou ti9a lah ya3tik seha, à recommander ! 
+                        J’ai bien reçu la commande shukran bezzaf je suis complètement satisfaite. Saraha très bon
+                        service ou ti9a lah ya3tik seha, à recommander !
 
                     </p>
 
@@ -1513,17 +1513,18 @@ J’ai bien reçu la commande shukran bezzaf je suis complètement satisfaite. S
                         <div class="testimonial-lpf-card__avatar">OM</div>
                         <div>
                             <h4>Maryim</h4>
-                            <span><i class="fas fa-check-circle"></i>  Acheteuse vérifiée</span>
+                            <span><i class="fas fa-check-circle"></i> Acheteuse vérifiée</span>
                         </div>
                     </div>
                 </div>
 
-                  <div class="testimonial-lpf-card">
+                <div class="testimonial-lpf-card">
                     <div class="testimonial-lpf-card__quote">“</div>
 
 
                     <p>
- Les décants sentent trop bon et le service ta hwa tbarklah elikom, ca sera pas ma dernière fois certainement 
+                        Les décants sentent trop bon et le service ta hwa tbarklah elikom, ca sera pas ma dernière fois
+                        certainement
 
                     </p>
 
@@ -1531,17 +1532,18 @@ J’ai bien reçu la commande shukran bezzaf je suis complètement satisfaite. S
                         <div class="testimonial-lpf-card__avatar">OM</div>
                         <div>
                             <h4>Rachid</h4>
-                            <span><i class="fas fa-check-circle"></i>  Acheteuse vérifiée</span>
+                            <span><i class="fas fa-check-circle"></i> Acheteuse vérifiée</span>
                         </div>
                     </div>
                 </div>
 
-                  <div class="testimonial-lpf-card">
+                <div class="testimonial-lpf-card">
                     <div class="testimonial-lpf-card__quote">“</div>
 
 
                     <p>
-Je tiens a vous remercier pour la qualité de votre service, les parfums sont excellents ! L’emballage aussi et merci pour le petit cadeau. Costumer for life 👌🏼 
+                        Je tiens a vous remercier pour la qualité de votre service, les parfums sont excellents !
+                        L’emballage aussi et merci pour le petit cadeau. Costumer for life 👌🏼
 
                     </p>
 
@@ -1549,7 +1551,7 @@ Je tiens a vous remercier pour la qualité de votre service, les parfums sont ex
                         <div class="testimonial-lpf-card__avatar">OM</div>
                         <div>
                             <h4>Lina</h4>
-                            <span><i class="fas fa-check-circle"></i>  Acheteuse vérifiée</span>
+                            <span><i class="fas fa-check-circle"></i> Acheteuse vérifiée</span>
                         </div>
                     </div>
                 </div>
@@ -1558,118 +1560,113 @@ Je tiens a vous remercier pour la qualité de votre service, les parfums sont ex
         </div>
     </section>
 
-<section class="about-lpf"
-    itemscope itemtype="https://schema.org/Organization">
+    <section class="about-lpf" itemscope itemtype="https://schema.org/Organization">
 
-    <!-- SEO hidden data -->
-    <meta itemprop="name" content="Le Petit Flacon">
-    <meta itemprop="url" content="https://lepetitflacon.shop">
-    <meta itemprop="description"
-        content="Décants de parfum 100% originaux au Maroc en formats 5ml et 10ml. Testez votre parfum avant achat avec Le Petit Flacon.">
+        <!-- SEO hidden data -->
+        <meta itemprop="name" content="Le Petit Flacon">
+        <meta itemprop="url" content="https://lepetitflacon.shop">
+        <meta itemprop="description"
+            content="Décants de parfum 100% originaux au Maroc en formats 5ml et 10ml. Testez votre parfum avant achat avec Le Petit Flacon.">
 
-    <div class="about-lpf__glow about-lpf__glow--one"></div>
-    <div class="about-lpf__glow about-lpf__glow--two"></div>
+        <div class="about-lpf__glow about-lpf__glow--one"></div>
+        <div class="about-lpf__glow about-lpf__glow--two"></div>
 
-    <div class="container">
-        <div class="about-lpf__grid">
+        <div class="container">
+            <div class="about-lpf__grid">
 
-            <div class="about-lpf__content" itemprop="description">
-                <span class="about-lpf__label">À propos de nous</span>
+                <div class="about-lpf__content" itemprop="description">
+                    <span class="about-lpf__label">À propos de nous</span>
 
-                <!-- ADD keyword in title -->
-                <h3>
-                    Le luxe du parfum au Maroc,
-                    <em>en toute liberté</em>
-                </h3>
+                    <!-- ADD keyword in title -->
+                    <h3>
+                        Le luxe du parfum au Maroc,
+                        <em>en toute liberté</em>
+                    </h3>
 
-                <p class="about-lpf__intro">
-                    Chez <strong itemprop="brand">Le Petit Flacon</strong>, notre mission est simple :
-                    rendre le <strong>parfum de luxe accessible au Maroc</strong>.
-                </p>
+                    <p class="about-lpf__intro">
+                        Chez <strong itemprop="brand">Le Petit Flacon</strong>, notre mission est simple :
+                        rendre le <strong>parfum de luxe accessible au Maroc</strong>.
+                    </p>
 
-                <p>
-                    Aujourd’hui, choisir un <strong>parfum en ligne au Maroc</strong> peut être un véritable défi.
-                    Entre les prix élevés des grands formats et l’impossibilité de tester,
-                    beaucoup hésitent… ou achètent sans être totalement sûrs de leur choix.
-                </p>
+                    <p>
+                        Aujourd’hui, choisir un <strong>parfum en ligne au Maroc</strong> peut être un véritable défi.
+                        Entre les prix élevés des grands formats et l’impossibilité de tester,
+                        beaucoup hésitent… ou achètent sans être totalement sûrs de leur choix.
+                    </p>
 
-                <p>
-                    C’est pour répondre à ce besoin que <strong>Le Petit Flacon</strong> est né.
-                </p>
+                    <p>
+                        C’est pour répondre à ce besoin que <strong>Le Petit Flacon</strong> est né.
+                    </p>
 
-                <p>
-                    Nous proposons des <strong>décants de parfums 100% originaux</strong>,
-                    disponibles en formats <strong>5 ml</strong> et <strong>10 ml</strong>.
-                    Ces formats vous permettent de découvrir un <strong>parfum de luxe</strong> à votre rythme —
-                    sur votre peau, dans votre quotidien — avant de vous engager dans un grand format.
-                </p>
+                    <p>
+                        Nous proposons des <strong>décants de parfums 100% originaux</strong>,
+                        disponibles en formats <strong>5 ml</strong> et <strong>10 ml</strong>.
+                        Ces formats vous permettent de découvrir un <strong>parfum de luxe</strong> à votre rythme —
+                        sur votre peau, dans votre quotidien — avant de vous engager dans un grand format.
+                    </p>
 
-                <p>
-                    Mais notre univers ne s’arrête pas là. Nous vous proposons également une
-                    sélection de brumes parfumées délicates et de soins personnels soigneusement
-                    choisis, pour prolonger l’expérience et intégrer le parfum dans chaque instant
-                    de votre quotidien.
-                </p>
+                    <p>
+                        Mais notre univers ne s’arrête pas là. Nous vous proposons également une
+                        sélection de brumes parfumées délicates et de soins personnels soigneusement
+                        choisis, pour prolonger l’expérience et intégrer le parfum dans chaque instant
+                        de votre quotidien.
+                    </p>
 
-                <div class="about-lpf__features">
-                    <div>
-                        <i class="fas fa-spray-can-sparkles"></i>
-                        <span>Décants 5ml & 10ml Maroc</span>
+                    <div class="about-lpf__features">
+                        <div>
+                            <i class="fas fa-spray-can-sparkles"></i>
+                            <span>Décants 5ml & 10ml Maroc</span>
+                        </div>
+
+                        <div>
+                            <i class="fas fa-certificate"></i>
+                            <span>Produits 100% authentiques</span>
+                        </div>
+
+                        <div>
+                            <i class="fas fa-truck-fast"></i>
+                            <span>Livraison rapide au Maroc</span>
+                        </div>
                     </div>
 
-                    <div>
-                        <i class="fas fa-certificate"></i>
-                        <span>Produits 100% authentiques</span>
+                    <p>
+                        Tous nos produits sont <strong>100% authentiques</strong>, sélectionnés avec
+                        exigence pour vous offrir qualité, élégance et satisfaction. Chez nous, vous
+                        ne choisissez pas simplement un parfum. Vous révélez votre signature olfactive
+                        avec un service fiable, rapide et professionnel.
+                    </p>
+
+                    <p class="about-lpf__signature">
+                        Avec Le Petit Flacon, découvrez une nouvelle manière de vivre le parfum :
+                        plus libre, plus intelligente, plus personnelle.
+                    </p>
+
+                    <p class="about-lpf__final">
+                        Le Petit Flacon <strong> là où la fraîcheur et le luxe commencent. </strong> ✨
+                    </p>
+                </div>
+
+                <div class="about-lpf__visual">
+                    <div class="about-lpf__image-card">
+                        <img src="{{ asset('assets/clints/images/about-decants.png') }}"
+                            alt="Décants parfum 5ml et 10ml Le Petit Flacon Maroc" loading="lazy" decoding="async"
+                            width="500" height="500" itemprop="image">
                     </div>
 
-                    <div>
-                        <i class="fas fa-truck-fast"></i>
-                        <span>Livraison rapide au Maroc</span>
+                    <div class="about-lpf__floating about-lpf__floating--one">
+                        <strong>100%</strong>
+                        <span>Original</span>
+                    </div>
+
+                    <div class="about-lpf__floating about-lpf__floating--two">
+                        <strong>5ml</strong>
+                        <span>& 10ml</span>
                     </div>
                 </div>
 
-                <p>
-                    Tous nos produits sont <strong>100% authentiques</strong>, sélectionnés avec
-                    exigence pour vous offrir qualité, élégance et satisfaction. Chez nous, vous
-                    ne choisissez pas simplement un parfum. Vous révélez votre signature olfactive
-                    avec un service fiable, rapide et professionnel.
-                </p>
-
-                <p class="about-lpf__signature">
-                    Avec Le Petit Flacon, découvrez une nouvelle manière de vivre le parfum :
-                    plus libre, plus intelligente, plus personnelle.
-                </p>
-
-                <p class="about-lpf__final">
-                    Le Petit Flacon  <strong> là où la fraîcheur et le luxe commencent. </strong> ✨
-                </p>
             </div>
-
-            <div class="about-lpf__visual">
-                <div class="about-lpf__image-card">
-                    <img src="{{ asset('assets/clints/images/about-decants.png') }}"
-                        alt="Décants parfum 5ml et 10ml Le Petit Flacon Maroc"
-                        loading="lazy"
-                        decoding="async"
-                        width="500"
-                        height="500"
-                        itemprop="image">
-                </div>
-
-                <div class="about-lpf__floating about-lpf__floating--one">
-                    <strong>100%</strong>
-                    <span>Original</span>
-                </div>
-
-                <div class="about-lpf__floating about-lpf__floating--two">
-                    <strong>5ml</strong>
-                    <span>& 10ml</span>
-                </div>
-            </div>
-
         </div>
-    </div>
-</section>
+    </section>
 
 
 
@@ -1727,7 +1724,6 @@ Je tiens a vous remercier pour la qualité de votre service, les parfums sont ex
 
 <script>
     document.addEventListener('DOMContentLoaded', function() {
-        return 0;
         const track = document.getElementById('bestsellersTrack');
         const prevBtn = document.getElementById('bsPrev');
         const nextBtn = document.getElementById('bsNext');
