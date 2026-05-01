@@ -508,7 +508,7 @@
 
                     <h1>{{ $pageTitle }}</h1>
                     <p>
-                        Découvrez notre collection de parfums raffinés — des classiques intemporels aux nouveautés.
+                        Découvrez nos produits, soigneusement séléctionnés.
                     </p>
                 </div>
 
@@ -524,7 +524,6 @@
     <section class="section shop-section">
         <div class="container">
             <div class="shop-layout">
-                <!-- Filtres latéraux -->
                 <aside class="filters" id="filtersPanel">
                     <div class="filters__header">
                         <h3>Filtres</h3>
@@ -532,7 +531,6 @@
                     </div>
 
 
-                    <!-- Catégories -->
                     <div class="filter-group">
                         <h4 class="filter-group__title">Catégories <i class="fas fa-chevron-down"></i></h4>
                         <div class="filter-group__content">
@@ -548,7 +546,6 @@
                         </div>
                     </div>
 
-                    <!-- Genre -->
                     <div class="filter-group">
                         <h4 class="filter-group__title">Genre <i class="fas fa-chevron-down"></i></h4>
                         <div class="filter-group__content">
@@ -576,7 +573,7 @@
                 </aside>
                 <div class="filters-overlay" id="filtersOverlay"></div>
 
-                <!-- Produits -->
+  
                 <div class="shop-main">
                     <div class="shop-toolbar">
                         <div class="shop-toolbar__info">
@@ -611,16 +608,9 @@
                                         <img src="{{ $product->getFirstMediaUrl('images') ?: asset('assets/clints/images/mens-perfume.png') }}"
                                             alt="{{ $product->getTranslation('name', 'fr') }}">
 
-                                        {{-- @if ($product->created_at->gt(now()->subDays(7)))
-                                        <span class="product-card__badge">Nouveau</span>
-                                    @endif --}}
 
                                         <div class="product-card__actions">
-                                            {{-- <button
-                                            class="wishlist-btn {{ auth()->check() && auth()->user()->wishlist->contains('product_id', $product->id) ? 'active' : '' }}">
-                                            <i
-                                                class="{{ auth()->check() && auth()->user()->wishlist->contains('product_id', $product->id) ? 'fas' : 'far' }} fa-heart"></i>
-                                        </button> --}}
+                                           
                                             <button
                                                 onclick="window.location.href='{{ route('product', $product->id) }}'">
                                                 <i class="far fa-eye"></i>

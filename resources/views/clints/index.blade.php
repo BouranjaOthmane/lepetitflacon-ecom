@@ -673,7 +673,7 @@
 
         .testimonial-lpf-card {
             position: relative;
-            min-height: 390px;
+            min-height: 300px;
             padding: 34px;
             border-radius: 30px;
             background:
@@ -1414,11 +1414,6 @@
                 <div class="testimonial-lpf-card">
                     <div class="testimonial-lpf-card__quote">“</div>
 
-                    <div class="testimonial-lpf-card__stars">
-                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
-                            class="fas fa-star"></i><i class="fas fa-star"></i>
-                    </div>
-
                     <p>
                         Ambre Oud Royal est un parfum absolument remarquable. Sa tenue est impressionnante et je reçois
                         des
@@ -1428,7 +1423,7 @@
                     <div class="testimonial-lpf-card__author">
                         <div class="testimonial-lpf-card__avatar">SA</div>
                         <div>
-                            <h4>Sarah Ahmed</h4>
+                            <h4>Sarah</h4>
                             <span><i class="fas fa-check-circle"></i> Acheteuse vérifiée</span>
                         </div>
                     </div>
@@ -1437,10 +1432,6 @@
                 <div class="testimonial-lpf-card testimonial-lpf-card--featured">
                     <div class="testimonial-lpf-card__quote">“</div>
 
-                    <div class="testimonial-lpf-card__stars">
-                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
-                            class="fas fa-star"></i><i class="fas fa-star"></i>
-                    </div>
 
                     <p>
                         Le packaging à lui seul reflète la qualité. Rose Mystique est devenu mon parfum préféré —
@@ -1451,7 +1442,7 @@
                     <div class="testimonial-lpf-card__author">
                         <div class="testimonial-lpf-card__avatar">MK</div>
                         <div>
-                            <h4>Mariam Khaled</h4>
+                            <h4>Mariam </h4>
                             <span><i class="fas fa-check-circle"></i> Acheteuse vérifiée</span>
                         </div>
                     </div>
@@ -1460,10 +1451,23 @@
                 <div class="testimonial-lpf-card">
                     <div class="testimonial-lpf-card__quote">“</div>
 
-                    <div class="testimonial-lpf-card__stars">
-                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
-                            class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+
+                    <p>
+                         Je viens de recevoir ma commande. Très bon service, et la qualité du parfum est tout simplement magnifique. Merci, à la prochaine !
+
+                    </p>
+
+                    <div class="testimonial-lpf-card__author">
+                        <div class="testimonial-lpf-card__avatar">OM</div>
+                        <div>
+                            <h4>Omar</h4>
+                            <span><i class="fas fa-check-circle"></i> Acheteur vérifié</span>
+                        </div>
                     </div>
+                </div>
+                <div class="testimonial-lpf-card">
+                    <div class="testimonial-lpf-card__quote">“</div>
+
 
                     <p>
                         Je découvre les parfums de luxe depuis des années, et LePetitFlacon fait partie des plus belles
@@ -1473,8 +1477,79 @@
                     <div class="testimonial-lpf-card__author">
                         <div class="testimonial-lpf-card__avatar">OM</div>
                         <div>
-                            <h4>Omar Mohammed</h4>
-                            <span><i class="fas fa-check-circle"></i> Acheteur vérifié</span>
+                            <h4>Mohammed</h4>
+                            <span><i class="fas fa-check-circle"></i>  Acheteuse vérifiée</span>
+                        </div>
+                    </div>
+                </div>
+
+                    <div class="testimonial-lpf-card">
+                    <div class="testimonial-lpf-card__quote">“</div>
+
+
+                    <p>
+                        Weslatni la commande pour la 3ème fois, les parfums zwinin bhal dima w ta3amol excellent ! choukran 3la l cadeau 🫶🏻.
+                    </p>
+
+                    <div class="testimonial-lpf-card__author">
+                        <div class="testimonial-lpf-card__avatar">OM</div>
+                        <div>
+                            <h4>Aya</h4>
+                            <span><i class="fas fa-check-circle"></i>  Acheteuse vérifiée</span>
+                        </div>
+                    </div>
+                </div>
+
+                  <div class="testimonial-lpf-card">
+                    <div class="testimonial-lpf-card__quote">“</div>
+
+
+                    <p>
+J’ai bien reçu la commande shukran bezzaf je suis complètement satisfaite. Saraha très bon service ou ti9a lah ya3tik seha, à recommander ! 
+
+                    </p>
+
+                    <div class="testimonial-lpf-card__author">
+                        <div class="testimonial-lpf-card__avatar">OM</div>
+                        <div>
+                            <h4>Maryim</h4>
+                            <span><i class="fas fa-check-circle"></i>  Acheteuse vérifiée</span>
+                        </div>
+                    </div>
+                </div>
+
+                  <div class="testimonial-lpf-card">
+                    <div class="testimonial-lpf-card__quote">“</div>
+
+
+                    <p>
+ Les décants sentent trop bon et le service ta hwa tbarklah elikom, ca sera pas ma dernière fois certainement 
+
+                    </p>
+
+                    <div class="testimonial-lpf-card__author">
+                        <div class="testimonial-lpf-card__avatar">OM</div>
+                        <div>
+                            <h4>Rachid</h4>
+                            <span><i class="fas fa-check-circle"></i>  Acheteuse vérifiée</span>
+                        </div>
+                    </div>
+                </div>
+
+                  <div class="testimonial-lpf-card">
+                    <div class="testimonial-lpf-card__quote">“</div>
+
+
+                    <p>
+Je tiens a vous remercier pour la qualité de votre service, les parfums sont excellents ! L’emballage aussi et merci pour le petit cadeau. Costumer for life 👌🏼 
+
+                    </p>
+
+                    <div class="testimonial-lpf-card__author">
+                        <div class="testimonial-lpf-card__avatar">OM</div>
+                        <div>
+                            <h4>Lina</h4>
+                            <span><i class="fas fa-check-circle"></i>  Acheteuse vérifiée</span>
                         </div>
                     </div>
                 </div>

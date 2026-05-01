@@ -143,4 +143,6 @@ document.addEventListener("DOMContentLoaded", function () {
         closeCookie("rejected");
     });
 });
+
 // End cookies
+
