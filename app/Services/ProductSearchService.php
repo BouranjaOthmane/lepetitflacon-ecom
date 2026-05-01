@@ -54,7 +54,7 @@ class ProductSearchService
                     'id' => $product->id,
                     'name' => $product->name,
                     'slug' => $product->slug,
-                    'image' => $product->getFirstMediaUrl('products', 'thumb'),
+                    'image' => $product->getFirstMediaUrl('images'),
                     'brand' => $product->brand ? $product->brand->name : null,
                 ];
             });

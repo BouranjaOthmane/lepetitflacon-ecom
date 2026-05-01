@@ -41,7 +41,6 @@ class SearchController extends Controller
     {
         $query = $request->input('q', '');
         $suggestions = $this->searchService->getSuggestions($query);
-
         return response()->json($suggestions);
     }
 }
