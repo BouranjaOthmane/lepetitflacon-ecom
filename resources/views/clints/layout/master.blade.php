@@ -7,11 +7,10 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>@yield('title', 'لوكس بارفيوم — اكتشف عطرك المميز')</title>
     @yield('meta')
-    <link rel="stylesheet"
-        href="{{ asset('assets/clints/css/style.css') }}?v={{ filemtime(public_path('assets/clints/css/style.css')) }}">
+    <link rel="stylesheet" href="{{asset('assets/clints/css/style.css?v=1.0.0')}}">
     @yield('styles')
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-
+    
     <!-- PWA Settings -->
     <link rel="manifest" href="/manifest.json">
     <meta name="theme-color" content="#c5a059">
