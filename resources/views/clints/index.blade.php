@@ -957,7 +957,7 @@
                 <div class="bestsellers-lpf__header reveal">
                     <span class="bestsellers-lpf__label">Les plus demandés</span>
                     <h2>Meilleures <em>ventes</em></h2>
-                    <p>Nos parfums les plus appréciés et adoptés par nos clients</p>
+                    <p>Nos produits les plus appréciés et adoptés par nos clients</p>
                 </div>
 
                 <div class="bestsellers-lpf__slider reveal">
