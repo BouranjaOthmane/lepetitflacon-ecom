@@ -572,8 +572,6 @@
                                     </div>
 
                                     <div class="product-card__info">
-                                        <p class="product-card__brand">{{ $product->brand->name ?? 'Lepetitflacon' }}
-                                        </p>
                                         <h4 class="product-card__name">{{ $product->getTranslation('name', 'fr') }}
                                         </h4>
 

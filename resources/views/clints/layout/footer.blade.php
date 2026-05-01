@@ -139,7 +139,16 @@
             </div>
         </div>
     </div>
+    <style>
+        .footer-lpf__contact i {
+            width: 18px !important;
+            color: #ffe7a5 !important;
+            font-size: 14px !important;
+        }
+    </style>
+
 </footer>
+
 
 <!-- Notification -->
 <div class="toast" id="toast"></div>

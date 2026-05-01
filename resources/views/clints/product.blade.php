@@ -953,7 +953,6 @@
                     @if ($product->is_bestseller)
                         <span class="product-info__badge">Meilleure vente</span>
                     @endif
-                    <p class="product-info__brand">{{ $product->brand->name ?? 'Lepetitflacon' }}</p>
                     <h1 class="product-info__name">{{ $product->getTranslation('name', 'ar') }}</h1>
 
                     @php
@@ -1246,9 +1245,6 @@
                     </a>
 
                     <div class="related-card-pro__content">
-                        <p class="related-card-pro__brand">
-                            {{ $item->brand->name ?? 'LePetitFlacon' }}
-                        </p>
 
                         <h3 class="related-card-pro__name">
                             {{ $item->getTranslation('name', 'fr') }}
