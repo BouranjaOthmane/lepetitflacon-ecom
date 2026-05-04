@@ -5,7 +5,7 @@ namespace App\Repositories;
 use App\Models\Product;
 use Illuminate\Database\Eloquent\Collection;
 
-class ProductRepository 
+class ProductRepository
 {
     protected $product;
     /**
@@ -15,9 +15,9 @@ class ProductRepository
      */
     public function __construct(Product $product)
     {
-        $this->product=$product;
+        $this->product = $product;
     }
-     public function all(): Collection
+    public function all(): Collection
     {
         return $this->product->all();
     }
@@ -118,7 +118,13 @@ class ProductRepository
      */
     public function getPaginatedActiveWithRelations(int $perPage = 10)
     {
-        return $this->product->with(['category', 'brand', 'sizes', 'fragranceNotes', 'stockMovements'])->latest()->paginate($perPage);
+        return Product::with(['category', 'brand', 'media', 'sizes'])
+            ->when(request('search'), function ($query) {
+                $query->where('name', 'like', '%' . request('search') . '%');
+            })
+            ->latest()
+            ->paginate($perPage)
+            ->withQueryString();
     }
 
 
@@ -131,22 +137,22 @@ class ProductRepository
     public function findWithRelations(int $id): product
     {
         return $this->product->with([
-            'category', 
-            'brand', 
-            'sizes', 
-            'fragranceNotes', 
+            'category',
+            'brand',
+            'sizes',
+            'fragranceNotes',
             'stockMovements',
-            'reviews' => function($query) {
+            'reviews' => function ($query) {
                 $query->where('is_approved', true)->with('user')->latest();
             }
         ])
-        ->withAvg(['reviews as average_rating' => function($q) {
-            $q->where('is_approved', true);
-        }], 'rating')
-        ->withCount(['reviews' => function($q) {
-            $q->where('is_approved', true);
-        }])
-        ->findOrFail($id);
+            ->withAvg(['reviews as average_rating' => function ($q) {
+                $q->where('is_approved', true);
+            }], 'rating')
+            ->withCount(['reviews' => function ($q) {
+                $q->where('is_approved', true);
+            }])
+            ->findOrFail($id);
     }
 
     /**
@@ -157,9 +163,9 @@ class ProductRepository
      */
     public function getTopSellingProducts(int $count = 5)
     {
-        return $this->product->withCount(['orderItems as total_sold' => function($query) {
-                $query->select(\Illuminate\Support\Facades\DB::raw('sum(quantity)'));
-            }])
+        return $this->product->withCount(['orderItems as total_sold' => function ($query) {
+            $query->select(\Illuminate\Support\Facades\DB::raw('sum(quantity)'));
+        }])
             ->orderByDesc('total_sold')
             ->take($count)
             ->get();

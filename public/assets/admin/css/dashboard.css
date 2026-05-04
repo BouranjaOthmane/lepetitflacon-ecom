@@ -5,12 +5,12 @@
 
 /* ---------- CSS Variables ---------- */
 :root {
-    --bg-primary: #FFF;
+    --bg-primary: #fff;
     /* Deeper background */
-    --bg-secondary: #FFF;
+    --bg-secondary: #fff;
     --bg-card: #151a30;
     --bg-card-hover: #1e2440;
-    --bg-sidebar: #FFF;
+    --bg-sidebar: #fff;
     --bg-input: #12182d;
 
     /* Glassmorphism */
@@ -23,7 +23,12 @@
     /* Metallic Gold */
     --color-gold-light: #f1d592;
     --color-gold-dark: #aa8d31;
-    --gold-gradient: linear-gradient(135deg, #aa8d31 0%, #d4af37 50%, #f1d592 100%);
+    --gold-gradient: linear-gradient(
+        135deg,
+        #aa8d31 0%,
+        #d4af37 50%,
+        #f1d592 100%
+    );
     --gold-glow: 0 0 15px rgba(212, 175, 55, 0.3);
 
     --color-text: #f0f0f5;
@@ -53,8 +58,8 @@
     /* Slightly taller for elegance */
     --transition: 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
 
-    --font-heading: 'Outfit', 'Cairo', sans-serif;
-    --font-body: 'Cairo', 'Segoe UI', sans-serif;
+    --font-heading: "Outfit", "Cairo", sans-serif;
+    --font-body: "Cairo", "Segoe UI", sans-serif;
 }
 
 /* ---------- Reset ---------- */
@@ -164,9 +169,11 @@ img {
 }
 
 .sidebar__logo h2 {
-    font-size: 1.1rem;
+    font-size: 25px;
     font-weight: 700;
-    color: var(--color-text);
+    color: #daa84e;
+    text-align: center;
+    margin: auto;
 }
 
 .sidebar__logo h2 span {
@@ -213,7 +220,7 @@ img {
 }
 
 .sidebar__link.active::before {
-    content: '';
+    content: "";
     position: absolute;
     left: 0;
     top: 8px;
@@ -262,7 +269,11 @@ img {
     width: 38px;
     height: 38px;
     border-radius: 50%;
-    background: linear-gradient(135deg, var(--color-gold), var(--color-gold-dark));
+    background: linear-gradient(
+        135deg,
+        var(--color-gold),
+        var(--color-gold-dark)
+    );
     display: flex;
     align-items: center;
     justify-content: center;
@@ -292,7 +303,7 @@ img {
 /* ===== HEADER ===== */
 .dashboard-header {
     height: var(--header-height);
-    background-color: #ECECEC;
+    background-color: #ececec;
     backdrop-filter: blur(var(--glass-blur));
     -webkit-backdrop-filter: blur(var(--glass-blur));
     border-bottom: 1px solid var(--glass-border);
@@ -558,24 +569,24 @@ img {
     }
 }
 
-.staggered-entry>* {
+.staggered-entry > * {
     opacity: 0;
     animation: fadeIn 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
 }
 
-.staggered-entry>*:nth-child(1) {
+.staggered-entry > *:nth-child(1) {
     animation-delay: 0.1s;
 }
 
-.staggered-entry>*:nth-child(2) {
+.staggered-entry > *:nth-child(2) {
     animation-delay: 0.2s;
 }
 
-.staggered-entry>*:nth-child(3) {
+.staggered-entry > *:nth-child(3) {
     animation-delay: 0.3s;
 }
 
-.staggered-entry>*:nth-child(4) {
+.staggered-entry > *:nth-child(4) {
     animation-delay: 0.4s;
 }
 
@@ -787,11 +798,13 @@ img {
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.5), var(--shadow-md);
+    box-shadow:
+        inset 0 0 20px rgba(0, 0, 0, 0.5),
+        var(--shadow-md);
 }
 
 .donut-visual::before {
-    content: '';
+    content: "";
     position: absolute;
     width: 110px;
     height: 110px;
@@ -844,7 +857,7 @@ img {
 
 /* ===== TABLE ===== */
 .table-card {
-    background-color: #ECECEC;
+    background-color: #ececec;
     border: 1px solid var(--border-color);
     border-radius: var(--radius-md);
     overflow: hidden;
@@ -882,7 +895,11 @@ img {
 }
 
 .btn-gold {
-    background: linear-gradient(135deg, var(--color-gold), var(--color-gold-dark));
+    background: linear-gradient(
+        135deg,
+        var(--color-gold),
+        var(--color-gold-dark)
+    );
     color: white;
 }
 
@@ -898,7 +915,7 @@ img {
 
 .btn-outline:hover {
     border-color: var(--color-gold);
-    color: #F7BB08;
+    color: #f7bb08;
 }
 
 .btn-sm {
@@ -986,7 +1003,7 @@ img {
 }
 
 .status-badge::before {
-    content: '';
+    content: "";
     width: 6px;
     height: 6px;
     border-radius: 50%;
@@ -1315,7 +1332,6 @@ img {
 
 /* ===== RESPONSIVE ===== */
 
-
 @media (max-width: 1200px) {
     .stats-grid {
         grid-template-columns: repeat(2, 1fr);
@@ -1441,13 +1457,13 @@ img {
 }
 
 .item-rank {
-    font-family: 'Outfit', sans-serif;
+    font-family: "Outfit", sans-serif;
     font-size: 1rem;
     font-weight: 800;
     color: white;
     width: 32px;
     height: 32px;
-    background-color: #406AAF;
+    background-color: #406aaf;
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -1489,7 +1505,7 @@ img {
 }
 
 .item-count {
-    font-family: 'Outfit', sans-serif;
+    font-family: "Outfit", sans-serif;
     font-size: 1.1rem;
     font-weight: 700;
     color: #11b981;
