@@ -349,7 +349,7 @@
                     </a>
                     <br>
                     Instagram :
-                    <a href="https://lepetitflacon.shop" target="_blank" rel="noopener">
+                    <a href="https://www.instagram.com/lepetit.flacon/" target="_blank" rel="noopener">
                         lepetit.flacon
                     </a>
                 </p>
