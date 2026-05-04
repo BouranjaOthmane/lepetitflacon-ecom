@@ -118,7 +118,7 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label>Stock <span style="color: red">*</span></label>
+                                    <label>Stock</label>
                                     <input type="number" name="sizes[0][stock_quantity]" min="0" value="0"
                                         placeholder="0">
                                 </div>
@@ -142,37 +142,9 @@
                             <span style="color: red ; font-size: 0.8rem">{{ $message }}</span>
                         @enderror
                     </div>
-                    <div class="form-group">
-                        <label>Stock disponible <span style="color: red">*</span></label>
-                        <input type="number" name="stock_quantity" value="{{ old('stock_quantity', 0) }}"
-                            min="0" required>
-                        @error('stock_quantity')
-                            <span style="color: red ; font-size: 0.8rem">{{ $message }}</span>
-                        @enderror
-                    </div>
-                    <div class="form-group">
-                        <label>Seuil d’alerte (stock faible)</label>
-                        <input type="number" name="low_stock_threshold" value="{{ old('low_stock_threshold', 10) }}"
-                            min="0" required>
-                        @error('low_stock_threshold')
-                            <span style="color: red ; font-size: 0.8rem">{{ $message }}</span>
-                        @enderror
-                    </div>
                 </div>
 
                 <div class="form-row">
-                    <div class="form-group">
-                        <label>Public cible <span style="color: red">*</span></label>
-                        <select name="gender" required>
-                            <option value="Men" {{ old('gender') == 'Men' ? 'selected' : '' }}>Homme</option>
-                            <option value="Women" {{ old('gender') == 'Women' ? 'selected' : '' }}>Femme</option>
-                            <option value="Unisex" {{ old('gender') == 'Unisex' ? 'selected' : '' }}>Mixte</option>
-                            <option value="Kids" {{ old('gender') == 'Kids' ? 'selected' : '' }}>Enfant</option>
-                        </select>
-                        @error('gender')
-                            <span style="color: red ; font-size: 0.8rem">{{ $message }}</span>
-                        @enderror
-                    </div>
                     <div class="form-group">
                         <label>Image principale du produit</label>
                         <input type="file" name="image" accept="image/*">
@@ -251,8 +223,8 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label>Stock <span style="color: red">*</span></label>
-                                    <input type="number" name="sizes[${index}][stock_quantity]" min="0" value="0" placeholder="0" required>
+                                    <label>Stock</label>
+                                    <input type="number" name="sizes[${index}][stock_quantity]" min="0" value="0" placeholder="0">
                                 </div>
 
                                 <div class="form-group" style="display:flex; align-items:end;">

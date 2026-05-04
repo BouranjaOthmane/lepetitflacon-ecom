@@ -730,7 +730,7 @@
             z-index: 2;
             margin: 0;
             color: #56576b;
-            font-size: 16px;
+            font-size: 18px;
             line-height: 1.8;
         }
 

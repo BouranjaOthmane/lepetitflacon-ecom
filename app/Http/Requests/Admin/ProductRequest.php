@@ -34,7 +34,7 @@ class ProductRequest extends FormRequest
             'sku' => 'nullable|string|unique:products,sku,' . $productId,
             'stock_quantity' => 'nullable|integer|min:0',
             'low_stock_threshold' => 'nullable|integer|min:0',
-            'gender' => 'required|in:Men,Women,Unisex,Kids',
+            'gender' => 'nullable|in:Men,Women,Unisex,Kids',
             'is_featured' => 'nullable|boolean',
             'is_bestseller' => 'nullable|boolean',
             'status' => 'nullable|boolean',

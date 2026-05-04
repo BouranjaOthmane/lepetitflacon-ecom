@@ -155,6 +155,15 @@ class OrderService
     }
 
 
+    public function deleteOrder($id): void
+    {
+        $order = Order::findOrFail($id);
+
+        $order->items()->delete();
+
+        $order->delete();
+    }
+
     public function updateOrderShipping($orderId, array $data): Order
     {
         $order = Order::findOrFail($orderId);

@@ -132,6 +132,16 @@
                                     onclick="editOrderStatus({{ $order->id }}, '{{ $order->status }}')">
                                     <i class="fas fa-tasks"></i>
                                 </button>
+                                <form action="{{ route('admin.orders.destroy', $order->id) }}" method="POST"
+                                    onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer ce commande ?')">
+                                    @csrf
+                                    @method('DELETE')
+
+                                    <button type="submit" class="btn btn-outline btn-sm" style="color:red"
+                                        title="Supprimer">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </form>
                                 @if (in_array(strtolower($order->status), ['processing', 'shipped', 'delivered', 'completed']))
                                     <a href="{{ route('orders.invoice.download', $order->id) }}" target="_blank"
                                         title="Télécharger la facture" class="btn-icon"
@@ -181,7 +191,8 @@
             </div>
             <div class="modal__footer">
                 <button type="submit" class="btn btn-gold"><i class="fas fa-save"></i> Mettre à jour</button>
-                <button type="button" class="btn btn-outline" onclick="closeModal('editStatusModal')">Annuler</button>
+                <button type="button" class="btn btn-outline"
+                    onclick="closeModal('editStatusModal')">Annuler</button>
             </div>
         </form>
     </div>

@@ -64,8 +64,9 @@ class OrderController extends Controller
     public function destroy($id)
     {
         $this->orderService->deleteOrder($id);
-        return response()->json(['success' => true, 'message' => 'تم حذف الطلب بنجاح']);
+        return back()->with('success', 'Commande supprimée avec succès');
     }
+    
 
     public function details(Order $order)
     {
