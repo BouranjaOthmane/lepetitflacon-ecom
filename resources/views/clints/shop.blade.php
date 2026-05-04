@@ -9,7 +9,7 @@
     <meta name="description"
         content="Parcourez notre collection de parfums raffinés. Filtrez par marque, catégorie, genre et gamme de prix.">
     <link rel="stylesheet"
-        href="{{ asset('assets/clints/css/style.css') }}?v={{ filemtime(public_path('assets/clints/css/style.css')) }}">
+        href="{{ asset('assets/clints/css/style.css') }}?v={{ filemtime(base_path('assets/clints/css/style.css')) }}">
     <link rel="stylesheet" href="{{ asset('assets/clints/css/shop.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 

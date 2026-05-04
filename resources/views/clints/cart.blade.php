@@ -8,10 +8,11 @@
     </title>
     <meta name="description" content="Consultez votre panier et finalisez votre commande sur lepetitflacon.">
 
+    <link rel="stylesheet" href="{{ asset('assets/clints/css/style.css') }}?v={{ filemtime(base_path('assets/clints/css/style.css')) }}">
+
+        
     <link rel="stylesheet"
-        href="{{ asset('assets/clints/css/style.css') }}?v={{ filemtime(public_path('assets/clints/css/style.css')) }}">
-    <link rel="stylesheet"
-        href="{{ asset('assets/clints/css/cart.css') }}?v={{ filemtime(public_path('assets/clints/css/cart.css')) }}">
+        href="{{ asset('assets/clints/css/cart.css') }}?v={{ filemtime(base_path('assets/clints/css/cart.css')) }}">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 

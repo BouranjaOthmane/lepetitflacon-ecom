@@ -8,7 +8,7 @@
     <title>{{ $product->getTranslation('name', 'ar') }} — Lepetitflacon</title>
     <meta name="description"
         content="Ambre Oud Royal — un mélange raffiné d’oud cambodgien rare et d’ambre chaleureux. Un parfum d’exception signé Lepetitflacon.">
-    <link rel="stylesheet" href="{{ asset('assets/clints/css/style.css') }}?v={{ filemtime(public_path('assets/clints/css/style.css')) }}">
+    <link rel="stylesheet" href="{{ asset('assets/clints/css/style.css') }}?v={{ filemtime(base_path('assets/clints/css/style.css')) }}">
     <link rel="stylesheet" href="{{ asset('assets/clints/css/product.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
@@ -1286,7 +1286,7 @@
     <!-- ========== Pied de page ========== -->
     @include('clints.layout.footer')
 
-    <script src="{{ asset('assets/clints/js/product.js') }}?v={{ filemtime(public_path('assets/clints/js/product.js')) }}"></script>
+    <script src="{{ asset('assets/clints/js/product.js') }}?v={{ filemtime(base_path('assets/clints/js/product.js')) }}"></script>
 </body>
 
 <a href="https://wa.me/212704654736"
