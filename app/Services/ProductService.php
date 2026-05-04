@@ -5,6 +5,7 @@ namespace App\Services;
 use App\Repositories\ProductRepository;
 use Illuminate\Database\Eloquent\Collection;
 use App\Models\Product;
+use Illuminate\Support\Facades\DB;
 
 class ProductService
 {
@@ -79,12 +80,15 @@ class ProductService
 
         $sizes = collect($data['sizes'])
             ->filter(function ($item) {
-                return !empty($item['size']) && isset($item['price']) && $item['price'] !== '';
+                return !empty($item['size'])
+                    && isset($item['price'])
+                    && $item['price'] !== '';
             })
             ->map(function ($item) {
                 return [
                     'size' => trim($item['size']),
-                    'price' => $item['price'],
+                    'price' => (float) $item['price'],
+                    'stock_quantity' => (int) ($item['stock_quantity'] ?? 0),
                 ];
             })
             ->values()
@@ -109,6 +113,13 @@ class ProductService
             $data['slug'] = $slug;
         }
 
+        // If sizes exist, calculate total stock from sizes
+        if (!empty($data['sizes'])) {
+            $data['stock_quantity'] = collect($data['sizes'])->sum(function ($size) {
+                return (int) ($size['stock_quantity'] ?? 0);
+            });
+        }
+
         $product = $this->productRepository->create($data);
 
         // Sync old stock field
@@ -116,7 +127,7 @@ class ProductService
         $product->save();
 
         // Initialize stock movement
-        if (isset($data['stock_quantity']) && $data['stock_quantity'] > 0) {
+        if (!empty($data['stock_quantity']) && $data['stock_quantity'] > 0) {
             $this->stockService->increase($product, $data['stock_quantity'], 'الرصيد الافتتاحي');
         }
 
@@ -124,7 +135,7 @@ class ProductService
         $this->uploadImage($product, 'image');
         $this->uploadGallery($product);
 
-        // save sizes
+        // Save sizes with stock_quantity
         $this->saveProductSizes($product, $data);
 
         return $product;
@@ -141,50 +152,85 @@ class ProductService
 
     public function updateProduct(int $id, array $data): Product
     {
-        if (isset($data['name']['en'])) {
-            $slug = \Illuminate\Support\Str::slug($data['name']['en']);
-            $originalSlug = $slug;
-            $count = 1;
+        return DB::transaction(function () use ($id, $data) {
 
-            while (Product::where('slug', $slug)->where('id', '!=', $id)->exists()) {
-                $slug = $originalSlug . '-' . $count++;
+            if (isset($data['name']['en'])) {
+                $slug = \Illuminate\Support\Str::slug($data['name']['en']);
+                $originalSlug = $slug;
+                $count = 1;
+
+                while (Product::where('slug', $slug)->where('id', '!=', $id)->exists()) {
+                    $slug = $originalSlug . '-' . $count++;
+                }
+
+                $data['slug'] = $slug;
             }
-            $data['slug'] = $slug;
-        }
 
-        $this->productRepository->update($id, $data);
-        $product = $this->getProductById($id);
+            $this->productRepository->update($id, $data);
 
-        if ($product) {
-            $product->stock = $product->stock_quantity;
-            $product->is_out_of_stock = $product->stock_quantity <= 0;
-            $product->save();
+            $product = $this->getProductById($id);
+
+            if (!$product) {
+                throw new \Exception('Produit introuvable');
+            }
 
             $this->syncFragranceNotes($product, $data);
             $this->syncProductSizes($product, $data);
 
+            // Important: sync stock AFTER sizes are saved
+            if (!empty($data['sizes']) && is_array($data['sizes'])) {
+                $totalStock = $product->sizes()->sum('stock_quantity');
+
+                $product->stock_quantity = $totalStock;
+                $product->stock = $totalStock;
+                $product->is_out_of_stock = $totalStock <= 0;
+                $product->save();
+            } else {
+                $product->stock = $product->stock_quantity;
+                $product->is_out_of_stock = $product->stock_quantity <= 0;
+                $product->save();
+            }
+
             $this->uploadImage($product, 'image');
             $this->uploadGallery($product);
-        }
 
-        return $product;
+            return $product;
+        });
     }
+
+
+
+
     protected function syncProductSizes(Product $product, array $data): void
     {
-        $product->sizes()->delete();
+        // Force delete old sizes first
+        \App\Models\ProductSize::where('product_id', $product->id)->delete();
 
         if (empty($data['sizes']) || !is_array($data['sizes'])) {
             return;
         }
 
         foreach ($data['sizes'] as $item) {
-            if (!empty($item['size']) && isset($item['price']) && $item['price'] !== '') {
-                $product->sizes()->create([
-                    'size' => trim($item['size']),
-                    'price' => $item['price'],
-                ]);
+            if (empty($item['size']) || empty($item['price'])) {
+                continue;
             }
+
+            \App\Models\ProductSize::create([
+                'product_id' => $product->id,
+                'size' => trim($item['size']),
+                'price' => (float) $item['price'],
+                'stock_quantity' => (int) ($item['stock_quantity'] ?? 0),
+            ]);
         }
+
+        $totalStock = \App\Models\ProductSize::where('product_id', $product->id)
+            ->sum('stock_quantity');
+
+        $product->update([
+            'stock_quantity' => $totalStock,
+            'stock' => $totalStock,
+            'is_out_of_stock' => $totalStock <= 0,
+        ]);
     }
 
     /**

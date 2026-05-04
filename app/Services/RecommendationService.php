@@ -14,28 +14,13 @@ class RecommendationService
      */
     public function getSimilarFragrances(Product $product, int $limit = 4)
     {
-        $cacheKey = "recommendations_similarity_{$product->id}";
-        
+        $cacheKey = "recommendations_category_{$product->id}";
+
         return Cache::remember($cacheKey, config('recommendation.cache_ttl', 3600), function () use ($product, $limit) {
-            $noteIds = $product->fragranceNotes()->pluck('fragrance_notes.id')->toArray();
-
-            if (empty($noteIds)) {
-                return Product::where('category_id', $product->category_id)
-                    ->where('id', '!=', $product->id)
-                    ->active()
-                    ->take($limit)
-                    ->get();
-            }
-
-            return Product::where('id', '!=', $product->id)
+            return Product::where('category_id', $product->category_id)
+                ->where('id', '!=', $product->id)
                 ->active()
-                ->whereHas('fragranceNotes', function ($query) use ($noteIds) {
-                    $query->whereIn('fragrance_notes.id', $noteIds);
-                })
-                ->withCount(['fragranceNotes as shared_notes_count' => function ($query) use ($noteIds) {
-                    $query->whereIn('fragrance_notes.id', $noteIds);
-                }])
-                ->orderByDesc('shared_notes_count')
+                ->latest()
                 ->take($limit)
                 ->get();
         });

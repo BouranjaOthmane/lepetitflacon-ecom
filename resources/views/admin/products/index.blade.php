@@ -101,11 +101,9 @@
                     <th>Image</th>
                     <th>Produit</th>
                     <th>Catégorie</th>
-                    <th>Marque</th>
-                    <th>Prix initial</th>
                     
-                    <th>Prix net</th>
-                    <th>Stock</th>
+                    <th>Prix formats</th>
+                    {{-- <th>Stock</th> --}}
                     <th>Statut</th>
                     <th>Actions</th>
 

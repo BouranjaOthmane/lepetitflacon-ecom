@@ -14,6 +14,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
+
+
     <!-- Favicons -->
     <link rel="icon" href="{{ asset('favicon.ico') }}">
     <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('favicon-32x32.png') }}">
@@ -310,7 +315,7 @@
         /* bestsellers */
         .bestsellers-lpf {
             position: relative;
-            padding: 100px 0;
+            padding: 50px 0;
             background:
                 radial-gradient(circle at 12% 14%, rgba(255, 231, 165, .22), transparent 28%),
                 linear-gradient(180deg, #ffffff 0%, #fffaf4 100%);
@@ -594,285 +599,282 @@
         .testimonials-lpf {
             position: relative;
             overflow: hidden;
-            padding: 105px 0;
+            padding: 95px 0;
             background:
-                radial-gradient(circle at 12% 18%, rgba(255, 231, 165, 0.18), transparent 28%),
-                radial-gradient(circle at 88% 8%, rgba(216, 170, 69, 0.10), transparent 26%),
-                linear-gradient(180deg, #fffaf4 0%, #ffffff 100%);
+                radial-gradient(circle at 10% 20%, rgba(226, 177, 83, .16), transparent 30%),
+                radial-gradient(circle at 90% 15%, rgba(7, 8, 73, .10), transparent 28%),
+                linear-gradient(180deg, #fffaf2 0%, #ffffff 50%, #fff8ee 100%);
         }
 
-        .testimonials-lpf::before {
-            content: "AVIS";
+        .testimonials-lpf__glow {
             position: absolute;
-            left: -35px;
-            top: 60px;
-            font-family: serif;
-            font-size: 190px;
-            font-weight: 800;
-            color: rgba(11, 16, 61, 0.035);
+            border-radius: 999px;
+            filter: blur(12px);
             pointer-events: none;
+            animation: testimonialsFloat 7s ease-in-out infinite;
+        }
+
+        .testimonials-lpf__glow--one {
+            width: 230px;
+            height: 230px;
+            left: -80px;
+            bottom: 90px;
+            background: rgba(226, 177, 83, .28);
+        }
+
+        .testimonials-lpf__glow--two {
+            width: 260px;
+            height: 260px;
+            right: -90px;
+            top: 80px;
+            background: rgba(7, 8, 73, .12);
+            animation-delay: 1.2s;
         }
 
         .testimonials-lpf__header {
-            text-align: center;
-            margin-bottom: 65px;
             position: relative;
             z-index: 2;
+            text-align: center;
+            margin-bottom: 55px;
         }
 
         .testimonials-lpf__label {
-            display: inline-flex;
-            align-items: center;
-            gap: 12px;
-            color: #0B103D;
+            display: inline-block;
+            margin-bottom: 16px;
+            color: #070849;
             font-size: 13px;
-            font-weight: 800;
-            letter-spacing: 5px;
+            font-weight: 900;
+            letter-spacing: 6px;
             text-transform: uppercase;
-            margin-bottom: 14px;
-        }
-
-        .testimonials-lpf__label::before,
-        .testimonials-lpf__label::after {
-            content: "";
-            width: 34px;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, #d8aa45);
-        }
-
-        .testimonials-lpf__label::after {
-            background: linear-gradient(90deg, #d8aa45, transparent);
         }
 
         .testimonials-lpf__header h2 {
             margin: 0;
-            color: #0B103D;
-            font-size: clamp(38px, 5vw, 58px);
-            font-weight: 800;
-            letter-spacing: -1px;
+            color: #070849;
+            font-size: clamp(42px, 6vw, 82px);
+            font-weight: 950;
+            letter-spacing: -3px;
+            line-height: 1;
         }
 
         .testimonials-lpf__header h2 em {
-            color: #ffe7a5;
+            color: #d8a936;
             font-style: italic;
         }
 
         .testimonials-lpf__header p {
-            margin: 16px auto 0;
-            color: rgba(11, 16, 61, 0.65);
-            font-size: 16px;
+            margin: 18px 0 0;
+            color: #737489;
+            font-size: 17px;
         }
 
-        .testimonials-lpf__grid {
+        .testimonials-carousel {
             position: relative;
             z-index: 2;
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 26px;
+        }
+
+        .testimonials-carousel .owl-stage {
+            display: flex;
+            align-items: stretch;
+            padding: 20px 0 35px;
+        }
+
+        .testimonials-carousel .owl-item {
+            display: flex;
         }
 
         .testimonial-lpf-card {
             position: relative;
-            min-height: 300px;
-            padding: 34px;
-            border-radius: 30px;
-            background:
-                linear-gradient(145deg, rgba(255, 255, 255, 1), rgba(255, 250, 244, .92));
-            border: 1px solid rgba(216, 170, 69, 0.24);
-            box-shadow:
-                0 24px 55px rgba(11, 16, 61, 0.10),
-                inset 0 1px 0 rgba(255, 255, 255, 1);
+            min-height: 310px;
+            width: 100%;
+            padding: 34px 28px 28px;
+            border-radius: 28px;
+            background: rgba(255, 255, 255, .88);
+            border: 1px solid rgba(216, 169, 54, .32);
+            box-shadow: 0 24px 60px rgba(7, 8, 73, .09);
             overflow: hidden;
-            transform-style: preserve-3d;
-            transition: 0.45s ease;
+            transition: .35s ease;
+        }
+
+        .testimonial-lpf-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 34px 80px rgba(7, 8, 73, .16);
         }
 
         .testimonial-lpf-card::before {
             content: "";
             position: absolute;
-            inset: 14px;
-            border-radius: 24px;
-            border: 1px solid rgba(216, 170, 69, 0.20);
+            inset: 0;
+            background: linear-gradient(120deg, transparent 25%, rgba(255, 255, 255, .75) 48%, transparent 70%);
+            transform: translateX(-120%);
+            transition: .7s ease;
             pointer-events: none;
-            transition: 0.4s ease;
-        }
-
-        .testimonial-lpf-card::after {
-            content: "";
-            position: absolute;
-            right: -55px;
-            top: -55px;
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            background: radial-gradient(circle, rgba(255, 231, 165, 0.55), transparent 66%);
-        }
-
-        .testimonial-lpf-card:hover {
-            transform: translateY(-12px) rotateX(5deg);
-            box-shadow:
-                0 34px 75px rgba(11, 16, 61, 0.16),
-                0 0 0 1px rgba(255, 231, 165, 0.32);
         }
 
         .testimonial-lpf-card:hover::before {
-            inset: 10px;
-            border-color: rgba(216, 170, 69, 0.50);
-        }
-
-        .testimonial-lpf-card--featured {
-            transform: translateY(-18px);
-            background:
-                radial-gradient(circle at 85% 12%, rgba(255, 231, 165, 0.36), transparent 28%),
-                linear-gradient(145deg, #ffffff, #fff8ed);
-        }
-
-        .testimonial-lpf-card--featured:hover {
-            transform: translateY(-28px) rotateX(5deg);
+            transform: translateX(120%);
         }
 
         .testimonial-lpf-card__quote {
             position: absolute;
-            right: 28px;
-            top: 18px;
-            font-family: serif;
+            right: 24px;
+            top: 8px;
+            color: rgba(216, 169, 54, .22);
             font-size: 110px;
+            font-family: serif;
             line-height: 1;
-            color: rgba(216, 170, 69, 0.18);
-        }
-
-        .testimonial-lpf-card__stars {
-            position: relative;
-            z-index: 2;
-            display: flex;
-            gap: 5px;
-            color: #f6a51a;
-            font-size: 16px;
-            margin-bottom: 28px;
         }
 
         .testimonial-lpf-card p {
             position: relative;
             z-index: 2;
-            color: rgba(11, 16, 61, 0.68);
+            margin: 0;
+            color: #56576b;
             font-size: 16px;
-            line-height: 1.9;
-            font-style: italic;
-            margin: 0 0 34px;
+            line-height: 1.8;
         }
 
         .testimonial-lpf-card__author {
             position: absolute;
-            left: 34px;
-            right: 34px;
-            bottom: 34px;
+            left: 28px;
+            right: 28px;
+            bottom: 28px;
             z-index: 2;
             display: flex;
             align-items: center;
-            gap: 16px;
+            gap: 14px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(7, 8, 73, .08);
         }
 
         .testimonial-lpf-card__avatar {
-            width: 58px;
-            height: 58px;
-            border-radius: 18px;
-            background: linear-gradient(145deg, #fff4c9, #ffe7a5, #d8aa45);
-            color: #0B103D;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: grid;
+            place-items: center;
+            flex: 0 0 50px;
+            color: #070849;
             font-weight: 900;
-            box-shadow: 0 14px 26px rgba(216, 170, 69, 0.26);
+            background: linear-gradient(135deg, #fff3bd, #e2b153);
+            box-shadow: 0 14px 28px rgba(216, 169, 54, .28);
         }
 
         .testimonial-lpf-card__author h4 {
             margin: 0 0 5px;
-            color: #0B103D;
+            color: #070849;
             font-size: 17px;
+            font-weight: 900;
         }
 
         .testimonial-lpf-card__author span {
-            color: rgba(11, 16, 61, 0.52);
-            font-size: 14px;
+            color: #7d7f94;
+            font-size: 13px;
+            font-weight: 700;
         }
 
         .testimonial-lpf-card__author span i {
-            color: #d8aa45;
-            margin-right: 5px;
+            color: #25D366;
         }
 
-        .testimonials-lpf__glow {
+        /* Owl dots */
+        .testimonials-carousel .owl-dots {
+            text-align: center;
+            margin-top: 8px;
+        }
+
+        .testimonials-carousel .owl-dot span {
+            width: 10px;
+            height: 10px;
+            margin: 5px 6px;
+            background: rgba(7, 8, 73, .18) !important;
+            display: block;
+            border-radius: 999px;
+            transition: .3s ease;
+        }
+
+        .testimonials-carousel .owl-dot.active span {
+            width: 34px;
+            background: linear-gradient(90deg, #070849, #d8a936) !important;
+        }
+
+        /* Owl arrows */
+        .testimonials-carousel .owl-nav {
             position: absolute;
-            border-radius: 50%;
+            inset: 42% -22px auto -22px;
+            display: flex;
+            justify-content: space-between;
             pointer-events: none;
-            filter: blur(2px);
         }
 
-        .testimonials-lpf__glow--one {
-            width: 220px;
-            height: 220px;
-            left: 7%;
-            bottom: 12%;
-            background: radial-gradient(circle, rgba(255, 231, 165, .22), transparent 65%);
-            animation: reviewMist 7s ease-in-out infinite;
+        .testimonials-carousel .owl-nav button {
+            width: 46px;
+            height: 46px;
+            border-radius: 50% !important;
+            background: #fff !important;
+            color: #070849 !important;
+            box-shadow: 0 14px 35px rgba(7, 8, 73, .15);
+            pointer-events: auto;
+            transition: .3s ease;
         }
 
-        .testimonials-lpf__glow--two {
-            width: 320px;
-            height: 320px;
-            right: 7%;
-            top: 22%;
-            background: radial-gradient(circle, rgba(216, 170, 69, .12), transparent 65%);
-            animation: reviewMist 9s ease-in-out infinite reverse;
+        .testimonials-carousel .owl-nav button:hover {
+            background: linear-gradient(135deg, #070849, #171a78) !important;
+            color: #fff !important;
         }
 
-        @keyframes reviewMist {
+        .testimonials-carousel .owl-nav button span {
+            font-size: 32px;
+            line-height: 1;
+        }
+
+        @keyframes testimonialsFloat {
 
             0%,
             100% {
-                transform: translateY(0) scale(1);
-                opacity: .75;
+                transform: translateY(0);
             }
 
             50% {
-                transform: translateY(-24px) scale(1.15);
-                opacity: 1;
+                transform: translateY(-18px);
             }
         }
 
-        @media (max-width: 992px) {
-            .testimonials-lpf__grid {
-                grid-template-columns: 1fr;
-            }
-
-            .testimonial-lpf-card--featured {
-                transform: none;
-            }
-
-            .testimonial-lpf-card--featured:hover {
-                transform: translateY(-12px) rotateX(5deg);
-            }
-        }
-
-        @media (max-width: 576px) {
+        @media (max-width: 768px) {
             .testimonials-lpf {
                 padding: 70px 0;
             }
 
+            .testimonials-lpf__header {
+                margin-bottom: 32px;
+            }
+
+            .testimonials-lpf__label {
+                font-size: 11px;
+                letter-spacing: 4px;
+            }
+
+            .testimonials-lpf__header h2 {
+                font-size: 42px;
+                letter-spacing: -2px;
+            }
+
+            .testimonials-lpf__header p {
+                font-size: 15px;
+            }
+
             .testimonial-lpf-card {
-                min-height: 420px;
-                padding: 26px;
+                min-height: 330px;
+                padding: 30px 22px 26px;
                 border-radius: 24px;
             }
 
-            .testimonial-lpf-card__author {
-                left: 26px;
-                right: 26px;
-                bottom: 26px;
+            .testimonial-lpf-card p {
+                font-size: 15px;
             }
 
-            .testimonial-lpf-card p {
-                font-size: 14px;
+            .testimonials-carousel .owl-nav {
+                display: none;
             }
         }
 
@@ -906,7 +908,7 @@
                 gap: 22px !important;
                 padding: 28px !important;
                 align-items: stretch !important;
-                margin-left: 5px;
+                margin-left: 8px;
             }
 
             .bestseller-lpf-card__image {
@@ -1135,7 +1137,7 @@
             width: 118px;
             height: 118px;
             border-radius: 30px;
-            display: grid;
+            /* display: grid; */
             place-items: center;
             text-align: center;
             background: rgba(255, 255, 255, .88);
@@ -1148,7 +1150,7 @@
         .about-lpf__floating strong {
             display: block;
             color: #070849;
-            font-size: 30px;
+            font-size: 21px;
             line-height: 1;
         }
 
@@ -1306,9 +1308,8 @@
                         </div>
 
                         <div class="category-lpf-card__content">
-                            <span class="category-lpf-card__tag">Collection</span>
-                            <h4>{{ $category->getTranslation('name', 'fr') }}</h4>
-                            <p>{{ $category->products_count }} produit(s)</p>
+                            <span class="category-lpf-card__tag">{{ $category->getTranslation('name', 'fr') }}</span>
+                            {{-- <h4>{{ $category->getTranslation('name', 'fr') }}</h4> --}}
                         </div>
                     </a>
                 @endforeach
@@ -1333,41 +1334,44 @@
                 <div class="bestsellers-lpf__slider ">
                     <div class="bestsellers-lpf__track" id="bestsellersTrack">
                         @foreach ($bestsellerProducts as $product)
-                            <div class="bestseller-lpf-card">
+                            <a href="{{ route('product', $product->id) }}" class="product-card-link">
+                                <div class="bestseller-lpf-card">
 
-                                <div class="bestseller-lpf-card__image">
-                                    <img src="{{ $product->getFirstMediaUrl('images') ?: asset('assets/clints/images/arabic-perfume.png') }}"
-                                        alt="{{ $product->getTranslation('name', 'fr') }}">
+                                    <div class="bestseller-lpf-card__image">
+                                        <img src="{{ $product->getFirstMediaUrl('images') ?: asset('assets/clints/images/arabic-perfume.png') }}"
+                                            alt="{{ $product->getTranslation('name', 'fr') }}">
 
-                                    <span class="bestseller-lpf-card__badge">
-                                        Best seller
-                                    </span>
-                                </div>
-
-                                <div class="bestseller-lpf-card__info">
-                                    <span class="bestseller-lpf-card__category">
-                                        {{ $product->category->getTranslation('name', 'fr') ?? 'Collection exclusive' }}
-                                    </span>
-
-                                    <h3>{{ $product->getTranslation('name', 'fr') }}</h3>
-
-                                    <p>
-                                        {{ Str::limit(strip_tags($product->getTranslation('description', 'fr')), 95) }}
-                                    </p>
-
-                                    <div class="bestseller-lpf-card__meta">
-                                        <span class="bestseller-lpf-card__price">
-                                            {{ $product->sale_price ?: $product->price }} DH
+                                        <span class="bestseller-lpf-card__badge">
+                                            Best seller
                                         </span>
                                     </div>
 
-                                    <a href="{{ route('product', $product->id) }}" class="bestseller-lpf-card__btn">
-                                        Découvrir
-                                        <i class="fas fa-arrow-right"></i>
-                                    </a>
-                                </div>
+                                    <div class="bestseller-lpf-card__info">
+                                        <span class="bestseller-lpf-card__category">
+                                            {{ $product->category->getTranslation('name', 'fr') ?? 'Collection exclusive' }}
+                                        </span>
 
-                            </div>
+                                        <h3>{{ $product->getTranslation('name', 'fr') }}</h3>
+
+                                        <p>
+                                            {{ Str::limit(strip_tags($product->getTranslation('description', 'fr')), 95) }}
+                                        </p>
+
+                                        <div class="bestseller-lpf-card__meta">
+                                            <span class="bestseller-lpf-card__price">
+                                                {{ $product->sale_price ?: $product->price }} DH
+                                            </span>
+                                        </div>
+
+                                        <a href="{{ route('product', $product->id) }}"
+                                            class="bestseller-lpf-card__btn">
+                                            Découvrir
+                                            <i class="fas fa-arrow-right"></i>
+                                        </a>
+                                    </div>
+
+                                </div>
+                            </a>
                         @endforeach
                     </div>
 
@@ -1406,152 +1410,88 @@
                 <p>Découvrez pourquoi nos clients reviennent encore et encore</p>
             </div>
 
-            <div class="testimonials-lpf__grid reveal">
+            <div class="owl-carousel testimonials-carousel reveal">
 
                 <div class="testimonial-lpf-card">
                     <div class="testimonial-lpf-card__quote">“</div>
-
                     <p>
-                        Ambre Oud Royal est un parfum absolument remarquable. Sa tenue est impressionnante et je reçois
-                        des
-                        compliments chaque fois que je le porte. C’est le vrai luxe dans un flacon.
+                        J’ai reçu ma commande très bien emballée, koulchi ghezal l’emballage les détails le service,
+                        tbarklah 3likoum. Vous avez toute ma fidélité ❤️
                     </p>
-
                     <div class="testimonial-lpf-card__author">
-                        <div class="testimonial-lpf-card__avatar">SA</div>
-                        <div>
-                            <h4>Sarah</h4>
-                            <span><i class="fas fa-check-circle"></i> Acheteuse vérifiée</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="testimonial-lpf-card testimonial-lpf-card--featured">
-                    <div class="testimonial-lpf-card__quote">“</div>
-
-
-                    <p>
-                        Le packaging à lui seul reflète la qualité. Rose Mystique est devenu mon parfum préféré —
-                        féminin,
-                        raffiné et totalement envoûtant. Il vaut chaque centime.
-                    </p>
-
-                    <div class="testimonial-lpf-card__author">
-                        <div class="testimonial-lpf-card__avatar">MK</div>
-                        <div>
-                            <h4>Mariam </h4>
-                            <span><i class="fas fa-check-circle"></i> Acheteuse vérifiée</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="testimonial-lpf-card">
-                    <div class="testimonial-lpf-card__quote">“</div>
-
-
-                    <p>
-                        Je viens de recevoir ma commande. Très bon service, et la qualité du parfum est tout simplement
-                        magnifique. Merci, à la prochaine !
-
-                    </p>
-
-                    <div class="testimonial-lpf-card__author">
-                        <div class="testimonial-lpf-card__avatar">OM</div>
-                        <div>
-                            <h4>Omar</h4>
-                            <span><i class="fas fa-check-circle"></i> Acheteur vérifié</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="testimonial-lpf-card">
-                    <div class="testimonial-lpf-card__quote">“</div>
-
-
-                    <p>
-                        Je découvre les parfums de luxe depuis des années, et LePetitFlacon fait partie des plus belles
-                        découvertes que j’ai faites. Noir Élégance est idéal pour le soir — intense et inoubliable.
-                    </p>
-
-                    <div class="testimonial-lpf-card__author">
-                        <div class="testimonial-lpf-card__avatar">OM</div>
+                        <div class="testimonial-lpf-card__avatar">M</div>
                         <div>
                             <h4>Mohammed</h4>
-                            <span><i class="fas fa-check-circle"></i> Acheteuse vérifiée</span>
                         </div>
                     </div>
                 </div>
 
                 <div class="testimonial-lpf-card">
                     <div class="testimonial-lpf-card__quote">“</div>
-
-
                     <p>
-                        Weslatni la commande pour la 3ème fois, les parfums zwinin bhal dima w ta3amol excellent !
-                        choukran 3la l cadeau 🫶🏻.
+                        Je viens de recevoir ma commande. Très bon service, et la qualité du parfum
+                        est tout simplement magnifique. Merci, à la prochaine !
                     </p>
-
                     <div class="testimonial-lpf-card__author">
-                        <div class="testimonial-lpf-card__avatar">OM</div>
+                        <div class="testimonial-lpf-card__avatar">O</div>
+                        <div>
+                            <h4>Omar</h4>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-lpf-card">
+                    <div class="testimonial-lpf-card__quote">“</div>
+                    <p>
+                        Weslatni la commande pour la 3ème fois, les parfums zwinin bhal dima w
+                        ta3amol excellent ! choukran 3la l cadeau 🫶🏻.
+                    </p>
+                    <div class="testimonial-lpf-card__author">
+                        <div class="testimonial-lpf-card__avatar">A</div>
                         <div>
                             <h4>Aya</h4>
-                            <span><i class="fas fa-check-circle"></i> Acheteuse vérifiée</span>
                         </div>
                     </div>
                 </div>
 
                 <div class="testimonial-lpf-card">
                     <div class="testimonial-lpf-card__quote">“</div>
-
-
                     <p>
-                        J’ai bien reçu la commande shukran bezzaf je suis complètement satisfaite. Saraha très bon
-                        service ou ti9a lah ya3tik seha, à recommander !
-
+                        J’ai bien reçu la commande shukran bezzaf je suis complètement satisfaite.
+                        Saraha très bon service ou ti9a lah ya3tik seha, à recommander !
                     </p>
-
                     <div class="testimonial-lpf-card__author">
-                        <div class="testimonial-lpf-card__avatar">OM</div>
+                        <div class="testimonial-lpf-card__avatar">M</div>
                         <div>
-                            <h4>Maryim</h4>
-                            <span><i class="fas fa-check-circle"></i> Acheteuse vérifiée</span>
+                            <h4>Meryam</h4>
                         </div>
                     </div>
                 </div>
 
                 <div class="testimonial-lpf-card">
                     <div class="testimonial-lpf-card__quote">“</div>
-
-
                     <p>
-                        Les décants sentent trop bon et le service ta hwa tbarklah elikom, ca sera pas ma dernière fois
-                        certainement
-
+                        Les décants sentent trop bon et le service ta hwa tbarklah elikom, ca sera
+                        pas ma dernière fois certainement.
                     </p>
-
                     <div class="testimonial-lpf-card__author">
-                        <div class="testimonial-lpf-card__avatar">OM</div>
+                        <div class="testimonial-lpf-card__avatar">R</div>
                         <div>
                             <h4>Rachid</h4>
-                            <span><i class="fas fa-check-circle"></i> Acheteuse vérifiée</span>
                         </div>
                     </div>
                 </div>
 
                 <div class="testimonial-lpf-card">
                     <div class="testimonial-lpf-card__quote">“</div>
-
-
                     <p>
-                        Je tiens a vous remercier pour la qualité de votre service, les parfums sont excellents !
-                        L’emballage aussi et merci pour le petit cadeau. Costumer for life 👌🏼
-
+                        Je tiens a vous remercier pour la qualité de votre service, les parfums sont
+                        excellents ! L’emballage aussi et merci pour le petit cadeau. Customer for life 👌🏼
                     </p>
-
                     <div class="testimonial-lpf-card__author">
-                        <div class="testimonial-lpf-card__avatar">OM</div>
+                        <div class="testimonial-lpf-card__avatar">L</div>
                         <div>
                             <h4>Lina</h4>
-                            <span><i class="fas fa-check-circle"></i> Acheteuse vérifiée</span>
                         </div>
                     </div>
                 </div>
@@ -1612,6 +1552,18 @@
                         de votre quotidien.
                     </p>
 
+                    <p>
+                        Tous nos produits sont <strong>100% authentiques</strong>, sélectionnés avec
+                        exigence pour vous offrir qualité, élégance et satisfaction. Chez nous, vous
+                        ne choisissez pas simplement un parfum. Vous révélez votre signature olfactive
+                        avec un service fiable, rapide et professionnel.
+                    </p>
+
+                    <p class="about-lpf__signature">
+                        Avec Le Petit Flacon, découvrez une nouvelle manière de vivre le parfum :
+                        plus libre, plus intelligente, plus personnelle.
+                    </p>
+
                     <div class="about-lpf__features">
                         <div>
                             <i class="fas fa-spray-can-sparkles"></i>
@@ -1629,18 +1581,6 @@
                         </div>
                     </div>
 
-                    <p>
-                        Tous nos produits sont <strong>100% authentiques</strong>, sélectionnés avec
-                        exigence pour vous offrir qualité, élégance et satisfaction. Chez nous, vous
-                        ne choisissez pas simplement un parfum. Vous révélez votre signature olfactive
-                        avec un service fiable, rapide et professionnel.
-                    </p>
-
-                    <p class="about-lpf__signature">
-                        Avec Le Petit Flacon, découvrez une nouvelle manière de vivre le parfum :
-                        plus libre, plus intelligente, plus personnelle.
-                    </p>
-
                     <p class="about-lpf__final">
                         Le Petit Flacon <strong> là où la fraîcheur et le luxe commencent. </strong> ✨
                     </p>
@@ -1654,14 +1594,14 @@
                     </div>
 
                     <div class="about-lpf__floating about-lpf__floating--one">
-                        <strong>100%</strong>
-                        <span>Original</span>
+                        <strong style="margin-top: 27%">100%</strong>
+                        <strong>Original</strong>
                     </div>
 
-                    <div class="about-lpf__floating about-lpf__floating--two">
+                    {{-- <div class="about-lpf__floating about-lpf__floating--two">
                         <strong>5ml</strong>
                         <span>& 10ml</span>
-                    </div>
+                    </div> --}}
                 </div>
 
             </div>
@@ -1673,6 +1613,9 @@
     <!-- ========== التذييل ========== -->
     @include('clints.layout.footer')
     <script src="{{ asset('assets/clints/js/homepage.js') }}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
 </body>
 
 <a href="https://wa.me/212704654736" class="wa-perfume-magic" target="_blank" rel="noopener"
@@ -1720,6 +1663,8 @@
         </button>
     </div>
 </div>
+
+
 
 
 <script>
@@ -1787,6 +1732,36 @@
 
         goToSlide(0);
         startAutoPlay();
+    });
+</script>
+
+
+<script>
+    $(document).ready(function() {
+        $('.testimonials-carousel').owlCarousel({
+            loop: true,
+            margin: 24,
+            nav: true,
+            dots: true,
+            autoplay: true,
+            autoplayTimeout: 4000,
+            autoplayHoverPause: true,
+            smartSpeed: 800,
+            responsive: {
+                0: {
+                    items: 1,
+                    margin: 16
+                },
+                576: {
+                    items: 2,
+                    margin: 18
+                },
+                992: {
+                    items: 3,
+                    margin: 24
+                }
+            }
+        });
     });
 </script>
 

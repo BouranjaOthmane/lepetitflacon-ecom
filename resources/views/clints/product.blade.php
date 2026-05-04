@@ -1067,10 +1067,9 @@
 
                     <!-- Informations supplémentaires -->
                     <div class="product-info__meta">
-                        <div><i class="fas fa-truck"></i> Livraison gratuite pour les commandes supérieures à 600 DH
-                        </div>
-                        <div><i class="fas fa-undo"></i> Politique de retour de 30 jours</div>
-                        <div><i class="fas fa-shield-alt"></i> Garantie d’authenticité du produit à 100%</div>
+                        <div><i class="fas fa-truck"></i>Produits 100% authentiques </div>
+                        <div><i class="fas fa-undo"></i>Livraison rapide partout au Maroc</div>
+                        <div><i class="fas fa-shield-alt"></i>Paiement à la livraison</div>
                     </div>
                 </div>
 

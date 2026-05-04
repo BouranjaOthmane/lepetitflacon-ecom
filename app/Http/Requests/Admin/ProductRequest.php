@@ -29,11 +29,11 @@ class ProductRequest extends FormRequest
             'description' => 'nullable|string',
             'short_description' => 'nullable|string',
             'price' => 'nullable|numeric|min:0|gt:purchase_price',
-            'purchase_price' => 'required|numeric|min:0',
+            'purchase_price' => 'nullable|numeric|min:0',
             'sale_price' => 'nullable|numeric|min:0',
             'sku' => 'nullable|string|unique:products,sku,' . $productId,
-            'stock_quantity' => 'required|integer|min:0',
-            'low_stock_threshold' => 'required|integer|min:0',
+            'stock_quantity' => 'nullable|integer|min:0',
+            'low_stock_threshold' => 'nullable|integer|min:0',
             'gender' => 'required|in:Men,Women,Unisex,Kids',
             'is_featured' => 'nullable|boolean',
             'is_bestseller' => 'nullable|boolean',
@@ -51,6 +51,7 @@ class ProductRequest extends FormRequest
             'sizes' => 'nullable|array',
             'sizes.*.size' => 'required_with:sizes.*.price|string|max:50',
             'sizes.*.price' => 'required_with:sizes.*.size|numeric|min:0',
+            'sizes.*.stock_quantity' => ['required_with:sizes', 'integer', 'min:0'],
         ];
     }
 
@@ -76,17 +77,17 @@ class ProductRequest extends FormRequest
     public function messages(): array
     {
         return [
-            'category_id.required' => 'القسم مطلوب',
-            'name.en.required' => 'اسم المنتج بالإنجليزية مطلوب',
-            'name.ar.required' => 'اسم المنتج بالعربية مطلوب',
-            'price.required' => 'سعر البيع مطلوب',
-            'price.gt' => 'سعر البيع يجب أن يكون أكبر من سعر الشراء',
-            'purchase_price.required' => 'سعر الشراء مطلوب',
-            'sku.required' => 'رمز SKU مطلوب',
-            'sku.unique' => 'رمز SKU موجود مسبقاً',
-            'stock_quantity.required' => 'الكمية مطلوبة',
-            'gender.required' => 'الجنس المستهدف مطلوب',
-            'image.image' => 'يجب أن يكون الملف صورة',
+            'category_id.required' => 'La catégorie est requise',
+            'name.en.required' => 'Le nom du produit en anglais est requis',
+            'name.ar.required' => 'Le nom du produit en arabe est requis',
+            'price.required' => 'Le prix de vente est requis',
+            'price.gt' => 'Le prix de vente doit être supérieur au prix d’achat',
+            'purchase_price.required' => 'Le prix d’achat est requis',
+            'sku.required' => 'Le code SKU est requis',
+            'sku.unique' => 'Le code SKU existe déjà',
+            'stock_quantity.required' => 'La quantité est requise',
+            'gender.required' => 'Le genre ciblé est requis',
+            'image.image' => 'Le fichier doit être une image',
         ];
     }
 }

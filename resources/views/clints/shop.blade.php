@@ -349,7 +349,7 @@
         }
 
         .product-card__name {
-            color: #292929;
+            color: #d8aa45;
             font-size: 20px;
             font-weight: 700;
             margin: 10px 0;
@@ -367,7 +367,7 @@
         }
 
         .product-card__price {
-            color: #d8aa45;
+            color: #292929;
             font-size: 19px;
             font-weight: 800;
             margin-bottom: 16px;
@@ -595,7 +595,7 @@
                                                 @endif
                                             @else
                                                 {{ number_format($product->sale_price ?: $product->price, 2, ',', ' ') }}
-                                                د.م
+                                                DH 
                                             @endif
                                         </p>
 

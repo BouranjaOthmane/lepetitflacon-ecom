@@ -82,40 +82,38 @@
                     FAQ
                 </a>
 
-                <p style="color: rgba(255,255,255,.62)">
+                <a href="{{ route('return.policy') }}" target="_blank" rel="noopener noreferrer"
+                    title="Lepetitflacon - Retours et échanges">
                     <i class="fas fa-rotate-left"></i>
-                    Retours et échanges
-                </p>
+                    Retours et échanges mm
+                </a>
+
             </div>
 
             <div class="footer-lpf__seo-card">
-                <span class="footer-lpf__badge">LPF Premium</span>
+                <span class="footer-lpf__badge">Pourquoi nous choisir</span>
                 <h4>Livraison offerte</h4>
-                <p>Dès 600 DH PAR TOUT AU MAROC.</p>
+                <p>Dès 600 DH PARTOUT AU MAROC.</p>
 
                 <div class="footer-lpf__features">
                     <span>
-                        <i class="fas fa-truck-fast"></i>
-                        <strong>Expédition rapide 24-48h</strong>
-                        <small>Votre colis expédié sous 24h.</small>
+                        {{-- <i class="fas fa-truck-fast"></i> --}}
+                        <strong>Produits 100% authentiques </strong>
                     </span>
 
                     <span>
-                        <i class="fas fa-lock"></i>
-                        <strong>Paiement sécurisé</strong>
-                        <small>Paiement à la livraison 100% sécurisé.</small>
+                        {{-- <i class="fas fa-truck-fast"></i> --}}
+                        <strong>Livraison rapide partout au Maroc</strong>
                     </span>
 
                     <span>
-                        <i class="fas fa-shield-alt"></i>
-                        <strong>Produits 100% authentiques</strong>
-                        <small>Testés et validés avant expédition.</small>
+                        {{-- <i class="fas fa-shield-alt"></i> --}}
+                        <strong>Paiement à la livraison</strong>
                     </span>
 
                     <span>
-                        <i class="fas fa-spray-can-sparkles"></i>
-                        <strong>Parfums premium</strong>
-                        <small>Niche & marques de prestige.</small>
+                        {{-- <i class="fas fa-spray-can-sparkles"></i> --}}
+                        <strong>S.A.V 24/7</strong>
                     </span>
                 </div>
             </div>

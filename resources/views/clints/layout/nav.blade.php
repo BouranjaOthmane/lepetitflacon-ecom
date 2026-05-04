@@ -4,123 +4,123 @@
     /* =========================
    MOBILE NAVBAR ORDER ONLY
    ========================= */
-        @media (max-width: 768px) {
-    .top-promo-bar {
-        height: 34px;
-        overflow: hidden;
+    @media (max-width: 768px) {
+        .top-promo-bar {
+            height: 34px;
+            overflow: hidden;
+        }
+
+        .navbar-v3 {
+            background: #151561;
+            border-bottom: 1px solid rgba(11, 16, 61, .08);
+        }
+
+        .navbar-v3__inner {
+            display: grid;
+            grid-template-columns: 44px 44px 1fr 44px 44px;
+            align-items: center;
+            gap: 12px;
+            padding: 14px 18px;
+            min-height: 68px;
+        }
+
+        .navbar-v3__menu {
+            display: none !important;
+        }
+
+        .navbar-v3__actions {
+            display: contents;
+        }
+
+        .navbar-v3__hamburger {
+            grid-column: 1;
+            grid-row: 1;
+            display: flex !important;
+            justify-self: center;
+            order: unset;
+        }
+
+        .navbar-v3__actions>a.navbar-v3__icon {
+            grid-column: 2;
+            grid-row: 1;
+            justify-self: center;
+        }
+
+        .navbar-v3__logo {
+            grid-column: 3;
+            grid-row: 1;
+            justify-self: center;
+        }
+
+        .navbar-v3__logo img {
+            max-width: 165px;
+            height: auto;
+            display: block;
+        }
+
+        #searchBtn {
+            grid-column: 4;
+            grid-row: 1;
+            justify-self: center;
+        }
+
+        .cart-icon-btn {
+            grid-column: 5;
+            grid-row: 1;
+            justify-self: center;
+            position: relative;
+        }
+
+
+
+        .navbar-v3__hamburger span {
+            display: block;
+            width: 14px;
+            height: 1px;
+            background: var(--nav-gold);
+            margin: 3px auto;
+            border-radius: 50px;
+            transition: 0.3s ease;
+        }
+
+        .cart-badge {
+            position: absolute;
+            top: -8px;
+            right: -7px;
+            width: 24px;
+            height: 24px;
+            background: #ef3d25;
+            color: #fff;
+            border-radius: 50%;
+            font-size: 13px;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: none;
+        }
+
+        .mobile-nav-v2 {
+            top: 90px;
+        }
     }
 
-    .navbar-v3 {
-        background: #151561;
-        border-bottom: 1px solid rgba(11, 16, 61, .08);
+    @media (max-width: 390px) {
+        .navbar-v3__inner {
+            grid-template-columns: 38px 38px 1fr 38px 38px;
+            gap: 8px;
+            padding: 13px 12px;
+        }
+
+        .navbar-v3__logo img {
+            max-width: 145px;
+        }
+
+        .navbar-v3__icon,
+        .navbar-v3__hamburger {
+            font-size: 21px;
+        }
     }
-
-    .navbar-v3__inner {
-        display: grid;
-        grid-template-columns: 44px 44px 1fr 44px 44px;
-        align-items: center;
-        gap: 12px;
-        padding: 14px 18px;
-        min-height: 68px;
-    }
-
-    .navbar-v3__menu {
-        display: none !important;
-    }
-
-    .navbar-v3__actions {
-        display: contents;
-    }
-
-    .navbar-v3__hamburger {
-        grid-column: 1;
-        grid-row: 1;
-        display: flex !important;
-        justify-self: center;
-        order: unset;
-    }
-
-    .navbar-v3__actions > a.navbar-v3__icon {
-        grid-column: 2;
-        grid-row: 1;
-        justify-self: center;
-    }
-
-    .navbar-v3__logo {
-        grid-column: 3;
-        grid-row: 1;
-        justify-self: center;
-    }
-
-    .navbar-v3__logo img {
-        max-width: 165px;
-        height: auto;
-        display: block;
-    }
-
-    #searchBtn {
-        grid-column: 4;
-        grid-row: 1;
-        justify-self: center;
-    }
-
-    .cart-icon-btn {
-        grid-column: 5;
-        grid-row: 1;
-        justify-self: center;
-        position: relative;
-    }
-
- 
-
-    .navbar-v3__hamburger span {
-    display: block;
-    width: 17px;
-    height: 2px;
-    background: var(--nav-gold);
-    margin: 4px auto;
-    border-radius: 50px;
-    transition: 0.3s ease;
-}
-
-    .cart-badge {
-        position: absolute;
-        top: -8px;
-        right: -7px;
-        width: 24px;
-        height: 24px;
-        background: #ef3d25;
-        color: #fff;
-        border-radius: 50%;
-        font-size: 13px;
-        font-weight: 800;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        box-shadow: none;
-    }
-
-    .mobile-nav-v2 {
-        top: 90px;
-    }
-}
-
-@media (max-width: 390px) {
-    .navbar-v3__inner {
-        grid-template-columns: 38px 38px 1fr 38px 38px;
-        gap: 8px;
-        padding: 13px 12px;
-    }
-
-    .navbar-v3__logo img {
-        max-width: 145px;
-    }
-
-    .navbar-v3__icon,
-    .navbar-v3__hamburger {
-        font-size: 21px;
-    }
-}
 
 
 
@@ -386,30 +386,58 @@
         transform: translateY(-2px);
     }
 
-
-
-    @media (max-width: 768px) {
+    @media (max-width: 991px) {
         .mobile-nav-v2 {
             position: fixed;
-            top: 100px;
-            left: 18px;
-            right: 18px;
+            top: 0;
+            left: 0;
+            width: min(390px, 88%);
+            height: 100vh;
             background: #0B103D;
-            border: 1px solid rgba(212, 175, 55, 0.45);
-            border-radius: 22px;
-            padding: 18px;
+            border-right: 1px solid rgba(212, 175, 55, 0.45);
+            padding: 40px 18px 18px;
             z-index: 99999;
-            display: none;
+            display: flex;
             flex-direction: column;
             gap: 14px;
-            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.35);
-            margin-top: 16px;
+            box-shadow: 25px 0 60px rgba(0, 0, 0, 0.35);
+
+            transform: translateX(-105%);
+            transition: transform .4s ease;
         }
 
         .mobile-nav-v2.show {
-            display: flex;
+            transform: translateX(0);
         }
 
+        .mobile-nav-v2 a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 700;
+            padding: 10px 14px;
+            border-radius: 14px;
+            background: rgba(255, 255, 255, 0.06);
+        }
+
+        .nav-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.45);
+            z-index: 99998;
+            opacity: 0;
+            visibility: hidden;
+            transition: .3s ease;
+        }
+
+        .nav-overlay.show {
+            opacity: 1;
+            visibility: visible;
+        }
+    }
+
+
+
+    @media (max-width: 768px) {
         .mobile-nav-v2 a {
             color: #fff;
             text-decoration: none;
@@ -462,7 +490,7 @@
         <!-- Menu Center -->
         <div class="navbar-v3__menu" id="navMenu">
             <a href="{{ route('home') }}" class="{{ request()->is('/') ? 'active' : '' }}">Accueil</a>
-            <a href="{{ route('shop') }}" class="{{ request()->is('shop*') ? 'active' : '' }}">Décants</a>
+            <a href="{{ route('shop') }}" class="{{ request()->is('shop*') ? 'active' : '' }}">Boutique</a>
 
             @isset($parentCategories)
                 @foreach ($parentCategories as $cat)
@@ -476,7 +504,7 @@
 
         <!-- Icons Right -->
         <div class="navbar-v3__actions">
-              <button class="navbar-v3__icon" id="searchBtn" aria-label="Search">
+            <button class="navbar-v3__icon" id="searchBtn" aria-label="Search">
                 <i class="fas fa-search"></i>
             </button>
 
@@ -485,7 +513,7 @@
                 <span class="cart-badge" id="cartCount">0</span>
             </button>
 
-          
+
 
             {{-- <button class="navbar-v3__icon cart-icon-btn" id="cartToggle" aria-label="سلة التسوق">
                 <i class="fas fa-shopping-bag"></i>
@@ -556,7 +584,7 @@
             <div class="search-overlay__input-wrapper">
                 <input type="text" name="q" id="searchInput" class="search-overlay__input"
                     placeholder="Recherche" autocomplete="off">
-                
+
             </div>
         </form>
 

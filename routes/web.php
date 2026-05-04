@@ -5,6 +5,8 @@ use App\Http\Controllers\Admin\DashboardController;
 
 Route::view('/faq', 'clints.faq')->name('faq');
 
+Route::view('/retours-remboursements', 'clints.return-policy')->name('return.policy');
+
 Route::get('/', [\App\Http\Controllers\Clients\HomeController::class, 'index'])->name('home');
 
 Route::get('/shop', [\App\Http\Controllers\Clients\ShopController::class, 'index'])->name('shop');

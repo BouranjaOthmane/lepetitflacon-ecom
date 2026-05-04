@@ -59,9 +59,9 @@
                     </div>
                 </div>
 
-                <div class="form-row">
+                {{-- <div class="form-row">
                     <div class="form-group">
-                        <label>Prix d’achat ($) <span style="color: red">*</span></label>
+                        <label>Prix d’achat DH <span style="color: red">*</span></label>
                         <input type="number" step="0.01" name="purchase_price" id="purchase_price"
                             value="{{ old('purchase_price') }}" placeholder="0.00" required>
                         @error('purchase_price')
@@ -69,7 +69,7 @@
                         @enderror
                     </div>
                     <div class="form-group">
-                        <label>Prix de vente ($) <span style="color: red">*</span></label>
+                        <label>Prix de vente DH <span style="color: red">*</span></label>
                         <input type="number" step="0.01" name="price" id="price" value="{{ old('price') }}"
                             placeholder="0.00">
                         @error('price')
@@ -77,14 +77,14 @@
                         @enderror
                     </div>
                     <div class="form-group">
-                        <label>Prix promotionnel ($) - optionnel</label>
+                        <label>Prix promotionnel DH - optionnel</label>
                         <input type="number" step="0.01" name="sale_price" value="{{ old('sale_price') }}"
                             placeholder="0.00">
                         @error('sale_price')
                             <span style="color: red ; font-size: 0.8rem">{{ $message }}</span>
                         @enderror
                     </div>
-                </div>
+                </div> --}}
 
                 <div
                     style="margin-top: 24px; margin-bottom: 30px; padding: 20px; background: rgba(255, 255, 255, 0.02); border-radius: 12px; border: 1px solid var(--color-border)">
@@ -100,7 +100,7 @@
                     </div>
 
                     <p style="margin-bottom:16px; color: black ; font-size:0.9rem;">
-                        Exemple : Dior Homme Intense - 5ML = 85.00 $ / 10ML = 125.00 $
+                        Exemple : Dior Homme Intense - 5ML = 85.00 DH / 10ML = 125.00 DH
                     </p>
 
                     <div id="sizesWrapper" style="display:flex; flex-direction:column; gap:14px;">
@@ -113,8 +113,14 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label>Prix ($) <span style="color: red">*</span></label>
+                                    <label>Prix  <span style="color: red">*</span></label>
                                     <input type="number" step="0.01" name="sizes[0][price]" placeholder="0.00">
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Stock <span style="color: red">*</span></label>
+                                    <input type="number" name="sizes[0][stock_quantity]" min="0" value="0"
+                                        placeholder="0">
                                 </div>
 
                                 <div class="form-group" style="display:flex; align-items:end;">
@@ -182,7 +188,7 @@
                 </div>
 
 
-              
+
 
                 <div class="form-group">
 
@@ -202,8 +208,8 @@
                         <label for="is_featured" style="margin:0">Produit mis en avant (Featured)</label>
                     </div>
                     <div class="form-group" style="display:flex; align-items:center; gap:10px; cursor:pointer">
-                        <input type="checkbox" name="is_bestseller" value="1" style="width: 20px" id="is_bestseller"
-                            {{ old('is_bestseller') ? 'checked' : '' }}>
+                        <input type="checkbox" name="is_bestseller" value="1" style="width: 20px"
+                            id="is_bestseller" {{ old('is_bestseller') ? 'checked' : '' }}>
                         <label for="is_bestseller" style="margin:0">Meilleure vente (Bestseller)</label>
                     </div>
                     <div class="form-group" style="display:flex; align-items:center; gap:10px; cursor:pointer">
@@ -232,26 +238,31 @@
 
             function buildSizeRow(index) {
                 return `
-            <div class="size-row" style="padding:16px; border:1px solid var(--color-border); border-radius:12px; background:rgba(255,255,255,0.02);">
-                <div class="form-row">
-                    <div class="form-group">
-                        <label>Taille</label>
-                        <input type="text" name="sizes[${index}][size]" placeholder="Ex : 10ML" required>
-                    </div>
+                        <div class="size-row" style="padding:16px; border:1px solid var(--color-border); border-radius:12px; background:rgba(255,255,255,0.02);">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Taille <span style="color: red">*</span></label>
+                                    <input type="text" name="sizes[${index}][size]" placeholder="Ex : 10ML" required>
+                                </div>
 
-                    <div class="form-group">
-                        <label>Prix ($)</label>
-                        <input type="number" step="0.01" name="sizes[${index}][price]" placeholder="0.00" required>
-                    </div>
+                                <div class="form-group">
+                                    <label>Prix DH <span style="color: red">*</span></label>
+                                    <input type="number" step="0.01" name="sizes[${index}][price]" placeholder="0.00" required>
+                                </div>
 
-                    <div class="form-group" style="display:flex; align-items:end;">
-                        <button type="button" class="btn btn-outline btn-sm remove-size-btn" style="color: red ; width:100%;">
-                            <i class="fas fa-trash"></i> Supprimer
-                        </button>
-                    </div>
-                </div>
-            </div>
-        `;
+                                <div class="form-group">
+                                    <label>Stock <span style="color: red">*</span></label>
+                                    <input type="number" name="sizes[${index}][stock_quantity]" min="0" value="0" placeholder="0" required>
+                                </div>
+
+                                <div class="form-group" style="display:flex; align-items:end;">
+                                    <button type="button" class="btn btn-outline btn-sm remove-size-btn" style="color: red ; width:100%;">
+                                        <i class="fas fa-trash"></i> Supprimer
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    `;
             }
 
             addBtn.addEventListener('click', function() {
@@ -274,5 +285,5 @@
         });
     </script>
 
-    
+
 @endsection

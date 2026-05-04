@@ -21,22 +21,19 @@
     </td>
 
     <td>{{ $product->category->name ?? '—' }}</td>
-    <td>{{ $product->brand->name ?? '—' }}</td>
 
-    <td style="font-weight:600">
-        @if($product->sale_price)
-            <span style="color:var(--color-gold)">${{ number_format($product->sale_price, 2) }}</span>
-            <del style="font-size:0.8rem; color:var(--color-text-muted)">${{ number_format($product->price, 2) }}</del>
-        @else
-            ${{ number_format($product->price, 2) }}
-        @endif
-    </td>
-  
-    <td style="font-weight:700; color:var(--color-gold); font-size: 1.1rem">
-        ${{ number_format($product->getDiscountedPrice(), 2) }}
-    </td>
+    <td style="font-weight:700; color:var(--color-gold);">
+    @if($product->sizes && $product->sizes->count())
+        {{ $product->sizes
+            ->sortBy('price')
+            ->map(fn($size) => $size->size . ': ' . number_format($size->price, 2) . ' DH')
+            ->implode(' - ') }}
+    @else
+        {{ number_format($product->price, 2) }} DH
+    @endif
+</td>
 
-    <td>
+    {{-- <td>
         <span class="status-badge {{ $product->is_out_of_stock ? 'cancelled' : ($product->isLowStock() ? 'pending' : 'shipped') }}">
             @if($product->is_out_of_stock)
                 <i class="fas fa-times-circle" style="margin-left:5px"></i> Rupture de stock
@@ -46,7 +43,7 @@
                 {{ $product->stock_quantity }} pièces
             @endif
         </span>
-    </td>
+    </td> --}}
 
     <td>
         @if($product->status)

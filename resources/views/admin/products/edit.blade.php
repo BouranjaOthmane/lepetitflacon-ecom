@@ -37,7 +37,7 @@
                         <input type="text" name="name[en]"
                             value="{{ old('name.en', $product->getTranslation('name', 'en')) }}" required>
                     </div>
-                   
+
                 </div>
 
                 <div class="form-row">
@@ -52,25 +52,9 @@
                             @endforeach
                         </select>
                     </div>
-              
+
                 </div>
 
-                <div class="form-row">
-                    <div class="form-group">
-                        <label>Prix d’achat ($)</label>
-                        <input type="number" step="0.01" name="purchase_price"
-                            value="{{ old('purchase_price', $product->purchase_price) }}" required>
-                    </div>
-                    <div class="form-group">
-                        <label>Prix de vente ($)</label>
-                        <input type="number" step="0.01" name="price" value="{{ old('price', $product->price) }}">
-                    </div>
-                    <div class="form-group">
-                        <label>Prix promotionnel ($) - optionnel</label>
-                        <input type="number" step="0.01" name="sale_price"
-                            value="{{ old('sale_price', $product->sale_price) }}">
-                    </div>
-                </div>
 
                 <div
                     style="margin-top: 24px; margin-bottom: 30px; padding: 20px; background: rgba(255, 255, 255, 0.02); border-radius: 12px; border: 1px solid var(--color-border)">
@@ -86,46 +70,32 @@
                     </div>
 
                     <p style="margin-bottom:16px; color: black; font-size:0.9rem;">
-                        Exemple : Nishane Ani X - 5ML = 165.00 $ / 10ML = 299.00 $
+                        Exemple : Nishane Ani X - 5ML = 165.00 DH / 10ML = 299.00 DH
                     </p>
 
                     <div id="sizesWrapper" style="display:flex; flex-direction:column; gap:14px;">
-                        @php
-                            $oldSizes = old('sizes');
-                            $sizes =
-                                $oldSizes ??
-                                $product->sizes
-                                    ->map(function ($size) {
-                                        return [
-                                            'id' => $size->id,
-                                            'size' => $size->size,
-                                            'price' => $size->price,
-                                        ];
-                                    })
-                                    ->toArray();
-
-                            if (empty($sizes)) {
-                                $sizes = [['id' => null, 'size' => '', 'price' => '']];
-                            }
-                        @endphp
-
-                        @foreach ($sizes as $index => $size)
+                        @forelse($product->sizes as $index => $size)
                             <div class="size-row"
                                 style="padding:16px; border:1px solid var(--color-border); border-radius:12px; background:rgba(255,255,255,0.02);">
-                                <input type="hidden" name="sizes[{{ $index }}][id]"
-                                    value="{{ $size['id'] ?? '' }}">
-
                                 <div class="form-row">
                                     <div class="form-group">
-                                        <label>Taille</label>
+                                        <label>Taille <span style="color:red">*</span></label>
                                         <input type="text" name="sizes[{{ $index }}][size]"
-                                            value="{{ $size['size'] ?? '' }}" placeholder="Ex : 5ML">
+                                            value="{{ old("sizes.$index.size", $size->size) }}" placeholder="Ex : 5ML">
                                     </div>
 
                                     <div class="form-group">
-                                        <label>Prix ($)</label>
+                                        <label>Prix <span style="color:red">*</span></label>
                                         <input type="number" step="0.01" name="sizes[{{ $index }}][price]"
-                                            value="{{ $size['price'] ?? '' }}" placeholder="0.00">
+                                            value="{{ old("sizes.$index.price", $size->price) }}" placeholder="0.00">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>Stock <span style="color:red">*</span></label>
+                                        <input type="number" name="sizes[{{ $index }}][stock_quantity]"
+                                            min="0"
+                                            value="{{ old("sizes.$index.stock_quantity", $size->stock_quantity ?? 0) }}"
+                                            placeholder="0">
                                     </div>
 
                                     <div class="form-group" style="display:flex; align-items:end;">
@@ -136,7 +106,35 @@
                                     </div>
                                 </div>
                             </div>
-                        @endforeach
+                        @empty
+                            <div class="size-row"
+                                style="padding:16px; border:1px solid var(--color-border); border-radius:12px; background:rgba(255,255,255,0.02);">
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label>Taille <span style="color:red">*</span></label>
+                                        <input type="text" name="sizes[0][size]" placeholder="Ex : 5ML">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>Prix <span style="color:red">*</span></label>
+                                        <input type="number" step="0.01" name="sizes[0][price]" placeholder="0.00">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>Stock <span style="color:red">*</span></label>
+                                        <input type="number" name="sizes[0][stock_quantity]" min="0" value="0"
+                                            placeholder="0">
+                                    </div>
+
+                                    <div class="form-group" style="display:flex; align-items:end;">
+                                        <button type="button" class="btn btn-outline btn-sm remove-size-btn"
+                                            style="color:red; width:100%;">
+                                            <i class="fas fa-trash"></i> Supprimer
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        @endforelse
                     </div>
                 </div>
 
@@ -234,40 +232,38 @@
         document.addEventListener('DOMContentLoaded', function() {
             const wrapper = document.getElementById('sizesWrapper');
             const addBtn = document.getElementById('addSizeBtn');
-
-            if (!wrapper || !addBtn) return;
-
-            let sizeIndex = wrapper.querySelectorAll('.size-row').length;
+            let sizeIndex = {{ $product->sizes->count() > 0 ? $product->sizes->count() : 1 }};
 
             function buildSizeRow(index) {
                 return `
-            <div class="size-row"
-                style="padding:16px; border:1px solid var(--color-border); border-radius:12px; background:rgba(255,255,255,0.02);">
-                <input type="hidden" name="sizes[${index}][id]" value="">
+                        <div class="size-row" style="padding:16px; border:1px solid var(--color-border); border-radius:12px; background:rgba(255,255,255,0.02);">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Taille <span style="color:red">*</span></label>
+                                    <input type="text" name="sizes[${index}][size]" placeholder="Ex : 10ML" required>
+                                </div>
 
-                <div class="form-row">
-                    <div class="form-group">
-                        <label>Taille</label>
-                        <input type="text" name="sizes[${index}][size]" placeholder="Ex : 10ML">
-                    </div>
+                                <div class="form-group">
+                                    <label>Prix <span style="color:red">*</span></label>
+                                    <input type="number" step="0.01" name="sizes[${index}][price]" placeholder="0.00" required>
+                                </div>
 
-                    <div class="form-group">
-                        <label>Prix ($)</label>
-                        <input type="number" step="0.01" name="sizes[${index}][price]" placeholder="0.00">
-                    </div>
+                                <div class="form-group">
+                                    <label>Stock <span style="color:red">*</span></label>
+                                    <input type="number" name="sizes[${index}][stock_quantity]" min="0" value="0" placeholder="0" required>
+                                </div>
 
-                    <div class="form-group" style="display:flex; align-items:end;">
-                        <button type="button" class="btn btn-outline btn-sm remove-size-btn"
-                            style="color:red; width:100%;">
-                            <i class="fas fa-trash"></i> Supprimer
-                        </button>
-                    </div>
-                </div>
-            </div>
-        `;
+                                <div class="form-group" style="display:flex; align-items:end;">
+                                    <button type="button" class="btn btn-outline btn-sm remove-size-btn" style="color:red; width:100%;">
+                                        <i class="fas fa-trash"></i> Supprimer
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    `;
             }
 
-            addBtn.addEventListener('click', function() {
+            addBtn?.addEventListener('click', function() {
                 wrapper.insertAdjacentHTML('beforeend', buildSizeRow(sizeIndex));
                 sizeIndex++;
             });
@@ -275,6 +271,13 @@
             document.addEventListener('click', function(e) {
                 const btn = e.target.closest('.remove-size-btn');
                 if (!btn) return;
+
+                const rows = document.querySelectorAll('.size-row');
+
+                if (rows.length === 1) {
+                    alert('Vous devez garder au moins un format.');
+                    return;
+                }
 
                 btn.closest('.size-row').remove();
             });

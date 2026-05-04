@@ -17,7 +17,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // ===== BESTSELLERS SLIDER =====
 document.addEventListener('DOMContentLoaded', () => {
-    
     const track = document.getElementById('bestsellersTrack');
     const prevBtn = document.getElementById('bsPrev');
     const nextBtn = document.getElementById('bsNext');
