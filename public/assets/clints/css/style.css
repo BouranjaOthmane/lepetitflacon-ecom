@@ -2753,7 +2753,7 @@ h4 {
 }
 
 .footer-lpf__features span {
-    /* display: grid !important; */
+    display: grid !important;
     grid-template-columns: 28px 1fr !important;
     column-gap: 3px !important;
     align-items: start !important;
@@ -3805,7 +3805,7 @@ h4 {
     background: rgba(255, 231, 165, 0.42);
     border: 1px solid rgba(216, 170, 69, 0.24);
     color: #9b6d1d;
-    font-size: 10px;
+    font-size: 12px;
     font-weight: 700;
     letter-spacing: 2px;
     text-transform: uppercase;

@@ -46,7 +46,7 @@
 
             <div class="footer-lpf__col">
                 <h4>Boutique</h4>
-                <a href="{{ route('shop') }}" title="Acheter des décants de parfums au Maroc">Décants</a>
+                <a href="{{ route('shop') }}" title="Acheter des décants de parfums au Maroc">Boutique</a>
                 <a href="{{ route('shop', ['cat' => 9]) }}" title="Décants de parfums homme au Maroc">Décants homme</a>
                 <a href="{{ route('shop', ['cat' => 8]) }}" title="Décants de parfums femme au Maroc">Décants femme</a>
                 <a href="{{ route('shop', ['cat' => 10]) }}" title="Acheter des parfums complets originaux">Pafums
@@ -85,7 +85,7 @@
                 <a href="{{ route('return.policy') }}" target="_blank" rel="noopener noreferrer"
                     title="Lepetitflacon - Retours et échanges">
                     <i class="fas fa-rotate-left"></i>
-                    Retours et échanges mm
+                    Retours et échanges
                 </a>
 
             </div>
@@ -97,22 +97,22 @@
 
                 <div class="footer-lpf__features">
                     <span>
-                        {{-- <i class="fas fa-truck-fast"></i> --}}
-                        <strong>Produits 100% authentiques </strong>
+                        <i class="fas fa-tag"></i>
+                        <strong>Produits 100% authentiques</strong>
                     </span>
 
                     <span>
-                        {{-- <i class="fas fa-truck-fast"></i> --}}
+                        <i class="fas fa-truck"></i>
                         <strong>Livraison rapide partout au Maroc</strong>
                     </span>
 
                     <span>
-                        {{-- <i class="fas fa-shield-alt"></i> --}}
+                        <i class="fas fa-hand-holding-dollar"></i>
                         <strong>Paiement à la livraison</strong>
                     </span>
 
                     <span>
-                        {{-- <i class="fas fa-spray-can-sparkles"></i> --}}
+                        <i class="fas fa-headset"></i>
                         <strong>S.A.V 24/7</strong>
                     </span>
                 </div>

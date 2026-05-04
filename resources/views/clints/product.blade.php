@@ -9,6 +9,7 @@
     <meta name="description"
         content="Ambre Oud Royal — un mélange raffiné d’oud cambodgien rare et d’ambre chaleureux. Un parfum d’exception signé Lepetitflacon.">
     <link rel="stylesheet" href="{{ asset('assets/clints/css/style.css') }}?v={{ filemtime(base_path('assets/clints/css/style.css')) }}">
+    {{-- //base_path --}}
     <link rel="stylesheet" href="{{ asset('assets/clints/css/product.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
@@ -1067,8 +1068,8 @@
 
                     <!-- Informations supplémentaires -->
                     <div class="product-info__meta">
-                        <div><i class="fas fa-truck"></i>Produits 100% authentiques </div>
-                        <div><i class="fas fa-undo"></i>Livraison rapide partout au Maroc</div>
+                        <div><i class="fas fa-tag"></i> Produits 100% authentiques</div>
+                        <div><i class="fas fa-truck"></i>Livraison rapide partout au Maroc</div>
                         <div><i class="fas fa-shield-alt"></i>Paiement à la livraison</div>
                     </div>
                 </div>

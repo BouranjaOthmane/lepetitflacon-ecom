@@ -296,12 +296,11 @@
                             +212 704-654736
                         </a>
                     </li>
-                    <li>Ou via notre formulaire de contact sur le site</li>
+                    
                 </ul>
 
                 <p>Merci d’indiquer :</p>
                 <ul>
-                    <li>Votre numéro de commande</li>
                     <li>Le problème rencontré</li>
                     <li>Des photos ou vidéos à l’appui</li>
                 </ul>
@@ -349,9 +348,9 @@
                         +212 704-654736
                     </a>
                     <br>
-                    Site web :
+                    Instagram :
                     <a href="https://lepetitflacon.shop" target="_blank" rel="noopener">
-                        lepetitflacon.shop
+                        lepetit.flacon
                     </a>
                 </p>
             </div>

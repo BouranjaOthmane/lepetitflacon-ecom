@@ -9,6 +9,7 @@
     <meta name="description"
         content="Achetez en ligne des parfums pour homme et femme chez Lepetitflacon. Découvrez une sélection de fragrances élégantes, raffinées et durables.">
     <link rel="stylesheet" href="{{ asset('assets/clints/css/style.css') }}?v={{ filemtime(base_path('assets/clints/css/style.css')) }}">
+    
     <link rel="stylesheet" href="{{ asset('assets/clints/css/homepage.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
@@ -1562,23 +1563,6 @@
                         Avec Le Petit Flacon, découvrez une nouvelle manière de vivre le parfum :
                         plus libre, plus intelligente, plus personnelle.
                     </p>
-
-                    <div class="about-lpf__features">
-                        <div>
-                            <i class="fas fa-spray-can-sparkles"></i>
-                            <span>Décants 5ml & 10ml Maroc</span>
-                        </div>
-
-                        <div>
-                            <i class="fas fa-certificate"></i>
-                            <span>Produits 100% authentiques</span>
-                        </div>
-
-                        <div>
-                            <i class="fas fa-truck-fast"></i>
-                            <span>Livraison rapide au Maroc</span>
-                        </div>
-                    </div>
 
                     <p class="about-lpf__final">
                         Le Petit Flacon <strong> là où la fraîcheur et le luxe commencent. </strong> ✨
