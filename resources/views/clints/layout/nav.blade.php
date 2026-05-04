@@ -533,7 +533,7 @@
 <!-- Menu mobile -->
 <div class="mobile-nav-v2" id="mobileNav">
     <a href="{{ route('home') }}">Accueil</a>
-    <a href="{{ route('shop') }}">Décants</a>
+    <a href="{{ route('shop') }}">Boutique</a>
 
     @isset($parentCategories)
         @foreach ($parentCategories as $cat)
