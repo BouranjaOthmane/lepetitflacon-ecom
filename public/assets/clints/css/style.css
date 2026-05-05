@@ -1024,16 +1024,16 @@ h4 {
     transform: translate(-50%, -50%) scale(0.92);
     background: linear-gradient(145deg, #fff4c9, #ffe7a5, #d8aa45) !important;
     color: black;
-    padding: 15px 25px;
+    padding: 15px 20px;
     border-radius: var(--radius-md);
-    font-size: 18px;
+    font-size: 16px;
     font-weight: bold;
     z-index: 3000;
     opacity: 0;
     transition: all var(--transition-base);
     box-shadow: var(--shadow-lg);
     width: 70%;
-    max-width: 400px;
+    max-width: 390px;
     text-align: center;
 }
 
