@@ -40,6 +40,10 @@
             order: unset;
         }
 
+        .navbar-v3__hamburger span:nth-child(2) {
+    width: 10px;
+}
+
         .navbar-v3__actions>a.navbar-v3__icon {
             grid-column: 2;
             grid-row: 1;

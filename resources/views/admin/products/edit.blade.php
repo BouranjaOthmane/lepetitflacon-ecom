@@ -143,29 +143,38 @@
                         <label>SKU</label>
                         <input type="text" name="sku" value="{{ old('sku', $product->sku) }}">
                     </div>
-                    <div class="form-group">
-                        <label>Stock disponible</label>
-                        <input type="number" name="stock_quantity"
-                            value="{{ old('stock_quantity', $product->stock_quantity) }}" min="0" required>
+
+                </div>
+
+                <div
+                    style="margin-top: 24px; padding: 20px; background: rgba(255, 255, 255, 0.02); border-radius: 12px; border: 1px solid var(--color-border)">
+                <h4
+    style="margin-bottom: 20px; color: var(--color-gold); display: flex; align-items: center; gap: 10px">
+    <i class="fas fa-layer-group"></i> Pyramide olfactive (composition du parfum)
+</h4>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Notes de tête</label>
+                            <select name="top_notes[]" multiple class="form-input" style="height: 120px">
+                                @foreach ($notes as $note)
+                                    <option value="{{ $note->id }}"
+                                        {{ in_array($note->id, $selectedTopNotes) ? 'selected' : '' }}>
+                                        {{ $note->getTranslation('name', 'fr') ?? $note->name }}
+                                    </option>
+                                @endforeach
+                            </select>
+                            <small style="color:var(--color-text-muted)">
+                                Vous pouvez sélectionner plusieurs éléments (Ctrl + clic)
+                            </small>
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label>Seuil d’alerte</label>
-                        <input type="number" name="low_stock_threshold"
-                            value="{{ old('low_stock_threshold', $product->low_stock_threshold) }}" min="0"
-                            required>
-                    </div>
+
+
                 </div>
 
                 <div class="form-row">
-                    <div class="form-group">
-                        <label>Public cible</label>
-                        <select name="gender" required>
-                            <option value="Men">Homme</option>
-                            <option value="Women">Femme</option>
-                            <option value="Unisex">Unisexe</option>
-                            <option value="Kids">Enfants</option>
-                        </select>
-                    </div>
+
                     <div class="form-group">
                         <label>Mettre à jour l’image principale</label>
                         <input type="file" name="image" accept="image/*">
@@ -180,11 +189,6 @@
 
                 <div style="margin-top: 24px;">
                     <h4>Notes du parfum</h4>
-                </div>
-
-                <div class="form-group">
-                    <label>Description courte</label>
-                    <textarea name="short_description" rows="2">{{ old('short_description', $product->short_description ?? '') }}</textarea>
                 </div>
 
                 <div class="form-group">

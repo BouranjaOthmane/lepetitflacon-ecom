@@ -113,7 +113,7 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label>Prix  <span style="color: red">*</span></label>
+                                    <label>Prix <span style="color: red">*</span></label>
                                     <input type="number" step="0.01" name="sizes[0][price]" placeholder="0.00">
                                 </div>
 
@@ -161,12 +161,34 @@
 
 
 
+                <div
+                    style="margin-top: 24px; padding: 20px; background: rgba(255, 255, 255, 0.02); border-radius: 12px; border: 1px solid var(--color-border)">
 
-                <div class="form-group">
+                    <h4
+                        style="margin-bottom: 20px; color: var(--color-gold); display: flex; align-items: center; gap: 10px">
+                        <i class="fas fa-layer-group"></i> Pyramide olfactive (composition du parfum)
+                    </h4>
 
-                    <label>Description courte</label>
-                    <textarea name="short_description" rows="2">{{ old('short_description') }}</textarea>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Notes de tête</label>
+                            <select name="top_notes[]" multiple class="form-input" style="height: 120px">
+                                @foreach ($notes as $note)
+                                    <option value="{{ $note->id }}">
+                                        {{ $note->getTranslation('name', 'fr') ?? $note->getTranslation('name', 'en') }}
+                                    </option>
+                                @endforeach
+                            </select>
+                            <small style="color:var(--color-text-muted)">
+                                Vous pouvez sélectionner plusieurs éléments (Ctrl + clic)
+                            </small>
+                        </div>
+                    </div>
+
                 </div>
+
+
+
 
                 <div class="form-group">
                     <label>Description complète</label>

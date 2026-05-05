@@ -49,7 +49,7 @@
                 <a href="{{ route('shop') }}" title="Acheter des décants de parfums au Maroc">Boutique</a>
                 <a href="{{ route('shop', ['cat' => 9]) }}" title="Décants de parfums homme au Maroc">Décants homme</a>
                 <a href="{{ route('shop', ['cat' => 8]) }}" title="Décants de parfums femme au Maroc">Décants femme</a>
-                <a href="{{ route('shop', ['cat' => 10]) }}" title="Acheter des parfums complets originaux">Pafums
+                <a href="{{ route('shop', ['cat' => 10]) }}" title="Acheter des parfums complets originaux">Parfums
                     complets</a>
                 <a href="{{ route('shop', ['cat' => 11]) }}" title="Univers féminin parfums et soins">Univers
                     féminin</a>

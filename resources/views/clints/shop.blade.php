@@ -319,6 +319,36 @@
             transition: .35s ease;
         }
 
+        .product-card {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .product-card-link {
+            height: 100%;
+            display: block;
+        }
+
+        .product-card__info {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .product-card__name {
+            min-height: 60px;
+        }
+
+        .product-card__price {
+            margin-top: auto;
+        }
+
+        .product-card__btn {
+            margin-top: 22px;
+            width: 100%;
+        }
+
         .product-card:hover {
             transform: translateY(-8px);
             box-shadow: 0 28px 55px rgba(11, 16, 61, .14);
@@ -449,7 +479,7 @@
 
         .product-grid {
             display: grid;
-            grid-template-columns: repeat(3, minmax(0, 1fr));
+            grid-template-columns: repeat(4, minmax(0, 1fr));
             gap: 28px;
             align-items: stretch;
         }
@@ -501,9 +531,7 @@
                     @php
                         $selectedCatId = request('cat');
                         $selectedCategory = $categories->firstWhere('id', $selectedCatId);
-                        $pageTitle = $selectedCategory
-                            ? $selectedCategory->getTranslation('name', 'fr')
-                            : 'Décants';
+                        $pageTitle = $selectedCategory ? $selectedCategory->getTranslation('name', 'fr') : 'Décants';
                     @endphp
 
                     <h1>{{ $pageTitle }}</h1>
@@ -525,12 +553,12 @@
         <div class="container">
             <div class="shop-layout">
                 <aside class="" id="filtersPanel">
-                    
+
 
                 </aside>
                 <div class="filters-overlay" id="filtersOverlay"></div>
 
-  
+
                 <div class="shop-main">
                     <div class="shop-toolbar">
                         <div class="shop-toolbar__info">
@@ -538,7 +566,7 @@
                                 <strong>{{ $products->total() }}</strong> résultats
                             </p>
                         </div>
-                      
+
                     </div>
 
 
@@ -563,7 +591,7 @@
 
 
                                         <div class="product-card__actions">
-                                           
+
                                             <button
                                                 onclick="window.location.href='{{ route('product', $product->id) }}'">
                                                 <i class="far fa-eye"></i>
@@ -575,7 +603,7 @@
                                         <h4 class="product-card__name">{{ $product->getTranslation('name', 'fr') }}
                                         </h4>
 
-                                    
+
 
 
                                         @php
@@ -595,7 +623,7 @@
                                                 @endif
                                             @else
                                                 {{ number_format($product->sale_price ?: $product->price, 2, ',', ' ') }}
-                                                DH 
+                                                DH
                                             @endif
                                         </p>
 

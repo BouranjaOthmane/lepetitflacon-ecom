@@ -8,892 +8,968 @@
     <title>{{ $product->getTranslation('name', 'ar') }} — Lepetitflacon</title>
     <meta name="description"
         content="Ambre Oud Royal — un mélange raffiné d’oud cambodgien rare et d’ambre chaleureux. Un parfum d’exception signé Lepetitflacon.">
-    <link rel="stylesheet" href="{{ asset('assets/clints/css/style.css') }}?v={{ filemtime(base_path('assets/clints/css/style.css')) }}">
+    <link rel="stylesheet"
+        href="{{ asset('assets/clints/css/style.css') }}?v={{ filemtime(base_path('assets/clints/css/style.css')) }}">
     {{-- //base_path --}}
     <link rel="stylesheet" href="{{ asset('assets/clints/css/product.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
     <style>
         .product-breadcrumb-lpf {
-    position: relative;
-    overflow: hidden;
-    padding: 24px 0;
-    background:
-        radial-gradient(circle at 15% 10%, rgba(255, 231, 165, 0.34), transparent 24%),
-        radial-gradient(circle at 85% 0%, rgba(216, 170, 69, 0.13), transparent 25%),
-        linear-gradient(180deg, #fffaf4 0%, #ffffff 100%);
-    border-bottom: 1px solid rgba(216, 170, 69, 0.22);
-}
-
-.product-breadcrumb-lpf::before {
-    content: "LPF";
-    position: absolute;
-    right: 5%;
-    top: -36px;
-    font-family: serif;
-    font-size: 110px;
-    font-weight: 800;
-    color: rgba(11, 16, 61, 0.04);
-}
-
-.product-breadcrumb-lpf__inner {
-    position: relative;
-    z-index: 2;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 20px;
-}
-
-.product-breadcrumb-lpf__breadcrumb {
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 9px;
-    font-size: 13px;
-}
-
-.product-breadcrumb-lpf__breadcrumb a {
-    color: rgba(11, 16, 61, 0.52);
-    text-decoration: none;
-}
-
-.product-breadcrumb-lpf__breadcrumb span {
-    color: rgba(216, 170, 69, 0.75);
-}
-
-.product-breadcrumb-lpf__breadcrumb strong {
-    color: #0B103D;
-    font-weight: 800;
-}
-
-.product-breadcrumb-lpf__badge {
-    min-width: 142px;
-    min-height: 42px;
-    padding: 0 15px;
-    border-radius: 999px;
-    background: rgba(255,255,255,.78);
-    border: 1px solid rgba(216, 170, 69, .28);
-    color: #d8aa45;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 9px;
-    box-shadow: 0 14px 30px rgba(11,16,61,.08);
-    animation: productBadgeFloat 3.5s ease-in-out infinite;
-}
-
-.product-breadcrumb-lpf__badge span {
-    color: #0B103D;
-    font-size: 11px;
-    font-weight: 800;
-    letter-spacing: 1.3px;
-    text-transform: uppercase;
-}
-
-.product-breadcrumb-lpf__glow {
-    position: absolute;
-    left: 8%;
-    bottom: -90px;
-    width: 170px;
-    height: 170px;
-    border-radius: 50%;
-    background: radial-gradient(circle, rgba(255, 231, 165, .28), transparent 65%);
-}
-
-@keyframes productBadgeFloat {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-6px); }
-}
-
-@media (max-width: 768px) {
-    .product-breadcrumb-lpf {
-        padding: 20px 0;
-    }
-
-    .product-breadcrumb-lpf__inner {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-
-    .product-breadcrumb-lpf__badge {
-        min-height: 40px;
-    }
-}
-
-
-
-
-/* second section */
-
-.product-detail {
-    position: relative;
-    padding: 50px 0;
-    background:
-        radial-gradient(circle at 12% 10%, rgba(255, 231, 165, .22), transparent 28%),
-        linear-gradient(180deg, #fffaf4 0%, #ffffff 100%);
-    overflow: hidden;
-}
-
-.product-detail::before {
-    content: "LPF";
-    position: absolute;
-    right: 4%;
-    top: 35px;
-    font-family: serif;
-    font-size: 140px;
-    font-weight: 800;
-    color: rgba(11, 16, 61, .035);
-    pointer-events: none;
-}
-
-.product-detail__layout {
-    position: relative;
-    z-index: 2;
-    max-width: 1100px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 32px;
-    align-items: stretch;
-}
-
-/* LEFT IMAGE CARD */
-.product-gallery {
-    display: flex;
-    flex-direction: column;
-}
-
-.product-gallery__main {
-    position: relative;
-    width: 100%;
-    aspect-ratio: 1 / 1;
-    min-height: 480px;
-    border-radius: 26px;
-    overflow: hidden;
-    background: #ffffff;
-    border: 1px solid rgba(216, 170, 69, .26);
-    box-shadow:
-        0 22px 48px rgba(11, 16, 61, .12),
-        inset 0 1px 0 rgba(255,255,255,1);
-    transition: .4s ease;
-}
-
-.product-gallery__main:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 30px 65px rgba(11, 16, 61, .16);
-}
-
-.product-gallery__main img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: .65s ease;
-}
-
-.product-gallery__main:hover img {
-    transform: scale(1.05);
-}
-
-.product-gallery__main::after {
-    content: "";
-    position: absolute;
-    inset: 12px;
-    border-radius: 20px;
-    border: 1px solid rgba(255, 231, 165, .42);
-    pointer-events: none;
-}
-
-.product-gallery__zoom-hint {
-    position: absolute;
-    left: 50%;
-    bottom: 18px;
-    transform: translateX(-50%);
-    padding: 8px 14px;
-    border-radius: 999px;
-    background: rgba(11, 16, 61, .58);
-    color: #ffffff;
-    font-size: 11px;
-    backdrop-filter: blur(10px);
-}
-
-.product-gallery__thumbs {
-    display: flex;
-    gap: 10px;
-    margin-top: 14px;
-}
-
-.thumb {
-    width: 68px;
-    height: 68px;
-    border-radius: 16px;
-    overflow: hidden;
-    border: 1px solid rgba(216, 170, 69, .28);
-    background: #ffffff;
-    cursor: pointer;
-    opacity: .72;
-    transition: .3s ease;
-}
-
-.thumb.active,
-.thumb:hover {
-    opacity: 1;
-    transform: translateY(-4px);
-    box-shadow: 0 12px 24px rgba(216, 170, 69, .22);
-}
-
-.thumb img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-/* RIGHT INFO CARD */
-.product-info {
-    position: relative;
-    min-height: 480px;
-    padding: 26px;
-    border-radius: 26px;
-    background:
-        radial-gradient(circle at 90% 0%, rgba(255, 231, 165, .25), transparent 28%),
-        linear-gradient(145deg, #ffffff, #fffaf4);
-    border: 1px solid rgba(216, 170, 69, .22);
-    box-shadow: 0 22px 48px rgba(11, 16, 61, .08);
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
-.product-info::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(
-        115deg,
-        transparent 0%,
-        transparent 42%,
-        rgba(255, 231, 165, .22) 50%,
-        transparent 58%,
-        transparent 100%
-    );
-    transform: translateX(-130%);
-    animation: productInfoShine 7s ease-in-out infinite;
-    pointer-events: none;
-}
-
-.product-info > * {
-    position: relative;
-    z-index: 2;
-}
-
-.product-info__badge {
-    display: inline-flex;
-    width: fit-content;
-    padding: 7px 13px;
-    border-radius: 999px;
-    color: #0B103D;
-    background: linear-gradient(145deg, #fff4c9, #ffe7a5, #d8aa45);
-    font-size: 10px;
-    font-weight: 900;
-    letter-spacing: 1.4px;
-    text-transform: uppercase;
-    margin-bottom: 12px;
-}
-
-.product-info__brand {
-    color: #d8aa45;
-    font-size: 11px;
-    font-weight: 900;
-    letter-spacing: 2.3px;
-    text-transform: uppercase;
-    margin-bottom: 10px;
-}
-
-.product-info__name {
-    color: #0B103D;
-    font-size: clamp(26px, 2.8vw, 38px);
-    line-height: 1.08;
-    font-weight: 800;
-    letter-spacing: -1px;
-    margin: 0 0 14px;
-}
-
-.product-info__rating {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    color: #f6a51a;
-    margin-bottom: 20px;
-    font-size: 14px;
-}
-
-.product-info__rating span {
-    color: rgba(11, 16, 61, .48);
-}
-
-.price-current {
-    color: #d8aa45;
-    font-size: 28px;
-    font-weight: 900;
-}
-
-.product-info__sizes h4,
-.fragrance-notes h4 {
-    color: #0B103D;
-    font-size: 14px;
-    font-weight: 800;
-    margin: 22px 0 12px;
-}
-
-.size-options {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-}
-
-.size-btn {
-    min-width: 88px;
-    min-height: 58px;
-    border-radius: 15px;
-    background: #ffffff;
-    border: 1px solid rgba(216, 170, 69, .25);
-    color: #0B103D;
-    cursor: pointer;
-    transition: .35s ease;
-    font-weight: 700;
-}
-
-.size-btn span {
-    display: block;
-    margin-top: 6px;
-    color: rgba(11,16,61,.45);
-    font-size: 11px;
-}
-
-.size-btn.active,
-.size-btn:hover {
-    background: linear-gradient(145deg, #fff4c9, #ffe7a5, #d8aa45);
-    transform: translateY(-3px);
-    box-shadow: 0 12px 24px rgba(216,170,69,.24);
-}
-
-.product-info__desc {
-    color: rgba(11, 16, 61, .62);
-    font-size: 14px;
-    line-height: 1.7;
-    margin: 20px 0;
-}
-
-/* Fragrance notes */
-.fragrance-notes {
-    padding: 18px;
-    border-radius: 20px;
-    background: rgba(255, 231, 165, .12);
-    border: 1px solid rgba(216, 170, 69, .18);
-    margin-top: 16px;
-}
-
-.note-row {
-    margin-bottom: 14px;
-}
-
-.note-row:last-child {
-    margin-bottom: 0;
-}
-
-.note-label {
-    color: #0B103D;
-    font-size: 12px;
-    font-weight: 800;
-}
-
-.note-items span {
-    display: inline-flex;
-    margin: 6px 5px 0 0;
-    padding: 7px 11px;
-    border-radius: 999px;
-    background: #ffffff;
-    color: #0B103D;
-    font-size: 12px;
-    border: 1px solid rgba(216, 170, 69, .18);
-}
-
-/* Actions */
-.product-info__actions {
-    display: grid;
-    grid-template-columns: 125px 1fr;
-    gap: 12px;
-    margin-top: 20px;
-}
-
-.qty-selector {
-    height: 46px;
-    display: grid;
-    grid-template-columns: 38px 1fr 38px;
-    border-radius: 15px;
-    overflow: hidden;
-    border: 1px solid rgba(216, 170, 69, .24);
-    background: #ffffff;
-}
-
-.qty-selector button {
-    border: 0;
-    background: #fffaf4;
-    color: #0B103D;
-    font-size: 18px;
-    cursor: pointer;
-    transition: .25s ease;
-}
-
-.qty-selector button:hover {
-    background: #ffe7a5;
-}
-
-.qty-selector input {
-    border: 0;
-    text-align: center;
-    font-size: 16px;
-    font-weight: 900;
-    color: #0B103D;
-    background: #ffffff;
-}
-
-.product-add-btn {
-    height: 46px;
-    border-radius: 15px !important;
-    background: linear-gradient(145deg, #fff4c9, #ffe7a5, #d8aa45) !important;
-    color: #0B103D !important;
-    font-size: 12px !important;
-    font-weight: 900 !important;
-    letter-spacing: 1.2px;
-    text-transform: uppercase;
-    box-shadow: 0 14px 28px rgba(216,170,69,.26);
-    transition: .35s ease;
-}
-
-.product-add-btn:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 20px 36px rgba(216,170,69,.36);
-}
-
-/* Meta box */
-.product-info__meta {
-    margin-top: 20px;
-    padding: 16px;
-    border-radius: 18px;
-    background: rgba(255,255,255,.72);
-    border: 1px solid rgba(216, 170, 69, .18);
-}
-
-.product-info__meta div {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    color: rgba(11,16,61,.62);
-    font-size: 13px;
-    margin-bottom: 10px;
-}
-
-.product-info__meta div:last-child {
-    margin-bottom: 0;
-}
-
-.product-info__meta i {
-    color: #d8aa45;
-}
-
-@keyframes productInfoShine {
-    0%, 70% {
-        transform: translateX(-130%);
-    }
-    100% {
-        transform: translateX(130%);
-    }
-}
-
-/* Tablet */
-@media (max-width: 992px) {
-    .product-detail {
-        padding: 44px 0;
-    }
-
-    .product-detail__layout {
-        max-width: 680px;
-        grid-template-columns: 1fr;
-        gap: 22px;
-    }
-
-    .product-gallery__main {
-        min-height: auto;
-        aspect-ratio: 1 / 1;
-    }
-
-    .product-info {
-        min-height: auto;
-        justify-content: flex-start;
-    }
-}
-
-/* Mobile */
-@media (max-width: 576px) {
-    .product-detail {
-        padding: 34px 0;
-    }
-
-    .product-gallery__main {
-        border-radius: 22px;
-    }
-
-    .product-gallery__main::after {
-        inset: 9px;
-        border-radius: 16px;
-    }
-
-    .product-gallery__zoom-hint {
-        font-size: 10px;
-        padding: 7px 11px;
-    }
-
-    .product-info {
-        padding: 20px;
-        border-radius: 22px;
-    }
-
-    .product-info__name {
-        font-size: 28px;
-    }
-
-    .price-current {
-        font-size: 25px;
-    }
-
-    .product-info__actions {
-        grid-template-columns: 1fr;
-    }
-
-    .qty-selector {
-        max-width: 150px;
-    }
-
-    .size-btn {
-        min-width: 84px;
-        min-height: 56px;
-    }
-
-    .product-info__meta {
-        padding: 14px;
-    }
-
-    .product-info__meta div {
-        font-size: 12px;
-    }
-}
-
-
-
-/* ==============================
+            position: relative;
+            overflow: hidden;
+            padding: 24px 0;
+            background:
+                radial-gradient(circle at 15% 10%, rgba(255, 231, 165, 0.34), transparent 24%),
+                radial-gradient(circle at 85% 0%, rgba(216, 170, 69, 0.13), transparent 25%),
+                linear-gradient(180deg, #fffaf4 0%, #ffffff 100%);
+            border-bottom: 1px solid rgba(216, 170, 69, 0.22);
+        }
+
+        .product-breadcrumb-lpf::before {
+            content: "LPF";
+            position: absolute;
+            right: 5%;
+            top: -36px;
+            font-family: serif;
+            font-size: 110px;
+            font-weight: 800;
+            color: rgba(11, 16, 61, 0.04);
+        }
+
+        .product-breadcrumb-lpf__inner {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .product-breadcrumb-lpf__breadcrumb {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 9px;
+            font-size: 13px;
+        }
+
+        .product-breadcrumb-lpf__breadcrumb a {
+            color: rgba(11, 16, 61, 0.52);
+            text-decoration: none;
+        }
+
+        .product-breadcrumb-lpf__breadcrumb span {
+            color: rgba(216, 170, 69, 0.75);
+        }
+
+        .product-breadcrumb-lpf__breadcrumb strong {
+            color: #0B103D;
+            font-weight: 800;
+        }
+
+        .product-breadcrumb-lpf__badge {
+            min-width: 142px;
+            min-height: 42px;
+            padding: 0 15px;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, .78);
+            border: 1px solid rgba(216, 170, 69, .28);
+            color: #d8aa45;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 9px;
+            box-shadow: 0 14px 30px rgba(11, 16, 61, .08);
+            animation: productBadgeFloat 3.5s ease-in-out infinite;
+        }
+
+        .product-breadcrumb-lpf__badge span {
+            color: #0B103D;
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: 1.3px;
+            text-transform: uppercase;
+        }
+
+        .product-breadcrumb-lpf__glow {
+            position: absolute;
+            left: 8%;
+            bottom: -90px;
+            width: 170px;
+            height: 170px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(255, 231, 165, .28), transparent 65%);
+        }
+
+        @keyframes productBadgeFloat {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-6px);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .product-breadcrumb-lpf {
+                padding: 20px 0;
+            }
+
+            .product-breadcrumb-lpf__inner {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .product-breadcrumb-lpf__badge {
+                min-height: 40px;
+            }
+        }
+
+
+
+
+        /* second section */
+
+        .product-detail {
+            position: relative;
+            padding: 50px 0;
+            background:
+                radial-gradient(circle at 12% 10%, rgba(255, 231, 165, .22), transparent 28%),
+                linear-gradient(180deg, #fffaf4 0%, #ffffff 100%);
+            overflow: hidden;
+        }
+
+        .product-detail::before {
+            content: "LPF";
+            position: absolute;
+            right: 4%;
+            top: 35px;
+            font-family: serif;
+            font-size: 140px;
+            font-weight: 800;
+            color: rgba(11, 16, 61, .035);
+            pointer-events: none;
+        }
+
+        .product-detail__layout {
+            position: relative;
+            z-index: 2;
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 32px;
+            align-items: stretch;
+        }
+
+        /* LEFT IMAGE CARD */
+        .product-gallery {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .product-gallery__main {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            min-height: 480px;
+            border-radius: 26px;
+            overflow: hidden;
+            background: #ffffff;
+            border: 1px solid rgba(216, 170, 69, .26);
+            box-shadow:
+                0 22px 48px rgba(11, 16, 61, .12),
+                inset 0 1px 0 rgba(255, 255, 255, 1);
+            transition: .4s ease;
+        }
+
+        .product-gallery__main:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 30px 65px rgba(11, 16, 61, .16);
+        }
+
+        .product-gallery__main img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: .65s ease;
+        }
+
+        .product-gallery__main:hover img {
+            transform: scale(1.05);
+        }
+
+        .product-gallery__main::after {
+            content: "";
+            position: absolute;
+            inset: 12px;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 231, 165, .42);
+            pointer-events: none;
+        }
+
+        .product-gallery__zoom-hint {
+            position: absolute;
+            left: 50%;
+            bottom: 18px;
+            transform: translateX(-50%);
+            padding: 8px 14px;
+            border-radius: 999px;
+            background: rgba(11, 16, 61, .58);
+            color: #ffffff;
+            font-size: 11px;
+            backdrop-filter: blur(10px);
+        }
+
+        .product-gallery__thumbs {
+            display: flex;
+            gap: 10px;
+            margin-top: 14px;
+        }
+
+        .thumb {
+            width: 68px;
+            height: 68px;
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid rgba(216, 170, 69, .28);
+            background: #ffffff;
+            cursor: pointer;
+            opacity: .72;
+            transition: .3s ease;
+        }
+
+        .thumb.active,
+        .thumb:hover {
+            opacity: 1;
+            transform: translateY(-4px);
+            box-shadow: 0 12px 24px rgba(216, 170, 69, .22);
+        }
+
+        .thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* RIGHT INFO CARD */
+        .product-info {
+            position: relative;
+            min-height: 480px;
+            padding: 26px;
+            border-radius: 26px;
+            background:
+                radial-gradient(circle at 90% 0%, rgba(255, 231, 165, .25), transparent 28%),
+                linear-gradient(145deg, #ffffff, #fffaf4);
+            border: 1px solid rgba(216, 170, 69, .22);
+            box-shadow: 0 22px 48px rgba(11, 16, 61, .08);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .product-info::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(115deg,
+                    transparent 0%,
+                    transparent 42%,
+                    rgba(255, 231, 165, .22) 50%,
+                    transparent 58%,
+                    transparent 100%);
+            transform: translateX(-130%);
+            animation: productInfoShine 7s ease-in-out infinite;
+            pointer-events: none;
+        }
+
+        .product-info>* {
+            position: relative;
+            z-index: 2;
+        }
+
+        .product-info__badge {
+            display: inline-flex;
+            width: fit-content;
+            padding: 7px 13px;
+            border-radius: 999px;
+            color: #0B103D;
+            background: linear-gradient(145deg, #fff4c9, #ffe7a5, #d8aa45);
+            font-size: 10px;
+            font-weight: 900;
+            letter-spacing: 1.4px;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+
+        .product-info__brand {
+            color: #d8aa45;
+            font-size: 11px;
+            font-weight: 900;
+            letter-spacing: 2.3px;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+
+        .product-info__name {
+            color: #0B103D;
+            font-size: clamp(26px, 2.8vw, 38px);
+            line-height: 1.08;
+            font-weight: 800;
+            letter-spacing: -1px;
+            margin: 0 0 14px;
+        }
+
+        .product-info__rating {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: #f6a51a;
+            margin-bottom: 20px;
+            font-size: 14px;
+        }
+
+        .product-info__rating span {
+            color: rgba(11, 16, 61, .48);
+        }
+
+        .price-current {
+            color: #d8aa45;
+            font-size: 28px;
+            font-weight: 900;
+        }
+
+        .product-info__sizes h4,
+        .fragrance-notes h4 {
+            color: #0B103D;
+            font-size: 14px;
+            font-weight: 800;
+            margin: 0;
+            /* text-align: center; */
+            /* margin: 22px 0 12px; */
+        }
+
+        .size-options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .size-btn {
+            min-width: 88px;
+            min-height: 58px;
+            border-radius: 15px;
+            background: #ffffff;
+            border: 1px solid rgba(216, 170, 69, .25);
+            color: #0B103D;
+            cursor: pointer;
+            transition: .35s ease;
+            font-weight: 700;
+        }
+
+        .size-btn span {
+            display: block;
+            
+            color: black;
+            font-size: 15px;
+        }
+
+        .size-btn.active,
+        .size-btn:hover {
+            background: linear-gradient(145deg, #fff4c9, #ffe7a5, #d8aa45);
+            transform: translateY(-3px);
+            box-shadow: 0 12px 24px rgba(216, 170, 69, .24);
+        }
+
+        .product-info__desc {
+            color: black;
+            font-size: 15px;
+            line-height: 1.7;
+            /* margin: 20px 0; */
+        }
+
+        /* Fragrance notes */
+        .fragrance-notes {
+            padding: 18px;
+            border-radius: 20px;
+            background: rgba(255, 231, 165, .12);
+            border: 1px solid rgba(216, 170, 69, .18);
+            margin-top: 16px;
+        }
+
+        .note-row {
+            margin-bottom: 14px;
+        }
+
+        .note-row:last-child {
+            margin-bottom: 0;
+        }
+
+        .note-label {
+            color: #0B103D;
+            font-size: 12px;
+            font-weight: 800;
+        }
+
+        .note-items span {
+            display: inline-flex;
+            margin: 6px 5px 0 0;
+            padding: 7px 11px;
+            border-radius: 999px;
+            background: #ffffff;
+            color: #0B103D;
+            font-size: 12px;
+            border: 1px solid rgba(216, 170, 69, .18);
+        }
+
+        /* Actions */
+        .product-info__actions {
+            display: grid;
+            grid-template-columns: 125px 1fr;
+            gap: 12px;
+            margin-top: 20px;
+        }
+
+        .qty-selector {
+            height: 46px;
+            display: grid;
+            grid-template-columns: 38px 1fr 38px;
+            border-radius: 15px;
+            overflow: hidden;
+            border: 1px solid rgba(216, 170, 69, .24);
+            background: #ffffff;
+        }
+
+        .qty-selector button {
+            border: 0;
+            background: #fffaf4;
+            color: #0B103D;
+            font-size: 18px;
+            cursor: pointer;
+            transition: .25s ease;
+        }
+
+        .qty-selector button:hover {
+            background: #ffe7a5;
+        }
+
+        .qty-selector input {
+            border: 0;
+            text-align: center;
+            font-size: 16px;
+            font-weight: 900;
+            color: #0B103D;
+            background: #ffffff;
+        }
+
+        .product-add-btn {
+            height: 46px;
+            border-radius: 15px !important;
+            background: linear-gradient(145deg, #fff4c9, #ffe7a5, #d8aa45) !important;
+            color: #0B103D !important;
+            font-size: 12px !important;
+            font-weight: 900 !important;
+            letter-spacing: 1.2px;
+            text-transform: uppercase;
+            box-shadow: 0 14px 28px rgba(216, 170, 69, .26);
+            transition: .35s ease;
+        }
+
+        .product-add-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 20px 36px rgba(216, 170, 69, .36);
+        }
+
+        /* Meta box */
+        .product-info__meta {
+            margin-top: 20px;
+            padding: 16px;
+            border-radius: 18px;
+            background: rgba(255, 255, 255, .72);
+            border: 1px solid rgba(216, 170, 69, .18);
+        }
+
+        .product-info__meta div {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: rgba(11, 16, 61, .62);
+            font-size: 13px;
+            margin-bottom: 10px;
+        }
+
+        .product-info__meta div:last-child {
+            margin-bottom: 0;
+        }
+
+        .product-info__meta i {
+            color: #d8aa45;
+        }
+
+        @keyframes productInfoShine {
+
+            0%,
+            70% {
+                transform: translateX(-130%);
+            }
+
+            100% {
+                transform: translateX(130%);
+            }
+        }
+
+        /* Tablet */
+        @media (max-width: 992px) {
+            .product-detail {
+                padding: 44px 0;
+            }
+
+            .product-detail__layout {
+                max-width: 680px;
+                grid-template-columns: 1fr;
+                gap: 22px;
+            }
+
+            .product-gallery__main {
+                min-height: auto;
+                aspect-ratio: 1 / 1;
+            }
+
+            .product-info {
+                min-height: auto;
+                justify-content: flex-start;
+            }
+        }
+
+        /* Mobile */
+        @media (max-width: 576px) {
+            .product-detail {
+                padding: 34px 0;
+            }
+
+            .product-gallery__main {
+                border-radius: 22px;
+            }
+
+            .product-gallery__main::after {
+                inset: 9px;
+                border-radius: 16px;
+            }
+
+            .product-gallery__zoom-hint {
+                font-size: 10px;
+                padding: 7px 11px;
+            }
+
+            .product-info {
+                padding: 20px;
+                border-radius: 22px;
+            }
+
+            .product-info__name {
+                font-size: 28px;
+            }
+
+            .price-current {
+                font-size: 25px;
+            }
+
+            .product-info__actions {
+                grid-template-columns: 1fr;
+            }
+
+            .qty-selector {
+                max-width: 150px;
+            }
+
+            .size-btn {
+                min-width: 84px;
+                min-height: 56px;
+            }
+
+            .product-info__meta {
+                padding: 14px;
+            }
+
+            .product-info__meta div {
+                font-size: 12px;
+            }
+        }
+
+
+
+        /* ==============================
    RELATED PRODUCTS PREMIUM SMALL
 ================================ */
 
-.related-products-premium {
-    position: relative;
-    padding: 65px 0;
-    background: linear-gradient(180deg, #fffaf2 0%, #ffffff 45%, #fffaf2 100%);
-    overflow: hidden;
-}
+        .related-products-premium {
+            position: relative;
+            padding: 65px 0;
+            background: linear-gradient(180deg, #fffaf2 0%, #ffffff 45%, #fffaf2 100%);
+            overflow: hidden;
+        }
 
-.related-title-pro {
-    text-align: center;
-    margin-bottom: 40px;
-}
+        .related-title-pro {
+            text-align: center;
+            margin-bottom: 40px;
+        }
 
-.related-label-line {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 18px;
-    margin-bottom: 18px;
-}
+        .related-label-line {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 18px;
+            margin-bottom: 18px;
+        }
 
-.related-label-line span {
-    width: 58px;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, #d8a936, transparent);
-}
+        .related-label-line span {
+            width: 58px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #d8a936, transparent);
+        }
 
-.related-label-line p {
-    margin: 0;
-    color: #070849;
-    font-size: 14px;
-    font-weight: 800;
-    letter-spacing: 8px;
-    text-transform: uppercase;
-}
+        .related-label-line p {
+            margin: 0;
+            color: #070849;
+            font-size: 14px;
+            font-weight: 800;
+            letter-spacing: 8px;
+            text-transform: uppercase;
+        }
 
-.related-title-pro h2 {
-    margin: 0;
-    color: #070849;
-    font-size: clamp(38px, 5vw, 72px);
-    font-weight: 900;
-    letter-spacing: -2px;
-    line-height: 1;
-}
+        .related-title-pro h2 {
+            margin: 0;
+            color: #070849;
+            font-size: clamp(38px, 5vw, 72px);
+            font-weight: 900;
+            letter-spacing: -2px;
+            line-height: 1;
+        }
 
-.related-title-pro h2 em {
-    font-style: italic;
-    font-weight: 800;
-    color: #ffe29a;
-    text-shadow: 0 10px 30px rgba(218, 169, 54, .22);
-}
+        .related-title-pro h2 em {
+            font-style: italic;
+            font-weight: 800;
+            color: #ffe29a;
+            text-shadow: 0 10px 30px rgba(218, 169, 54, .22);
+        }
 
-/* Grid */
-.related-grid-pro {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 24px;
-}
+        /* Grid */
+        .related-grid-pro {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+        }
 
-/* Card */
-.related-card-pro {
-    overflow: hidden;
-    background: #fff;
-    border: 1px solid rgba(218, 169, 54, .32);
+        /* Card */
+        .related-card-pro {
+            overflow: hidden;
+            background: #fff;
+            border: 1px solid rgba(218, 169, 54, .32);
+            border-radius: 22px;
+            box-shadow: 0 18px 45px rgba(7, 8, 73, .08);
+            transition: .35s ease;
+            animation: relatedFadeUp .7s ease both;
+        }
+
+        .related-card-pro:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 28px 65px rgba(7, 8, 73, .15);
+        }
+
+        .related-card-pro__image {
+            display: block;
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            overflow: hidden;
+            border-radius: 22px 22px 0 0;
+            background: #f7f2e8;
+        }
+
+        .related-card-pro__image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: .6s ease;
+        }
+
+        .related-card-pro:hover .related-card-pro__image img {
+            transform: scale(1.06);
+        }
+
+        .related-card-pro__content {
+            text-align: center;
+            padding: 22px 18px 24px;
+        }
+
+        .related-card-pro__brand {
+            margin: 0 0 10px;
+            color: #070849;
+            font-size: 11px;
+            font-weight: 900;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+        }
+
+        .related-card-pro__name {
+            margin: 0;
+            color: #292929;
+            font-size: 19px;
+            font-weight: 800;
+            line-height: 1.25;
+        }
+
+        .related-card-pro__rating {
+            margin: 14px 0 16px;
+            color: #f5a019;
+            font-size: 15px;
+        }
+
+        .related-card-pro__rating span {
+            color: #8d90a8;
+            font-size: 14px;
+            margin-left: 5px;
+        }
+
+        .related-card-pro__price {
+            margin: 0 0 20px;
+            color: #d8a936;
+            font-size: 20px;
+            font-weight: 900;
+        }
+
+        .related-card-pro__btn {
+            width: 100%;
+            min-height: 48px;
+            border: 0;
+            border-radius: 999px;
+            background: linear-gradient(135deg, #fff1b9 0%, #e6b946 100%);
+            color: #070849;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 900;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            box-shadow: 0 12px 28px rgba(218, 169, 54, .25);
+            transition: .3s ease;
+        }
+
+        .related-card-pro__btn:hover {
+            transform: translateY(-3px);
+            color: #070849;
+            box-shadow: 0 18px 35px rgba(218, 169, 54, .35);
+        }
+
+        .related-card-pro__btn:disabled {
+            opacity: .55;
+            cursor: not-allowed;
+        }
+
+        /* Animation */
+        @keyframes relatedFadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(26px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .related-card-pro:nth-child(2) {
+            animation-delay: .08s;
+        }
+
+        .related-card-pro:nth-child(3) {
+            animation-delay: .16s;
+        }
+
+        .related-card-pro:nth-child(4) {
+            animation-delay: .24s;
+        }
+
+        /* Tablet */
+        @media (max-width: 991px) {
+            .related-grid-pro {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 20px;
+            }
+        }
+
+        /* Mobile = 2 cards */
+        @media (max-width: 768px) {
+            .related-products-premium {
+                padding: 50px 0;
+            }
+
+            .related-title-pro {
+                margin-bottom: 30px;
+            }
+
+            .related-label-line {
+                gap: 10px;
+                margin-bottom: 14px;
+            }
+
+            .related-label-line span {
+                width: 28px;
+            }
+
+            .related-label-line p {
+                font-size: 10px;
+                letter-spacing: 3px;
+            }
+
+            .related-title-pro h2 {
+                font-size: 38px;
+                letter-spacing: -1px;
+            }
+
+            .related-grid-pro {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 14px;
+            }
+
+            .related-card-pro {
+                border-radius: 16px;
+            }
+
+            .related-card-pro__image {
+                border-radius: 16px 16px 0 0;
+            }
+
+            .related-card-pro__content {
+                padding: 14px 9px 16px;
+            }
+
+            .related-card-pro__brand {
+                margin-bottom: 7px;
+                font-size: 8px;
+                letter-spacing: 2px;
+            }
+
+            .related-card-pro__name {
+                font-size: 14px;
+            }
+
+            .related-card-pro__rating {
+                margin: 9px 0 10px;
+                font-size: 11px;
+            }
+
+            .related-card-pro__rating span {
+                font-size: 10px;
+                margin-left: 3px;
+            }
+
+            .related-card-pro__price {
+                margin-bottom: 12px;
+                font-size: 14px;
+            }
+
+            .related-card-pro__btn {
+                min-height: 38px;
+                padding: 0 7px;
+                font-size: 8px;
+                letter-spacing: 1px;
+            }
+        }
+
+        /* Very small phones */
+        @media (max-width: 380px) {
+            .related-grid-pro {
+                gap: 10px;
+            }
+
+            .related-title-pro h2 {
+                font-size: 34px;
+            }
+
+            .related-card-pro__name {
+                font-size: 13px;
+            }
+
+            .related-card-pro__price {
+                font-size: 13px;
+            }
+
+            .related-card-pro__btn {
+                font-size: 7.5px;
+            }
+        }
+
+        .perfume-notes-card {
+    margin-top: 22px;
+    padding: 18px;
     border-radius: 22px;
-    box-shadow: 0 18px 45px rgba(7, 8, 73, .08);
-    transition: .35s ease;
-    animation: relatedFadeUp .7s ease both;
 }
 
-.related-card-pro:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 28px 65px rgba(7, 8, 73, .15);
+.perfume-notes-card__header {
+    /* margin-bottom: 14px; */
 }
 
-.related-card-pro__image {
-    display: block;
-    width: 100%;
-    aspect-ratio: 1 / 1;
-    overflow: hidden;
-    border-radius: 22px 22px 0 0;
-    background: #f7f2e8;
+.perfume-notes-card__header span {
+    font-size: 0.62rem;
+    letter-spacing: 0.18em;
 }
 
-.related-card-pro__image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-    transition: .6s ease;
+.perfume-notes-card__header h4 {
+    font-size: 1.15rem;
 }
 
-.related-card-pro:hover .related-card-pro__image img {
-    transform: scale(1.06);
+.fragrance-notes__pyramid {
+    gap: 10px;
 }
 
-.related-card-pro__content {
-    text-align: center;
-    padding: 22px 18px 24px;
+.note-row {
+    grid-template-columns: 110px 1fr;
+    gap: 12px;
+    padding: 6px;
+    border-radius: 16px;
 }
 
-.related-card-pro__brand {
-    margin: 0 0 10px;
-    color: #070849;
-    font-size: 11px;
-    font-weight: 900;
-    letter-spacing: 4px;
-    text-transform: uppercase;
+.note-icon {
+    width: 28px;
+    height: 28px;
+    border-radius: 10px;
+    font-size: 0.75rem;
 }
 
-.related-card-pro__name {
-    margin: 0;
-    color: #292929;
-    font-size: 19px;
-    font-weight: 800;
-    line-height: 1.25;
+.note-label {
+    font-size: 0.72rem;
+    line-height: 1.2;
 }
 
-.related-card-pro__rating {
-    margin: 14px 0 16px;
-    color: #f5a019;
-    font-size: 15px;
+.note-items {
+    gap: 2px;
 }
 
-.related-card-pro__rating span {
-    color: #8d90a8;
-    font-size: 14px;
-    margin-left: 5px;
-}
-
-.related-card-pro__price {
-    margin: 0 0 20px;
-    color: #d8a936;
-    font-size: 20px;
-    font-weight: 900;
-}
-
-.related-card-pro__btn {
-    width: 100%;
-    min-height: 48px;
-    border: 0;
-    border-radius: 999px;
-    background: linear-gradient(135deg, #fff1b9 0%, #e6b946 100%);
-    color: #070849;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    text-decoration: none;
-    cursor: pointer;
+.note-items span {
+    padding: 7px 11px;
     font-size: 12px;
-    font-weight: 900;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    box-shadow: 0 12px 28px rgba(218, 169, 54, .25);
-    transition: .3s ease;
+    border-radius: 12px;
+    font-weight: bold;
 }
 
-.related-card-pro__btn:hover {
-    transform: translateY(-3px);
-    color: #070849;
-    box-shadow: 0 18px 35px rgba(218, 169, 54, .35);
-}
-
-.related-card-pro__btn:disabled {
-    opacity: .55;
-    cursor: not-allowed;
-}
-
-/* Animation */
-@keyframes relatedFadeUp {
-    from {
-        opacity: 0;
-        transform: translateY(26px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-.related-card-pro:nth-child(2) {
-    animation-delay: .08s;
-}
-
-.related-card-pro:nth-child(3) {
-    animation-delay: .16s;
-}
-
-.related-card-pro:nth-child(4) {
-    animation-delay: .24s;
-}
-
-/* Tablet */
-@media (max-width: 991px) {
-    .related-grid-pro {
-        grid-template-columns: repeat(3, 1fr);
-        gap: 20px;
-    }
-}
-
-/* Mobile = 2 cards */
 @media (max-width: 768px) {
-    .related-products-premium {
-        padding: 50px 0;
+    .note-row {
+        grid-template-columns: 1fr;
     }
 
-    .related-title-pro {
-        margin-bottom: 30px;
-    }
-
-    .related-label-line {
-        gap: 10px;
-        margin-bottom: 14px;
-    }
-
-    .related-label-line span {
-        width: 28px;
-    }
-
-    .related-label-line p {
-        font-size: 10px;
-        letter-spacing: 3px;
-    }
-
-    .related-title-pro h2 {
-        font-size: 38px;
-        letter-spacing: -1px;
-    }
-
-    .related-grid-pro {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 14px;
-    }
-
-    .related-card-pro {
-        border-radius: 16px;
-    }
-
-    .related-card-pro__image {
-        border-radius: 16px 16px 0 0;
-    }
-
-    .related-card-pro__content {
-        padding: 14px 9px 16px;
-    }
-
-    .related-card-pro__brand {
-        margin-bottom: 7px;
-        font-size: 8px;
-        letter-spacing: 2px;
-    }
-
-    .related-card-pro__name {
-        font-size: 14px;
-    }
-
-    .related-card-pro__rating {
-        margin: 9px 0 10px;
-        font-size: 11px;
-    }
-
-    .related-card-pro__rating span {
-        font-size: 10px;
-        margin-left: 3px;
-    }
-
-    .related-card-pro__price {
-        margin-bottom: 12px;
-        font-size: 14px;
-    }
-
-    .related-card-pro__btn {
-        min-height: 38px;
-        padding: 0 7px;
-        font-size: 8px;
-        letter-spacing: 1px;
-    }
-}
-
-/* Very small phones */
-@media (max-width: 380px) {
-    .related-grid-pro {
-        gap: 10px;
-    }
-
-    .related-title-pro h2 {
-        font-size: 34px;
-    }
-
-    .related-card-pro__name {
-        font-size: 13px;
-    }
-
-    .related-card-pro__price {
-        font-size: 13px;
-    }
-
-    .related-card-pro__btn {
-        font-size: 7.5px;
+    .perfume-notes-card {
+        padding: 15px;
     }
 }
     </style>
@@ -905,26 +981,26 @@
     @include('clints.layout.nav')
 
     <!-- Fil d’Ariane -->
-<section class="product-breadcrumb-lpf">
-    <div class="product-breadcrumb-lpf__glow"></div>
+    <section class="product-breadcrumb-lpf">
+        <div class="product-breadcrumb-lpf__glow"></div>
 
-    <div class="container">
-        <div class="product-breadcrumb-lpf__inner">
-            <div class="product-breadcrumb-lpf__breadcrumb">
-                <a href="{{ route('home') }}">Accueil</a>
-                <span>/</span>
-                <a href="{{ route('shop') }}">Boutique</a>
-                <span>/</span>
-                <strong>{{ $product->getTranslation('name', 'fr') }}</strong>
-            </div>
+        <div class="container">
+            <div class="product-breadcrumb-lpf__inner">
+                <div class="product-breadcrumb-lpf__breadcrumb">
+                    <a href="{{ route('home') }}">Accueil</a>
+                    <span>/</span>
+                    <a href="{{ route('shop') }}">Boutique</a>
+                    <span>/</span>
+                    <strong>{{ $product->getTranslation('name', 'fr') }}</strong>
+                </div>
 
-            <div class="product-breadcrumb-lpf__badge">
-                <i class="fas fa-spray-can-sparkles"></i>
-                <span>LPF Produit</span>
+                <div class="product-breadcrumb-lpf__badge">
+                    <i class="fas fa-spray-can-sparkles"></i>
+                    <span>LPF Produit</span>
+                </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
     <!-- Détails du produit -->
     <section class="section product-detail">
@@ -992,50 +1068,24 @@
 
                     <!-- Notes olfactives -->
                     @if ($product->fragranceNotes->count() > 0)
-                        <div class="fragrance-notes">
-                            <h4>Notes du parfum</h4>
+                        <div class="fragrance-notes perfume-notes-card">
+                            <div class="perfume-notes-card__header">
+                                <h4>Notes du parfum</h4>
+                            </div>
+
                             <div class="fragrance-notes__pyramid">
                                 @if ($product->topNotes->count() > 0)
-                                    <div class="note-row">
-                                        <div class="note-level">
-                                            <span class="note-label">Notes de tête</span>
-                                            <div class="note-bar top"></div>
-                                        </div>
+                                    <div class="note-row note-row--top">
+                                       
                                         <div class="note-items">
                                             @foreach ($product->topNotes as $note)
-                                                <span>{{ $note->getTranslation('name', 'ar') }}</span>
+                                                <span>{{ $note->name }}</span>
                                             @endforeach
                                         </div>
                                     </div>
                                 @endif
 
-                                @if ($product->heartNotes->count() > 0)
-                                    <div class="note-row">
-                                        <div class="note-level">
-                                            <span class="note-label">Notes de cœur</span>
-                                            <div class="note-bar heart"></div>
-                                        </div>
-                                        <div class="note-items">
-                                            @foreach ($product->heartNotes as $note)
-                                                <span>{{ $note->getTranslation('name', 'ar') }}</span>
-                                            @endforeach
-                                        </div>
-                                    </div>
-                                @endif
-
-                                @if ($product->baseNotes->count() > 0)
-                                    <div class="note-row">
-                                        <div class="note-level">
-                                            <span class="note-label">Notes de fond</span>
-                                            <div class="note-bar base"></div>
-                                        </div>
-                                        <div class="note-items">
-                                            @foreach ($product->baseNotes as $note)
-                                                <span>{{ $note->getTranslation('name', 'ar') }}</span>
-                                            @endforeach
-                                        </div>
-                                    </div>
-                                @endif
+                           
                             </div>
                         </div>
                     @endif
@@ -1209,92 +1259,89 @@
             </div>
     </section> --}}
 
-<!-- Produits similaires -->
-<section class="section related-products-premium">
-    <div class="container">
+    <!-- Produits similaires -->
+    <section class="section related-products-premium">
+        <div class="container">
 
-        <div class="related-title-pro">
-            <div class="related-label-line">
-                <span></span>
-                <p>Vous pourriez aussi aimer</p>
-                <span></span>
+            <div class="related-title-pro">
+                <div class="related-label-line">
+                    <span></span>
+                    <p>Vous pourriez aussi aimer</p>
+                    <span></span>
+                </div>
+
+                <h2>
+                    Produits <em>similaires</em>
+                </h2>
             </div>
 
-            <h2>
-                Produits <em>similaires</em>
-            </h2>
-        </div>
+            <div class="related-grid-pro">
+                @foreach ($relatedProducts as $item)
+                    @php
+                        $hasSizes = $item->sizes && $item->sizes->count() > 0;
+                        $minSizePrice = $hasSizes ? $item->sizes->min('price') : null;
+                        $maxSizePrice = $hasSizes ? $item->sizes->max('price') : null;
+                    @endphp
 
-        <div class="related-grid-pro">
-            @foreach ($relatedProducts as $item)
-                @php
-                    $hasSizes = $item->sizes && $item->sizes->count() > 0;
-                    $minSizePrice = $hasSizes ? $item->sizes->min('price') : null;
-                    $maxSizePrice = $hasSizes ? $item->sizes->max('price') : null;
-                @endphp
+                    <div class="related-card-pro" data-id="{{ $item->id }}"
+                        data-name="{{ $item->getTranslation('name', 'ar') }}" data-price="{{ $item->price }}"
+                        data-img="{{ $item->getFirstMediaUrl('images') ?: asset('assets/clints/images/mens-perfume.png') }}">
 
-                <div class="related-card-pro"
-                    data-id="{{ $item->id }}"
-                    data-name="{{ $item->getTranslation('name', 'ar') }}"
-                    data-price="{{ $item->price }}"
-                    data-img="{{ $item->getFirstMediaUrl('images') ?: asset('assets/clints/images/mens-perfume.png') }}">
+                        <a href="{{ route('product', $item->id) }}" class="related-card-pro__image">
+                            <img src="{{ $item->getFirstMediaUrl('images') ?: asset('assets/clints/images/mens-perfume.png') }}"
+                                alt="{{ $item->getTranslation('name', 'ar') }}">
+                        </a>
 
-                    <a href="{{ route('product', $item->id) }}" class="related-card-pro__image">
-                        <img src="{{ $item->getFirstMediaUrl('images') ?: asset('assets/clints/images/mens-perfume.png') }}"
-                            alt="{{ $item->getTranslation('name', 'ar') }}">
-                    </a>
+                        <div class="related-card-pro__content">
 
-                    <div class="related-card-pro__content">
+                            <h3 class="related-card-pro__name">
+                                {{ $item->getTranslation('name', 'fr') }}
+                            </h3>
 
-                        <h3 class="related-card-pro__name">
-                            {{ $item->getTranslation('name', 'fr') }}
-                        </h3>
-
-                        <p class="related-card-pro__price">
-                            @if ($hasSizes)
-                                @if ($minSizePrice == $maxSizePrice)
-                                    {{ number_format($minSizePrice, 2, ',', ' ') }} DH
+                            <p class="related-card-pro__price">
+                                @if ($hasSizes)
+                                    @if ($minSizePrice == $maxSizePrice)
+                                        {{ number_format($minSizePrice, 2, ',', ' ') }} DH
+                                    @else
+                                        {{ number_format($minSizePrice, 2, ',', ' ') }} DH –
+                                        {{ number_format($maxSizePrice, 2, ',', ' ') }} DH
+                                    @endif
                                 @else
-                                    {{ number_format($minSizePrice, 2, ',', ' ') }} DH –
-                                    {{ number_format($maxSizePrice, 2, ',', ' ') }} DH
+                                    {{ number_format($item->sale_price ?: $item->price, 2, ',', ' ') }} DH
                                 @endif
+                            </p>
+
+                            @if ($item->stock_quantity <= 0)
+                                <button class="related-card-pro__btn" disabled>
+                                    Rupture de stock
+                                </button>
+                            @elseif ($hasSizes)
+                                <a href="{{ route('product', $item->id) }}" class="related-card-pro__btn">
+                                    Commander maintenant
+                                </a>
                             @else
-                                {{ number_format($item->sale_price ?: $item->price, 2, ',', ' ') }} DH
+                                <button class="related-card-pro__btn add-to-cart-btn">
+                                    Ajouter au panier
+                                </button>
                             @endif
-                        </p>
-
-                        @if ($item->stock_quantity <= 0)
-                            <button class="related-card-pro__btn" disabled>
-                                Rupture de stock
-                            </button>
-                        @elseif ($hasSizes)
-                            <a href="{{ route('product', $item->id) }}" class="related-card-pro__btn">
-                                Commander maintenant
-                            </a>
-                        @else
-                            <button class="related-card-pro__btn add-to-cart-btn">
-                                Ajouter au panier
-                            </button>
-                        @endif
+                        </div>
                     </div>
-                </div>
-            @endforeach
-        </div>
+                @endforeach
+            </div>
 
-    </div>
-</section>
+        </div>
+    </section>
 
     <!-- ========== Pied de page ========== -->
     @include('clints.layout.footer')
 
-    <script src="{{ asset('assets/clints/js/product.js') }}?v={{ filemtime(base_path('assets/clints/js/product.js')) }}"></script>
+    <script
+        src="{{ asset('assets/clints/js/product.js') }}?v={{ filemtime(base_path('assets/clints/js/product.js')) }}">
+    </script>
 </body>
 
-<a href="https://wa.me/212704654736"
-   class="wa-perfume-magic"
-   target="_blank"
-   rel="noopener"
-   aria-label="Commander sur WhatsApp">
+<a href="https://wa.me/212704654736" class="wa-perfume-magic" target="_blank" rel="noopener"
+    aria-label="Commander sur WhatsApp">
 
     <span class="magic-glow"></span>
 

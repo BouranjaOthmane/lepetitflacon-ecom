@@ -3855,7 +3855,7 @@ h4 {
     }
 
     .category-lpf-card__image {
-        height: 135px;
+        height: auto;
         margin: 12px 12px 0;
         border-radius: 16px;
     }

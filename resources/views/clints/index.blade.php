@@ -8,8 +8,9 @@
     <title>Lepetitflacon — Parfums d’exception et senteurs raffinées</title>
     <meta name="description"
         content="Achetez en ligne des parfums pour homme et femme chez Lepetitflacon. Découvrez une sélection de fragrances élégantes, raffinées et durables.">
-    <link rel="stylesheet" href="{{ asset('assets/clints/css/style.css') }}?v={{ filemtime(base_path('assets/clints/css/style.css')) }}">
-    
+    <link rel="stylesheet"
+        href="{{ asset('assets/clints/css/style.css') }}?v={{ filemtime(base_path('assets/clints/css/style.css')) }}">
+
     <link rel="stylesheet" href="{{ asset('assets/clints/css/homepage.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
@@ -292,10 +293,14 @@
             }
 
             .hero-lpf__badge {
-                font-size: 10px;
-                letter-spacing: 2px;
-                padding: 10px 16px;
-                text-align: center;
+                       font-size: 10px;
+        letter-spacing: 2px;
+        padding: 10px 16px;
+        text-align: center;
+        margin: auto;
+        display: flex;
+        justify-content: center;
+        text-align: center;
             }
 
             .hero-lpf__title {
@@ -1269,7 +1274,7 @@
         <div class="container hero-lpf__container">
             <div class="hero-lpf__content">
                 <span class="hero-lpf__badge">
-                    Collection exclusive 2026 · Lepetitflacon SHOP
+                    LE PETIT FLACON
                 </span>
 
                 <h1 class="hero-lpf__title">
@@ -1404,7 +1409,7 @@
         <div class="testimonials-lpf__glow testimonials-lpf__glow--two"></div>
 
         <div class="container">
-            <div class="testimonials-lpf__header reveal">
+            <div class="bestsellers-lpf__header reveal">
                 <span class="testimonials-lpf__label">Ils en parlent</span>
                 <h2>Avis de nos <em>clients</em></h2>
                 <p>Découvrez pourquoi nos clients reviennent encore et encore</p>
