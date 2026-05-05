@@ -18,7 +18,7 @@ class AuthController extends Controller
     {
         if (Auth::check()) {
             return Auth::user()->role === 'Admin'
-                ? redirect()->route('admin.index')
+                ? redirect()->route('admin.analytics.index')
                 : redirect()->route('home');
         }
 

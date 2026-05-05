@@ -24,7 +24,8 @@ use App\Http\Controllers\admin\SettingController;
 |
 */
 
-Route::get('/', [DashboardController::class, 'index'])->name('index');
+// Route::get('/', [DashboardController::class, 'index'])->name('index');
+Route::get('/', [AnalyticsController::class, 'index'])->name('analytics.index');
 Route::get('analytics', [AnalyticsController::class, 'index'])->name('analytics.index');
 Route::get('reports', [ReportController::class, 'index'])->name('reports.index');
 Route::get('reports/export', [ReportController::class, 'export'])->name('reports.export');
