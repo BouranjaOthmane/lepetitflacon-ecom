@@ -60,7 +60,9 @@
             position: absolute;
             inset: 0;
             z-index: 2;
-            background: linear-gradient(90deg, rgb(52 42 21) 0%, rgba(11, 16, 61, 0.62) 42%, rgba(11, 16, 61, 0.10) 100%), radial-gradient(circle at 25% 45%, rgba(255, 231, 165, 0.18), transparent 35%);
+            background:
+                linear-gradient(90deg, rgba(11, 16, 61, 0.92) 0%, rgba(11, 16, 61, 0.62) 42%, rgba(11, 16, 61, 0.10) 100%),
+                radial-gradient(circle at 25% 45%, rgba(255, 231, 165, 0.18), transparent 35%);
         }
 
         .hero-lpf::before {
