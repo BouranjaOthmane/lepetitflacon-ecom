@@ -197,6 +197,96 @@
             animation: scrollDot 1.6s infinite;
         }
 
+        .hero-lpf {
+    position: relative;
+    min-height: 720px;
+    overflow: hidden;
+    background: var(--hero-dark);
+    border-top: 1px solid rgba(255, 231, 165, 0.45);
+}
+
+.hero-lpf-slider {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    height: 100%;
+}
+
+.hero-lpf-slider .owl-stage-outer,
+.hero-lpf-slider .owl-stage,
+.hero-lpf-slider .owl-item,
+.hero-lpf-slide {
+    height: 720px;
+}
+.owl-item{
+    width: 1460px !important;
+}
+
+.hero-lpf-slide {
+    position: relative;
+}
+
+.hero-lpf-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transform: scale(1.06);
+    animation: heroZoom 14s ease-in-out infinite alternate;
+}
+
+.hero-lpf__glass {
+    z-index: 2;
+}
+
+.hero-lpf__mist {
+    z-index: 5;
+}
+
+.hero-lpf__container {
+    position: relative;
+    z-index: 6;
+    min-height: 720px;
+}
+
+.hero-lpf__scroll {
+    z-index: 8;
+}
+
+.hero-lpf-slider .owl-dots {
+    position: absolute;
+    bottom: 82px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+}
+
+.hero-lpf-slider .owl-dot span {
+    width: 10px;
+    height: 10px;
+    background: rgba(255, 231, 165, 0.45) !important;
+}
+
+.hero-lpf-slider .owl-dot.active span {
+    width: 32px;
+    background: var(--hero-gold) !important;
+}
+
+@media (max-width: 768px) {
+    .hero-lpf,
+    .hero-lpf__container {
+        min-height: 620px;
+    }
+
+    .hero-lpf-slider .owl-stage-outer,
+    .hero-lpf-slider .owl-stage,
+    .hero-lpf-slider .owl-item,
+    .hero-lpf-slide {
+        height: 620px;
+    }
+}
+
+        
+
         @keyframes heroZoom {
             from {
                 transform: scale(1.06) translateX(0);
@@ -1262,9 +1352,17 @@
 
 
     <!-- ========== hero section ========== -->
+    <!-- ========== hero section ========== -->
     <section class="hero-lpf" id="hero">
-        <div class="hero-lpf__bg">
-            <img src="{{ asset('assets/clints/images/img-here-luxe.png') }}" alt="Parfum de luxe">
+
+        <div class="hero-lpf-slider owl-carousel owl-theme">
+            <div class="hero-lpf-slide">
+                <img src="{{ asset('assets/clints/images/img-here-luxe.png') }}" alt="Parfum de luxe">
+            </div>
+
+            <div class="hero-lpf-slide">
+                <img src="{{ asset('assets/clints/images/img-here-luxe-2.png') }}" alt="Parfum premium">
+            </div>
         </div>
 
         <div class="hero-lpf__glass"></div>
@@ -1845,6 +1943,18 @@
             }
         });
     });
+
+
+    $('.hero-lpf-slider').owlCarousel({
+    items: 1,
+    loop: true,
+    autoplay: true,
+    autoplayTimeout: 4500,
+    autoplayHoverPause: false,
+    smartSpeed: 900,
+    dots: true,
+    nav: false
+});
 </script>
 
 </html>
