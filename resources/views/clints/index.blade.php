@@ -1264,7 +1264,7 @@
     <!-- ========== hero section ========== -->
     <section class="hero-lpf" id="hero">
         <div class="hero-lpf__bg">
-            <img src="{{ asset('assets/clints/images/image-luxe-here.png') }}" alt="Parfum de luxe">
+            <img src="{{ asset('assets/clints/images/img-here-luxe.jpeg') }}" alt="Parfum de luxe">
         </div>
 
         <div class="hero-lpf__glass"></div>

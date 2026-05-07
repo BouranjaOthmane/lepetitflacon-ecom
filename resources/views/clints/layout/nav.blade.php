@@ -488,7 +488,7 @@
 
         <!-- Logo Left -->
         <a href="{{ route('home') }}" class="navbar-v3__logo">
-            <img src="{{ asset('assets/clints/images/logo-luxe.jpeg') }}" alt="Lepetitflacon">
+            <img src="{{ asset('assets/clints/images/logo-luxe-new.jpeg') }}" alt="Lepetitflacon">
         </a>
 
         <!-- Menu Center -->
