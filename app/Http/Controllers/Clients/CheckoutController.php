@@ -108,7 +108,7 @@ class CheckoutController extends Controller
 
                     foreach ($admins as $admin) {
                         
-                            Mail::to("contact.lepetitflacon@gmail.com")->send(new AdminNewOrderMail($order));
+                            // Mail::to("contact.lepetitflacon@gmail.com")->send(new AdminNewOrderMail($order));
                         
                     }
                 }

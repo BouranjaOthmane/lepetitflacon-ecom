@@ -1,6 +1,6 @@
 @extends('clints.layout.master')
 
-@section('title', 'Politique de retour et de remboursement — Le Petit Flacon')
+@section('title', 'Politique de retour et de remboursement — Luxe PARFUM')
 
 @section('styles')
     <link rel="stylesheet" href="{{ asset('assets/clints/css/shop.css') }}">
@@ -249,7 +249,7 @@
         <div class="policy-page-lpf__card">
 
             <p class="policy-page-lpf__intro">
-                Chez <strong>Le Petit Flacon</strong>, nous accordons une grande importance à la satisfaction
+                Chez <strong>Luxe PARFUM</strong>, nous accordons une grande importance à la satisfaction
                 de nos clients. Si le produit que vous avez reçu est endommagé ou s’il y a une erreur
                 de commande, vous pouvez nous contacter afin de trouver une solution rapide.
             </p>

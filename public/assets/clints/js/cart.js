@@ -62,7 +62,7 @@ function renderCartPage() {
     // Update summary
     const subtotal = CartManager.getTotal();
 
-    const shipping = subtotal > 600 ? 0 : 35;
+    const shipping = subtotal >= 600 ? 0 : 35;
     const total = subtotal + shipping;
 
     if (summarySubtotal) {
@@ -74,7 +74,7 @@ function renderCartPage() {
     if (summaryShipping) {
         summaryShipping.textContent =
             shipping === 0
-                ? "Livraison GRATUITE"
+                ? "0 DH"
                 : `${shipping.toFixed(2)} DH`;
     }
 

@@ -1,6 +1,6 @@
 @extends('clints.layout.master')
 
-@section('title', 'Résultats de recherche — Le Petit Flacon')
+@section('title', 'Résultats de recherche — Luxe PARFUM')
 
 @section('styles')
     <link rel="stylesheet" href="{{ asset('assets/clints/css/shop.css') }}">

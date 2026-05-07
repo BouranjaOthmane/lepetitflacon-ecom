@@ -216,7 +216,7 @@
     <div class="login-container">
     <div class="login-card">
         <div class="logo-box">
-            <h1>LE PETIT FLACON</h1>
+            <h1>Luxe PARFUM</h1>
         </div>
 
 

@@ -20,7 +20,7 @@
 /* Layout */
 .shop-layout {
     display: grid;
-    /* grid-template-columns: 280px 1fr; */
+    grid-template-columns: 280px 1fr;
     gap: 40px;
     align-items: start;
 }

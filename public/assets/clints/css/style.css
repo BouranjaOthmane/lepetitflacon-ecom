@@ -539,6 +539,11 @@ h4 {
     border: 1px solid var(--color-border-light);
 }
 
+.product-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-lg);
+}
+
 .product-card__image {
     position: relative;
     width: 100%;
@@ -565,6 +570,11 @@ h4 {
     opacity: 0;
     transform: translateX(-10px);
     transition: all var(--transition-base);
+}
+
+.product-card:hover .product-card__actions {
+  opacity: 1;
+  transform: translateX(0);
 }
 
 .product-card__actions button {
@@ -1018,23 +1028,20 @@ h4 {
 
 /* ---------- Toast Notification ---------- */
 .toast {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%) scale(0.92);
-    background: linear-gradient(145deg, #fff4c9, #ffe7a5, #d8aa45) !important;
-    color: black;
-    padding: 15px 20px;
-    border-radius: var(--radius-md);
-    font-size: 16px;
-    font-weight: bold;
-    z-index: 3000;
-    opacity: 0;
-    transition: all var(--transition-base);
-    box-shadow: var(--shadow-lg);
-    width: 70%;
-    max-width: 390px;
-    text-align: center;
+  position: fixed;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%) translateY(100px);
+  background: var(--color-text);
+  color: var(--color-white);
+  padding: 16px 28px;
+  border-radius: var(--radius-md);
+  font-size: 0.9rem;
+  font-weight: 500;
+  z-index: 3000;
+  opacity: 0;
+  transition: all var(--transition-base);
+  box-shadow: var(--shadow-lg);
 }
 
 .toast.show {
@@ -2417,7 +2424,7 @@ h4 {
 }
 
 .cookie-lpf::after {
-    content: "LPF";
+    content: "LUX";
     position: absolute;
     right: 30px;
     bottom: -24px;
@@ -2671,7 +2678,7 @@ h4 {
 }
 
 .footer-lpf::after {
-    content: "LPF";
+    content: "LUX";
     position: absolute;
     left: -40px;
     bottom: -40px;
@@ -3112,18 +3119,7 @@ h4 {
 
 .navbar-v3 {
     width: 100%;
-    background:
-        radial-gradient(
-            circle at 10% 20%,
-            rgba(216, 170, 69, 0.18),
-            transparent 28%
-        ),
-        radial-gradient(
-            circle at 90% 0%,
-            rgba(255, 231, 165, 0.1),
-            transparent 24%
-        ),
-        linear-gradient(180deg, var(--nav-bg-light), var(--nav-bg));
+   background: radial-gradient(circle at 10% 20%, rgba(216, 170, 69, 0.18), transparent 28%), radial-gradient(circle at 90% 0%, rgba(255, 231, 165, 0.1), transparent 24%), linear-gradient(180deg, #282116, #000000);
     border-bottom: 2px solid var(--nav-gold);
     box-shadow: 0 14px 35px rgba(7, 8, 73, 0.35);
     position: relative;
@@ -3141,10 +3137,10 @@ h4 {
 .navbar-v3.is-scrolled {
     position: fixed;
     left: 50%;
-    /* top: 12px; */
-    /* width: calc(100% - 28px); */
+    top: 12px;
+    width: calc(100% - 28px);
     transform: translateX(-50%);
-    /* border-radius: 0 0 22px 22px; */
+    border-radius: 0 0 22px 22px;
     background:
         radial-gradient(
             circle at 15% 20%,
@@ -3485,8 +3481,8 @@ h4 {
 
     .navbar-v3__icon,
     .navbar-v3__hamburger {
-        width: 30px;
-        height: 30px;
+        width: 35px;
+        height: 35px;
         font-size: 14px;
     }
 
@@ -3611,7 +3607,7 @@ h4 {
 }
 
 .categories-lpf::before {
-    content: "LPF";
+    content: "LUX";
     position: absolute;
     left: -35px;
     top: 60px;
@@ -3624,7 +3620,7 @@ h4 {
 
 .categories-lpf__header {
     text-align: center;
-    margin-bottom: 58px;
+    margin-bottom: 30px;
     position: relative;
     z-index: 2;
 }
@@ -3800,16 +3796,16 @@ h4 {
 
 .category-lpf-card__tag {
     display: inline-flex;
-    padding: 6px 12px;
+    padding: 8px 16px;
     border-radius: 999px;
     background: rgba(255, 231, 165, 0.42);
     border: 1px solid rgba(216, 170, 69, 0.24);
     color: #9b6d1d;
-    font-size: 12px;
+    font-size: 13px;
     font-weight: 700;
     letter-spacing: 2px;
     text-transform: uppercase;
-    margin-top: 12px;
+    margin-top: 8px;
 }
 
 .category-lpf-card__content h4 {
@@ -3836,16 +3832,16 @@ h4 {
 
 @media (max-width: 576px) {
     .categories-lpf {
-        padding: 70px 0;
+        padding: 30px 0;
     }
 
     .categories-lpf__grid {
         grid-template-columns: repeat(2, 1fr);
-        gap: 14px;
+        gap: 8px;
     }
 
     .category-lpf-card {
-        min-height: 250px;
+        min-height: 200px;
         border-radius: 20px;
     }
 
@@ -3865,10 +3861,11 @@ h4 {
     }
 
     .category-lpf-card__tag {
-        font-size: 8px;
-        padding: 5px 9px;
+        font-size: 12px;
+        padding: 6px 10px;
         letter-spacing: 1.2px;
         margin-bottom: 8px;
+        font-weight: bold;
     }
 
     .category-lpf-card__content h4 {

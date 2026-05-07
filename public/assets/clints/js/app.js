@@ -89,28 +89,41 @@ const CartManager = {
         if (empty) empty.style.display = "none";
         if (footer) footer.style.display = "block";
 
+        const cartUrl = window.cartUrl || "/cart";
+
         container
             .querySelectorAll(".mini-cart__item")
             .forEach((el) => el.remove());
-
         this.items.forEach((item) => {
             const div = document.createElement("div");
             div.className = "mini-cart__item";
+            div.style.cursor = "pointer";
+
+            div.addEventListener("click", function () {
+                window.location.href = cartUrl;
+            });
+
             div.innerHTML = `
-        <div class="mini-cart__item-img">
-          <img src="${item.img}" alt="${item.name}">
-        </div>
-        <div class="mini-cart__item-info">
-          <h4 class="mini-cart__item-name">${item.name}</h4>
-          <p class="mini-cart__item-price">${item.price.toFixed(2)} DH</p>
-          <div class="mini-cart__item-qty">
-            <button onclick="CartManager.updateQty('${item.id}', ${item.qty - 1})">−</button>
-            <span>${item.qty}</span>
-            <button onclick="CartManager.updateQty('${item.id}', ${item.qty + 1})">+</button>
-          </div>
-          <button class="mini-cart__item-remove" onclick="CartManager.removeItem('${item.id}')">Supprimer</button>
-        </div>
-      `;
+                <div class="mini-cart__item-img">
+                    <img src="${item.img}" alt="${item.name}">
+                </div>
+
+                <div class="mini-cart__item-info">
+                    <h4 class="mini-cart__item-name">${item.name}</h4>
+                    <p class="mini-cart__item-price">${item.price.toFixed(2)} DH</p>
+
+                    <div class="mini-cart__item-qty" onclick="event.stopPropagation()">
+                        <button onclick="CartManager.updateQty('${item.id}', ${item.qty - 1})">−</button>
+                        <span>${item.qty}</span>
+                        <button onclick="CartManager.updateQty('${item.id}', ${item.qty + 1})">+</button>
+                    </div>
+
+                    <button class="mini-cart__item-remove" onclick="event.stopPropagation(); CartManager.removeItem('${item.id}')">
+                        Supprimer
+                    </button>
+                </div>
+            `;
+
             container.insertBefore(div, empty);
         });
 

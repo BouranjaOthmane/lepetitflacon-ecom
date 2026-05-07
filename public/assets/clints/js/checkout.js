@@ -175,7 +175,7 @@ function placeOrder() {
         '<i class="fas fa-spinner fa-spin"></i>En cours...';
 
     const subtotal = CartManager.getTotal();
-    const shipping = subtotal > 600 ? 0 : 35;
+    const shipping = subtotal >= 600 ? 0 : 35;
     let total = subtotal + shipping;
 
     // Apply loyalty discount if applicable
@@ -430,12 +430,12 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     const subtotal = CartManager.getTotal();
-    const shipping = subtotal > 600 ? 0 : 35;
+    const shipping = subtotal >= 600 ? 0 : 35;
     let total = subtotal + shipping;
 
       if (checkoutShipping) {
         checkoutShipping.textContent =
-            shipping === 0 ? "Livraison GRATUITE" : `${shipping.toFixed(2)} DH`;
+            shipping === 0 ? "0 DH" : `${shipping.toFixed(2)} DH`;
     }
 
     if (checkoutSubtotal) {
@@ -472,7 +472,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function updateCheckoutTotals() {
     const subtotal = CartManager.getTotal();
-    const shipping = subtotal > 600 ? 0 : 35;
+    const shipping = subtotal >= 600 ? 0 : 35;
 
     let total = subtotal + shipping;
 
@@ -488,7 +488,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (checkoutShipping) {
         checkoutShipping.textContent = shipping === 0
-            ? "Livraison GRATUITE"
+            ? "0 DH"
             : `${shipping.toFixed(2)} DH`;
     }
 

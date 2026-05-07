@@ -71,9 +71,9 @@
                     +212704654736
                 </a>
 
-                <a href="mailto:contact.lepetitflacon@gmail.com" title="Envoyer un email à Lepetitflacon">
+                <a href="mailto:contact.luxeparfum@gmail.com" title="Envoyer un email à Lepetitflacon">
                     <i class="fas fa-envelope"></i>
-                    contact.lepetitflacon@gmail.com
+                    contact.luxeparfum@gmail.com
                 </a>
 
                 <a href="{{ route('faq') }}" target="_blank" rel="noopener noreferrer"

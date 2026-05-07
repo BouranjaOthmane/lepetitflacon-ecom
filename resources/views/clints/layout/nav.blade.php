@@ -122,7 +122,7 @@
 
         .navbar-v3__icon,
         .navbar-v3__hamburger {
-            font-size: 21px;
+            font-size: 25px;
         }
     }
 
@@ -140,7 +140,7 @@
     }
 
     .mini-cart::before {
-        content: "LPF";
+        content: "LUX";
         position: absolute;
         right: -18px;
         top: 95px;
@@ -488,7 +488,7 @@
 
         <!-- Logo Left -->
         <a href="{{ route('home') }}" class="navbar-v3__logo">
-            <img src="{{ asset('assets/clints/images/logo-v-13.png') }}" alt="Lepetitflacon">
+            <img src="{{ asset('assets/clints/images/logo-luxe.jpeg') }}" alt="Lepetitflacon">
         </a>
 
         <!-- Menu Center -->

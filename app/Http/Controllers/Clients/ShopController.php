@@ -60,6 +60,13 @@ class ShopController extends Controller
             case 'popular':
                 $query->orderBy('is_featured', 'desc');
                 break;
+            case 'name-asc':
+                $query->orderBy('name', 'asc');
+                break;
+
+            case 'name-desc':
+                $query->orderBy('name', 'desc');
+                break;
             default:
                 $query->latest();
                 break;
@@ -82,4 +89,3 @@ class ShopController extends Controller
         return view('clints.product', compact('product', 'relatedProducts'));
     }
 }
-

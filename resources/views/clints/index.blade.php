@@ -9,7 +9,7 @@
     <meta name="description"
         content="Achetez en ligne des parfums pour homme et femme chez Lepetitflacon. Découvrez une sélection de fragrances élégantes, raffinées et durables.">
     <link rel="stylesheet"
-        href="{{ asset('assets/clints/css/style.css') }}?v={{ filemtime(base_path('assets/clints/css/style.css')) }}">
+        href="{{ asset('assets/clints/css/style.css') }}?v={{ filemtime(public_path('assets/clints/css/style.css')) }}">
 
     <link rel="stylesheet" href="{{ asset('assets/clints/css/homepage.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -60,13 +60,11 @@
             position: absolute;
             inset: 0;
             z-index: 2;
-            background:
-                linear-gradient(90deg, rgba(11, 16, 61, 0.92) 0%, rgba(11, 16, 61, 0.62) 42%, rgba(11, 16, 61, 0.10) 100%),
-                radial-gradient(circle at 25% 45%, rgba(255, 231, 165, 0.18), transparent 35%);
+            background: linear-gradient(90deg, rgb(52 42 21) 0%, rgba(11, 16, 61, 0.62) 42%, rgba(11, 16, 61, 0.10) 100%), radial-gradient(circle at 25% 45%, rgba(255, 231, 165, 0.18), transparent 35%);
         }
 
         .hero-lpf::before {
-            content: "LPF";
+            content: "LUX";
             position: absolute;
             left: -35px;
             top: 120px;
@@ -293,14 +291,14 @@
             }
 
             .hero-lpf__badge {
-                       font-size: 10px;
-        letter-spacing: 2px;
-        padding: 10px 16px;
-        text-align: center;
-        margin: auto;
-        display: flex;
-        justify-content: center;
-        text-align: center;
+                font-size: 10px;
+                letter-spacing: 2px;
+                padding: 10px 16px;
+                text-align: center;
+                margin: auto;
+                display: flex;
+                justify-content: center;
+                text-align: center;
             }
 
             .hero-lpf__title {
@@ -1264,7 +1262,7 @@
     <!-- ========== hero section ========== -->
     <section class="hero-lpf" id="hero">
         <div class="hero-lpf__bg">
-            <img src="{{ asset('assets/clints/images/hero-perfume-1.png') }}" alt="Parfum de luxe">
+            <img src="{{ asset('assets/clints/images/image-luxe-here.png') }}" alt="Parfum de luxe">
         </div>
 
         <div class="hero-lpf__glass"></div>
@@ -1274,7 +1272,7 @@
         <div class="container hero-lpf__container">
             <div class="hero-lpf__content">
                 <span class="hero-lpf__badge">
-                    LE PETIT FLACON
+                    Luxe PARFUM
                 </span>
 
                 <h1 class="hero-lpf__title">
@@ -1323,6 +1321,63 @@
         </div>
     </section>
 
+
+    <!-- ========== Parfums en Vedette ========== -->
+    <section class="section section--alt featured" id="featured">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-label">Sélection pour vous</span>
+                <h2>Parfums en Vedette</h2>
+                <p class="section-subtitle">Des collections soigneusement sélectionnées par nos experts en parfumerie
+                </p>
+                <div class="divider"></div>
+            </div>
+            <div class="featured__grid reveal" id="featuredGrid">
+                @foreach ($featuredProducts as $product)
+                    <div class="product-card" data-id="{{ $product->id }}"
+                        data-name="{{ $product->getTranslation('name', 'ar') }}" data-price="{{ $product->price }}"
+                        data-img="{{ $product->getFirstMediaUrl('images') ?: asset('assets/clints/images/mens-perfume.png') }}">
+                        <div class="product-card__image">
+                            <img src="{{ $product->getFirstMediaUrl('images') ?: asset('assets/clints/images/mens-perfume.png') }}"
+                                alt="{{ $product->getTranslation('name', 'ar') }}">
+                            @if ($product->created_at->gt(now()->subDays(7)))
+                                <span class="product-card__badge">Nouveau</span>
+                            @endif
+                            <div class="product-card__actions">
+                                <button
+                                    class="wishlist-btn {{ auth()->check() && auth()->user()->wishlist->contains('product_id', $product->id) ? 'active' : '' }}"
+                                    aria-label="Ajouter aux favoris">
+                                    <i
+                                        class="{{ auth()->check() && auth()->user()->wishlist->contains('product_id', $product->id) ? 'fas' : 'far' }} fa-heart"></i>
+                                </button>
+                                <button aria-label="Aperçu rapide"
+                                    onclick="window.location.href='{{ route('product', $product->id) }}'"><i
+                                        class="far fa-eye"></i></button>
+                            </div>
+                        </div>
+                        <div class="product-card__info">
+                            <p class="product-card__brand">{{ $product->brand->name ?? 'Luxe Parfum' }}</p>
+                            <h4 class="product-card__name">{{ $product->getTranslation('name', 'ar') }}</h4>
+                            <div class="product-card__rating">
+                                <i class="fas fa-star star"></i><i class="fas fa-star star"></i><i
+                                    class="fas fa-star star"></i><i class="fas fa-star star"></i><i
+                                    class="fas fa-star-half-alt star"></i>
+                                <span>(128)</span>
+                            </div>
+                            @if ($product->sale_price)
+                                <p class="product-card__price"><span
+                                        style="text-decoration: line-through; opacity: 0.6; font-size: 0.8em; margin-left: 8px">${{ $product->price }}</span>
+                                    ${{ $product->sale_price }}</p>
+                            @else
+                                <p class="product-card__price">${{ $product->price }}</p>
+                            @endif
+                            <button class="product-card__btn add-to-cart-btn">Ajouter au panier</button>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+        </div>
+    </section>
 
 
     <!-- ========== bestsellers section ========== -->
@@ -1508,10 +1563,10 @@
     <section class="about-lpf" itemscope itemtype="https://schema.org/Organization">
 
         <!-- SEO hidden data -->
-        <meta itemprop="name" content="Le Petit Flacon">
+        <meta itemprop="name" content="Luxe PARFUM">
         <meta itemprop="url" content="https://lepetitflacon.shop">
         <meta itemprop="description"
-            content="Décants de parfum 100% originaux au Maroc en formats 5ml et 10ml. Testez votre parfum avant achat avec Le Petit Flacon.">
+            content="Décants de parfum 100% originaux au Maroc en formats 5ml et 10ml. Testez votre parfum avant achat avec Luxe PARFUM.">
 
         <div class="about-lpf__glow about-lpf__glow--one"></div>
         <div class="about-lpf__glow about-lpf__glow--two"></div>
@@ -1529,7 +1584,7 @@
                     </h3>
 
                     <p class="about-lpf__intro">
-                        Chez <strong itemprop="brand">Le Petit Flacon</strong>, notre mission est simple :
+                        Chez <strong itemprop="brand">Luxe PARFUM</strong>, notre mission est simple :
                         rendre le <strong>parfum de luxe accessible au Maroc</strong>.
                     </p>
 
@@ -1540,7 +1595,7 @@
                     </p>
 
                     <p>
-                        C’est pour répondre à ce besoin que <strong>Le Petit Flacon</strong> est né.
+                        C’est pour répondre à ce besoin que <strong>Luxe PARFUM</strong> est né.
                     </p>
 
                     <p>
@@ -1565,19 +1620,19 @@
                     </p>
 
                     <p class="about-lpf__signature">
-                        Avec Le Petit Flacon, découvrez une nouvelle manière de vivre le parfum :
+                        Avec Luxe PARFUM, découvrez une nouvelle manière de vivre le parfum :
                         plus libre, plus intelligente, plus personnelle.
                     </p>
 
                     <p class="about-lpf__final">
-                        Le Petit Flacon <strong> là où la fraîcheur et le luxe commencent. </strong> ✨
+                        Luxe PARFUM <strong> là où la fraîcheur et le luxe commencent. </strong> ✨
                     </p>
                 </div>
 
                 <div class="about-lpf__visual">
                     <div class="about-lpf__image-card">
                         <img src="{{ asset('assets/clints/images/about-decants.png') }}"
-                            alt="Décants parfum 5ml et 10ml Le Petit Flacon Maroc" loading="lazy" decoding="async"
+                            alt="Décants parfum 5ml et 10ml Luxe PARFUM Maroc" loading="lazy" decoding="async"
                             width="500" height="500" itemprop="image">
                     </div>
 
@@ -1626,7 +1681,7 @@
 
 </a>
 
-<!-- LPF Cookie Perfume Banner -->
+<!-- LUX Cookie Perfume Banner -->
 <div class="cookie-lpf" id="cookieLpf">
     <div class="cookie-lpf__bottle">
         <span class="cookie-lpf__spray"></span>

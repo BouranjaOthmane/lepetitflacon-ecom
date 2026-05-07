@@ -3,7 +3,7 @@
         {{-- <img src="{{ asset('assets/clints/images/logo-v-13.png') }}" style="width: 300px; height: 90px" alt="Lepetitflacon"
                     class="navbar-v2__logo-img"> --}}
 
-        <h2>LE PETIT FLACON</h2>
+        <h2>Luxe PARFUM</h2>
     </div>
 
     <nav class="sidebar__nav">

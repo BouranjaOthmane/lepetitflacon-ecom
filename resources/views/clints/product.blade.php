@@ -9,8 +9,8 @@
     <meta name="description"
         content="Ambre Oud Royal — un mélange raffiné d’oud cambodgien rare et d’ambre chaleureux. Un parfum d’exception signé Lepetitflacon.">
     <link rel="stylesheet"
-        href="{{ asset('assets/clints/css/style.css') }}?v={{ filemtime(base_path('assets/clints/css/style.css')) }}">
-    {{-- //base_path --}}
+        href="{{ asset('assets/clints/css/style.css') }}?v={{ filemtime(public_path('assets/clints/css/style.css')) }}">
+    {{-- //public_path --}}
     <link rel="stylesheet" href="{{ asset('assets/clints/css/product.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
@@ -27,7 +27,7 @@
         }
 
         .product-breadcrumb-lpf::before {
-            content: "LPF";
+            content: "LUX";
             position: absolute;
             right: 5%;
             top: -36px;
@@ -144,7 +144,7 @@
         }
 
         .product-detail::before {
-            content: "LPF";
+            content: "LUX";
             position: absolute;
             right: 4%;
             top: 35px;
@@ -364,7 +364,7 @@
         .size-btn {
             min-width: 88px;
             min-height: 58px;
-            border-radius: 15px;
+            border-radius: 6px;
             background: #ffffff;
             border: 1px solid rgba(216, 170, 69, .25);
             color: #0B103D;
@@ -372,20 +372,7 @@
             transition: .35s ease;
             font-weight: 700;
         }
-
-        .size-btn span {
-            display: block;
-            
-            color: black;
-            font-size: 15px;
-        }
-
-        .size-btn.active,
-        .size-btn:hover {
-            background: linear-gradient(145deg, #fff4c9, #ffe7a5, #d8aa45);
-            transform: translateY(-3px);
-            box-shadow: 0 12px 24px rgba(216, 170, 69, .24);
-        }
+        
 
         .product-info__desc {
             color: black;
@@ -433,7 +420,7 @@
             display: grid;
             grid-template-columns: 125px 1fr;
             gap: 12px;
-            margin-top: 20px;
+            margin-top: 10px;
         }
 
         .qty-selector {
@@ -490,7 +477,7 @@
         .product-info__meta {
             margin-top: 20px;
             padding: 16px;
-            border-radius: 18px;
+            border-radius: 10px;
             background: rgba(255, 255, 255, .72);
             border: 1px solid rgba(216, 170, 69, .18);
         }
@@ -586,6 +573,7 @@
 
             .qty-selector {
                 max-width: 150px;
+                margin: auto;
             }
 
             .size-btn {
@@ -996,7 +984,7 @@
 
                 <div class="product-breadcrumb-lpf__badge">
                     <i class="fas fa-spray-can-sparkles"></i>
-                    <span>LPF Produit</span>
+                    <span>LUX Produit</span>
                 </div>
             </div>
         </div>
@@ -1048,18 +1036,39 @@
                     </div>
 
                     <div class="product-info__sizes">
-                        <h4>Contenance</h4>
+                        <h4>Taille</h4>
                         <div class="size-options" id="sizeOptions">
                             @forelse($sizes as $index => $size)
                                 <button type="button" class="size-btn {{ $index === 0 ? 'active' : '' }}"
                                     data-size-id="{{ $size->id }}" data-size="{{ $size->size }}"
                                     data-price="{{ $size->price }}" onclick="selectProductSize(this)">
-                                    {{ $size->size }} <span>{{ number_format($size->price, 2) }} DH</span>
+                                    {{ $size->size }}ML <span>{{ number_format($size->price, 2) }} DH</span>
                                 </button>
                             @empty
                                 <p>Aucune taille disponible</p>
                             @endforelse
                         </div>
+                    </div>
+
+                        <!-- Ajouter au panier -->
+                    <div class="product-info__actions">
+                        <div class="qty-selector">
+                            <button id="qtyMinus">−</button>
+                            <input type="number" value="1" min="1" max="10" id="qtyInput" readonly>
+                            <button id="qtyPlus">+</button>
+                        </div>
+
+                        <button class="btn btn-primary product-add-btn" id="addToCartBtn"
+                            data-stock="{{ $product->stock_quantity }}"
+                            {{ $product->stock_quantity <= 0 ? 'disabled' : '' }}>
+
+                            @if ($product->stock_quantity <= 0)
+                                <i class="fas fa-times-circle"></i> Rupture de stock
+                            @else
+                                <i class="fas fa-shopping-bag"></i> Ajouter au panier
+                            @endif
+                        </button>
+                       
                     </div>
 
                     <p class="product-info__desc">
@@ -1090,31 +1099,7 @@
                         </div>
                     @endif
 
-                    <!-- Ajouter au panier -->
-                    <div class="product-info__actions">
-                        <div class="qty-selector">
-                            <button id="qtyMinus">−</button>
-                            <input type="number" value="1" min="1" max="10" id="qtyInput" readonly>
-                            <button id="qtyPlus">+</button>
-                        </div>
-
-                        <button class="btn btn-primary product-add-btn" id="addToCartBtn"
-                            data-stock="{{ $product->stock_quantity }}"
-                            {{ $product->stock_quantity <= 0 ? 'disabled' : '' }}>
-
-                            @if ($product->stock_quantity <= 0)
-                                <i class="fas fa-times-circle"></i> Rupture de stock
-                            @else
-                                <i class="fas fa-shopping-bag"></i> Ajouter au panier
-                            @endif
-                        </button>
-                        {{-- <button
-                            class="btn-icon wishlist-btn {{ auth()->check() && auth()->user()->wishlist->contains('product_id', $product->id) ? 'active' : '' }}"
-                            id="wishlistBtn" data-product-id="{{ $product->id }}">
-                            <i
-                                class="{{ auth()->check() && auth()->user()->wishlist->contains('product_id', $product->id) ? 'fas' : 'far' }} fa-heart"></i>
-                        </button> --}}
-                    </div>
+                
 
                     <!-- Informations supplémentaires -->
                     <div class="product-info__meta">
@@ -1336,7 +1321,7 @@
     @include('clints.layout.footer')
 
     <script
-        src="{{ asset('assets/clints/js/product.js') }}?v={{ filemtime(base_path('assets/clints/js/product.js')) }}">
+        src="{{ asset('assets/clints/js/product.js') }}?v={{ filemtime(public_path('assets/clints/js/product.js')) }}">
     </script>
 </body>
 
