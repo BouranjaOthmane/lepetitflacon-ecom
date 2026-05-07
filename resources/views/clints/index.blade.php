@@ -1336,15 +1336,25 @@
             </div>
             <div class="featured__grid reveal" id="featuredGrid">
                 @foreach ($featuredProducts as $product)
-                    <div class="product-card" data-id="{{ $product->id }}"
-                        data-name="{{ $product->getTranslation('name', 'ar') }}" data-price="{{ $product->price }}"
-                        data-img="{{ $product->getFirstMediaUrl('images') ?: asset('assets/clints/images/mens-perfume.png') }}">
+                    @php
+                        $hasSizes = $product->sizes && $product->sizes->count() > 0;
+                        $minSizePrice = $hasSizes ? $product->sizes->min('price') : null;
+                        $maxSizePrice = $hasSizes ? $product->sizes->max('price') : null;
+                        $cardPrice = $minSizePrice ?: ($product->sale_price ?: $product->price);
+                        $productImage =
+                            $product->getFirstMediaUrl('images') ?: asset('assets/clints/images/mens-perfume.png');
+                    @endphp
+
+                    <div class="product-card" data-id="{{ $product->id }}" data-name="{{ $product->name }}"
+                        data-price="{{ $cardPrice }}" data-img="{{ $productImage }}">
+
                         <div class="product-card__image">
-                            <img src="{{ $product->getFirstMediaUrl('images') ?: asset('assets/clints/images/mens-perfume.png') }}"
-                                alt="{{ $product->getTranslation('name', 'ar') }}">
+                            <img src="{{ $productImage }}" alt="{{ $product->name }}">
+
                             @if ($product->created_at->gt(now()->subDays(7)))
                                 <span class="product-card__badge">Nouveau</span>
                             @endif
+
                             <div class="product-card__actions">
                                 <button
                                     class="wishlist-btn {{ auth()->check() && auth()->user()->wishlist->contains('product_id', $product->id) ? 'active' : '' }}"
@@ -1352,28 +1362,55 @@
                                     <i
                                         class="{{ auth()->check() && auth()->user()->wishlist->contains('product_id', $product->id) ? 'fas' : 'far' }} fa-heart"></i>
                                 </button>
+
                                 <button aria-label="Aperçu rapide"
-                                    onclick="window.location.href='{{ route('product', $product->id) }}'"><i
-                                        class="far fa-eye"></i></button>
+                                    onclick="window.location.href='{{ route('product', $product->id) }}'">
+                                    <i class="far fa-eye"></i>
+                                </button>
                             </div>
                         </div>
+
                         <div class="product-card__info">
-                            <p class="product-card__brand">{{ $product->brand->name ?? 'Luxe Parfum' }}</p>
-                            <h4 class="product-card__name">{{ $product->getTranslation('name', 'ar') }}</h4>
+                            <p class="product-card__brand">{{ $product->brand->name ?? 'Lepetitflacon' }}</p>
+
+                            <h4 class="product-card__name">{{ $product->name }}</h4>
+
                             <div class="product-card__rating">
-                                <i class="fas fa-star star"></i><i class="fas fa-star star"></i><i
-                                    class="fas fa-star star"></i><i class="fas fa-star star"></i><i
-                                    class="fas fa-star-half-alt star"></i>
+                                <i class="fas fa-star star"></i>
+                                <i class="fas fa-star star"></i>
+                                <i class="fas fa-star star"></i>
+                                <i class="fas fa-star star"></i>
+                                <i class="fas fa-star-half-alt star"></i>
                                 <span>(128)</span>
                             </div>
-                            @if ($product->sale_price)
-                                <p class="product-card__price"><span
-                                        style="text-decoration: line-through; opacity: 0.6; font-size: 0.8em; margin-left: 8px">${{ $product->price }}</span>
-                                    ${{ $product->sale_price }}</p>
+
+                            <p class="product-card__price">
+                                @if ($hasSizes)
+                                    @if ($minSizePrice == $maxSizePrice)
+                                        {{ number_format($minSizePrice, 2, ',', ' ') }} DH
+                                    @else
+                                        {{ number_format($minSizePrice, 2, ',', ' ') }} DH –
+                                        {{ number_format($maxSizePrice, 2, ',', ' ') }} DH
+                                    @endif
+                                @else
+                                    {{ number_format($product->sale_price ?: $product->price, 2, ',', ' ') }} DH
+                                @endif
+                            </p>
+
+                            @if ($product->stock_quantity <= 0)
+                                <button class="product-card__btn" disabled style="opacity:.6; cursor:not-allowed;">
+                                    Rupture de stock
+                                </button>
+                            @elseif ($hasSizes)
+                                <button class="product-card__btn"
+                                    onclick="window.location.href='{{ route('product', $product->id) }}'">
+                                    Découvrir
+                                </button>
                             @else
-                                <p class="product-card__price">${{ $product->price }}</p>
+                                <button class="product-card__btn add-to-cart-btn">
+                                    Ajouter au panier
+                                </button>
                             @endif
-                            <button class="product-card__btn add-to-cart-btn">Ajouter au panier</button>
                         </div>
                     </div>
                 @endforeach
